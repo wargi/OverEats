@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		809B12B4F4AEE34759F6AA35 /* Pods_OverEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9A569FD85EAB1F2AB0E133 /* Pods_OverEats.framework */; };
 		8EE538B9206E25AD006BAC26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE538B8206E25AD006BAC26 /* AppDelegate.swift */; };
 		8EE538BB206E25AD006BAC26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE538BA206E25AD006BAC26 /* ViewController.swift */; };
 		8EE538BE206E25AD006BAC26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EE538BC206E25AD006BAC26 /* Main.storyboard */; };
@@ -15,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		215C48F756A0F1994845C08A /* Pods-OverEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OverEats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OverEats/Pods-OverEats.debug.xcconfig"; sourceTree = "<group>"; };
+		5C9A569FD85EAB1F2AB0E133 /* Pods_OverEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OverEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EE538B5206E25AD006BAC26 /* OverEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OverEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EE538B8206E25AD006BAC26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EE538BA206E25AD006BAC26 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,7 @@
 		8EE538BF206E25AE006BAC26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EE538C2206E25AE006BAC26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8EE538C4206E25AE006BAC26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E373B345549AF331F65951E3 /* Pods-OverEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OverEats.release.xcconfig"; path = "Pods/Target Support Files/Pods-OverEats/Pods-OverEats.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				809B12B4F4AEE34759F6AA35 /* Pods_OverEats.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				8EE538B7206E25AD006BAC26 /* OverEats */,
 				8EE538B6206E25AD006BAC26 /* Products */,
+				E015E62BDC90E205A33E5028 /* Pods */,
+				C72F25DA901D6D2FE83A108A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +61,79 @@
 		8EE538B7206E25AD006BAC26 /* OverEats */ = {
 			isa = PBXGroup;
 			children = (
-				8EE538B8206E25AD006BAC26 /* AppDelegate.swift */,
-				8EE538BA206E25AD006BAC26 /* ViewController.swift */,
-				8EE538BC206E25AD006BAC26 /* Main.storyboard */,
-				8EE538BF206E25AE006BAC26 /* Assets.xcassets */,
-				8EE538C1206E25AE006BAC26 /* LaunchScreen.storyboard */,
-				8EE538C4206E25AE006BAC26 /* Info.plist */,
+				8EE538CA206E359F006BAC26 /* Source */,
+				8EE538CB206E35A1006BAC26 /* Resource */,
+				8EE538CD206E35A7006BAC26 /* Supporting File */,
 			);
 			path = OverEats;
+			sourceTree = "<group>";
+		};
+		8EE538CA206E359F006BAC26 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				8EE538CE206E364E006BAC26 /* AppDelegate */,
+				8EE538CF206E369C006BAC26 /* ViewController */,
+				8EE538D1206E36AD006BAC26 /* View */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		8EE538CB206E35A1006BAC26 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				8EE538BC206E25AD006BAC26 /* Main.storyboard */,
+				8EE538C1206E25AE006BAC26 /* LaunchScreen.storyboard */,
+				8EE538BF206E25AE006BAC26 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		8EE538CD206E35A7006BAC26 /* Supporting File */ = {
+			isa = PBXGroup;
+			children = (
+				8EE538C4206E25AE006BAC26 /* Info.plist */,
+			);
+			path = "Supporting File";
+			sourceTree = "<group>";
+		};
+		8EE538CE206E364E006BAC26 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				8EE538B8206E25AD006BAC26 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		8EE538CF206E369C006BAC26 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8EE538BA206E25AD006BAC26 /* ViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8EE538D1206E36AD006BAC26 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C72F25DA901D6D2FE83A108A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5C9A569FD85EAB1F2AB0E133 /* Pods_OverEats.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E015E62BDC90E205A33E5028 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				215C48F756A0F1994845C08A /* Pods-OverEats.debug.xcconfig */,
+				E373B345549AF331F65951E3 /* Pods-OverEats.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +143,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8EE538C7206E25AE006BAC26 /* Build configuration list for PBXNativeTarget "OverEats" */;
 			buildPhases = (
+				0059CCA6B323321BC51C059E /* [CP] Check Pods Manifest.lock */,
 				8EE538B1206E25AD006BAC26 /* Sources */,
 				8EE538B2206E25AD006BAC26 /* Frameworks */,
 				8EE538B3206E25AD006BAC26 /* Resources */,
+				AA9A28E6D8B91C872ECB3DE2 /* [CP] Embed Pods Frameworks */,
+				96E2A17863D816351E834DAA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,6 +204,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0059CCA6B323321BC51C059E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OverEats-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		96E2A17863D816351E834DAA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OverEats/Pods-OverEats-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA9A28E6D8B91C872ECB3DE2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-OverEats/Pods-OverEats-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OverEats/Pods-OverEats-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8EE538B1206E25AD006BAC26 /* Sources */ = {
@@ -278,14 +407,12 @@
 		};
 		8EE538C8206E25AE006BAC26 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 215C48F756A0F1994845C08A /* Pods-OverEats.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = OverEats/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				INFOPLIST_FILE = "OverEats/Supporting File/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.OverEats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -295,14 +422,12 @@
 		};
 		8EE538C9206E25AE006BAC26 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E373B345549AF331F65951E3 /* Pods-OverEats.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = OverEats/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				INFOPLIST_FILE = "OverEats/Supporting File/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.OverEats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
