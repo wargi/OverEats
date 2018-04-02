@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  OverEats
 //
-//  Created by 박소정 on 2018. 3. 30..
-//  Copyright © 2018년 sangwook park. All rights reserved.
+//  Created by 배태웅 on 2018. 3. 30..
+//  Copyright © 2018년 taewoong bae. All rights reserved.
 //
 
 import UIKit
