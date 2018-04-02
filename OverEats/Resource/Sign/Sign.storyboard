@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    
+    <device id="retina4_7" orientation="portrait">
+        
+        <adaptation id="fullscreen"/>
+        
+    </device>
+    
+    <dependencies>
+        
+        <deployment identifier="iOS"/>
+        
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        
+    </dependencies>
+    
+    <scenes>
+        
+        <!--View Controller-->
+        
+        <scene sceneID="MzF-ut-6Zv">
+            
+            <objects>
+                
+                <viewController id="gka-D5-RQI" sceneMemberID="viewController">
+                    
+                    <view key="view" contentMode="scaleToFill" id="YiX-Q0-ann">
+                        
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        
+                        <subviews>
+                            
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xW1-74-l1D">
+                                
+                                <rect key="frame" x="10" y="573" width="355" height="30"/>
+                                
+                                <color key="backgroundColor" red="0.67248642630515409" green="1" blue="0.80189590066859706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                
+                            </view>
+                            
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Hy-8M-Qd5">
+                                
+                                <rect key="frame" x="10" y="573" width="355" height="30"/>
+                                
+                                <subviews>
+                                    
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Over" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n56-ov-DmM">
+                                        
+                                        <rect key="frame" x="0.0" y="0.0" width="163" height="30"/>
+                                        
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        
+                                        <nil key="textColor"/>
+                                        
+                                        <nil key="highlightedColor"/>
+                                        
+                                    </label>
+                                    
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로 로그인" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nC0-qH-4qr">
+                                        
+                                        <rect key="frame" x="163" y="0.0" width="192" height="30"/>
+                                        
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        
+                                        <nil key="textColor"/>
+                                        
+                                        <nil key="highlightedColor"/>
+                                        
+                                    </label>
+                                    
+                                </subviews>
+                                
+                                <constraints>
+                                    
+                                    <constraint firstItem="n56-ov-DmM" firstAttribute="width" secondItem="nC0-qH-4qr" secondAttribute="width" multiplier="0.85:1" id="pVT-t0-8fA"/>
+                                    
+                                </constraints>
+                                
+                            </stackView>
+                            
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eXS-gX-OMo">
+                                
+                                <rect key="frame" x="10" y="573" width="355" height="89"/>
+                                
+                                <subviews>
+                                    
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IU0-OI-Tfx">
+                                        
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="30"/>
+                                        
+                                    </button>
+                                    
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ar6-1y-hIg">
+                                        
+                                        <rect key="frame" x="0.0" y="30" width="355" height="59"/>
+                                        
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        
+                                        <state key="normal" title="회원 가입"/>
+                                        
+                                    </button>
+                                    
+                                </subviews>
+                                
+                            </stackView>
+                            
+                        </subviews>
+                        
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        
+                        <constraints>
+                            
+                            <constraint firstItem="3Hy-8M-Qd5" firstAttribute="bottom" secondItem="Ar6-1y-hIg" secondAttribute="top" id="2Lc-Yt-Qr2"/>
+                            
+                            <constraint firstItem="HuL-uN-72W" firstAttribute="trailing" secondItem="xW1-74-l1D" secondAttribute="trailing" constant="10" id="5Mj-Mm-uDY"/>
+                            
+                            <constraint firstItem="xW1-74-l1D" firstAttribute="top" secondItem="IU0-OI-Tfx" secondAttribute="top" id="6A3-fi-vfT"/>
+                            
+                            <constraint firstItem="eXS-gX-OMo" firstAttribute="height" secondItem="YiX-Q0-ann" secondAttribute="height" multiplier="1:7.5" id="Dzi-Ta-Usi"/>
+                            
+                            <constraint firstItem="xW1-74-l1D" firstAttribute="bottom" secondItem="IU0-OI-Tfx" secondAttribute="bottom" id="SWF-IX-SID"/>
+                            
+                            <constraint firstItem="3Hy-8M-Qd5" firstAttribute="leading" secondItem="HuL-uN-72W" secondAttribute="leading" constant="10" id="Txq-Wb-7FT"/>
+                            
+                            <constraint firstItem="HuL-uN-72W" firstAttribute="trailing" secondItem="eXS-gX-OMo" secondAttribute="trailing" constant="10" id="bq6-aW-QVp"/>
+                            
+                            <constraint firstItem="3Hy-8M-Qd5" firstAttribute="height" secondItem="IU0-OI-Tfx" secondAttribute="height" id="eXW-QC-YUo"/>
+                            
+                            <constraint firstItem="HuL-uN-72W" firstAttribute="bottom" secondItem="eXS-gX-OMo" secondAttribute="bottom" constant="5" id="hd3-FM-ZGD"/>
+                            
+                            <constraint firstItem="HuL-uN-72W" firstAttribute="trailing" secondItem="3Hy-8M-Qd5" secondAttribute="trailing" constant="10" id="hgw-4F-zN5"/>
+                            
+                            <constraint firstItem="3Hy-8M-Qd5" firstAttribute="width" secondItem="IU0-OI-Tfx" secondAttribute="width" id="lOs-Io-pll"/>
+                            
+                            <constraint firstItem="eXS-gX-OMo" firstAttribute="leading" secondItem="HuL-uN-72W" secondAttribute="leading" constant="10" id="peP-28-tO1"/>
+                            
+                            <constraint firstItem="xW1-74-l1D" firstAttribute="leading" secondItem="HuL-uN-72W" secondAttribute="leading" constant="10" id="uhK-BI-lU9"/>
+                            
+                        </constraints>
+                        
+                        <viewLayoutGuide key="safeArea" id="HuL-uN-72W"/>
+                        
+                    </view>
+                    
+                </viewController>
+                
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WnR-zJ-j0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                
+            </objects>
+            
+            <point key="canvasLocation" x="-39.200000000000003" y="-1.3493253373313345"/>
+            
+        </scene>
+        
+    </scenes>
+    
+</document>
+
