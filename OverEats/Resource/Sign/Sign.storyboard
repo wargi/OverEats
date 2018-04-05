@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gka-D5-RQI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -96,6 +96,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HuL-uN-72W"/>
                     </view>
+                    <connections>
+                        <outlet property="roundView" destination="xW1-74-l1D" id="1Rh-J6-P1x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WnR-zJ-j0v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -188,7 +191,7 @@
                                                                 <rect key="frame" x="100" y="0.0" width="213" height="48.5"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -252,7 +255,7 @@
                                                                 <rect key="frame" x="100" y="0.0" width="213" height="48.5"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                                <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                         </subviews>
                                                     </stackView>
@@ -310,14 +313,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="qN6-J8-bM4"/>
                     <connections>
-                        <outlet property="emailTF" destination="lqB-CP-7dv" id="pgQ-cq-7e9"/>
+                        <outlet property="emailTF" destination="lqB-CP-7dv" id="IfB-1r-RdX"/>
                         <outlet property="mobile" destination="Wdg-mI-qfo" id="zl3-qS-Xy6"/>
                         <outlet property="passWord" destination="Q3E-oi-jei" id="aHT-o7-UMC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XbT-ml-Knb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1066" y="-214"/>
+            <point key="canvasLocation" x="1064.8" y="-214.54272863568218"/>
         </scene>
         <!--Profile Create View Controller-->
         <scene sceneID="08g-0g-g0Q">

@@ -8,7 +8,8 @@
 
 import UIKit
 class SignViewController: UIViewController {
-
+    @IBOutlet weak var roundView: UIView!
+    
     @IBAction func signInButton(_ sender: UIButton) {
    
     }
@@ -19,7 +20,7 @@ class SignViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        roundView.layer.cornerRadius = roundView.frame.size.height/6
  
     }
 
