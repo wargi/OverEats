@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		291C9EFF207226500085E37E /* KakaoTalk_Photo_2018-04-02-17-22-07.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 291C9EFE207226500085E37E /* KakaoTalk_Photo_2018-04-02-17-22-07.jpeg */; };
 		291C9F1120727C720085E37E /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F1020727C720085E37E /* MainModel.swift */; };
 		291C9F1420728D490085E37E /* MainNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F1320728D490085E37E /* MainNetwork.swift */; };
 		291C9F2120749CBA0085E37E /* NoticeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F2020749CBA0085E37E /* NoticeImageView.swift */; };
@@ -35,7 +34,6 @@
 
 /* Begin PBXFileReference section */
 		215C48F756A0F1994845C08A /* Pods-OverEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OverEats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OverEats/Pods-OverEats.debug.xcconfig"; sourceTree = "<group>"; };
-		291C9EFE207226500085E37E /* KakaoTalk_Photo_2018-04-02-17-22-07.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "KakaoTalk_Photo_2018-04-02-17-22-07.jpeg"; path = "../../../../../Downloads/KakaoTalk_Photo_2018-04-02-17-22-07.jpeg"; sourceTree = "<group>"; };
 		291C9F1020727C720085E37E /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		291C9F1320728D490085E37E /* MainNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNetwork.swift; sourceTree = "<group>"; };
 		291C9F2020749CBA0085E37E /* NoticeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeImageView.swift; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 		8E8A63782071E9DB007D9B7A /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				291C9EFE207226500085E37E /* KakaoTalk_Photo_2018-04-02-17-22-07.jpeg */,
 				8EE538BC206E25AD006BAC26 /* Main.storyboard */,
 			);
 			path = Main;
@@ -302,7 +299,6 @@
 			files = (
 				8E8A637C2071EADE007D9B7A /* SelectMenu.storyboard in Resources */,
 				8E8A63692071E481007D9B7A /* SignIn.storyboard in Resources */,
-				291C9EFF207226500085E37E /* KakaoTalk_Photo_2018-04-02-17-22-07.jpeg in Resources */,
 				291C9F2B2075CDC50085E37E /* MainRestView.xib in Resources */,
 				8EE538C3206E25AE006BAC26 /* LaunchScreen.storyboard in Resources */,
 				291C9F2320749CCE0085E37E /* NoticeImageView.xib in Resources */,

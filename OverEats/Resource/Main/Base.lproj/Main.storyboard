@@ -150,35 +150,8 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="N7Z-Ww-G98">
-            <objects>
-                <viewController id="HcY-Me-igi" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="CI1-tb-46V">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KakaoTalk_Photo_2018-04-02-17-22-07.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="vs7-se-OZB">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="vs7-se-OZB" firstAttribute="leading" secondItem="K6z-AF-23f" secondAttribute="leading" id="Rwn-0K-Wbm"/>
-                            <constraint firstItem="K6z-AF-23f" firstAttribute="bottom" secondItem="vs7-se-OZB" secondAttribute="bottom" id="qTT-MQ-g01"/>
-                            <constraint firstItem="K6z-AF-23f" firstAttribute="trailing" secondItem="vs7-se-OZB" secondAttribute="trailing" id="wxp-Tw-Is7"/>
-                            <constraint firstItem="vs7-se-OZB" firstAttribute="top" secondItem="CI1-tb-46V" secondAttribute="top" id="xq1-bd-txU"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="K6z-AF-23f"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YDo-si-lSm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-524" y="132.68365817091455"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="KakaoTalk_Photo_2018-04-02-17-22-07.jpeg" width="539" height="960"/>
         <image name="burger_icon" width="53" height="53"/>
     </resources>
 </document>
