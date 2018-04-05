@@ -11,6 +11,7 @@ import UIKit
 class MenuViewController: UIViewController {
 
     // Menu List View 영역
+    @IBOutlet weak var titleView: UIView!
     @IBOutlet private weak var restaurantName : UILabel!
     @IBOutlet private weak var categori : UILabel!
     @IBOutlet private weak var cookingTime : UILabel!
@@ -27,7 +28,7 @@ class MenuViewController: UIViewController {
 
 extension MenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 30
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -42,9 +43,21 @@ extension MenuViewController: UITableViewDataSource {
 
 extension MenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "SelectMenu", bundle: nil)
-        let nextViewController = storyboard.instantiateViewController(withIdentifier: "SelectMenu") as! SelectMenuViewController
+        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "SelectMenu") as! SelectMenuViewController
         nextViewController.price = 7000
+        nextViewController.modalPresentationStyle = .overFullScreen
+        
+        
+        
         present(nextViewController, animated: true, completion: nil)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        UIView.animate(withDuration: 0) {
+            if scrollView.contentOffset.y == self.titleView.frame.minY {
+                self.titleView.bounds.size.width = self.view.bounds.width
+            }
+        }
+        
     }
 }

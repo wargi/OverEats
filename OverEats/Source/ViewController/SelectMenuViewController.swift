@@ -11,7 +11,7 @@ import UIKit
 class SelectMenuViewController: UIViewController {
 
     
-    @IBOutlet private weak var scrollView : UIScrollView! // 스크롤 뷰
+    @IBOutlet weak var scrollView : UIScrollView! // 스크롤 뷰
     @IBOutlet weak var selectMenuView : UIView! // 콘텐츠 뷰
     
     //음식 관련
@@ -31,17 +31,17 @@ class SelectMenuViewController: UIViewController {
     
     //요청 사항 관련
     @IBOutlet weak var requestLabel: UILabel!
-    @IBOutlet weak var requestView : UIView!
-    @IBOutlet weak var requestTextView : UITextView!
     
     //제스쳐
     var pan: UIPanGestureRecognizer! // Pan Gesture 스크롤 DissMiss
     var tap: UITapGestureRecognizer! // Tap Gesture 요청사항 작성 이벤트
-    
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "noti"), object: nil, queue: nil) { (noti) in
+            self.requestLabel.text = noti.object as? String
+        }
         
         gestureCreate()
         
@@ -49,11 +49,6 @@ class SelectMenuViewController: UIViewController {
         stepperView.layer.borderWidth = 0.3
         
         totalPrice.text! = "₩" + String(price)
-        
-        
-        
-        
-
 
     }
     
@@ -86,15 +81,18 @@ class SelectMenuViewController: UIViewController {
     
     // Pan 제스쳐 액션
     @objc func tapAction(_ sender: UITapGestureRecognizer) {
-        UIView.animate(withDuration: 1) {
-            self.requestView.frame.origin.y = self.view.frame.minY
-        }
-    }
-    
-    
-    //MARK: 요청 사항
-    @IBAction func request(_ sender: UIButton) {
+        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "Request") as! RequestViewController
         
+        nextViewController.definesPresentationContext = true
+        nextViewController.modalPresentationStyle = .overFullScreen
+        nextViewController.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+        
+        present(nextViewController, animated: true)
+        dismiss(animated: true) {
+            UIView.animate(withDuration: 1, animations: {
+                
+            })
+        }
     }
     
     //MARK: 스테퍼 관련
@@ -121,12 +119,10 @@ class SelectMenuViewController: UIViewController {
         menuCount.text = "장바구니에 " + String(count) + "개 추가"
         totalPrice.text = "₩" + String(price * count)
     }
-    
 }
 
 // UIScrollViewDelegate
 extension SelectMenuViewController: UIScrollViewDelegate {
-    
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
@@ -140,7 +136,10 @@ extension SelectMenuViewController: UIScrollViewDelegate {
 
 // UIGestureRecognizerDelegate
 extension SelectMenuViewController: UIGestureRecognizerDelegate {
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
+                           shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer)
+        -> Bool {
+            
         return true
     }
 }
