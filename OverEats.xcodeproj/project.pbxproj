@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		809B12B4F4AEE34759F6AA35 /* Pods_OverEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9A569FD85EAB1F2AB0E133 /* Pods_OverEats.framework */; };
+		8E0748F12076873A009E9EEF /* foodimg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E0748F020768739009E9EEF /* foodimg.jpg */; };
 		8E8A63692071E481007D9B7A /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E8A63682071E481007D9B7A /* SignIn.storyboard */; };
 		8E8A636C2071E565007D9B7A /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E8A636B2071E565007D9B7A /* SignUp.storyboard */; };
 		8E8A636E2071E583007D9B7A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8A636D2071E583007D9B7A /* SignInViewController.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		215C48F756A0F1994845C08A /* Pods-OverEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OverEats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OverEats/Pods-OverEats.debug.xcconfig"; sourceTree = "<group>"; };
 		5C9A569FD85EAB1F2AB0E133 /* Pods_OverEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OverEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E0748F020768739009E9EEF /* foodimg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = foodimg.jpg; path = ../../../../../../Downloads/foodimg.jpg; sourceTree = "<group>"; };
 		8E8A63682071E481007D9B7A /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		8E8A636B2071E565007D9B7A /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		8E8A636D2071E583007D9B7A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				8E8A63792071EAD0007D9B7A /* Menu.storyboard */,
+				8E0748F020768739009E9EEF /* foodimg.jpg */,
 			);
 			name = Menu;
 			path = Sign/Menu;
@@ -264,6 +267,7 @@
 			files = (
 				8E8A63692071E481007D9B7A /* SignIn.storyboard in Resources */,
 				8EE538C3206E25AE006BAC26 /* LaunchScreen.storyboard in Resources */,
+				8E0748F12076873A009E9EEF /* foodimg.jpg in Resources */,
 				8EE538C0206E25AE006BAC26 /* Assets.xcassets in Resources */,
 				8E8A637A2071EAD0007D9B7A /* Menu.storyboard in Resources */,
 				8EE538BE206E25AD006BAC26 /* Main.storyboard in Resources */,
