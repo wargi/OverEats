@@ -16,6 +16,8 @@
 		291C9F2B2075CDC50085E37E /* MainRestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291C9F2A2075CDC50085E37E /* MainRestView.xib */; };
 		291C9F2E2075FAD80085E37E /* MainRestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F2C2075FAD80085E37E /* MainRestTableViewCell.swift */; };
 		291C9F2F2075FAD80085E37E /* MainRestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291C9F2D2075FAD80085E37E /* MainRestTableViewCell.xib */; };
+		291C9F32207629A10085E37E /* MainInviteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F30207629A10085E37E /* MainInviteTableViewCell.swift */; };
+		291C9F33207629A10085E37E /* MainInviteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291C9F31207629A10085E37E /* MainInviteTableViewCell.xib */; };
 		809B12B4F4AEE34759F6AA35 /* Pods_OverEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9A569FD85EAB1F2AB0E133 /* Pods_OverEats.framework */; };
 		8E8A63692071E481007D9B7A /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E8A63682071E481007D9B7A /* SignIn.storyboard */; };
 		8E8A636C2071E565007D9B7A /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E8A636B2071E565007D9B7A /* SignUp.storyboard */; };
@@ -44,6 +46,8 @@
 		291C9F2A2075CDC50085E37E /* MainRestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainRestView.xib; sourceTree = "<group>"; };
 		291C9F2C2075FAD80085E37E /* MainRestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRestTableViewCell.swift; sourceTree = "<group>"; };
 		291C9F2D2075FAD80085E37E /* MainRestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainRestTableViewCell.xib; sourceTree = "<group>"; };
+		291C9F30207629A10085E37E /* MainInviteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInviteTableViewCell.swift; sourceTree = "<group>"; };
+		291C9F31207629A10085E37E /* MainInviteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainInviteTableViewCell.xib; sourceTree = "<group>"; };
 		5C9A569FD85EAB1F2AB0E133 /* Pods_OverEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OverEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E8A63682071E481007D9B7A /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		8E8A636B2071E565007D9B7A /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 				291C9F2A2075CDC50085E37E /* MainRestView.xib */,
 				291C9F2C2075FAD80085E37E /* MainRestTableViewCell.swift */,
 				291C9F2D2075FAD80085E37E /* MainRestTableViewCell.xib */,
+				291C9F30207629A10085E37E /* MainInviteTableViewCell.swift */,
+				291C9F31207629A10085E37E /* MainInviteTableViewCell.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -311,6 +317,7 @@
 				291C9F2F2075FAD80085E37E /* MainRestTableViewCell.xib in Resources */,
 				8EE538BE206E25AD006BAC26 /* Main.storyboard in Resources */,
 				8E8A636C2071E565007D9B7A /* SignUp.storyboard in Resources */,
+				291C9F33207629A10085E37E /* MainInviteTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +391,7 @@
 				8E8A637E2071F7BF007D9B7A /* AppColor.swift in Sources */,
 				8E8A63702071E590007D9B7A /* SignUpViewController.swift in Sources */,
 				291C9F2E2075FAD80085E37E /* MainRestTableViewCell.swift in Sources */,
+				291C9F32207629A10085E37E /* MainInviteTableViewCell.swift in Sources */,
 				8E8A636E2071E583007D9B7A /* SignInViewController.swift in Sources */,
 				8E8A63752071E7E2007D9B7A /* SelectMenuViewController.swift in Sources */,
 				291C9F1120727C720085E37E /* MainModel.swift in Sources */,

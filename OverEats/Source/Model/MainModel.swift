@@ -14,3 +14,13 @@ struct Notice {
     var subTitle: String?
     var imageURL: String!
 }
+
+struct Restaurant {
+    var id: Int!
+    var name: String!
+    var tag: [String]
+    var score: Float!
+    var time: Int!
+    var account: String?
+    var imageURL: String!
+}

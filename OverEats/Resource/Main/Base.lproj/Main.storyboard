@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NOc-tg-EIf">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -88,27 +86,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q13-G0-puj" id="sW4-85-BSE">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="burger_icon" translatesAutoresizingMaskIntoConstraints="NO" id="wtP-aq-mnG">
-                                                    <rect key="frame" x="30" y="20.5" width="40" height="39.5"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="wtP-aq-mnG" secondAttribute="height" multiplier="1:1" id="QKm-Vn-X9x"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주문 시 ￦7,000  할인받기 &gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTL-JA-LEw">
-                                                    <rect key="frame" x="95" y="31" width="173.5" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" red="0.27843137254901962" green="0.63137254901960782" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="iTL-JA-LEw" firstAttribute="leading" secondItem="wtP-aq-mnG" secondAttribute="trailing" constant="25" id="3gu-fG-1yG"/>
-                                                <constraint firstItem="iTL-JA-LEw" firstAttribute="centerY" secondItem="sW4-85-BSE" secondAttribute="centerY" id="69Q-Nh-HNr"/>
-                                                <constraint firstItem="wtP-aq-mnG" firstAttribute="height" secondItem="sW4-85-BSE" secondAttribute="height" multiplier="1:2" id="Gri-2j-Nva"/>
-                                                <constraint firstItem="wtP-aq-mnG" firstAttribute="centerY" secondItem="sW4-85-BSE" secondAttribute="centerY" id="NqP-3I-e6w"/>
-                                                <constraint firstItem="wtP-aq-mnG" firstAttribute="leading" secondItem="sW4-85-BSE" secondAttribute="leading" constant="30" id="Xg5-t9-CxP"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -151,6 +128,49 @@
             <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="Aqc-if-KLM">
+            <objects>
+                <viewController id="NOc-tg-EIf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vhd-gC-3dm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCJ-23-gKc">
+                                <rect key="frame" x="0.0" y="20" width="375" height="60.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sdfakljdsaflkjdsaklfjkslfjklsadjfkljdsaklfjkldjsalkfjsakljd" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCu-oQ-008">
+                                        <rect key="frame" x="0.0" y="10" width="375" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.2784313725" green="0.63137254899999995" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstItem="cCu-oQ-008" firstAttribute="top" secondItem="kCJ-23-gKc" secondAttribute="top" constant="10" id="Cev-A1-hcp"/>
+                                    <constraint firstAttribute="bottom" secondItem="cCu-oQ-008" secondAttribute="bottom" constant="10" id="Qku-hg-Faq"/>
+                                    <constraint firstItem="cCu-oQ-008" firstAttribute="leading" secondItem="kCJ-23-gKc" secondAttribute="leading" id="XuJ-1B-FI4"/>
+                                    <constraint firstAttribute="trailing" secondItem="cCu-oQ-008" secondAttribute="trailing" id="d5t-h8-kof"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kCJ-23-gKc" firstAttribute="leading" secondItem="msf-QT-6ZI" secondAttribute="leading" id="fgY-pN-wpj"/>
+                            <constraint firstItem="kCJ-23-gKc" firstAttribute="top" secondItem="msf-QT-6ZI" secondAttribute="top" id="qdl-67-oVW"/>
+                            <constraint firstItem="msf-QT-6ZI" firstAttribute="trailing" secondItem="kCJ-23-gKc" secondAttribute="trailing" id="wWq-rn-jHp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="msf-QT-6ZI"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oA4-jk-StG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="968" y="145"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="N7Z-Ww-G98">
             <objects>
                 <viewController id="HcY-Me-igi" sceneMemberID="viewController">
@@ -179,6 +199,5 @@
     </scenes>
     <resources>
         <image name="KakaoTalk_Photo_2018-04-02-17-22-07.jpeg" width="539" height="960"/>
-        <image name="burger_icon" width="53" height="53"/>
     </resources>
 </document>
