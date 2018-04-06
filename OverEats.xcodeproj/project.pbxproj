@@ -36,6 +36,7 @@
 		8E8A63792071EAD0007D9B7A /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		8E9672C3207349F10061B7C5 /* SelectMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMenuViewController.swift; sourceTree = "<group>"; };
 		8E9672C72074AEA60061B7C5 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
+		8E8A637D2071F7BF007D9B7A /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		8EE538B5206E25AD006BAC26 /* OverEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OverEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EE538B8206E25AD006BAC26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EE538BA206E25AD006BAC26 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +71,7 @@
 		8E8A63712071E688007D9B7A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8E8A637D2071F7BF007D9B7A /* AppColor.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -340,6 +342,7 @@
 				8E8A63732071E7C3007D9B7A /* MenuViewController.swift in Sources */,
 				8E9672C82074AEA60061B7C5 /* RequestViewController.swift in Sources */,
 				8EE538B9206E25AD006BAC26 /* AppDelegate.swift in Sources */,
+				8E8A637E2071F7BF007D9B7A /* AppColor.swift in Sources */,
 				8E8A63702071E590007D9B7A /* SignUpViewController.swift in Sources */,
 				8E8A636E2071E583007D9B7A /* SignInViewController.swift in Sources */,
 				8E9672C4207349F10061B7C5 /* SelectMenuViewController.swift in Sources */,
