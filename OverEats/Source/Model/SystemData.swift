@@ -15,7 +15,7 @@ struct Notice {
     let imageURL: String! // 이미지 URL
 }
 
-struct restaurant {
+struct Restaurant {
     let id: String! // 매장 고유 번호
     let name: String! // 매장 명
     let isOpen: Bool! // 매장 오픈 여부
@@ -23,10 +23,10 @@ struct restaurant {
     let description: String? // 매장 설명
     let score: Float? // 매장 점수
     let imageURL: String! // 매장 표시 이미지
-    let minDeliveryTime: Date! // 매장 최소 조리시간
-    let maxDeliveryTime: Date! // 매장 최대 조리시간
-    let menuList: [Menu] // 메뉴 목록
-    let category: [Category] // 식당의 유형 예)카페, 한식
+    let minDeliveryTime: Int! // 매장 최소 조리시간
+    let maxDeliveryTime: Int! // 매장 최대 조리시간
+    let menuList: [Menu]? // 메뉴 목록
+    let category: [Category]? // 식당의 유형 예)카페, 한식
 }
 
 struct Menu {
