@@ -36,10 +36,8 @@ class CreateIDViewController: UIViewController, UITextFieldDelegate {
         if textField.tag == 1 {
             if vaildEmail(emailID: text) == false {
                 check = false
-                print("error")
             } else {
                 check = true
-                print("ok")
             }
             
         }

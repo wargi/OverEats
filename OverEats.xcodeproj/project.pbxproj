@@ -20,6 +20,7 @@
 		8EE538BE206E25AD006BAC26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EE538BC206E25AD006BAC26 /* Main.storyboard */; };
 		8EE538C0206E25AE006BAC26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EE538BF206E25AE006BAC26 /* Assets.xcassets */; };
 		8EE538C3206E25AE006BAC26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EE538C1206E25AE006BAC26 /* LaunchScreen.storyboard */; };
+		9E46E53D2077D59900FA9721 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E46E53C2077D59900FA9721 /* LocationViewController.swift */; };
 		9E60DCCE2074BF4700B9528A /* CreateIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60DCCD2074BF4700B9528A /* CreateIDViewController.swift */; };
 		9E60DCD02074C08F00B9528A /* ProfileCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60DCCF2074C08F00B9528A /* ProfileCreateViewController.swift */; };
 		9E60DCD22074D1F900B9528A /* ToSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60DCD12074D1F900B9528A /* ToSViewController.swift */; };
@@ -44,6 +45,7 @@
 		8EE538BF206E25AE006BAC26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EE538C2206E25AE006BAC26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8EE538C4206E25AE006BAC26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E46E53C2077D59900FA9721 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		9E60DCCD2074BF4700B9528A /* CreateIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateIDViewController.swift; sourceTree = "<group>"; };
 		9E60DCCF2074C08F00B9528A /* ProfileCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreateViewController.swift; sourceTree = "<group>"; };
 		9E60DCD12074D1F900B9528A /* ToSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToSViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				9E60DCD82075CE7100B9528A /* jisu1.jpg */,
 				9E60DCCD2074BF4700B9528A /* CreateIDViewController.swift */,
 				9E60DCCF2074C08F00B9528A /* ProfileCreateViewController.swift */,
+				9E46E53C2077D59900FA9721 /* LocationViewController.swift */,
 			);
 			path = Sign;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				8EE538B9206E25AD006BAC26 /* AppDelegate.swift in Sources */,
 				8E8A637E2071F7BF007D9B7A /* AppColor.swift in Sources */,
 				9E60DCD02074C08F00B9528A /* ProfileCreateViewController.swift in Sources */,
+				9E46E53D2077D59900FA9721 /* LocationViewController.swift in Sources */,
 				8E8A636E2071E583007D9B7A /* SignViewController.swift in Sources */,
 				8E8A63752071E7E2007D9B7A /* SelectMenuViewController.swift in Sources */,
 				9E60DCCE2074BF4700B9528A /* CreateIDViewController.swift in Sources */,
