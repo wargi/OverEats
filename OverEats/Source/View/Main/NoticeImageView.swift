@@ -20,14 +20,15 @@ class NoticeImageView: UIView {
     }
     
     func configure(with notice: Notice) {
-        
-        let url = URL(string: notice.imageURL)
-        let data = try? Data(contentsOf: url!)
-        self.imageView.image = UIImage(data: data!)
-        
-        self.titleLabel.text = notice.title
-        self.subTitleLabel.text = notice.subTitle
-        
+        DispatchQueue.global(qos: .background).async {
+            let url = URL(string: notice.imageURL)
+            let data = try? Data(contentsOf: url!)
+            DispatchQueue.main.async {
+                self.imageView.image = UIImage(data: data!)
+                self.titleLabel.text = notice.title
+                self.subTitleLabel.text = notice.subTitle
+            }
+        }
     }
     
     func addGradient(with frame: CGRect) {

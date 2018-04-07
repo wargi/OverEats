@@ -11,6 +11,11 @@ import UIKit
 class MainViewController: UIViewController {
     
     var notices: [Notice]?
+    var restaurants: [Restaurant]?
+    var nearRestaurants: [Restaurant]?
+    var prefRestaurants: [Restaurant]?
+    
+    var listStatusBits: UInt8 = 0b000
     
     @IBOutlet weak private var mainTableView: UITableView!
     
@@ -30,8 +35,30 @@ class MainViewController: UIViewController {
         
         getNoticeData()
         
+        getRestaurantData()
+        
 
     }
+    
+    func getRestaurantData(){
+        MainGet.getRestaurantList { restaurants in
+            self.restaurants = restaurants
+        }
+        
+        if let restaurants = self.restaurants {
+            listStatusBits = listStatusBits | 0b001
+            for restaurant in restaurants {
+                if restaurant.isOpen, restaurant.maxDeliveryTime >= 25 {
+                    listStatusBits = listStatusBits | 0b010
+                    nearRestaurants?.append(restaurant)
+                }else if restaurant.isOpen, restaurant.score! >= Float(4.0) {
+                    listStatusBits = listStatusBits | 0b100
+                    prefRestaurants?.append(restaurant)
+                }
+            }
+        }
+    }
+    
 }
 
 extension MainViewController: UIScrollViewDelegate {
@@ -90,8 +117,60 @@ extension MainViewController: UIScrollViewDelegate {
 }
 
 extension MainViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func layoutRestaurantCell(with restaurant: Restaurant) -> UITableViewCell{
+        
+        let tempCell = UITableViewCell()
+        
+        let mainRestView = MainRestView.loadMainRestNib()
+        tempCell.addSubview(mainRestView)
+        mainRestView.translatesAutoresizingMaskIntoConstraints = false
+        mainRestView.configure(with: restaurant)
+        
+        mainRestView.topAnchor.constraint(equalTo: tempCell.topAnchor, constant: 15).isActive = true
+        mainRestView.leadingAnchor.constraint(equalTo: tempCell.leadingAnchor, constant: 15).isActive = true
+        mainRestView.trailingAnchor.constraint(equalTo: tempCell.trailingAnchor, constant: -15).isActive = true
+        mainRestView.bottomAnchor.constraint(equalTo: tempCell.bottomAnchor, constant: -15).isActive = true
+        
+        return tempCell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+//        if listStatusBits == 1 {
+//            return 1
+//        } else if listStatusBits == 7 {
+//            return 3
+//        } else {
+//            return 2
+//        }
         return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        if listStatusBits == 1 {
+//            return (restaurants?.count)!
+//        } else if listStatusBits == 2{
+//            if section == 0 {
+//                return (restaurants?.count)!
+//            } else if section == 1 {
+//                return (nearRestaurants?.count)!
+//            }
+//        } else if listStatusBits == 5 {
+//            if section == 0 {
+//                return (restaurants?.count)!
+//            } else if section == 1 {
+//                return (prefRestaurants?.count)!
+//            }
+//        } else if listStatusBits == 7 {
+//            if section == 0 {
+//                return (restaurants?.count)!
+//            } else if section == 1 {
+//                return (nearRestaurants?.count)!
+//            } else if section == 2 {
+//                return (prefRestaurants?.count)!
+//            }
+//        }
+        return (restaurants?.count)!
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -99,15 +178,35 @@ extension MainViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let tempCell = UITableViewCell()
-        tempCell.backgroundColor = .yellow
-        return tempCell
-    }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
+        return layoutRestaurantCell(with: self.restaurants![indexPath.row])
+        
+//        let emptyCell = UITableViewCell()
+//        if listStatusBits == 1 {
+//            return (restaurants?.count)!
+//        } else if listStatusBits == 2{
+//            if section == 0 {
+//                return (restaurants?.count)!
+//            } else if section == 1 {
+//                return (nearRestaurants?.count)!
+//            }
+//        } else if listStatusBits == 5 {
+//            if section == 0 {
+//                return (restaurants?.count)!
+//            } else if section == 1 {
+//                return (prefRestaurants?.count)!
+//            }
+//        } else if listStatusBits == 7 {
+//            if section == 0 {
+//                return (restaurants?.count)!
+//            } else if section == 1 {
+//                return (nearRestaurants?.count)!
+//            } else if section == 2 {
+//                return (prefRestaurants?.count)!
+//            }
+//        }
+//        return emptyCell
     }
-
 
 }
 

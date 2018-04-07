@@ -9,7 +9,10 @@
 import UIKit
 
 class MainRestTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var MainRestScrollView: UIScrollView!
+    @IBOutlet weak var SectionLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +23,9 @@ class MainRestTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+}
+
+extension MainRestTableViewCell: UIScrollViewDelegate {
     
 }
