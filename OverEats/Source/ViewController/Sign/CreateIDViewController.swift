@@ -14,15 +14,31 @@ class CreateIDViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var mobile: UITextField!
     @IBOutlet weak var passWord: UITextField!
     
-    var check:Bool!
+    var emailCheck:Bool = false
+    var mobileCheck:Bool = false
    
     @IBAction func nextButton(_ sender: UIButton) {
-        if check == true {
+        if emailCheck == true && mobileCheck == true {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileCreateViewController") as! ProfileCreateViewController
             present(vc, animated: true, completion: nil)
         }
-        if check == false {
+        
+        if emailCheck == false, mobileCheck == false {
+            let alertController = UIAlertController(title: "모두 작성해 주세요",message: "모두 작성해 주세요", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
+            alertController.addAction(okAction)
+            self.present(alertController,animated: true,completion: nil)
+        }
+        
+        if emailCheck == false {
             let alertController = UIAlertController(title: "E-mail 형식이 틀렸습니다.",message: "다시 작성해 주세요", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
+            alertController.addAction(okAction)
+            self.present(alertController,animated: true,completion: nil)
+        }
+        
+        if mobileCheck == false {
+            let alertController = UIAlertController(title: "번호 입력이 틀렸습니다.",message: "숫자만 입력해 주세요", preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
             alertController.addAction(okAction)
             self.present(alertController,animated: true,completion: nil)
@@ -35,20 +51,34 @@ class CreateIDViewController: UIViewController, UITextFieldDelegate {
 
         if textField.tag == 1 {
             if vaildEmail(emailID: text) == false {
-                check = false
+                emailCheck = false
             } else {
-                check = true
+                emailCheck = true
             }
             
         }
         
         if textField.tag == 2 {
+           
             var fullString = textField.text ?? ""
             fullString.append(string)
+            
             if range.length == 1 {
-                textField.text = format(phoneNumber: fullString, shouldRemoveLastDigit: true)
+                if vaildNumber(mobileNumber: text) == false {
+                    mobileCheck = false
+                    textField.text = format(phoneNumber: fullString, shouldRemoveLastDigit: true)
+                }else {
+                    mobileCheck = true
+                    textField.text = format(phoneNumber: fullString, shouldRemoveLastDigit: true)
+                }
             } else {
-                textField.text = format(phoneNumber: fullString)
+                if vaildNumber(mobileNumber: text) == false {
+                    mobileCheck = false
+                    textField.text = format(phoneNumber: fullString)
+                }else {
+                    mobileCheck = true
+                    textField.text = format(phoneNumber: fullString)
+                }
             }
             return false
         }
@@ -99,6 +129,13 @@ class CreateIDViewController: UIViewController, UITextFieldDelegate {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: emailID)
+    }
+    
+    
+    func vaildNumber(mobileNumber: String) -> Bool {
+        let mobileRegEx = "[0-9]+-[0-9]+-[0-9]{2,}"
+        let mobileTest = NSPredicate(format:"SELF MATCHES %@", mobileRegEx)
+        return mobileTest.evaluate(with: mobileNumber)
     }
     
     override func viewDidLoad() {
