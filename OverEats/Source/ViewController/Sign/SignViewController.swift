@@ -14,16 +14,17 @@ class SignViewController: UIViewController {
    
     }
     @IBAction func signUpButton(_ sender: UIButton) {
+        
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "ToSViewController") as! ToSViewController
         present(vc, animated: true, completion: nil)
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         roundView.layer.cornerRadius = roundView.frame.size.height/6
  
     }
-
- 
 
 }

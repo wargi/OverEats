@@ -8,61 +8,107 @@
 
 import UIKit
 
-class ProfileCreateViewController: UIViewController{
-
+class ProfileCreateViewController: UIViewController, UITextFieldDelegate{
+    
     @IBOutlet weak var lastNameTf: UITextField!
     @IBOutlet weak var firstNameTf: UITextField!
     @IBOutlet weak var profileImage: UIImageView!
+    
+    let picker = UIImagePickerController()
+    
+//    var firstName:String!
+//    var lastName:String!
+    var firstNameCheck:Bool = false
+    var lastNameCheck:Bool = false
+    
     @IBAction func nextButton(_ sender: UIButton) {
         
-        firstName = firstNameTf.text
-        lastName = lastNameTf.text
-        
-        if firstName.isEmpty == false && lastName.isEmpty == false {
+        if firstNameCheck == true && lastNameCheck == true {
+            
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "LocationViewController") as! LocationViewController
             present(vc, animated: true, completion: nil)
-        }else {
+            
+        }
+        if firstNameCheck == false && lastNameCheck == false {
+            
             let alertController = UIAlertController(title: "이름과 성 입력",message: "이름과 성 입력 해주세요", preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
             alertController.addAction(okAction)
             self.present(alertController,animated: true,completion: nil)
+            
+        }
+        if firstNameCheck == true || lastNameCheck == true {
+            
+            if lastNameCheck == false {
+                
+                let alertController = UIAlertController(title: "이름 입력",message: "이름을 입력 안했습니다", preferredStyle: UIAlertControllerStyle.alert)
+                let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
+                alertController.addAction(okAction)
+                self.present(alertController,animated: true,completion: nil)
+                lastNameTf.text = ""
+                firstNameTf.text = ""
+                lastNameCheck = false
+                firstNameCheck = false
+            }
+           else if firstNameCheck == false {
+                
+                let alertController = UIAlertController(title: "성 입력",message: "성을 입력 안했습니다", preferredStyle: UIAlertControllerStyle.alert)
+                let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
+                alertController.addAction(okAction)
+                self.present(alertController,animated: true,completion: nil)
+                lastNameTf.text = ""
+                firstNameTf.text = ""
+                lastNameCheck = false
+                firstNameCheck = false
+            }
         }
     }
     
-    let picker = UIImagePickerController()
-    
-    var firstName:String!
-    var lastName:String!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        picker.delegate = self
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        profileImage.isUserInteractionEnabled = true
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(viewtap(_:)))
-        profileImage.addGestureRecognizer(gesture)
+        guard let text = textField.text else {return false}
         
+        if textField.tag == 1 {
+            
+            if vaildText(textVaild: text) == false {
+                
+                lastNameCheck = false
+                
+            }else {
+                
+                lastNameCheck = true
+                
+            }
+        }
+        else if textField.tag == 2 {
+            
+            if vaildText(textVaild: text) == false {
+                
+                firstNameCheck = false
+                
+            }else {
+                
+                firstNameCheck = true
+            }
+        }
+        return true
     }
-
-
+    
     @objc func viewtap(_ sender: UITapGestureRecognizer) {
         
         let alert =  UIAlertController(title: "프로필 이미지", message: "프로필 이미지 추가 방법 선택", preferredStyle: .actionSheet)
-        
         let library =  UIAlertAction(title: "사진앨범", style: .default) { (action) in
             self.openLibrary()
         }
-        
         let camera =  UIAlertAction(title: "카메라", style: .default) { (action) in
             self.openCamera()
         }
-        
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-
+        
         alert.addAction(library)
         alert.addAction(camera)
         alert.addAction(cancel)
-
+        
         present(alert, animated: true, completion: nil)
         
     }
@@ -75,10 +121,10 @@ class ProfileCreateViewController: UIViewController{
     }
     
     func openCamera(){
+        
         if(UIImagePickerController .isSourceTypeAvailable(.camera)) {
             
             picker.sourceType = .camera
-            
             present(picker, animated: false, completion: nil)
             
         }else {
@@ -88,8 +134,34 @@ class ProfileCreateViewController: UIViewController{
         }
     }
     
+    //한번 true값을 만들고 나면 지우고나서 왜 접속이 되는지 궁금
+    func vaildText(textVaild: String) -> Bool {
+        
+        let textRegEx = "^[A-Za-z가-힣]+$"
+        let textTest = NSPredicate(format:"SELF MATCHES %@", textRegEx)
+        return textTest.evaluate(with: textVaild)
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        picker.delegate = self
+        
+        profileImage.isUserInteractionEnabled = true
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(viewtap(_:)))
+        profileImage.addGestureRecognizer(gesture)
+        
+        lastNameTf.delegate = self
+        lastNameTf.tag = 1
+        firstNameTf.delegate = self
+        firstNameTf.tag = 2
+        
+    }
+    
 }
 extension ProfileCreateViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -101,5 +173,5 @@ extension ProfileCreateViewController : UIImagePickerControllerDelegate, UINavig
         dismiss(animated: true, completion: nil)
         
     }
-
+    
 }
