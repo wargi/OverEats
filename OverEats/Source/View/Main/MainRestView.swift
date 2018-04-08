@@ -22,29 +22,22 @@ class MainRestView: UIView {
     }
     
     func configure(with restaurant: Restaurant) {
-        DispatchQueue.global(qos: .background).async {
-            let url = URL(string: restaurant.imageURL)
-            let data = try? Data(contentsOf: url!)
-            DispatchQueue.main.async {
-                self.restaurantImageView.image = UIImage(data: data!)
-                self.restaurantNameLabel.text = restaurant.name
-                var sumCategoryString: String = ""
-                for category in restaurant.category! {
-                    sumCategoryString.append("* \(category.name!)")
-                }
-                self.restaurantCategoryLabel.text = sumCategoryString
-//                if restaurant.score! > 0 {
-//                    self.restaurantScoreLabel.text = restaurant.score as? String
-//                } else {
-//                    self.restaurantScoreLabel.removeFromSuperview()
-//                }
-                if restaurant.description != "" {
-                    self.restaurantDescriptionLabel.text = restaurant.description
-                }else {
-                    self.restaurantBottomStack.removeFromSuperview()
-                }
-                self.restaurantImageView.image = UIImage(data: data!)
-            }
+        self.restaurantImageView.image = UIImage(data: restaurant.imageData!)
+        self.restaurantNameLabel.text = restaurant.name
+        var sumCategoryString: String = ""
+        for category in restaurant.category! {
+            sumCategoryString.append("* \(category.name!)")
+        }
+        self.restaurantCategoryLabel.text = sumCategoryString
+        //                if restaurant.score! > 0 {
+        //                    self.restaurantScoreLabel.text = restaurant.score as? String
+        //                } else {
+        //                    self.restaurantScoreLabel.removeFromSuperview()
+        //                }
+        if restaurant.description != "" {
+            self.restaurantDescriptionLabel.text = restaurant.description
+        }else {
+            self.restaurantBottomStack.removeFromSuperview()
         }
     }
 

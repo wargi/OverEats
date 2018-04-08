@@ -45,6 +45,7 @@ struct Restaurant {
     let description: String? // 매장 설명
     let score: Float? // 매장 점수
     let imageURL: String! // 매장 표시 이미지
+    var imageData: Data?
     let minDeliveryTime: Int! // 매장 최소 조리시간
     let maxDeliveryTime: Int! // 매장 최대 조리시간
     let menuList: [Menu]? // 메뉴 목록
