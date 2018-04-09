@@ -35,9 +35,9 @@ class ProfileCreateViewController: UIViewController, UITextFieldDelegate{
                 
                 "username" : signUpDic["username"] as! String,
                 "password" : signUpDic["password"] as! String,
-                "firstname" : signUpDic["firstname"] as! String,
-                "lastname" : signUpDic["lastname"] as! String,
-                "phonenumber" : signUpDic["phonenumber"] as! String
+                "first_name" : signUpDic["firstname"] as! String,
+                "last_name" : signUpDic["lastname"] as! String,
+                "phone_number" : signUpDic["phonenumber"] as! String
                 
             ]
             
