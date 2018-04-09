@@ -35,9 +35,9 @@ class ProfileCreateViewController: UIViewController, UITextFieldDelegate{
                 
                 "username" : signUpDic["username"] as! String,
                 "password" : signUpDic["password"] as! String,
-                "firstname" : signUpDic["firstname"] as! String,
-                "lastname" : signUpDic["lastname"] as! String,
-                "phonenumber" : signUpDic["phonenumber"] as! String
+                "first_name" : signUpDic["firstname"] as! String,
+                "last_name" : signUpDic["lastname"] as! String,
+                "phone_number" : signUpDic["phonenumber"] as! String
                 
             ]
             
@@ -47,6 +47,7 @@ class ProfileCreateViewController: UIViewController, UITextFieldDelegate{
                 .responseData { (response) in
                     switch response.result {
                     case .success(let value):
+                        
                         print("회원가입 성공: ", value)
                         let alertController = UIAlertController(title: "성공",message: "회원가입 성공했습니다", preferredStyle: UIAlertControllerStyle.alert)
                         let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
