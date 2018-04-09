@@ -22,7 +22,7 @@ class MainRestView: UIView {
     }
     
     func configure(with restaurant: Restaurant) {
-        self.restaurantImageView.image = UIImage(data: restaurant.imageData!)
+//        self.restaurantImageView.image = UIImage(data: restaurant.imageData!)
         self.restaurantNameLabel.text = restaurant.name
         var sumCategoryString: String = ""
         for category in restaurant.category! {

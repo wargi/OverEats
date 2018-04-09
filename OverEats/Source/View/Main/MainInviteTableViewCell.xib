@@ -21,7 +21,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="burger_icon" translatesAutoresizingMaskIntoConstraints="NO" id="qX9-Rc-mzz">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qX9-Rc-mzz">
                         <rect key="frame" x="25" y="25" width="49.5" height="49.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="qX9-Rc-mzz" secondAttribute="height" multiplier="1:1" id="7Fl-Re-whH"/>
@@ -47,7 +47,4 @@
             <point key="canvasLocation" x="40" y="55"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="burger_icon" width="53" height="53"/>
-    </resources>
 </document>

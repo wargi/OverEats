@@ -24,7 +24,7 @@ class NoticeImageView: UIView {
             let url = URL(string: notice.imageURL)
             let data = try? Data(contentsOf: url!)
             DispatchQueue.main.async {
-                self.imageView.image = UIImage(data: data!)
+//                self.imageView.image = UIImage(data: data!)
                 self.titleLabel.text = notice.title
                 self.subTitleLabel.text = notice.subTitle
             }

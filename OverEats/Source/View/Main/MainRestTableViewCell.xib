@@ -26,24 +26,31 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sNN-9k-P83">
-                        <rect key="frame" x="0.0" y="72" width="320" height="218"/>
-                    </scrollView>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="eNh-B8-REV">
+                        <rect key="frame" x="0.0" y="72" width="320" height="218.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="c6i-1j-weJ">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="fCo-nc-oNm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="GLn-k4-Bqi"/>
                     <constraint firstItem="fCo-nc-oNm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="20" id="TDo-jc-qDO"/>
-                    <constraint firstItem="sNN-9k-P83" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="W5R-cZ-AHY"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="sNN-9k-P83" secondAttribute="bottom" id="YBR-2t-q3c"/>
-                    <constraint firstAttribute="trailing" secondItem="sNN-9k-P83" secondAttribute="trailing" id="hul-Ys-67M"/>
-                    <constraint firstItem="sNN-9k-P83" firstAttribute="top" secondItem="fCo-nc-oNm" secondAttribute="bottom" constant="20" id="rBL-qo-G0G"/>
+                    <constraint firstAttribute="trailing" secondItem="eNh-B8-REV" secondAttribute="trailing" id="djO-tm-gIX"/>
+                    <constraint firstItem="eNh-B8-REV" firstAttribute="top" secondItem="fCo-nc-oNm" secondAttribute="bottom" constant="20" id="nw8-gc-t0q"/>
                     <constraint firstAttribute="trailingMargin" secondItem="fCo-nc-oNm" secondAttribute="trailing" constant="20" id="rvb-WL-0ZK"/>
+                    <constraint firstAttribute="bottom" secondItem="eNh-B8-REV" secondAttribute="bottom" constant="10" id="scM-57-DDE"/>
+                    <constraint firstItem="eNh-B8-REV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="yNX-Ov-baj"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
-                <outlet property="MainRestScrollView" destination="sNN-9k-P83" id="Ps6-Na-b8N"/>
+                <outlet property="MainRestCollectionView" destination="eNh-B8-REV" id="Vt1-Qk-5g2"/>
                 <outlet property="SectionLabel" destination="fCo-nc-oNm" id="EDS-CO-sdC"/>
             </connections>
             <point key="canvasLocation" x="40" y="-12.5"/>

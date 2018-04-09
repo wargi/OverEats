@@ -10,7 +10,7 @@ import UIKit
 
 class MainRestTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var MainRestScrollView: UIScrollView!
+    @IBOutlet weak var MainRestCollectionView: UIScrollView!
     @IBOutlet weak var SectionLabel: UILabel!
     
     override func awakeFromNib() {
