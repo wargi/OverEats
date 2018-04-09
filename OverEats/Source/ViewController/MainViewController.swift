@@ -47,10 +47,10 @@ class MainViewController: UIViewController {
         
         if let restaurants = self.restaurants {
             listStatusBits = listStatusBits | 0b001
-            for restaurant in restaurants {
+            for (index, restaurant) in restaurants.enumerated() {
                 DispatchQueue.global(qos: .background).async {
                     let url = URL(string: restaurant.imageURL)
-                    restaurant.imageData = try? Data(contentsOf: url!)
+                    self.restaurants![index].imageData = try? Data(contentsOf: url!)
                 }
                 if restaurant.isOpen, restaurant.maxDeliveryTime >= 25 {
                     listStatusBits = listStatusBits | 0b010
