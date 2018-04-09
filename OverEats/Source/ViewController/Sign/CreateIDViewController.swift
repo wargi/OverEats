@@ -18,11 +18,29 @@ class CreateIDViewController: UIViewController, UITextFieldDelegate {
     var mobileCheck:Bool = false
     var passWordCheck:Bool = false
     
+    var signUpDic:[String:Any] = [:]
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        
+        if segue.identifier == "profileSegue" {
+            let vc = segue.destination as! ProfileCreateViewController
+            vc.signUpDic = signUpDic
+            
+        }
+    }
+    
     @IBAction func nextButton(_ sender: UIButton) {
         
         if emailCheck == true && mobileCheck == true && passWordCheck == true {
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileCreateViewController") as! ProfileCreateViewController
-            present(vc, animated: true, completion: nil)
+            
+            guard let emailText = self.emailTF.text else {return}
+            signUpDic.updateValue(emailText, forKey: "username")
+            guard let mobileText = self.mobile.text else {return}
+            signUpDic.updateValue(mobileText, forKey: "phonenumber")
+            guard let passWordText = self.passWord.text else {return}
+            signUpDic.updateValue(passWordText, forKey: "password")
+            
+            performSegue(withIdentifier: "profileSegue", sender: sender)
             
         }
         
@@ -65,6 +83,8 @@ class CreateIDViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
+   
+    
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -204,7 +224,13 @@ class CreateIDViewController: UIViewController, UITextFieldDelegate {
         mobile.tag = 2
         passWord.delegate = self
         passWord.tag = 3
-        
+        emailTF.addTarget(self, action: #selector(textField(_:)), for: .editingChanged)
+    }
+    
+    @objc func textField(_ sender: UITextField) {
+        guard let text = sender.text else { return }
+        print(text)
+        self.emailCheck = vaildEmail(emailID: text)
     }
 
    

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ProfileCreateViewController: UIViewController, UITextFieldDelegate{
     
@@ -16,21 +17,51 @@ class ProfileCreateViewController: UIViewController, UITextFieldDelegate{
     
     let picker = UIImagePickerController()
     
-//    var firstName:String!
-//    var lastName:String!
     var firstNameCheck:Bool = false
     var lastNameCheck:Bool = false
+    
+    var signUpDic:[String:Any] = [:]
     
     @IBAction func nextButton(_ sender: UIButton) {
         
         if firstNameCheck == true && lastNameCheck == true {
             
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "LocationViewController") as! LocationViewController
-            present(vc, animated: true, completion: nil)
+            guard let lastNameText = self.lastNameTf.text else {return}
+            signUpDic.updateValue(lastNameText, forKey: "lastname")
+            guard let firstNameText = self.firstNameTf.text else {return}
+            signUpDic.updateValue(firstNameText, forKey: "firstname")
+            
+            let params: Parameters = [
+                
+                "username" : signUpDic["username"] as! String,
+                "password" : signUpDic["password"] as! String,
+                "firstname" : signUpDic["firstname"] as! String,
+                "lastname" : signUpDic["lastname"] as! String,
+                "phonenumber" : signUpDic["phonenumber"] as! String
+                
+            ]
+            
+            Alamofire
+                .request("https://www.overeats.kr/api/member/user/", method: .post, parameters: params)
+                .validate()
+                .responseData { (response) in
+                    switch response.result {
+                    case .success(let value):
+                        print("회원가입 성공: ", value)
+                        let alertController = UIAlertController(title: "성공",message: "회원가입 성공했습니다", preferredStyle: UIAlertControllerStyle.alert)
+                        let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
+                        alertController.addAction(okAction)
+                        self.present(alertController,animated: true,completion: nil)
+                    case .failure(let error):
+                        print("회원가입 실패: ", error.localizedDescription)
+                    }
+            }
+            
             
         }
         if firstNameCheck == false && lastNameCheck == false {
             
+            print("\(signUpDic)")
             let alertController = UIAlertController(title: "이름과 성 입력",message: "이름과 성 입력 해주세요", preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
             alertController.addAction(okAction)
@@ -63,7 +94,6 @@ class ProfileCreateViewController: UIViewController, UITextFieldDelegate{
             }
         }
     }
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         guard let text = textField.text else {return false}
