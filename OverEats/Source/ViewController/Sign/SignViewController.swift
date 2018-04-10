@@ -13,8 +13,15 @@ class SignViewController: UIViewController {
     
     var token:String!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        roundView.layer.cornerRadius = roundView.frame.size.height/6
+ 
+    }
+    
     @IBAction func signInButton(_ sender: UIButton) {
-      
+        
         let  params: Parameters = [
             "username" : "over@naver.com",
             "password" : "qwe12"
@@ -34,7 +41,7 @@ class SignViewController: UIViewController {
                         self.token = jsondata["token"] as! String
                         print(self.token)
                         
-//                        self.performSegue(withIdentifier: "다음페이지", sender: nil)
+                        //                        self.performSegue(withIdentifier: "다음페이지", sender: nil)
                         
                     } catch {
                         print(error.localizedDescription)
@@ -49,18 +56,12 @@ class SignViewController: UIViewController {
                 
         }
     }
+    
     @IBAction func signUpButton(_ sender: UIButton) {
         
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "ToSViewController") as! ToSViewController
-        present(vc, animated: true, completion: nil)
+        let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "ToSViewController") as! ToSViewController
+        present(nextViewController, animated: true, completion: nil)
         
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        roundView.layer.cornerRadius = roundView.frame.size.height/6
- 
     }
 
 }

@@ -939,7 +939,7 @@ CiA
                                                     <color key="titleColor" red="0.27843137254901962" green="0.63137254901960782" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="nextButton:" destination="hJD-QY-lFd" eventType="touchUpInside" id="rpt-8d-L8y"/>
+                                                    <action selector="nextButton:" destination="hJD-QY-lFd" eventType="touchUpInside" id="UGR-oy-yoj"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1531,7 +1531,7 @@ CiA
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="allTrue:" destination="hJD-QY-lFd" eventType="touchUpInside" id="Kdk-d7-9sR"/>
+                                    <action selector="allTrue:" destination="hJD-QY-lFd" eventType="touchUpInside" id="ZnE-ss-CNy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1558,6 +1558,11 @@ CiA
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yZ2-XE-3vy"/>
                     </view>
+                    <connections>
+                        <outlet property="OptionButton" destination="Zu9-Vd-UI8" id="XUk-LO-aYR"/>
+                        <outlet property="PIPButton" destination="BYn-FZ-qra" id="V9m-HG-xb8"/>
+                        <outlet property="TosButton" destination="Fdt-5M-sQf" id="OCQ-W0-G19"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hdG-Aw-vfx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,110 +10,60 @@ import UIKit
 
 class ToSViewController: UIViewController {
     
-    @IBAction func allTrue(_ sender: UIButton) {
-        TosButtonSelected = true
-        PIPButtonSelected = true
-        OptionButtonSelected = true
+    // 이용약관 버튼
+    @IBOutlet weak var TosButton: UIButton! // 첫번째 약관
+    @IBOutlet weak var PIPButton: UIButton! // 두번째 약관
+    @IBOutlet weak var OptionButton: UIButton! // 선택 약관
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // 버튼 관련 이벤트 처리
+        TosButton.addTarget(self, action: #selector(self.clickedButton(_:)), for: .touchUpInside)
+        PIPButton.addTarget(self, action: #selector(self.clickedButton(_:)), for: .touchUpInside)
+        OptionButton.addTarget(self, action: #selector(self.clickedButton(_:)), for: .touchUpInside)
+        
     }
+    
+    // 버튼 클릭 이벤트
+    @objc func clickedButton(_ sender: UIButton) {
+        if sender.isSelected {
+            sender.isSelected = false
+//            sender.setImage(UIImage(named: "nil"), for: .normal)
+        } else {
+            sender.isSelected = true
+//            sender.setImage(UIImage(named: "Check"), for: .selected)
+        }
+    }
+    
+    // 전체 선택 이벤트
+    @IBAction func allTrue(_ sender: UIButton) {
+        TosButton.isSelected = true
+        PIPButton.isSelected = true
+        OptionButton.isSelected = true
+        
+        //        TosButton.setImage(UIImage(named: "Check"), for: .selected)
+        //        PIPButton.setImage(UIImage(named: "Check"), for: .selected)
+        //        OptionButton.setImage(UIImage(named: "Check"), for: .selected)
+    }
+    
+    // 다음 버튼 이벤트
     @IBAction func nextButton(_ sender: UIButton) {
         
-        if TosButtonSelected == true && PIPButtonSelected == true {
-            
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "CreateIDViewController") as! CreateIDViewController
-            present(vc, animated: true, completion: nil)
-            
-        } else {
-            
-            let alertController = UIAlertController(title: "약관 동의 체크",message: "약관 동의 체크 해주세요", preferredStyle: UIAlertControllerStyle.alert)
-            let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
+        guard TosButton.isSelected && PIPButton.isSelected else {
+            let alertController = UIAlertController(title: "필수 약관 체크",
+                                                    message: "필수 약관 체크",
+                                                    preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "확인", style: .default)
             alertController.addAction(okAction)
             self.present(alertController,animated: true,completion: nil)
+            return
             
         }
-    }
-    
-//    let checkedImage = UIImage(named: "jisu.jpg")! as UIImage
-//    let uncheckedImage = UIImage(named: "jisu1.jpg")! as UIImage
-    var selectArray:[UIButton] = []
-    var selectedBool:Bool!
-    var TosButtonSelected:Bool!
-    var PIPButtonSelected:Bool!
-    var OptionButtonSelected:Bool! {
-        get{
-            if selectedBool == true {
-                
-            
-            }
-                return selectedBool
-        }set {
-            selectedBool = OptionButtonSelected
-            
-        }
+        
+        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "CreateIDViewController") as! CreateIDViewController
+        present(nextViewController, animated: true, completion: nil)
         
     }
     
-    @IBAction func TosCheckButton(_ sender: UIButton) {
-        
-        if sender.isSelected == true {
-            
-            sender.isSelected = false
-            let index = selectArray.index(of: sender)!
-            TosButtonSelected = false
-            selectArray.remove(at: index)
-//            sender.setBackgroundImage(uncheckedImage, for: UIControlState.normal)
-            
-        } else {
-            
-            sender.isSelected = true
-            TosButtonSelected = true
-            selectArray.append(sender)
-//            sender.setBackgroundImage(checkedImage, for: UIControlState.normal)
-            
-        }
-    }
-    
-    @IBAction func PIPCheckButton(_ sender: UIButton) {
-        
-        if sender.isSelected == true {
-            
-            sender.isSelected = false
-            let index = selectArray.index(of: sender)!
-            PIPButtonSelected = false
-            selectArray.remove(at: index)
-//            sender.setBackgroundImage(uncheckedImage, for: UIControlState.normal)
-            
-        } else {
-            
-            sender.isSelected = true
-            PIPButtonSelected = true
-            selectArray.append(sender)
-//            sender.setBackgroundImage(checkedImage, for: UIControlState.normal)
-            
-        }
-    }
-    
-    @IBAction func OptionCheckButton(_ sender: UIButton) {
-        
-        if sender.isSelected == true {
-            
-            sender.isSelected = false
-            let index = selectArray.index(of: sender)!
-            OptionButtonSelected = false
-            selectArray.remove(at: index)
-//            sender.setBackgroundImage(uncheckedImage, for: UIControlState.normal)
-            
-        } else {
-            
-            sender.isSelected = true
-            OptionButtonSelected = true
-            selectArray.append(sender)
-//            sender.setBackgroundImage(checkedImage, for: UIControlState.normal)
-            
-        }
-    }
-        
-        override func viewDidLoad() {
-        super.viewDidLoad()
-
-        }
 }
