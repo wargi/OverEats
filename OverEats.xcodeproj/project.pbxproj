@@ -11,7 +11,6 @@
 		291C9F55207736BB0085E37E /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F54207736BB0085E37E /* UserData.swift */; };
 		291C9F582077396F0085E37E /* NetworkSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F572077396F0085E37E /* NetworkSample.swift */; };
 		809B12B4F4AEE34759F6AA35 /* Pods_OverEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9A569FD85EAB1F2AB0E133 /* Pods_OverEats.framework */; };
-		8E0748F12076873A009E9EEF /* foodimg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8E0748F020768739009E9EEF /* foodimg.jpg */; };
 		8E5B9E692079856900921EF4 /* MenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5B9E682079856900921EF4 /* MenuHeaderView.swift */; };
 		8E5B9E6B2079889B00921EF4 /* MenuListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5B9E6A2079889B00921EF4 /* MenuListCell.swift */; };
 		8E5B9E702079892000921EF4 /* ImageMenuListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5B9E6E2079892000921EF4 /* ImageMenuListCell.swift */; };
@@ -40,7 +39,6 @@
 		291C9F54207736BB0085E37E /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		291C9F572077396F0085E37E /* NetworkSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSample.swift; sourceTree = "<group>"; };
 		5C9A569FD85EAB1F2AB0E133 /* Pods_OverEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OverEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E0748F020768739009E9EEF /* foodimg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = foodimg.jpg; path = ../../../../../../Downloads/foodimg.jpg; sourceTree = "<group>"; };
 		8E5B9E682079856900921EF4 /* MenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHeaderView.swift; sourceTree = "<group>"; };
 		8E5B9E6A2079889B00921EF4 /* MenuListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListCell.swift; sourceTree = "<group>"; };
 		8E5B9E6E2079892000921EF4 /* ImageMenuListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMenuListCell.swift; sourceTree = "<group>"; };
@@ -87,6 +85,19 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		8E3A5FF9207C744B00EB5747 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				8E5B9E682079856900921EF4 /* MenuHeaderView.swift */,
+				8E5B9E6E2079892000921EF4 /* ImageMenuListCell.swift */,
+				8E5B9E6F2079892000921EF4 /* ImageMenuListCell.xib */,
+				8E5B9E7220798BA300921EF4 /* NonImageMenuList.swift */,
+				8E5B9E7320798BA300921EF4 /* NonImageMenuList.xib */,
+				8E5B9E6A2079889B00921EF4 /* MenuListCell.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		8E8A636A2071E53F007D9B7A /* Sign */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				8E8A63792071EAD0007D9B7A /* Menu.storyboard */,
-				8E0748F020768739009E9EEF /* foodimg.jpg */,
 			);
 			name = Menu;
 			path = Sign/Menu;
@@ -217,12 +227,7 @@
 		8EE538D1206E36AD006BAC26 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8E5B9E682079856900921EF4 /* MenuHeaderView.swift */,
-				8E5B9E6E2079892000921EF4 /* ImageMenuListCell.swift */,
-				8E5B9E6F2079892000921EF4 /* ImageMenuListCell.xib */,
-				8E5B9E7220798BA300921EF4 /* NonImageMenuList.swift */,
-				8E5B9E7320798BA300921EF4 /* NonImageMenuList.xib */,
-				8E5B9E6A2079889B00921EF4 /* MenuListCell.swift */,
+				8E3A5FF9207C744B00EB5747 /* Menu */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -308,7 +313,6 @@
 				8E8A63692071E481007D9B7A /* SignIn.storyboard in Resources */,
 				8EE538C3206E25AE006BAC26 /* LaunchScreen.storyboard in Resources */,
 				8E5B9E712079892000921EF4 /* ImageMenuListCell.xib in Resources */,
-				8E0748F12076873A009E9EEF /* foodimg.jpg in Resources */,
 				8EE538C0206E25AE006BAC26 /* Assets.xcassets in Resources */,
 				8E5B9E7520798BA300921EF4 /* NonImageMenuList.xib in Resources */,
 				8E8A637A2071EAD0007D9B7A /* Menu.storyboard in Resources */,

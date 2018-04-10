@@ -39,7 +39,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="332.5"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodimg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Xuy-xL-zPI" userLabel="imgView">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xuy-xL-zPI" userLabel="imgView">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="193"/>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DxZ-xp-uae" userLabel="nullView">
@@ -203,7 +203,7 @@
                                     <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="612" translatesAutoresizingMaskIntoConstraints="NO" id="qfL-Gu-23e" userLabel="selectMenu">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="612"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodimg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="AJA-5v-Rtc">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AJA-5v-Rtc">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="200" id="GRX-nk-RdB"/>
@@ -533,7 +533,4 @@
             <point key="canvasLocation" x="1575" y="71"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="foodimg.jpg" width="612" height="407"/>
-    </resources>
 </document>
