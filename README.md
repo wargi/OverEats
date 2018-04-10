@@ -7,3 +7,6 @@
 
 ## 2. 프로젝트 기간
   - 18.04.02 ~ 18.04.30
+
+## 3. Version
+  - 0.3 : 18.04.10 / AutoLayout Setting, Sign
