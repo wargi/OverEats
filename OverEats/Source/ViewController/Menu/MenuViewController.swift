@@ -103,7 +103,6 @@ extension MenuViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(restaurantInfomation.menuList!.count)
         guard let menuCount = restaurantInfomation.menuList?.count else { return 0 }
         return menuCount
     }

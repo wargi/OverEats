@@ -40,8 +40,6 @@ class SelectMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         gestureCreate()
         requestReflecting()
         

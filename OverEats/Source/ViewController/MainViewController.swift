@@ -214,4 +214,10 @@ extension MainViewController: UITableViewDataSource {
 
 extension MainViewController: UITableViewDelegate {
 
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let storyboard = UIStoryboard(name: "Menu", bundle: nil)
+//        let nextViewController = storyboard.instantiateViewController(withIdentifier: "Menu") as! MenuViewController
+//        nextViewController.restaurantInfomation =
+//        self.present(nextViewController, animated: true, completion: nil)
+//    }
 }
