@@ -36,7 +36,8 @@ class SelectMenuViewController: UIViewController {
     //제스쳐
     var pan: UIPanGestureRecognizer! // Pan Gesture 스크롤 DissMiss
     var tap: UITapGestureRecognizer! // Tap Gesture 요청사항 작성 이벤트
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,14 +68,32 @@ class SelectMenuViewController: UIViewController {
     
     // Pan 제스쳐 액션
     @objc func panAction(_ sender: UIPanGestureRecognizer) {
-        
         let velocity = sender.velocity(in: scrollView)
-        print(velocity.x,velocity.y)
-//        if abs(velocity.x) > abs(velocity.y) {
-//            velocity.x < 0 ? print("left") : print("right")
-//        }
-//        else if abs(velocity.y) > abs(velocity.x) {
-//            velocity.y < 0 ? print("up") : print("down")
+        let translation = sender.translation(in: scrollView)
+        
+        guard abs(velocity.y) > abs(velocity.x) && velocity.y > 0 else { return }
+        scrollView.frame.origin.y = translation.y
+        print(translation.y)
+        if sender.state == .ended {
+            if scrollView.frame.origin.y > 150 {
+                let nextViewController = storyboard?.instantiateViewController(withIdentifier: "Menu") as! MenuViewController
+                nextViewController.view.removeFromSuperview()
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                UIView.animate(withDuration: 0.5) {
+                    self.scrollView.frame.origin = CGPoint.zero
+                }
+            }
+        }
+        
+//
+//
+//        if velocity.y > 0 && scrollView.contentOffset.y >= 0 {
+//            if scrollView.contentOffset.y > -150 {
+//                scrollView.frame.origin.y = translation.y
+//            }
+//            else {
+//            }
 //        }
     }
     
@@ -136,7 +155,7 @@ extension SelectMenuViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-//        print(scrollView.contentOffset.y)
+        print(scrollView.contentOffset.y)
         if scrollView.contentOffset.y < -150 {
             let nextViewController = storyboard?.instantiateViewController(withIdentifier: "Menu") as! MenuViewController
             nextViewController.view.removeFromSuperview()

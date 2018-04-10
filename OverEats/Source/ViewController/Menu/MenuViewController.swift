@@ -12,6 +12,7 @@ class MenuViewController: UIViewController {
 
     
     // Menu List View 영역
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet private weak var menuList : UITableView!
     var restaurantInfomation: Restaurant!
     
@@ -23,6 +24,24 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UI()
+        
+        MainGet.getRestaurantList { rest in
+            self.restaurantInfomation = rest[0]
+        }
+        
+
+        
+    }
+    
+    func UI() {
+        
+        // backbutton 설정
+        // tintColor 적용을 할려면 이미지 설정에서 
+        let backImage = UIImage(named: "btnBack")?.withRenderingMode(.alwaysTemplate)
+        backButton.setImage(backImage, for: .normal)
+        backButton.tintColor = .white
         setHeaderView()
         
         menuList.register(
@@ -33,9 +52,6 @@ class MenuViewController: UIViewController {
         menuList.register(
             UINib(nibName: "NonImageMenuList", bundle: nil),
             forCellReuseIdentifier: "NonImageMenuList")
-        
-        menuList.reloadData()
-        
     }
     
     // 테이블 뷰 헤더뷰 생성
@@ -80,11 +96,15 @@ class MenuViewController: UIViewController {
         
         // 테이블뷰의 contentOffset.y가 headerViewHeight의 값보다 작을 때
         if menuList.contentOffset.y < -headerViewHeight {
-            print(menuList.contentOffset.y, headerViewHeight)
             // 테이블 뷰의 위치가 점점 아래로 내려간다.
             getHeaderViewFrame.origin.y = menuList.contentOffset.y
             // getHeaderView의 크기가 점점 커진다. (menuList.contentOffset.y은 원래 minus값이므로 -를 주면 양수로 바뀐다)
             getHeaderViewFrame.size.height = -menuList.contentOffset.y
+        } else if menuList.contentOffset.y > -headerViewHeight {
+            if headerView.titleView.alpha <= 1 {
+                print(-(-menuList.contentOffset.y - headerViewHeight))
+                headerView.titleView.alpha -= -(-menuList.contentOffset.y + headerViewHeight) / 60
+            }
         }
         //변경된 값을 헤더 뷰의 프레임에 업데이트 시켜준다.
         headerView.frame = getHeaderViewFrame
