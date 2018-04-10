@@ -10,6 +10,11 @@ import UIKit
 
 class ToSViewController: UIViewController {
     
+    @IBAction func allTrue(_ sender: UIButton) {
+        TosButtonSelected = true
+        PIPButtonSelected = true
+        OptionButtonSelected = true
+    }
     @IBAction func nextButton(_ sender: UIButton) {
         
         if TosButtonSelected == true && PIPButtonSelected == true {
@@ -27,12 +32,25 @@ class ToSViewController: UIViewController {
         }
     }
     
-    let checkedImage = UIImage(named: "jisu.jpg")! as UIImage
-    let uncheckedImage = UIImage(named: "jisu1.jpg")! as UIImage
+//    let checkedImage = UIImage(named: "jisu.jpg")! as UIImage
+//    let uncheckedImage = UIImage(named: "jisu1.jpg")! as UIImage
     var selectArray:[UIButton] = []
+    var selectedBool:Bool!
     var TosButtonSelected:Bool!
     var PIPButtonSelected:Bool!
-//    var selectedBtn:UIButton!
+    var OptionButtonSelected:Bool! {
+        get{
+            if selectedBool == true {
+                
+            
+            }
+                return selectedBool
+        }set {
+            selectedBool = OptionButtonSelected
+            
+        }
+        
+    }
     
     @IBAction func TosCheckButton(_ sender: UIButton) {
         
@@ -42,14 +60,14 @@ class ToSViewController: UIViewController {
             let index = selectArray.index(of: sender)!
             TosButtonSelected = false
             selectArray.remove(at: index)
-            sender.setBackgroundImage(uncheckedImage, for: UIControlState.normal)
+//            sender.setBackgroundImage(uncheckedImage, for: UIControlState.normal)
             
         } else {
             
             sender.isSelected = true
             TosButtonSelected = true
             selectArray.append(sender)
-            sender.setBackgroundImage(checkedImage, for: UIControlState.normal)
+//            sender.setBackgroundImage(checkedImage, for: UIControlState.normal)
             
         }
     }
@@ -62,14 +80,14 @@ class ToSViewController: UIViewController {
             let index = selectArray.index(of: sender)!
             PIPButtonSelected = false
             selectArray.remove(at: index)
-            sender.setBackgroundImage(uncheckedImage, for: UIControlState.normal)
+//            sender.setBackgroundImage(uncheckedImage, for: UIControlState.normal)
             
         } else {
             
             sender.isSelected = true
             PIPButtonSelected = true
             selectArray.append(sender)
-            sender.setBackgroundImage(checkedImage, for: UIControlState.normal)
+//            sender.setBackgroundImage(checkedImage, for: UIControlState.normal)
             
         }
     }
@@ -80,16 +98,16 @@ class ToSViewController: UIViewController {
             
             sender.isSelected = false
             let index = selectArray.index(of: sender)!
-//            selectedBtn = nil
+            OptionButtonSelected = false
             selectArray.remove(at: index)
-            sender.setBackgroundImage(uncheckedImage, for: UIControlState.normal)
+//            sender.setBackgroundImage(uncheckedImage, for: UIControlState.normal)
             
         } else {
             
             sender.isSelected = true
-//            selectedBtn = sender
+            OptionButtonSelected = true
             selectArray.append(sender)
-            sender.setBackgroundImage(checkedImage, for: UIControlState.normal)
+//            sender.setBackgroundImage(checkedImage, for: UIControlState.normal)
             
         }
     }

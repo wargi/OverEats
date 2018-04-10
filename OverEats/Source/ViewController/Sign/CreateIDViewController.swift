@@ -224,14 +224,15 @@ class CreateIDViewController: UIViewController, UITextFieldDelegate {
         mobile.tag = 2
         passWord.delegate = self
         passWord.tag = 3
-        emailTF.addTarget(self, action: #selector(textField(_:)), for: .editingChanged)
+//        emailTF.addTarget(self, action: #selector(textField(_:)), for: .editingChanged)
     }
+
+    // 텍스트필드 실시간검사
     
-    @objc func textField(_ sender: UITextField) {
-        guard let text = sender.text else { return }
-        print(text)
-        self.emailCheck = vaildEmail(emailID: text)
-    }
+//    @objc func textField(_ sender: UITextField) {
+//        guard let text = sender.text else { return }
+//        self.emailCheck = vaildEmail(emailID: text)
+//    }
 
    
 
