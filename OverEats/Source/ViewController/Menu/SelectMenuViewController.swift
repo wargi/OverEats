@@ -140,7 +140,10 @@ extension SelectMenuViewController: UIScrollViewDelegate {
         
 //        print(scrollView.contentOffset.y)
         if scrollView.contentOffset.y < -150 {
+            let nextViewController = storyboard?.instantiateViewController(withIdentifier: "Menu") as! MenuViewController
+            nextViewController.view.removeFromSuperview()
             self.dismiss(animated: true, completion: nil)
+            
         }
         scrollView.backgroundColor = .clear
     }

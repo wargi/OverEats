@@ -23,7 +23,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="iU8-Kb-VPL" kind="show" id="5UZ-u8-s8J"/>
+                                    <action selector="btn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fmG-ZI-vgn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -34,14 +34,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
-        </scene>
-        <!--Menu-->
-        <scene sceneID="nd6-wm-MLo">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Menu" id="iU8-Kb-VPL" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Yg-Od-sPY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="850" y="63"/>
         </scene>
     </scenes>
 </document>

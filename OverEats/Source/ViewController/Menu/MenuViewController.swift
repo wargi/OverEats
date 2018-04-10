@@ -12,105 +12,129 @@ class MenuViewController: UIViewController {
 
     
     // Menu List View 영역
-    @IBOutlet weak var titleView: UIView!
-    @IBOutlet private weak var restaurantName : UILabel!
-    @IBOutlet private weak var categori : UILabel!
-    @IBOutlet private weak var cookingTime : UILabel!
-    @IBOutlet private weak var search : UIButton!
     @IBOutlet private weak var menuList : UITableView!
-    @IBOutlet private weak var restaurantImage : UIImageView!
+    var restaurantInfomation: Restaurant!
     
-    //pan 제스쳐
-    var pan: UIPanGestureRecognizer!
-    @IBOutlet weak var bottom: NSLayoutConstraint!
-    var defaultBottomConstant: CGFloat!
-    var defaultSide: CGFloat!
-    var defaultTitleHeight: CGFloat!
     
-    //레이아웃
-    @IBOutlet weak var restaurantImageBottom: NSLayoutConstraint!
-    @IBOutlet weak var titleViewleft: NSLayoutConstraint!
-    @IBOutlet weak var titleViewRight: NSLayoutConstraint!
-    @IBOutlet weak var titleViewHeight: NSLayoutConstraint!
+    var backgroundView: UIView!
+    var headerView: MenuHeaderView!
+    let headerViewHeight: CGFloat = 332.5 // 헤더뷰의 height 설정 값
+    var gradient: CAGradientLayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setHeaderView()
         
-        defaultBottomConstant = bottom.constant
-        defaultSide = titleViewleft.constant
-        defaultTitleHeight = titleViewHeight.constant
+        menuList.register(
+            UINib(nibName: "ImageMenuListCell", bundle: nil),
+            forCellReuseIdentifier: "ImageMenuListCell"
+        )
         
+        menuList.register(
+            UINib(nibName: "NonImageMenuList", bundle: nil),
+            forCellReuseIdentifier: "NonImageMenuList")
         
+        menuList.reloadData()
         
-        pan = UIPanGestureRecognizer(target: self, action: #selector(self.panAction(_:)))
-        view.addGestureRecognizer(pan)
     }
     
-    @objc func panAction(_ sender: UIPanGestureRecognizer) {
-        let velocity = pan.velocity(in: self.view)
-        let transition = pan.translation(in: self.view)
+    // 테이블 뷰 헤더뷰 생성
+    func setHeaderView() {
         
-        print(transition.y)
-//        let changeY = restaurantImage.frame.origin.y + transition.y
-//        restaurantImage.frame.origin = CGPoint(x: 0, y: changeY)
+        menuList.backgroundColor = .white // 테이블뷰의 배경 색
+        headerView = menuList.tableHeaderView as! MenuHeaderView // 헤더뷰 설정
+        menuList.tableHeaderView = nil // 테이블뷰 자체 헤더뷰 nil
+        menuList.rowHeight = UITableViewAutomaticDimension // 테이블뷰의 rowHeight값을 custom 하게 설정
+        menuList.addSubview(headerView) // 테이블뷰에 헤더뷰 addSubView
+        
+        headerView.titleView.layer.cornerRadius = 4
+        headerView.titleView.layer.shadowColor = UIColor.black.cgColor
+        headerView.titleView.layer.shadowOpacity = 0.1
+        headerView.titleView.layer.shadowOffset = CGSize.zero
+        headerView.titleView.layer.shadowRadius = 7
+        
+        headerView.title = restaurantInfomation.name
+        headerView.deliveryTime = String(restaurantInfomation.minDeliveryTime) + "분-" +
+                                  String(restaurantInfomation.maxDeliveryTime) + "분"
+        
+        gradient = CAGradientLayer()
+        gradient.frame = CGRect(x: 0, y: headerView.frame.origin.y, width: self.view.bounds.width, height: headerView.mainImage.bounds.height / 2)
+        gradient.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
+        gradient.locations = [0.01]
+        headerView.gradientView.layer.insertSublayer(gradient, at: 0)
         
         
-        if abs(velocity.y) > abs(velocity.x) {
-            if velocity.y < 0 {
-                print("up")
-                if transition.y < 0 && bottom.constant != defaultBottomConstant {
-                    print("1")
-                    bottom.constant += 4
-                } else if transition.y < 0  {
-                    
-                    titleViewleft.constant -= titleViewleft.constant > 0 ? 0.5 : 0
-                    titleViewRight.constant -= titleViewRight.constant > 0 ? 0.5 : 0
-                    titleViewHeight.constant -= titleViewHeight.constant > 80 ? 3 : 0
-//                    restaurantImageBottom.constant += 1
-                    categori.alpha -= 0.03
-                    cookingTime.alpha -= 0.03
-                    
-                } else if transition.y == 0 {
-                    bottom.constant = defaultBottomConstant
-                    titleViewleft.constant = defaultSide
-                    titleViewRight.constant = defaultSide
-                    titleViewHeight.constant = defaultTitleHeight
-                }
-            } else {
-                print("down")
-                if transition.y > 0 {
-                    bottom.constant -= 4
-                } else if transition.y == 0 {
-                    bottom.constant = defaultBottomConstant
-                }
-                
-                
-            }
+        //테이블 뷰의 content In/Off set 적용
+        menuList.contentInset = UIEdgeInsetsMake(headerViewHeight, 0, 0, 0)
+        menuList.contentOffset = CGPoint(x: 0, y: -headerViewHeight)
+        
+        setHeaderFrame()
+        
+    }
+    
+    //테이블뷰의 contentOffset의 값에 따라 headerViewFrame설정
+    func setHeaderFrame() {
+        // 초기 getHeaderViewFrame 값
+        var getHeaderViewFrame = CGRect(x: 0, y: -headerViewHeight, width: menuList.bounds.width,
+                                        height: headerViewHeight)
+        
+        // 테이블뷰의 contentOffset.y가 headerViewHeight의 값보다 작을 때
+        if menuList.contentOffset.y < -headerViewHeight {
+            print(menuList.contentOffset.y, headerViewHeight)
+            // 테이블 뷰의 위치가 점점 아래로 내려간다.
+            getHeaderViewFrame.origin.y = menuList.contentOffset.y
+            // getHeaderView의 크기가 점점 커진다. (menuList.contentOffset.y은 원래 minus값이므로 -를 주면 양수로 바뀐다)
+            getHeaderViewFrame.size.height = -menuList.contentOffset.y
         }
-        
-        pan.setTranslation(CGPoint.zero, in: restaurantImage)
-//        print(transition)
+        //변경된 값을 헤더 뷰의 프레임에 업데이트 시켜준다.
+        headerView.frame = getHeaderViewFrame
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
 }
 
 extension MenuViewController: UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 10
+        print(restaurantInfomation.menuList!.count)
+        guard let menuCount = restaurantInfomation.menuList?.count else { return 0 }
+        return menuCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
-        cell?.backgroundColor = .red
         
-        return cell!
+        guard let menuImage = restaurantInfomation.menuList?[indexPath.row].foodImage else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NonImageMenuList") as! NonImageMenuList
+            cell.setName = restaurantInfomation.menuList?[indexPath.row].foodName
+            cell.foodDescription = restaurantInfomation.menuList?[indexPath.row].foodDescription
+            cell.setPrice = "₩" + String(restaurantInfomation.menuList![indexPath.row].price)
+            
+            return cell
+            
+        }
+        if let menuImage = imagePost.imageDownload(stringURL: menuImage) {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ImageMenuListCell") as! ImageMenuListCell
+            cell.setImage = menuImage
+            cell.setName = restaurantInfomation.menuList?[indexPath.row].foodName
+            cell.foodDescription = restaurantInfomation.menuList?[indexPath.row].foodDescription
+            cell.setPrice = "₩" + String(restaurantInfomation.menuList![indexPath.row].price)
+            
+            return cell
+        }
+        
+        return UITableViewCell()
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        print(scrollView.contentOffset)
+        // 뷰가 스크롤 될 때 마다 HeaderView의 프레임을 변경
+        setHeaderFrame()
     }
     
     
@@ -121,16 +145,11 @@ extension MenuViewController: UITableViewDelegate {
         let nextViewController = storyboard?.instantiateViewController(withIdentifier: "SelectMenu") as! SelectMenuViewController
         nextViewController.price = 7000
         nextViewController.modalPresentationStyle = .overFullScreen
+        
         self.present(nextViewController, animated: true, completion: nil)
     }
-}
-
-// UIGestureRecognizerDelegate
-extension MenuViewController: UIGestureRecognizerDelegate {
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
-                           shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer)
-        -> Bool {
-            
-            return true
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
 }

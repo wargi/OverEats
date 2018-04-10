@@ -17,7 +17,7 @@ struct Notice {
 
 struct Restaurant {
     let id: String! // 매장 고유 번호
-    let name: String! // 매장 명
+    let name: String // 매장 명
     let isOpen: Bool! // 매장 오픈 여부
     let address: String! // 매장 주소
     let description: String? // 매장 설명
