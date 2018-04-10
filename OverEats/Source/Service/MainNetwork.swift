@@ -40,7 +40,7 @@ struct MainGet {
         let category1:[Category] = [
             Category(id: "1", name: "일식", imageURL: "https://picsum.photos/500/500?random")
         ]
-        let restaurant1 = Restaurant(id: "1", name: "이치라쿠", isOpen: true, address: "서초구 서초동 101-1", description: "테이스티로드에 소개된 라멘 맛집, 가로수길 피에스타 선정 맛집", score: 4.2, imageURL: "https://picsum.photos/800/500?random", minDeliveryTime: 10, maxDeliveryTime: 20, menuList: nil, category: category1)
+        let restaurant1 = Restaurant(id: "1", name: "이치라쿠", isOpen: true, address: "서초구 서초동 101-1", description: "테이스티로드에 소개된 라멘 맛집, 가로수길 피에스타 선정 맛집", score: 4.2, imageURL: "https://picsum.photos/800/500?random", imageData: nil, minDeliveryTime: 10, maxDeliveryTime: 20, menuList: nil, category: category1)
         restaurants.append(restaurant1)
         
         
@@ -49,9 +49,9 @@ struct MainGet {
             Category(id: "3", name: "웰빙", imageURL: "https://picsum.photos/500/500?random"),
             Category(id: "4", name: "비건", imageURL: "https://picsum.photos/500/500?random")
         ]
-        let restaurant2 = Restaurant(id: "2", name: "알로하 포케 학동점", isOpen: true, address: "서초구 서초동 101-1", description: "", score: 0, imageURL: "https://picsum.photos/800/500?random", minDeliveryTime: 10, maxDeliveryTime: 20, menuList: nil, category: category2)
+        let restaurant2 = Restaurant(id: "2", name: "알로하 포케 학동점", isOpen: true, address: "서초구 서초동 101-1", description: "", score: 0, imageURL: "https://picsum.photos/800/500?random", imageData: nil, minDeliveryTime: 10, maxDeliveryTime: 20, menuList: nil, category: category2)
         restaurants.append(restaurant2)
-
+        
         
         let category3:[Category] = [
             Category(id: "5", name: "베이커리", imageURL: "https://picsum.photos/500/500?random"),
@@ -59,29 +59,29 @@ struct MainGet {
             Category(id: "7", name: "커피", imageURL: "https://picsum.photos/500/500?random"),
             Category(id: "8", name: "차", imageURL: "https://picsum.photos/500/500?random")
         ]
-        let restaurant3 = Restaurant(id: "3", name: "컨버세이션", isOpen: true, address: "서초구 서초동 101-1", description: "그림책에만 있는줄 알았던 엄청난 비주얼의 케이크", score: 4.0, imageURL: "https://picsum.photos/800/500?random", minDeliveryTime: 10, maxDeliveryTime: 20, menuList: nil, category: category3)
+        let restaurant3 = Restaurant(id: "3", name: "컨버세이션", isOpen: true, address: "서초구 서초동 101-1", description: "그림책에만 있는줄 알았던 엄청난 비주얼의 케이크", score: 4.0, imageURL: "https://picsum.photos/800/500?random", imageData: nil, minDeliveryTime: 10, maxDeliveryTime: 20, menuList: nil, category: category3)
         restaurants.append(restaurant3)
-
+        
         
         let category4:[Category] = [
             Category(id: "1", name: "일식", imageURL: "https://picsum.photos/500/500?random")
         ]
-        let restaurant4 = Restaurant(id: "4", name: "김태완 스시 논현점", isOpen: false, address: "서초구 서초동 101-1", description: "이름을 걸고 만드는 신선한 사시미와 스시 전문점", score: 0, imageURL: "https://picsum.photos/800/500?random", minDeliveryTime: 30, maxDeliveryTime: 40, menuList: nil, category: category4)
+        let restaurant4 = Restaurant(id: "4", name: "김태완 스시 논현점", isOpen: false, address: "서초구 서초동 101-1", description: "이름을 걸고 만드는 신선한 사시미와 스시 전문점", score: 0, imageURL: "https://picsum.photos/800/500?random", imageData: nil, minDeliveryTime: 30, maxDeliveryTime: 40, menuList: nil, category: category4)
         restaurants.append(restaurant4)
         
         
         let category5:[Category] = [
             Category(id: "1", name: "일식", imageURL: "https://picsum.photos/500/500?random")
         ]
-        let restaurant5 = Restaurant(id: "5", name: "테루", isOpen: true, address: "서초구 서초동 101-1", description: "", score: 0, imageURL: "https://picsum.photos/800/500?random", minDeliveryTime: 30, maxDeliveryTime: 40, menuList: nil, category: category5)
+        let restaurant5 = Restaurant(id: "5", name: "테루", isOpen: true, address: "서초구 서초동 101-1", description: "", score: 0, imageURL: "https://picsum.photos/800/500?random", imageData: nil, minDeliveryTime: 30, maxDeliveryTime: 40, menuList: nil, category: category5)
         restaurants.append(restaurant5)
         
-
+        
         let category6:[Category] = [
             Category(id: "9", name: "양식", imageURL: "https://picsum.photos/500/500?random"),
             Category(id: "10", name: "이탈리안", imageURL: "https://picsum.photos/500/500?random")
         ]
-        let restaurant6 = Restaurant(id: "6", name: "셰프런", isOpen: false, address: "서초구 서초동 101-1", description: "Top 스타셰프의 요리를 집에서 즐기세요!", score: 4.0, imageURL: "https://picsum.photos/800/500?random", minDeliveryTime: 10, maxDeliveryTime: 20, menuList: nil, category: category6)
+        let restaurant6 = Restaurant(id: "6", name: "셰프런", isOpen: false, address: "서초구 서초동 101-1", description: "Top 스타셰프의 요리를 집에서 즐기세요!", score: 4.0, imageURL: "https://picsum.photos/800/500?random", imageData: nil, minDeliveryTime: 10, maxDeliveryTime: 20, menuList: nil, category: category6)
         restaurants.append(restaurant6)
         
         completionHandler(restaurants)

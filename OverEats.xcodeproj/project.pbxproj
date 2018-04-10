@@ -7,9 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		291C9F1420728D490085E37E /* MainNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F1320728D490085E37E /* MainNetwork.swift */; };
+		291C9F2120749CBA0085E37E /* NoticeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F2020749CBA0085E37E /* NoticeImageView.swift */; };
+		291C9F2320749CCE0085E37E /* NoticeImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291C9F2220749CCE0085E37E /* NoticeImageView.xib */; };
+		291C9F292075CDBD0085E37E /* MainRestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F282075CDBD0085E37E /* MainRestView.swift */; };
+		291C9F2B2075CDC50085E37E /* MainRestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291C9F2A2075CDC50085E37E /* MainRestView.xib */; };
+		291C9F2E2075FAD80085E37E /* MainRestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F2C2075FAD80085E37E /* MainRestTableViewCell.swift */; };
+		291C9F2F2075FAD80085E37E /* MainRestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291C9F2D2075FAD80085E37E /* MainRestTableViewCell.xib */; };
+		291C9F32207629A10085E37E /* MainInviteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F30207629A10085E37E /* MainInviteTableViewCell.swift */; };
+		291C9F33207629A10085E37E /* MainInviteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291C9F31207629A10085E37E /* MainInviteTableViewCell.xib */; };
 		291C9F53207736720085E37E /* SystemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F52207736720085E37E /* SystemData.swift */; };
 		291C9F55207736BB0085E37E /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F54207736BB0085E37E /* UserData.swift */; };
-		291C9F582077396F0085E37E /* NetworkSample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F572077396F0085E37E /* NetworkSample.swift */; };
 		809B12B4F4AEE34759F6AA35 /* Pods_OverEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9A569FD85EAB1F2AB0E133 /* Pods_OverEats.framework */; };
 		8E8A63692071E481007D9B7A /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E8A63682071E481007D9B7A /* SignIn.storyboard */; };
 		8E8A636C2071E565007D9B7A /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E8A636B2071E565007D9B7A /* SignUp.storyboard */; };
@@ -29,9 +37,17 @@
 
 /* Begin PBXFileReference section */
 		215C48F756A0F1994845C08A /* Pods-OverEats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OverEats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OverEats/Pods-OverEats.debug.xcconfig"; sourceTree = "<group>"; };
+		291C9F1320728D490085E37E /* MainNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNetwork.swift; sourceTree = "<group>"; };
+		291C9F2020749CBA0085E37E /* NoticeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeImageView.swift; sourceTree = "<group>"; };
+		291C9F2220749CCE0085E37E /* NoticeImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeImageView.xib; sourceTree = "<group>"; };
+		291C9F282075CDBD0085E37E /* MainRestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRestView.swift; sourceTree = "<group>"; };
+		291C9F2A2075CDC50085E37E /* MainRestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainRestView.xib; sourceTree = "<group>"; };
+		291C9F2C2075FAD80085E37E /* MainRestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRestTableViewCell.swift; sourceTree = "<group>"; };
+		291C9F2D2075FAD80085E37E /* MainRestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainRestTableViewCell.xib; sourceTree = "<group>"; };
+		291C9F30207629A10085E37E /* MainInviteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInviteTableViewCell.swift; sourceTree = "<group>"; };
+		291C9F31207629A10085E37E /* MainInviteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainInviteTableViewCell.xib; sourceTree = "<group>"; };
 		291C9F52207736720085E37E /* SystemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemData.swift; sourceTree = "<group>"; };
 		291C9F54207736BB0085E37E /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		291C9F572077396F0085E37E /* NetworkSample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSample.swift; sourceTree = "<group>"; };
 		5C9A569FD85EAB1F2AB0E133 /* Pods_OverEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OverEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E8A63682071E481007D9B7A /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		8E8A636B2071E565007D9B7A /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
@@ -64,10 +80,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		291C9F56207739110085E37E /* Service */ = {
+		291C9EF92072239D0085E37E /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				291C9F572077396F0085E37E /* NetworkSample.swift */,
+				291C9F2020749CBA0085E37E /* NoticeImageView.swift */,
+				291C9F2220749CCE0085E37E /* NoticeImageView.xib */,
+				291C9F282075CDBD0085E37E /* MainRestView.swift */,
+				291C9F2A2075CDC50085E37E /* MainRestView.xib */,
+				291C9F2C2075FAD80085E37E /* MainRestTableViewCell.swift */,
+				291C9F2D2075FAD80085E37E /* MainRestTableViewCell.xib */,
+				291C9F30207629A10085E37E /* MainInviteTableViewCell.swift */,
+				291C9F31207629A10085E37E /* MainInviteTableViewCell.xib */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		291C9F1220728CF10085E37E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				291C9F1320728D490085E37E /* MainNetwork.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -140,7 +171,7 @@
 		8EE538CA206E359F006BAC26 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				291C9F56207739110085E37E /* Service */,
+				291C9F1220728CF10085E37E /* Service */,
 				8E8A63712071E688007D9B7A /* Model */,
 				8EE538CE206E364E006BAC26 /* AppDelegate */,
 				8EE538CF206E369C006BAC26 /* ViewController */,
@@ -192,6 +223,7 @@
 		8EE538D1206E36AD006BAC26 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				291C9EF92072239D0085E37E /* Main */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -276,11 +308,15 @@
 			files = (
 				8E8A637C2071EADE007D9B7A /* SelectMenu.storyboard in Resources */,
 				8E8A63692071E481007D9B7A /* SignIn.storyboard in Resources */,
+				291C9F2B2075CDC50085E37E /* MainRestView.xib in Resources */,
 				8EE538C3206E25AE006BAC26 /* LaunchScreen.storyboard in Resources */,
+				291C9F2320749CCE0085E37E /* NoticeImageView.xib in Resources */,
 				8EE538C0206E25AE006BAC26 /* Assets.xcassets in Resources */,
 				8E8A637A2071EAD0007D9B7A /* Menu.storyboard in Resources */,
+				291C9F2F2075FAD80085E37E /* MainRestTableViewCell.xib in Resources */,
 				8EE538BE206E25AD006BAC26 /* Main.storyboard in Resources */,
 				8E8A636C2071E565007D9B7A /* SignUp.storyboard in Resources */,
+				291C9F33207629A10085E37E /* MainInviteTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,14 +381,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				291C9F582077396F0085E37E /* NetworkSample.swift in Sources */,
 				8EE538BB206E25AD006BAC26 /* MainViewController.swift in Sources */,
+				291C9F292075CDBD0085E37E /* MainRestView.swift in Sources */,
 				8E8A63732071E7C3007D9B7A /* MenuViewController.swift in Sources */,
 				291C9F53207736720085E37E /* SystemData.swift in Sources */,
 				291C9F55207736BB0085E37E /* UserData.swift in Sources */,
 				8EE538B9206E25AD006BAC26 /* AppDelegate.swift in Sources */,
+				291C9F1420728D490085E37E /* MainNetwork.swift in Sources */,
+				291C9F2120749CBA0085E37E /* NoticeImageView.swift in Sources */,
 				8E8A637E2071F7BF007D9B7A /* AppColor.swift in Sources */,
 				8E8A63702071E590007D9B7A /* SignUpViewController.swift in Sources */,
+				291C9F2E2075FAD80085E37E /* MainRestTableViewCell.swift in Sources */,
+				291C9F32207629A10085E37E /* MainInviteTableViewCell.swift in Sources */,
 				8E8A636E2071E583007D9B7A /* SignInViewController.swift in Sources */,
 				8E8A63752071E7E2007D9B7A /* SelectMenuViewController.swift in Sources */,
 			);
