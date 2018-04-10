@@ -34,6 +34,7 @@ class MenuHeaderView: UIView
         } 
     }
     
+    // 카테고리
     var categori: String? {
         didSet {
             if let categori = categori {
@@ -42,6 +43,7 @@ class MenuHeaderView: UIView
         }
     }
     
+    // 배달 시간
     var deliveryTime: String? {
         didSet {
             if let deliveryTime = deliveryTime {

@@ -20,8 +20,6 @@
 		8E5B9E772079922B00921EF4 /* imagePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5B9E762079922B00921EF4 /* imagePost.swift */; };
 		8E8A63692071E481007D9B7A /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E8A63682071E481007D9B7A /* SignIn.storyboard */; };
 		8E8A636C2071E565007D9B7A /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E8A636B2071E565007D9B7A /* SignUp.storyboard */; };
-		8E8A636E2071E583007D9B7A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8A636D2071E583007D9B7A /* SignInViewController.swift */; };
-		8E8A63702071E590007D9B7A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8A636F2071E590007D9B7A /* SignUpViewController.swift */; };
 		8E8A63732071E7C3007D9B7A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8A63722071E7C3007D9B7A /* MenuViewController.swift */; };
 		8E8A637A2071EAD0007D9B7A /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E8A63792071EAD0007D9B7A /* Menu.storyboard */; };
 		8E9672C4207349F10061B7C5 /* SelectMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9672C3207349F10061B7C5 /* SelectMenuViewController.swift */; };
@@ -48,8 +46,6 @@
 		8E5B9E762079922B00921EF4 /* imagePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imagePost.swift; sourceTree = "<group>"; };
 		8E8A63682071E481007D9B7A /* SignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		8E8A636B2071E565007D9B7A /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
-		8E8A636D2071E583007D9B7A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		8E8A636F2071E590007D9B7A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8E8A63722071E7C3007D9B7A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		8E8A63792071EAD0007D9B7A /* Menu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		8E8A637D2071F7BF007D9B7A /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
@@ -218,8 +214,6 @@
 			children = (
 				8EE538BA206E25AD006BAC26 /* MainViewController.swift */,
 				8E9672D02075FD000061B7C5 /* Menu */,
-				8E8A636D2071E583007D9B7A /* SignInViewController.swift */,
-				8E8A636F2071E590007D9B7A /* SignUpViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -392,9 +386,7 @@
 				291C9F55207736BB0085E37E /* UserData.swift in Sources */,
 				8EE538B9206E25AD006BAC26 /* AppDelegate.swift in Sources */,
 				8E5B9E772079922B00921EF4 /* imagePost.swift in Sources */,
-				8E8A63702071E590007D9B7A /* SignUpViewController.swift in Sources */,
 				8E5B9E7420798BA300921EF4 /* NonImageMenuList.swift in Sources */,
-				8E8A636E2071E583007D9B7A /* SignInViewController.swift in Sources */,
 				8E5B9E692079856900921EF4 /* MenuHeaderView.swift in Sources */,
 				8E9672C4207349F10061B7C5 /* SelectMenuViewController.swift in Sources */,
 			);
