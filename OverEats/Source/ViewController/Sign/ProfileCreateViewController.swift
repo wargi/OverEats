@@ -62,7 +62,6 @@ class ProfileCreateViewController: UIViewController, UITextFieldDelegate{
         }
         if firstNameCheck == false && lastNameCheck == false {
             
-            print("\(signUpDic)")
             let alertController = UIAlertController(title: "이름과 성 입력",message: "이름과 성 입력 해주세요", preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
             alertController.addAction(okAction)
@@ -77,10 +76,7 @@ class ProfileCreateViewController: UIViewController, UITextFieldDelegate{
                 let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
                 alertController.addAction(okAction)
                 self.present(alertController,animated: true,completion: nil)
-                lastNameTf.text = ""
-                firstNameTf.text = ""
-                lastNameCheck = false
-                firstNameCheck = false
+
             }
            else if firstNameCheck == false {
                 
@@ -88,42 +84,11 @@ class ProfileCreateViewController: UIViewController, UITextFieldDelegate{
                 let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
                 alertController.addAction(okAction)
                 self.present(alertController,animated: true,completion: nil)
-                lastNameTf.text = ""
-                firstNameTf.text = ""
-                lastNameCheck = false
-                firstNameCheck = false
+           
             }
         }
     }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        guard let text = textField.text else {return false}
-        
-        if textField.tag == 1 {
-            
-            if vaildText(textVaild: text) == false {
-                
-                lastNameCheck = false
-                
-            }else {
-                
-                lastNameCheck = true
-                
-            }
-        }
-        else if textField.tag == 2 {
-            
-            if vaildText(textVaild: text) == false {
-                
-                firstNameCheck = false
-                
-            }else {
-                
-                firstNameCheck = true
-            }
-        }
-        return true
-    }
+
     
     @objc func viewtap(_ sender: UITapGestureRecognizer) {
         
@@ -146,6 +111,7 @@ class ProfileCreateViewController: UIViewController, UITextFieldDelegate{
     
     func openLibrary(){
         
+        picker.allowsEditing = true
         picker.sourceType = .photoLibrary
         present(picker, animated: false, completion: nil)
         
@@ -183,11 +149,8 @@ class ProfileCreateViewController: UIViewController, UITextFieldDelegate{
         let gesture = UITapGestureRecognizer(target: self, action: #selector(viewtap(_:)))
         profileImage.addGestureRecognizer(gesture)
         
-        lastNameTf.delegate = self
-        lastNameTf.tag = 1
-        firstNameTf.delegate = self
-        firstNameTf.tag = 2
-        
+        lastNameTf.addTarget(self, action: #selector(lastNameCheck(_:)), for: .editingChanged)
+        firstNameTf.addTarget(self, action: #selector(firstNameCheck(_:)), for: .editingChanged)
     }
     
 }
@@ -203,6 +166,16 @@ extension ProfileCreateViewController : UIImagePickerControllerDelegate, UINavig
         
         dismiss(animated: true, completion: nil)
         
+    }
+    
+    @objc func lastNameCheck(_ sender: UITextField){
+        guard let text = sender.text else { return }
+        lastNameCheck = vaildText(textVaild: text)
+    }
+    
+    @objc func firstNameCheck(_ sender: UITextField){
+        guard let text = sender.text else { return }
+        firstNameCheck = vaildText(textVaild: text)
     }
     
 }
