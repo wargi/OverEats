@@ -15,6 +15,8 @@ class NoticeImageView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     
+    @IBOutlet weak var titleStack: UIStackView!
+    
     class func loadNoticeNib() -> NoticeImageView {
         return UINib(nibName: "NoticeImageView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! NoticeImageView
     }
@@ -31,15 +33,17 @@ class NoticeImageView: UIView {
         }
     }
     
-    func addGradient(with frame: CGRect) {
-        let topBlack = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
-        let bottomBlack = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
+    func addGradient() {
+        let topBlack = UIColor(white: 0, alpha: 0)
+        let bottomBlack = UIColor(white: 0, alpha: 0.7)
         
         let gradientColors: [CGColor] = [topBlack.cgColor, bottomBlack.cgColor]
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = gradientColors
-        gradientLayer.frame = frame
+        self.setNeedsLayout()
+        self.layoutIfNeeded()
+        gradientLayer.frame = self.imageView.bounds
         
         self.imageView.layer.insertSublayer(gradientLayer, at: 0)
     }

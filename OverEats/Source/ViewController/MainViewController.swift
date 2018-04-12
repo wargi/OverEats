@@ -19,29 +19,40 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak private var mainTableView: UITableView!
     
-    @IBOutlet private var noticeView: UIView!
-    @IBOutlet private var noticeScrollView: UIScrollView!
-    
-    @IBOutlet private var noticePageControl: UIPageControl!
-    
-    @IBAction func testBtn(_ sender: Any) {
-        
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        noticeScrollView.delegate = self
+        getRestaurantData()
         
         getNoticeData()
         
-        getRestaurantData()
-        
-
+        mainTableView.register(
+            UINib(nibName: "MainListHeaderCell", bundle: nil),
+            forCellReuseIdentifier: "MainListHeaderCell"
+        )
+//
+//        mainTableView.contentInset = UIEdgeInsetsMake(0, 0, -10, 0)
+        self.mainTableView.sectionHeaderHeight = UITableViewAutomaticDimension;
+        self.mainTableView.estimatedSectionHeaderHeight = 10;
     }
     
-    func getRestaurantData(){
-        MainGet.getRestaurantList { restaurants in
+    private func getNoticeData(){
+        
+        mainTableView.rowHeight = UITableViewAutomaticDimension
+        mainTableView.backgroundColor = .lightGray
+        
+        let noticeView = Bundle.main.loadNibNamed("\(NoticeView.self)", owner: nil, options: nil)!.first as! NoticeView
+        
+        // noticeView를 headerView로 정의
+        self.mainTableView.setTableHeaderView(headerView: noticeView)
+        
+        MainGet.getNotice(completionHandler: { notices in
+            noticeView.setNoticePage(with: notices)
+        })
+        
+    }
+    
+    func getRestaurantData(){        MainGet.getRestaurantList { restaurants in
             self.restaurants = restaurants
         }
         
@@ -63,61 +74,6 @@ class MainViewController: UIViewController {
     
 }
 
-extension MainViewController: UIScrollViewDelegate {
-    
-    // MARK: buttonhandler
-    private func getNoticeData(){
-        MainGet.getNotice(completionHandler: { notices in
-            self.notices = notices
-        })
-        
-        var contentWidth: CGFloat = 0.0
-        
-        noticeView.frame.size = CGSize(width: self.view.frame.size.width, height: 200)
-        
-        let viewWidth = noticeView.frame.size.width
-        let contentHeight = noticeView.frame.size.height
-        
-        if let notices = self.notices {
-            for notice in notices {
-                
-                let noticeImageView = NoticeImageView.loadNoticeNib()
-                noticeImageView.configure(with: notice)
-                
-                noticeScrollView.addSubview(noticeImageView)
-
-                noticeImageView.frame = CGRect(x: contentWidth, y: 0, width: viewWidth, height: contentHeight)
-                noticeImageView.addGradient(with: noticeView.frame)
-
-                contentWidth += viewWidth
-                
-            }
-            noticePageControl.numberOfPages = notices.count
-            noticeScrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
-            
-        }
-        
-        
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        noticePageControl.currentPage = Int(noticeScrollView.contentOffset.x / noticeView.frame.size.width)
-    }
-    
-    /// 입력된 페이지로 스크롤 뷰를 이동해주는 함수
-    ///
-    /// - Parameter page: 이동해야되는 페이지 0부터 시작
-    func scrollToPage(page: Int) {
-        var frame: CGRect = noticeView.frame
-        print(frame.origin.x)
-        frame.origin.x = frame.size.width * CGFloat(page);
-        print(frame.origin.x)
-        frame.origin.y = 0;
-        noticeScrollView.scrollRectToVisible(frame, animated: true)
-    }
-    
-}
-
 extension MainViewController: UITableViewDataSource {
     
     func layoutRestaurantCell(with restaurant: Restaurant) -> UITableViewCell{
@@ -129,7 +85,7 @@ extension MainViewController: UITableViewDataSource {
         mainRestView.translatesAutoresizingMaskIntoConstraints = false
         mainRestView.configure(with: restaurant)
         
-        mainRestView.topAnchor.constraint(equalTo: tempCell.topAnchor, constant: 15).isActive = true
+        mainRestView.topAnchor.constraint(equalTo: tempCell.topAnchor, constant: 0).isActive = true
         mainRestView.leadingAnchor.constraint(equalTo: tempCell.leadingAnchor, constant: 15).isActive = true
         mainRestView.trailingAnchor.constraint(equalTo: tempCell.trailingAnchor, constant: -15).isActive = true
         mainRestView.bottomAnchor.constraint(equalTo: tempCell.bottomAnchor, constant: -15).isActive = true
@@ -145,7 +101,7 @@ extension MainViewController: UITableViewDataSource {
 //        } else {
 //            return 2
 //        }
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -172,17 +128,33 @@ extension MainViewController: UITableViewDataSource {
 //                return (prefRestaurants?.count)!
 //            }
 //        }
-        return (restaurants?.count)!
+        if section == 1 {
+            print("tt", section)
+            return 0
+        }else {
+            print("sddas")
+            return (restaurants?.count)!
+        }
+        
+//        return 0
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let mainHeaderInSection = MainHeaderInSection.loadMainHeaderInSectionNib()
+        mainHeaderInSection.headerLabel.text = "레스토랑 더 보기"
+        return mainHeaderInSection
+    }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 100
+//    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 10
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         return layoutRestaurantCell(with: self.restaurants![indexPath.row])
-        
+
 //        let emptyCell = UITableViewCell()
 //        if listStatusBits == 1 {
 //            return (restaurants?.count)!
@@ -214,6 +186,9 @@ extension MainViewController: UITableViewDataSource {
 
 extension MainViewController: UITableViewDelegate {
 
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+    }
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let storyboard = UIStoryboard(name: "Menu", bundle: nil)
 //        let nextViewController = storyboard.instantiateViewController(withIdentifier: "Menu") as! MenuViewController

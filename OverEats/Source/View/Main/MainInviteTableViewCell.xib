@@ -6,8 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,30 +20,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qX9-Rc-mzz">
-                        <rect key="frame" x="25" y="25" width="49.5" height="49.5"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="qX9-Rc-mzz" secondAttribute="height" multiplier="1:1" id="7Fl-Re-whH"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="주문 시 ￦7,000  할인받기 &gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqn-vU-4dp">
-                        <rect key="frame" x="84.5" y="40" width="270.5" height="18"/>
+                        <rect key="frame" x="101.5" y="40" width="253.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.2784313725" green="0.63137254899999995" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnBurger" translatesAutoresizingMaskIntoConstraints="NO" id="Yx2-7K-Zph">
+                        <rect key="frame" x="36" y="22.5" width="45.5" height="54.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="45.5" id="2cR-1A-Lha"/>
+                            <constraint firstAttribute="height" constant="54.5" id="MKb-bq-jEG"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="qX9-Rc-mzz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2mg-FT-Ef7"/>
-                    <constraint firstItem="Fqn-vU-4dp" firstAttribute="leading" secondItem="qX9-Rc-mzz" secondAttribute="trailing" constant="10" id="6Is-aa-TSN"/>
-                    <constraint firstItem="qX9-Rc-mzz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="cIe-4H-BeF"/>
+                    <constraint firstItem="Fqn-vU-4dp" firstAttribute="leading" secondItem="Yx2-7K-Zph" secondAttribute="trailing" constant="20" id="QAT-tW-rHh"/>
                     <constraint firstAttribute="trailing" secondItem="Fqn-vU-4dp" secondAttribute="trailing" constant="20" id="eBn-Na-2QD"/>
-                    <constraint firstItem="qX9-Rc-mzz" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="1:2" id="rP7-rN-ds9"/>
+                    <constraint firstItem="Yx2-7K-Zph" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="eYx-Qv-s6W"/>
+                    <constraint firstItem="Yx2-7K-Zph" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fkq-Bl-aWJ"/>
                     <constraint firstItem="Fqn-vU-4dp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="sFH-Jp-Sn9"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="40" y="55"/>
+            <point key="canvasLocation" x="39.5" y="55"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="btnBurger" width="45" height="54"/>
+    </resources>
 </document>
