@@ -10,6 +10,8 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    var getService: GetServiceType?
+    
     var notices: [Notice]?
     var restaurants: [Restaurant]?
     var nearRestaurants: [Restaurant]?
@@ -19,43 +21,61 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak private var mainTableView: UITableView!
     
+    static func createWith(getService: GetServiceType = GetService()) -> Self {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let `self` = storyboard.instantiateViewController(ofType: self.self)
+        self.getService = getService
+        return self
+    }
+    
+    private func getTempData(){
+        getService?.getRestaurantList(completion: { (result) in
+            switch result {
+            case .success(let postList):
+                print(postList)
+            case .error(let error):
+                print(error)
+            }
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getRestaurantData()
         
-        getNoticeData()
-        
         mainTableView.register(
             UINib(nibName: "MainListHeaderCell", bundle: nil),
             forCellReuseIdentifier: "MainListHeaderCell"
         )
-//
-//        mainTableView.contentInset = UIEdgeInsetsMake(0, 0, -10, 0)
-        self.mainTableView.sectionHeaderHeight = UITableViewAutomaticDimension;
-        self.mainTableView.estimatedSectionHeaderHeight = 10;
+        
+        self.mainTableView.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: Double(FLT_MIN)))
+        
+        // 섹션 헤더뷰의 기본값 정의
+//        self.mainTableView.sectionHeaderHeight = UITableViewAutomaticDimension;
+//        self.mainTableView.estimatedSectionHeaderHeight = 0;
     }
     
-    private func getNoticeData(){
+    
+    
+    private func getNoticeCell() -> UITableViewCell{
         
-        mainTableView.rowHeight = UITableViewAutomaticDimension
-        mainTableView.backgroundColor = .lightGray
+        let noticeTableViewCell = NoticeTableViewCell.loadNoticeTableViewCellNib()
         
-        let noticeView = Bundle.main.loadNibNamed("\(NoticeView.self)", owner: nil, options: nil)!.first as! NoticeView
-        
-        // noticeView를 headerView로 정의
-        self.mainTableView.setTableHeaderView(headerView: noticeView)
+        noticeTableViewCell.translatesAutoresizingMaskIntoConstraints = false
         
         MainGet.getNotice(completionHandler: { notices in
-            noticeView.setNoticePage(with: notices)
+            noticeTableViewCell.setNoticePage(with: notices)
         })
         
+        return noticeTableViewCell
     }
     
-    func getRestaurantData(){        MainGet.getRestaurantList { restaurants in
+    func getRestaurantData(){
+            MainGet.getRestaurantList { restaurants in
             self.restaurants = restaurants
         }
-        
+
         if let restaurants = self.restaurants {
             listStatusBits = listStatusBits | 0b001
             for (index, restaurant) in restaurants.enumerated() {
@@ -101,7 +121,7 @@ extension MainViewController: UITableViewDataSource {
 //        } else {
 //            return 2
 //        }
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -128,22 +148,22 @@ extension MainViewController: UITableViewDataSource {
 //                return (prefRestaurants?.count)!
 //            }
 //        }
-        if section == 1 {
-            print("tt", section)
-            return 0
-        }else {
-            print("sddas")
-            return (restaurants?.count)!
-        }
+//        if section == 1 {
+//            print("tt", section)
+//            return 0
+//        }else {
+//            print("sddas")
+//            return (restaurants?.count)!
+//        }
         
-//        return 0
+        return 1
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let mainHeaderInSection = MainHeaderInSection.loadMainHeaderInSectionNib()
-        mainHeaderInSection.headerLabel.text = "레스토랑 더 보기"
-        return mainHeaderInSection
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let mainHeaderInSection = MainHeaderInSection.loadMainHeaderInSectionNib()
+//        mainHeaderInSection.headerLabel.text = "레스토랑 더 보기"
+//        return mainHeaderInSection
+//    }
 //    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 //        return 100
 //    }
@@ -153,7 +173,8 @@ extension MainViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return layoutRestaurantCell(with: self.restaurants![indexPath.row])
+//        return layoutRestaurantCell(with: self.restaurants![indexPath.row])
+        return getNoticeCell()
 
 //        let emptyCell = UITableViewCell()
 //        if listStatusBits == 1 {
@@ -186,9 +207,6 @@ extension MainViewController: UITableViewDataSource {
 
 extension MainViewController: UITableViewDelegate {
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-    }
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let storyboard = UIStoryboard(name: "Menu", bundle: nil)
 //        let nextViewController = storyboard.instantiateViewController(withIdentifier: "Menu") as! MenuViewController

@@ -1,21 +1,26 @@
 //
-//  NoticeView.swift
+//  NoticeTableViewCell.swift
 //  OverEats
 //
-//  Created by SolChan Ahn on 2018. 4. 11..
+//  Created by SolChan Ahn on 2018. 4. 12..
 //  Copyright © 2018년 sangwook park. All rights reserved.
 //
 
 import UIKit
 
-class NoticeView: UIView, UIScrollViewDelegate{
+class NoticeTableViewCell: UITableViewCell, UIScrollViewDelegate{
     
     @IBOutlet weak var noticeScrollView: UIScrollView!
     @IBOutlet weak var noticePageControl: UIPageControl!
     
     private var noticeImageViews:[NoticeImageView] = []
     
+    class func loadNoticeTableViewCellNib() -> NoticeTableViewCell {
+        return UINib(nibName: "NoticeTableViewCell", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! NoticeTableViewCell
+    }
+    
     override func awakeFromNib() {
+        super.awakeFromNib()
         noticeScrollView.delegate = self
     }
     
@@ -38,34 +43,37 @@ class NoticeView: UIView, UIScrollViewDelegate{
             
             if index == 0 {
                 noticeImageView.leadingAnchor.constraint(equalTo: noticeScrollView.leadingAnchor).isActive = true
-                print(index, "first")
             } else if index == notices.count - 1 {
                 noticeImageView.leadingAnchor.constraint(equalTo: noticeImageViews[index - 1].trailingAnchor).isActive = true
                 noticeImageView.trailingAnchor.constraint(equalTo: noticeScrollView.trailingAnchor).isActive = true
-                print(index, "last")
             } else {
                 noticeImageView.leadingAnchor.constraint(equalTo: noticeImageViews[index - 1].trailingAnchor).isActive = true
-                print(index, notices.count)
             }
             noticeImageView.addGradient()
         }
-        
         noticePageControl.numberOfPages = notices.count
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         noticePageControl.currentPage = Int(noticeScrollView.contentOffset.x / self.frame.size.width)
     }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
     
-//    /// 입력된 페이지로 스크롤 뷰를 이동해주는 함수
-//    ///
-//    /// - Parameter page: 이동해야되는 페이지 0부터 시작
-//    func scrollToPage(page: Int) {
-//        var frame: CGRect = self.frame
-//        print(frame.origin.x)
-//        frame.origin.x = frame.size.width * CGFloat(page);
-//        print(frame.origin.x)
-//        frame.origin.y = 0;
-//        noticeScrollView.scrollRectToVisible(frame, animated: true)
-//    }
+    //    /// 입력된 페이지로 스크롤 뷰를 이동해주는 함수
+    //    ///
+    //    /// - Parameter page: 이동해야되는 페이지 0부터 시작
+    //    func scrollToPage(page: Int) {
+    //        var frame: CGRect = self.frame
+    //        print(frame.origin.x)
+    //        frame.origin.x = frame.size.width * CGFloat(page);
+    //        print(frame.origin.x)
+    //        frame.origin.y = 0;
+    //        noticeScrollView.scrollRectToVisible(frame, animated: true)
+    //    }
+    
 }

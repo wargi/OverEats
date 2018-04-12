@@ -13,7 +13,7 @@ struct MainGet {
     static func getNotice(completionHandler: @escaping ([Notice]) -> Void) {
         var notices = [Notice]()
         
-        let tempImageURL = "https://duyt4h9nfnj50.cloudfront.net/resized/9c6493c25086978e677d38ad416cbbb1-w750-6c.jpg"
+        let tempImageURL = "https://duyt4h9nfnj50.cloudfront.net/resized/9c6493c25086978e677d38ad416cbbb1-w550-bb.jpg"
         
         // 1번 데이터
         let notice1 = Notice(id: "1", title: "함께하면 더욱 맛있다!", subTitle: "친구 초대하고 7,000원 할인받으세요.", imageURL: tempImageURL)
@@ -38,7 +38,7 @@ struct MainGet {
     static func getRestaurantList(completionHandler: @escaping ([Restaurant]) -> Void) {
         var restaurants = [Restaurant]()
         
-        let tempImageURL = "https://duyt4h9nfnj50.cloudfront.net/resized/9c6493c25086978e677d38ad416cbbb1-w750-6c.jpg"
+        let tempImageURL = "https://duyt4h9nfnj50.cloudfront.net/resized/9c6493c25086978e677d38ad416cbbb1-w550-bb.jpg"
         
         
         let category1:[Category] = [

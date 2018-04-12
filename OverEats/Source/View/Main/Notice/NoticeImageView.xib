@@ -20,7 +20,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                 </imageView>
                 <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Tqh-KO-ujJ">
-                    <rect key="frame" x="25" y="102.5" width="37.5" height="47.5"/>
+                    <rect key="frame" x="25" y="112.5" width="37.5" height="47.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a7m-Fc-9fx">
                             <rect key="frame" x="0.0" y="0.0" width="37.5" height="25.5"/>
@@ -42,7 +42,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uaR-7d-qmO" secondAttribute="trailing" id="9m2-xv-Kht"/>
                 <constraint firstItem="Tqh-KO-ujJ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="DnW-l8-dP4"/>
                 <constraint firstItem="uaR-7d-qmO" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Qtx-aP-Cuc"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Tqh-KO-ujJ" secondAttribute="bottom" constant="50" id="Rzy-pz-1Yc"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Tqh-KO-ujJ" secondAttribute="bottom" constant="40" id="Rzy-pz-1Yc"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="uaR-7d-qmO" secondAttribute="bottom" id="YXf-RU-Zs2"/>
                 <constraint firstItem="uaR-7d-qmO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="t2R-f0-NWq"/>
             </constraints>

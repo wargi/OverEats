@@ -41,8 +41,9 @@ class NoticeImageView: UIView {
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = gradientColors
+        
         self.setNeedsLayout()
-        self.layoutIfNeeded()
+        
         gradientLayer.frame = self.imageView.bounds
         
         self.imageView.layer.insertSublayer(gradientLayer, at: 0)

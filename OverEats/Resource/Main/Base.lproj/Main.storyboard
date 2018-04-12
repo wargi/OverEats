@@ -50,7 +50,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Ws6-lx-kPL">
                                 <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <view key="tableFooterView" contentMode="scaleToFill" id="lOc-EY-pD3">
+                                <view key="tableFooterView" contentMode="scaleToFill" id="3b1-kV-AqZ">
                                     <rect key="frame" x="0.0" y="153.5" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
