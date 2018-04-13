@@ -31,8 +31,8 @@ class MainViewController: UIViewController {
     private func getTempData(){
         getService?.getRestaurantList(completion: { (result) in
             switch result {
-            case .success(let postList):
-                print(postList)
+            case .success(let restaurantList):
+                print(restaurantList)
             case .error(let error):
                 print(error)
             }
@@ -41,7 +41,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getTempData()
         getRestaurantData()
         
         mainTableView.register(

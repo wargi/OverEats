@@ -11,6 +11,10 @@ import Foundation
 struct Lestaurants: Decodable {
     let count: Int!
     let lestaurants: [Lestaurant]!
+    private enum CodingKeys: String, CodingKey {
+        case count
+        case lestaurants = "restaurants"
+    }
 }
 
 
@@ -21,9 +25,9 @@ struct Lestaurant: Decodable {
     let visible: String! // 리스트 공개 여부
     let scheduleOrder: Bool! // 예약 주문 가능 여부
     let rating: String! // 매장 오픈 여부
-    let address: [Address]! // 매장 주소
-    let position: [Position]! // 매장 설명
-    let etaRange: [EtaRange]! // 매장 점수
+    let address: Address! // 매장 주소
+    let position: Position! // 매장 설명
+    let etaRange: EtaRange! // 매장 점수
     let tags: [Tag]! // 테그 리스트
     let logo: String!
     let logos: [Logo]! // 매장 이미지
@@ -51,7 +55,7 @@ struct Lestaurant: Decodable {
 }
 
 struct Address: Decodable {
-    let address: String!
+    let mainAddress: String!
     let aptSuite: String!
     let city: String!
     let country: String!
@@ -60,7 +64,7 @@ struct Address: Decodable {
     let formattedAddress: String!
     
     private enum CodingKeys: String, CodingKey {
-        case address = "address1"
+        case mainAddress = "address1"
         case aptSuite = "apt_suite"
         case city
         case country
