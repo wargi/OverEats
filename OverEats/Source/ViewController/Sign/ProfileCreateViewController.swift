@@ -28,35 +28,52 @@ class ProfileCreateViewController: UIViewController, UITextFieldDelegate{
             
             guard let lastNameText = self.lastNameTf.text else {return}
             signUpDic.updateValue(lastNameText, forKey: "lastname")
+            print(lastNameText)
             guard let firstNameText = self.firstNameTf.text else {return}
             signUpDic.updateValue(firstNameText, forKey: "firstname")
+            print(firstNameText)
+  
+            let email = signUpDic["username"] as! String
+            let emailData = email.data(using: .utf8)
+            let password = signUpDic["password"] as! String
+            let passwordData = password.data(using: .utf8)
+            let firstName = signUpDic["firstname"] as! String
+            let firstNameData = firstName.data(using: .utf8)
+            let lastName = signUpDic["lastname"] as! String
+            let lastNameData = lastName.data(using: .utf8)
+            let phoneNumber = signUpDic["phonenumber"] as! String
+            let phoneNumberData = phoneNumber.data(using: .utf8)
+            let imageData = UIImageJPEGRepresentation(self.profileImage.image!, 0.1)
             
-            let params: Parameters = [
-                
-                "username" : signUpDic["username"] as! String,
-                "password" : signUpDic["password"] as! String,
-                "first_name" : signUpDic["firstname"] as! String,
-                "last_name" : signUpDic["lastname"] as! String,
-                "phone_number" : signUpDic["phonenumber"] as! String
-                
-            ]
-            
-            Alamofire
-                .request("https://www.overeats.kr/api/member/user/", method: .post, parameters: params)
-                .validate()
-                .responseData { (response) in
-                    switch response.result {
-                    case .success(let value):
-                        
-                        print("회원가입 성공: ", value)
-                        let alertController = UIAlertController(title: "성공",message: "회원가입 성공했습니다", preferredStyle: UIAlertControllerStyle.alert)
-                        let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
-                        alertController.addAction(okAction)
-                        self.present(alertController,animated: true,completion: nil)
+            Alamofire.upload(
+                multipartFormData: { multipartform in
+                    multipartform.append(emailData!, withName: "username")
+                    multipartform.append(passwordData!, withName: "password")
+                    multipartform.append(firstNameData!, withName: "first_name")
+                    multipartform.append(lastNameData!, withName: "last_name")
+                    multipartform.append(phoneNumberData!, withName: "phone_number")
+                    multipartform.append(imageData!, withName: "img_profile", fileName: "profileImage.jpeg", mimeType: "image/jpeg")
+             
+            },
+                to: "https://www.overeats.kr/api/member/user/",
+                method: .post,
+                encodingCompletion: { result in
+                    switch result {
+                    case .success(let request, _,_ ):
+                        request.responseJSON(completionHandler: { (response) in
+                            
+                            let alertController = UIAlertController(title: "성공",message: "회원가입 성공했습니다", preferredStyle: UIAlertControllerStyle.alert)
+                            let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
+                            alertController.addAction(okAction)
+                            self.present(alertController,animated: true,completion: nil)
+                            }
+                        )
                     case .failure(let error):
                         print("회원가입 실패: ", error.localizedDescription)
                     }
-            }
+                }
+            )
+            
             
             
         }

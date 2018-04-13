@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0gf-ek-dri">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gka-D5-RQI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1568,10 +1568,10 @@ CiA
             </objects>
             <point key="canvasLocation" x="309.60000000000002" y="-214.54272863568218"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="xej-0s-7Le">
             <objects>
-                <viewController id="FSd-bL-OpU" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="FSd-bL-OpU" customClass="LoginViewController" customModule="OverEats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tKg-q1-gVv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1601,6 +1601,9 @@ CiA
                                                 <state key="normal" title="완료">
                                                     <color key="titleColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="completeButton:" destination="FSd-bL-OpU" eventType="touchUpInside" id="M0g-yl-1ud"/>
+                                                </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oBK-6b-l3L">
                                                 <rect key="frame" x="10" y="10" width="30" height="20"/>
@@ -1771,10 +1774,14 @@ CiA
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nhm-IK-8RL"/>
                     </view>
+                    <connections>
+                        <outlet property="emailLoginTextField" destination="cdA-J6-pto" id="0A7-oF-LfP"/>
+                        <outlet property="passWordLoginTextField" destination="wPi-Bf-051" id="JXv-o2-njw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6f-u3-oY3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="103.2" y="454.72263868065971"/>
+            <point key="canvasLocation" x="-434" y="483"/>
         </scene>
     </scenes>
     <resources>
