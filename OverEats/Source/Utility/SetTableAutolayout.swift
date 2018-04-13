@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: - 테이블 뷰 내 헤더뷰와 풋터뷰 레이아웃 정의 함수
 extension UITableView {
     
     // 테이플 헤더뷰와 오토레이아웃 정의

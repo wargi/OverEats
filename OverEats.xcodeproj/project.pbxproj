@@ -128,6 +128,16 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		290E000620805A2F0004AAD4 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				29DF70E3207E393800E1D023 /* SetTableAutolayout.swift */,
+				290E0001207F84640004AAD4 /* DataUtility.swift */,
+				290E0004207F890F0004AAD4 /* StoryboardUtility.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		291C9EF92072239D0085E37E /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,12 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				291C9F1320728D490085E37E /* MainNetwork.swift */,
-				29DF70E3207E393800E1D023 /* SetTableAutolayout.swift */,
 				290EFFFB207F7E670004AAD4 /* GetService.swift */,
-				290EFFFD207F7FF90004AAD4 /* API.swift */,
 				290EFFFF207F83D50004AAD4 /* ServiceResult.swift */,
-				290E0001207F84640004AAD4 /* DataUtility.swift */,
-				290E0004207F890F0004AAD4 /* StoryboardUtility.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -193,6 +199,7 @@
 		8E8A63712071E688007D9B7A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				290EFFFD207F7FF90004AAD4 /* API.swift */,
 				8E8A637D2071F7BF007D9B7A /* AppColor.swift */,
 				291C9F52207736720085E37E /* SystemData.swift */,
 				291C9F54207736BB0085E37E /* UserData.swift */,
@@ -260,6 +267,7 @@
 		8EE538CA206E359F006BAC26 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				290E000620805A2F0004AAD4 /* Utility */,
 				291C9F1220728CF10085E37E /* Service */,
 				8E8A63712071E688007D9B7A /* Model */,
 				8EE538CE206E364E006BAC26 /* AppDelegate */,

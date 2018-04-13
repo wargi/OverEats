@@ -8,7 +8,9 @@
 
 import Alamofire
 
+/// GET 네트워크 프로토콜
 protocol GetServiceType {
+    // get service에 대한 개별 프로토콜 함수
     func getRestaurantList(completion: @escaping (Result<Lestaurants>) -> ())
 }
 
@@ -21,8 +23,11 @@ struct GetService: GetServiceType {
                 switch response.result {
                 case .success(let value):
                     do {
-                        let restaurantList = try value.decode(Lestaurants.self)
-                        completion(.success(restaurantList))
+                        let restaurantData = try value.decode(Lestaurants.self)
+                        for lestaurant in restaurantData.lestaurants{
+                            // 함수 추가 예정
+                        }
+                        completion(.success(restaurantData))
                     } catch {
                         completion(.error(error))
                     }

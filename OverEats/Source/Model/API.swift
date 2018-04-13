@@ -8,6 +8,7 @@
 
 import Foundation
 
+// API 정의
 enum API {
     static let baseURL = "https://www.overeats.kr/api/"
     

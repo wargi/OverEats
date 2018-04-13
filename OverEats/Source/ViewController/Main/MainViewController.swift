@@ -13,9 +13,9 @@ class MainViewController: UIViewController {
     var getService: GetServiceType?
     
     var notices: [Notice]?
-    var restaurants: [Restaurant]?
-    var nearRestaurants: [Restaurant]?
-    var prefRestaurants: [Restaurant]?
+    var restaurants: [Lestaurant]?
+    var nearRestaurants: [Lestaurant]?
+    var prefRestaurants: [Lestaurant]?
     
     var listStatusBits: UInt8 = 0b000
     
@@ -28,21 +28,10 @@ class MainViewController: UIViewController {
         return self
     }
     
-    private func getTempData(){
-        getService?.getRestaurantList(completion: { (result) in
-            switch result {
-            case .success(let restaurantList):
-                print(restaurantList)
-            case .error(let error):
-                print(error)
-            }
-        })
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         getTempData()
-        getRestaurantData()
+//        getRestaurantData()
         
         mainTableView.register(
             UINib(nibName: "MainListHeaderCell", bundle: nil),
@@ -56,7 +45,16 @@ class MainViewController: UIViewController {
 //        self.mainTableView.estimatedSectionHeaderHeight = 0;
     }
     
-    
+    private func getTempData(){
+        getService?.getRestaurantList(completion: { (result) in
+            switch result {
+            case .success(let restaurantData):
+                self.restaurants = restaurantData.lestaurants
+            case .error(let error):
+                print(error)
+            }
+        })
+    }
     
     private func getNoticeCell() -> UITableViewCell{
         
@@ -71,26 +69,26 @@ class MainViewController: UIViewController {
         return noticeTableViewCell
     }
     
-    func getRestaurantData(){
-            MainGet.getRestaurantList { restaurants in
-            self.restaurants = restaurants
-        }
-
-        if let restaurants = self.restaurants {
-            listStatusBits = listStatusBits | 0b001
-            for (index, restaurant) in restaurants.enumerated() {
-                let url = URL(string: restaurant.imageURL)
-                self.restaurants![index].imageData = try? Data(contentsOf: url!)
-                if restaurant.isOpen, restaurant.maxDeliveryTime >= 25 {
-                    listStatusBits = listStatusBits | 0b010
-                    nearRestaurants?.append(restaurant)
-                }else if restaurant.isOpen, restaurant.score! >= Float(4.0) {
-                    listStatusBits = listStatusBits | 0b100
-                    prefRestaurants?.append(restaurant)
-                }
-            }
-        }
-    }
+//    func getRestaurantData(){
+//            MainGet.getRestaurantList { restaurants in
+//            self.restaurants = restaurants
+//        }
+//
+//        if let restaurants = self.restaurants {
+//            listStatusBits = listStatusBits | 0b001
+//            for (index, restaurant) in restaurants.enumerated() {
+//                let url = URL(string: restaurant.imageURL)
+//                self.restaurants![index].imageData = try? Data(contentsOf: url!)
+//                if restaurant.isOpen, restaurant.maxDeliveryTime >= 25 {
+//                    listStatusBits = listStatusBits | 0b010
+//                    nearRestaurants?.append(restaurant)
+//                }else if restaurant.isOpen, restaurant.score! >= Float(4.0) {
+//                    listStatusBits = listStatusBits | 0b100
+//                    prefRestaurants?.append(restaurant)
+//                }
+//            }
+//        }
+//    }
     
 }
 

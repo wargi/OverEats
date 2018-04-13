@@ -17,7 +17,6 @@ struct Lestaurants: Decodable {
     }
 }
 
-
 struct Lestaurant: Decodable {
     let id: String! // 매장 고유 번호
     let name: String! // 매장 명
@@ -118,12 +117,12 @@ struct Logo: Decodable {
     let restaurant: String?
     
     private enum CodingKeys: String, CodingKey {
-        case id = "address1"
-        case url = "apt_suite"
-        case width = "city"
-        case height = "country"
+        case id
+        case url
+        case width
+        case height
         case isDefault = "is_default"
-        case restaurant = "region"
+        case restaurant
     }
 }
 

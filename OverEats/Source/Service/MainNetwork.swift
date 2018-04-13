@@ -8,6 +8,7 @@
 
 import Foundation
 
+// 더미 데이터 - 향후 삭제할 내용
 struct MainGet {
     
     static func getNotice(completionHandler: @escaping ([Notice]) -> Void) {
