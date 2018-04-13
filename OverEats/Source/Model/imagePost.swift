@@ -15,8 +15,8 @@ struct imagePost {
     
     static func imageDownload(stringURL: String) -> UIImage? {
         var img: UIImage?
-        let apiURL = URL(string: stringURL)!
-        let task = URLSession.shared.dataTask(with: apiURL) { (data, response, error) in
+        let apiURL = URL(string: stringURL)
+        let task = URLSession.shared.dataTask(with: apiURL!) { (data, response, error) in
             guard error == nil else {
                 print(error!.localizedDescription)
                 return
