@@ -17,7 +17,7 @@ protocol GetServiceType {
 struct GetService: GetServiceType {
     func getRestaurantList(completion: @escaping (Result<Lestaurants>) -> ()) {
         Alamofire
-            .request(API.Get.restaurantList)
+            .request(API.getRestaurantList(latitude: 37.494760, longitude: 127.051284, pageSize: 20).urlString)
             .validate()
             .responseData(completionHandler: { (response) in
                 switch response.result {

@@ -50,6 +50,7 @@ class MainViewController: UIViewController {
             switch result {
             case .success(let restaurantData):
                 self.restaurants = restaurantData.lestaurants
+                print(restaurantData)
             case .error(let error):
                 print(error)
             }
