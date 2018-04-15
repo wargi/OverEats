@@ -10,87 +10,99 @@ import UIKit
 
 class CreateIDViewController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet weak var emailTF: UITextField!
-    @IBOutlet weak var mobile: UITextField!
-    @IBOutlet weak var passWord: UITextField!
+    // 회원정보 TextField
+    @IBOutlet weak var emailTF: UITextField! // E-mail
+    @IBOutlet weak var mobile: UITextField! // PhoneNumber
+    @IBOutlet weak var passWord: UITextField! // PassWord
     
-    var emailCheck:Bool = false
-    var mobileCheck:Bool = false
-    var passWordCheck:Bool = false
+    // 정규식의 Bool값
+    var emailCheck:Bool = false // E-mail의 정규식 Check값
+    var mobileCheck:Bool = false // PhoneNumber의 정규식 Check값
+    var passWordCheck:Bool = false // PassWord의 정규식 Check값
     
+    // 회원정보를 저장
     var signUpDic:[String:Any] = [:]
     
+    // TextField값을 다음 view에 넘겨주기
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         
         if segue.identifier == "profileSegue" {
-            let vc = segue.destination as! ProfileCreateViewController
-            vc.signUpDic = signUpDic
+            let vc = segue.destination as! ProfileCreateViewController // 데스티니를 이용하여 뷰에 접근
+            vc.signUpDic = signUpDic // 해당 뷰에 접근이 가능해졌으니 원하는 값 옮기기
             
         }
     }
     
+    // 다음 버튼
     @IBAction func nextButton(_ sender: UIButton) {
         
+        // PhoneNumber 정규식 적용
         if vaildNumber(mobileNumber: mobile.text!) == false {
             
-            mobileCheck = false
+            mobileCheck = false // 정규식이 틀렸을 경우 false
             
         } else {
             
-            mobileCheck = true
+            mobileCheck = true // 정규식이 맞을 경우 true
             
         }
-        
-        print(emailCheck)
-        print(mobileCheck)
-        print(passWordCheck)
+    
+        // 모든 TextField의 정규식이 true일 때
         if emailCheck == true && mobileCheck == true && passWordCheck == true {
             
-            guard let emailText = self.emailTF.text else {return}
-            signUpDic.updateValue(emailText, forKey: "username")
-            guard let mobileText = self.mobile.text else {return}
-            signUpDic.updateValue(mobileText, forKey: "phonenumber")
-            guard let passWordText = self.passWord.text else {return}
-            signUpDic.updateValue(passWordText, forKey: "password")
+//            guard let emailText = self.emailTF.text else {return}
+            signUpDic.updateValue(emailTF.text!, forKey: "username") // E-mail 입력 값을 Dic 형태로 저장
+//            guard let mobileText = self.mobile.text else {return}
+            signUpDic.updateValue(mobile.text!, forKey: "phonenumber") // PhoneNumber 입력 값을 Dic 형태로 저장
+//            guard let passWordText = self.passWord.text else {return}
+            signUpDic.updateValue(passWord.text!, forKey: "password") // PassWord 입력 갑을 Dic 형태로 저장
             
-            performSegue(withIdentifier: "profileSegue", sender: sender)
+            performSegue(withIdentifier: "profileSegue", sender: sender) // 다음 view로 이동하기
             
         }
         
+        // 모든 TextField의 정규식이 false일 때
         if emailCheck == false && mobileCheck == false && passWordCheck == false {
             
+            // 경고창 띄우기
             let alertController = UIAlertController(title: "모두 작성해 주세요",message: "모두 작성해 주세요", preferredStyle: UIAlertControllerStyle.alert)
             let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
-            alertController.addAction(okAction)
+            alertController.addAction(okAction) // 확인 버튼
             self.present(alertController,animated: true,completion: nil)
             
         }
         
+        // 1개라도 정규식이 true일 때
         if emailCheck == true || mobileCheck == true || passWordCheck == true {
             
+            // E-mail TextField가 false일 때
             if emailCheck == false {
                 
+                // 경고 창 띄우기
                 let alertController = UIAlertController(title: "E-mail 형식이 틀렸습니다.",message: "다시 작성해 주세요", preferredStyle: UIAlertControllerStyle.alert)
                 let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
-                alertController.addAction(okAction)
+                alertController.addAction(okAction) // 확인 버튼
                 self.present(alertController,animated: true,completion: nil)
                 
             }
-                
+            
+            // PhoneNumber TextField가 false일 때
             else if mobileCheck == false {
                 
+                // 경고 창 띄우기
                 let alertController = UIAlertController(title: "번호 입력이 틀렸습니다.",message: "숫자만 입력해 주세요", preferredStyle: UIAlertControllerStyle.alert)
                 let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
-                alertController.addAction(okAction)
+                alertController.addAction(okAction) // 확인 버튼
                 self.present(alertController,animated: true,completion: nil)
                 
             }
-                
+            // passWord TextField가 false일 때
             else if passWordCheck == false {
                 
+                // 경고 창 띄우기
                 let alertController = UIAlertController(title: "비밀번호 입력이 틀렸습니다.",message: "5자 입력해 주세요", preferredStyle: UIAlertControllerStyle.alert)
                 let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
-                alertController.addAction(okAction)
+                alertController.addAction(okAction) // 확인 버튼
                 self.present(alertController,animated: true,completion: nil)
                 
             }
@@ -98,7 +110,7 @@ class CreateIDViewController: UIViewController, UITextFieldDelegate {
     }
    
     
-    
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         guard let text = textField.text else {return false}

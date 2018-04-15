@@ -991,9 +991,6 @@ CiA
                                                     <constraint firstAttribute="width" constant="60" id="bUu-8b-POy"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="jisu1.jpg"/>
-                                                <connections>
-                                                    <action selector="TosCheckButton:" destination="hJD-QY-lFd" eventType="touchUpInside" id="mWs-Te-boc"/>
-                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="clip" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ncW-BH-4pl">
                                                 <rect key="frame" x="67" y="0.0" width="308" height="80"/>
@@ -1184,9 +1181,6 @@ CiA
                                                     <constraint firstAttribute="width" constant="60" id="YW7-PD-Qfu"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="jisu1.jpg"/>
-                                                <connections>
-                                                    <action selector="PIPCheckButton:" destination="hJD-QY-lFd" eventType="touchUpInside" id="u7L-ZR-6K4"/>
-                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDA-FJ-o2f">
                                                 <rect key="frame" x="67" y="0.0" width="308" height="60"/>
@@ -1348,9 +1342,6 @@ CiA
                                                     <constraint firstAttribute="width" constant="60" id="9ea-8V-eXQ"/>
                                                 </constraints>
                                                 <state key="normal" backgroundImage="jisu1.jpg"/>
-                                                <connections>
-                                                    <action selector="OptionCheckButton:" destination="hJD-QY-lFd" eventType="touchUpInside" id="wB3-b4-OV9"/>
-                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbF-UP-FSs">
                                                 <rect key="frame" x="67" y="0.0" width="308" height="80"/>
