@@ -19,9 +19,12 @@ protocol APIProtocol
 
 /// URL의 EndPoint에 파라미터 값을 포함하여 URL을 반환하는 API 열거형
 ///
-/// ex) -get 또는 post로 변수 앞에 네이밍 참고
-/// - getRestaurantList: 메인 페이지 레스토랑 리스트 API를 반환
-/// 호출 방법 : API.postLogin.urlString
+/// - 호출 방법 : API.postLogin.urlString
+///             API.getRestaurantList(latitude: 37.494760, longitude: 127.051284, pageSize: 20).urlString
+///
+/// ex) get 또는 post로 변수 앞에 네이밍 참고
+/// - getRestaurantList: 메인 페이지 레스토랑 리스트
+/// - postLogin: 로그인 API 파라미터에 userName, password 포함
 enum API: APIProtocol
 {
     // GET API URL 리스트를 열거형으로 정의 %02d

@@ -12,7 +12,6 @@ import UIKit
 
 struct imagePost {
     
-    
     static func imageDownload(stringURL: String) -> UIImage? {
         var img: UIImage?
         let apiURL = URL(string: stringURL)!
