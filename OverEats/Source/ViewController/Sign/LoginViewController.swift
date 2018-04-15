@@ -13,7 +13,6 @@ class LoginViewController: UIViewController {
     
     var token:String!
     
-    
     @IBOutlet weak var emailLoginTextField: UITextField!
    
     @IBOutlet weak var passWordLoginTextField: UITextField!
@@ -42,6 +41,9 @@ class LoginViewController: UIViewController {
                         
                         //이동할 페이지 이름적기
 //                        self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                        
+                        // 데이터 저장
+                        UserDefaults.standard.set("\(self.token)", forKey: "userToken")
                         
                     } catch {
                         print(error.localizedDescription)

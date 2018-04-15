@@ -12,10 +12,11 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let token = UserDefaults.standard.string(forKey: "userToken")
 
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]? = nil) -> Bool {
         // Override point for customization after application launch.
+        setupRootViewController()
         return true
     }
 
@@ -41,5 +42,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func setupRootViewController() {
+        let viewController:UIViewController
+        if self.token == nil {
+            viewController = UIStoryboard.init(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: "SignViewController") as! SignViewController
+        } else {
+            viewController = UIStoryboard.init(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: "ToSViewController") as! ToSViewController
+        }
+        window?.rootViewController = viewController
+    }
 }

@@ -38,6 +38,7 @@ class ToSViewController: UIViewController {
     
     // 전체 선택 이벤트
     @IBAction func allTrue(_ sender: UIButton) {
+        
         TosButton.isSelected = true
         PIPButton.isSelected = true
         OptionButton.isSelected = true
@@ -50,7 +51,10 @@ class ToSViewController: UIViewController {
     // 다음 버튼 이벤트
     @IBAction func nextButton(_ sender: UIButton) {
         
+        // 필수 약관 2개 선택이 아닐경우
         guard TosButton.isSelected && PIPButton.isSelected else {
+            
+            // 경고 창 띄우기
             let alertController = UIAlertController(title: "필수 약관 체크",
                                                     message: "필수 약관 체크",
                                                     preferredStyle: UIAlertControllerStyle.alert)
@@ -61,7 +65,9 @@ class ToSViewController: UIViewController {
             
         }
         
+        // 필수 약관 2개 선택 시 다음 view로 이동
         let nextViewController = storyboard?.instantiateViewController(withIdentifier: "CreateIDViewController") as! CreateIDViewController
+        
         present(nextViewController, animated: true, completion: nil)
         
     }
