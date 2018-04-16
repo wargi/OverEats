@@ -10,111 +10,86 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    var getService: GetServiceType?
+    
     var notices: [Notice]?
-    var restaurants: [Restaurant]?
-    var nearRestaurants: [Restaurant]?
-    var prefRestaurants: [Restaurant]?
+    var restaurants: [Lestaurant]?
+    var nearRestaurants: [Lestaurant]?
+    var prefRestaurants: [Lestaurant]?
     
     var listStatusBits: UInt8 = 0b000
     
     @IBOutlet weak private var mainTableView: UITableView!
     
-    @IBOutlet private var noticeView: UIView!
-    @IBOutlet private var noticeScrollView: UIScrollView!
-    
-    @IBOutlet private var noticePageControl: UIPageControl!
-    
-    @IBAction func testBtn(_ sender: Any) {
-        
+    static func createWith(getService: GetServiceType = GetService()) -> Self {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let `self` = storyboard.instantiateViewController(ofType: self.self)
+        self.getService = getService
+        return self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getTempData()
+//        getRestaurantData()
         
-        noticeScrollView.delegate = self
+        mainTableView.register(
+            UINib(nibName: "MainListHeaderCell", bundle: nil),
+            forCellReuseIdentifier: "MainListHeaderCell"
+        )
         
-        getNoticeData()
+        self.mainTableView.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: Double(FLT_MIN)))
         
-        getRestaurantData()
-        
-
+        // 섹션 헤더뷰의 기본값 정의
+//        self.mainTableView.sectionHeaderHeight = UITableViewAutomaticDimension;
+//        self.mainTableView.estimatedSectionHeaderHeight = 0;
     }
     
-    func getRestaurantData(){
-        MainGet.getRestaurantList { restaurants in
-            self.restaurants = restaurants
-        }
-        
-        if let restaurants = self.restaurants {
-            listStatusBits = listStatusBits | 0b001
-            for (index, restaurant) in restaurants.enumerated() {
-                let url = URL(string: restaurant.imageURL)
-                self.restaurants![index].imageData = try? Data(contentsOf: url!)
-                if restaurant.isOpen, restaurant.maxDeliveryTime >= 25 {
-                    listStatusBits = listStatusBits | 0b010
-                    nearRestaurants?.append(restaurant)
-                }else if restaurant.isOpen, restaurant.score! >= Float(4.0) {
-                    listStatusBits = listStatusBits | 0b100
-                    prefRestaurants?.append(restaurant)
-                }
+    private func getTempData(){
+        getService?.getRestaurantList(completion: { (result) in
+            switch result {
+            case .success(let restaurantData):
+                self.restaurants = restaurantData.lestaurants
+                print(restaurantData)
+            case .error(let error):
+                print(error)
             }
-        }
+        })
     }
     
-}
-
-extension MainViewController: UIScrollViewDelegate {
-    
-    // MARK: buttonhandler
-    private func getNoticeData(){
+    private func getNoticeCell() -> UITableViewCell{
+        
+        let noticeTableViewCell = NoticeTableViewCell.loadNoticeTableViewCellNib()
+        
+        noticeTableViewCell.translatesAutoresizingMaskIntoConstraints = false
+        
         MainGet.getNotice(completionHandler: { notices in
-            self.notices = notices
+            noticeTableViewCell.setNoticePage(with: notices)
         })
         
-        var contentWidth: CGFloat = 0.0
-        
-        noticeView.frame.size = CGSize(width: self.view.frame.size.width, height: 200)
-        
-        let viewWidth = noticeView.frame.size.width
-        let contentHeight = noticeView.frame.size.height
-        
-        if let notices = self.notices {
-            for notice in notices {
-                
-                let noticeImageView = NoticeImageView.loadNoticeNib()
-                noticeImageView.configure(with: notice)
-                
-                noticeScrollView.addSubview(noticeImageView)
-
-                noticeImageView.frame = CGRect(x: contentWidth, y: 0, width: viewWidth, height: contentHeight)
-                noticeImageView.addGradient(with: noticeView.frame)
-
-                contentWidth += viewWidth
-                
-            }
-            noticePageControl.numberOfPages = notices.count
-            noticeScrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
-            
-        }
-        
-        
+        return noticeTableViewCell
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        noticePageControl.currentPage = Int(noticeScrollView.contentOffset.x / noticeView.frame.size.width)
-    }
-    
-    /// 입력된 페이지로 스크롤 뷰를 이동해주는 함수
-    ///
-    /// - Parameter page: 이동해야되는 페이지 0부터 시작
-    func scrollToPage(page: Int) {
-        var frame: CGRect = noticeView.frame
-        print(frame.origin.x)
-        frame.origin.x = frame.size.width * CGFloat(page);
-        print(frame.origin.x)
-        frame.origin.y = 0;
-        noticeScrollView.scrollRectToVisible(frame, animated: true)
-    }
+//    func getRestaurantData(){
+//            MainGet.getRestaurantList { restaurants in
+//            self.restaurants = restaurants
+//        }
+//
+//        if let restaurants = self.restaurants {
+//            listStatusBits = listStatusBits | 0b001
+//            for (index, restaurant) in restaurants.enumerated() {
+//                let url = URL(string: restaurant.imageURL)
+//                self.restaurants![index].imageData = try? Data(contentsOf: url!)
+//                if restaurant.isOpen, restaurant.maxDeliveryTime >= 25 {
+//                    listStatusBits = listStatusBits | 0b010
+//                    nearRestaurants?.append(restaurant)
+//                }else if restaurant.isOpen, restaurant.score! >= Float(4.0) {
+//                    listStatusBits = listStatusBits | 0b100
+//                    prefRestaurants?.append(restaurant)
+//                }
+//            }
+//        }
+//    }
     
 }
 
@@ -129,7 +104,7 @@ extension MainViewController: UITableViewDataSource {
         mainRestView.translatesAutoresizingMaskIntoConstraints = false
         mainRestView.configure(with: restaurant)
         
-        mainRestView.topAnchor.constraint(equalTo: tempCell.topAnchor, constant: 15).isActive = true
+        mainRestView.topAnchor.constraint(equalTo: tempCell.topAnchor, constant: 0).isActive = true
         mainRestView.leadingAnchor.constraint(equalTo: tempCell.leadingAnchor, constant: 15).isActive = true
         mainRestView.trailingAnchor.constraint(equalTo: tempCell.trailingAnchor, constant: -15).isActive = true
         mainRestView.bottomAnchor.constraint(equalTo: tempCell.bottomAnchor, constant: -15).isActive = true
@@ -172,17 +147,34 @@ extension MainViewController: UITableViewDataSource {
 //                return (prefRestaurants?.count)!
 //            }
 //        }
-        return (restaurants?.count)!
+//        if section == 1 {
+//            print("tt", section)
+//            return 0
+//        }else {
+//            print("sddas")
+//            return (restaurants?.count)!
+//        }
+        
+        return 1
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let mainHeaderInSection = MainHeaderInSection.loadMainHeaderInSectionNib()
+//        mainHeaderInSection.headerLabel.text = "레스토랑 더 보기"
+//        return mainHeaderInSection
+//    }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 100
+//    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 10
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        return layoutRestaurantCell(with: self.restaurants![indexPath.row])
+        return getNoticeCell()
 
-        return layoutRestaurantCell(with: self.restaurants![indexPath.row])
-        
 //        let emptyCell = UITableViewCell()
 //        if listStatusBits == 1 {
 //            return (restaurants?.count)!

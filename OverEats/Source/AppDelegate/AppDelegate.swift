@@ -12,12 +12,21 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    static var instance: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    
-        // Override point for customization after application launch.
+        setupRootViewController()
+
         return true
+    }
+    
+    func setupRootViewController() {
+        let vc: UIViewController
+        vc = MainViewController.createWith()
+        window?.rootViewController = vc
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
