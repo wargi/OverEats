@@ -35,6 +35,7 @@ enum API: APIProtocol
     enum GET_LIST: String
     {
         case restaurantList = "/restaurant/?lat=%.6f&lng=%.6f&page_size=%d"
+        case menuList = "/%@/menu"
     }
     // POST API URL 리스트를 열거형으로 정의
     enum POST_LIST: String
@@ -44,6 +45,7 @@ enum API: APIProtocol
     
     // GET API
     case getRestaurantList(latitude: Float, longitude: Float, pageSize: Int)
+    case getMenuList(restaurantId: String)
     
     // POST API
     case postLogin
@@ -56,6 +58,8 @@ enum API: APIProtocol
                 return String(format: GET_LIST.restaurantList.rawValue, latitude, longitude, pageSize)
             case .postLogin:
                 return String(format: POST_LIST.login.rawValue)
+            case .getMenuList(let restaurantId):
+                return String(format: GET_LIST.menuList.rawValue, restaurantId)
             }
         }
     }
