@@ -118,15 +118,15 @@ extension MenuViewController: UITableViewDataSource {
             return cell
             
         }
-        if let menuImage = imagePost.imageDownload(stringURL: menuImage) {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ImageMenuListCell") as! ImageMenuListCell
-            cell.setImage = menuImage
-            cell.setName = restaurantInfomation.menuList?[indexPath.row].foodName
-            cell.foodDescription = restaurantInfomation.menuList?[indexPath.row].foodDescription
-            cell.setPrice = "₩" + String(restaurantInfomation.menuList![indexPath.row].price)
-            
-            return cell
-        }
+//        if let menuImage = imagePost.imageDownload(stringURL: menuImage) {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "ImageMenuListCell") as! ImageMenuListCell
+//            cell.setImage = menuImage
+//            cell.setName = restaurantInfomation.menuList?[indexPath.row].foodName
+//            cell.foodDescription = restaurantInfomation.menuList?[indexPath.row].foodDescription
+//            cell.setPrice = "₩" + String(restaurantInfomation.menuList![indexPath.row].price)
+//            
+//            return cell
+//        }
         
         return UITableViewCell()
     }

@@ -24,9 +24,6 @@ struct GetService: GetServiceType {
                 case .success(let value):
                     do {
                         let restaurantData = try value.decode(Lestaurants.self)
-                        for lestaurant in restaurantData.lestaurants{
-                            // 함수 추가 예정
-                        }
                         completion(.success(restaurantData))
                     } catch {
                         completion(.error(error))

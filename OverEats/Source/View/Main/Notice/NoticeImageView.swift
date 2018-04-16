@@ -23,13 +23,12 @@ class NoticeImageView: UIView {
     
     func configure(with notice: Notice) {
         DispatchQueue.global(qos: .background).async {
-            let url = URL(string: notice.imageURL)
-            let data = try? Data(contentsOf: url!)
-            DispatchQueue.main.async {
-                self.imageView.image = UIImage(data: data!)
-                self.titleLabel.text = notice.title
-                self.subTitleLabel.text = notice.subTitle
-            }
+            
+            self.imageView.loadImageUsingCacheWithUrl(urlString: notice.imageURL, completion: { (success) in
+                
+            })
+            self.titleLabel.text = notice.title
+            self.subTitleLabel.text = notice.subTitle
         }
     }
     
