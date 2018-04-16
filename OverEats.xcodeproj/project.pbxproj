@@ -39,6 +39,7 @@
 		8EE538C0206E25AE006BAC26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EE538BF206E25AE006BAC26 /* Assets.xcassets */; };
 		8EE538C3206E25AE006BAC26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EE538C1206E25AE006BAC26 /* LaunchScreen.storyboard */; };
 		9E3343452080491000E3D250 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3343442080491000E3D250 /* LoginViewController.swift */; };
+		9E33434B208470AE00E3D250 /* Regularexpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E33434A208470AE00E3D250 /* Regularexpression.swift */; };
 		9E46E53D2077D59900FA9721 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E46E53C2077D59900FA9721 /* LocationViewController.swift */; };
 		9E60DCCE2074BF4700B9528A /* CreateIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60DCCD2074BF4700B9528A /* CreateIDViewController.swift */; };
 		9E60DCD02074C08F00B9528A /* ProfileCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60DCCF2074C08F00B9528A /* ProfileCreateViewController.swift */; };
@@ -81,6 +82,7 @@
 		8EE538C2206E25AE006BAC26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8EE538C4206E25AE006BAC26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E3343442080491000E3D250 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9E33434A208470AE00E3D250 /* Regularexpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regularexpression.swift; sourceTree = "<group>"; };
 		9E46E53C2077D59900FA9721 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		9E60DCCD2074BF4700B9528A /* CreateIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateIDViewController.swift; sourceTree = "<group>"; };
 		9E60DCCF2074C08F00B9528A /* ProfileCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreateViewController.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 		9E60DCCC2074AB6A00B9528A /* Sign */ = {
 			isa = PBXGroup;
 			children = (
+				9E33434A208470AE00E3D250 /* Regularexpression.swift */,
 				8E8A636D2071E583007D9B7A /* SignViewController.swift */,
 				9E60DCD12074D1F900B9528A /* ToSViewController.swift */,
 				9E60DCCD2074BF4700B9528A /* CreateIDViewController.swift */,
@@ -447,6 +450,7 @@
 				291C9F1420728D490085E37E /* MainNetwork.swift in Sources */,
 				291C9F2120749CBA0085E37E /* NoticeImageView.swift in Sources */,
 				8E8A637E2071F7BF007D9B7A /* AppColor.swift in Sources */,
+				9E33434B208470AE00E3D250 /* Regularexpression.swift in Sources */,
 				9E3343452080491000E3D250 /* LoginViewController.swift in Sources */,
 				291C9F2E2075FAD80085E37E /* MainRestTableViewCell.swift in Sources */,
 				291C9F32207629A10085E37E /* MainInviteTableViewCell.swift in Sources */,

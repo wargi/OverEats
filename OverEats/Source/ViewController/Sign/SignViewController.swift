@@ -14,15 +14,15 @@ class SignViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         //라운드 값 주기
         roundView.layer.cornerRadius = roundView.frame.size.height/6
- 
+        
     }
     
     //로그인 버튼
     @IBAction func signInButton(_ sender: UIButton) {
-      
+        
         //로그인 페이지로 넘어가기
         let nextViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         present(nextViewController, animated: true, completion: nil)
@@ -37,5 +37,5 @@ class SignViewController: UIViewController {
         present(nextViewController, animated: true, completion: nil)
         
     }
-
+    
 }

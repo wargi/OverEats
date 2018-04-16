@@ -11,15 +11,21 @@ import Alamofire
 
 class LoginViewController: UIViewController {
     
-    var token:String!
+    var token:String! // 토큰 값
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+    // Id와 passWord
     @IBOutlet weak var emailLoginTextField: UITextField!
-   
     @IBOutlet weak var passWordLoginTextField: UITextField!
     
+    // 완료 버튼
     @IBAction func completeButton(_ sender: UIButton) {
         
-        
+        // textField에 입력한 값을 서버에 보내기 위한 준비
         let  params: Parameters = [
             "username" : emailLoginTextField.text!,
             "password" : passWordLoginTextField.text!
@@ -31,52 +37,35 @@ class LoginViewController: UIViewController {
             .validate()
             .responseData { (response) in
                 switch response.result {
-                case .success(let value):
-                    print("로그인 성공: ", value)
+                case .success(_):
+                    
                     do{
+                        
+                        // 회원 정보 받아오기
                         let json = response.data
                         var jsondata = try JSONSerialization.jsonObject(with: json!) as! [String:Any]
-                        self.token = jsondata["token"] as! String
-                        print(self.token)
                         
-                        //이동할 페이지 이름적기
-//                        self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                        // 토큰 값 저장
+                        self.token = jsondata["token"] as! String
+                        
+                        // 이동할 페이지 이름적기
+                        // self.performSegue(withIdentifier: "loginSegue", sender: nil)
                         
                         // 데이터 저장
                         UserDefaults.standard.set("\(self.token)", forKey: "userToken")
                         
                     } catch {
-                        print(error.localizedDescription)
+                        
+                        // 경고 창 띄우기
+                        self.showAlert(alertTitle: "실패", alertMessage: "로그인 실패", actionTitle: "확인")
+                        
                     }
-                case .failure(let error):
-                    print("로그인 실패: ", error.localizedDescription)
-                    let alertController = UIAlertController(title: "실패",message: "로그인 실패했습니다", preferredStyle: UIAlertControllerStyle.alert)
-                    let okAction = UIAlertAction(title: "확인", style: UIAlertActionStyle.default)
-                    alertController.addAction(okAction)
-                    self.present(alertController,animated: true,completion: nil)
+                case .failure(_):
+                    
+                    // 걍고 창 띄우기
+                    self.showAlert(alertTitle: "실패", alertMessage: "로그인 실패", actionTitle: "확인")
+                    
                 }
-                
         }
-        
-        
-        let caches = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
-        
-        let fileManager = FileManager()
-        
-        if !fileManager.fileExists(atPath: caches) {
-            try? fileManager.createDirectory(atPath: caches,
-                                             withIntermediateDirectories: true,
-                                             attributes: nil)
-        }
-        
-        
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        
-    }
-
-
 }

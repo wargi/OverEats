@@ -12,11 +12,13 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let token = UserDefaults.standard.string(forKey: "userToken")
+    
+    let token = UserDefaults.standard.string(forKey: "userToken!") // 토큰 값 가져오기
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]? = nil) -> Bool {
-        // Override point for customization after application launch.
+        
         setupRootViewController()
+        
         return true
     }
 
@@ -42,13 +44,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    // 토큰 값으로 rootView 정하기
     func setupRootViewController() {
-        let viewController:UIViewController
+        
+        let viewController: UIViewController
+        
         if self.token == nil {
+            
+            // 토큰이 없을 시에 view 정하기
             viewController = UIStoryboard.init(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: "SignViewController") as! SignViewController
+            
         } else {
+            
+            // 토큰이 있을 시에 view 정하기
             viewController = UIStoryboard.init(name: "Sign", bundle: nil).instantiateViewController(withIdentifier: "ToSViewController") as! ToSViewController
+            
         }
+        
+        // rootView 정해주기
         window?.rootViewController = viewController
+        
     }
 }
