@@ -33,7 +33,7 @@ final class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         GetService.getMenuList { result in
             switch result {
             case .success(let data):
@@ -90,6 +90,7 @@ final class MenuViewController: UIViewController {
         footerView.backgroundColor = UIColor(red: 214, green: 214, blue: 214, alpha: 0.9)
         menuList.tableFooterView = nil
         menuList.addSubview(footerView)
+        
         //테이블 뷰의 content In/Off set 적용
         menuList.contentInset = UIEdgeInsetsMake(SetSize.headerViewHeight, 0, 0, 0)
         menuList.contentOffset = CGPoint(x: 0, y: -SetSize.headerViewHeight)
@@ -150,7 +151,7 @@ final class MenuViewController: UIViewController {
         headerView.gradientView.layer.insertSublayer(gradient, at: 0)
     }
     
-}
+    
 
 // MARK: extension TableView
 // UITableViewDataSource

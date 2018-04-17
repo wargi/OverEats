@@ -40,7 +40,7 @@ final class SelectMenuViewController: UIViewController {
     // 제스쳐
     var pan: UIPanGestureRecognizer! // Pan Gesture 스크롤 DissMiss
     var tap: UITapGestureRecognizer! // Tap Gesture 요청사항 작성 이벤트
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .lightContent
@@ -92,6 +92,10 @@ final class SelectMenuViewController: UIViewController {
         closeButton.addTarget(self, action: #selector(self.clickedCloseButton(_:)), for: .touchUpInside)
     }
 
+    @objc func clickedCloseButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @objc func clickedCloseButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }

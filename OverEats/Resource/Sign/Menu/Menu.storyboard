@@ -338,7 +338,7 @@
                                                             <constraint firstAttribute="height" constant="40" id="Hdq-lt-d7k"/>
                                                             <constraint firstAttribute="width" constant="40" id="O2x-BJ-dxP"/>
                                                         </constraints>
-                                                        <state key="normal" image="btnAdd">
+                                                        <state key="normal" image="btnAdd">=
                                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
