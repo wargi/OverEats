@@ -35,7 +35,7 @@ enum API: APIProtocol
     enum GET_LIST: String
     {
         case restaurantList = "/restaurant/?lat=%.6f&lng=%.6f&page_size=%d"
-        case menuList = "/%@/menu"
+        case menuList = "/restaurant/%@/menu"
     }
     // POST API URL 리스트를 열거형으로 정의
     enum POST_LIST: String

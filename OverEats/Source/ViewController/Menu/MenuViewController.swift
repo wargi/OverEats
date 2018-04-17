@@ -25,22 +25,23 @@ final class MenuViewController: UIViewController {
     // TableView 관련
     @IBOutlet private weak var menuList : UITableView! // menuList tableView
     var headerView: MenuHeaderView! // menuList의 headerView
+    var footerView: UIView!
     var gradient: CAGradientLayer! // menuList의 headerView의 그라데이션
     
-    var restaurantInfomation: Restaurant!
+    var sections: [Section]?
     var restaurantId: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let input = readLine()!
-        print(input.self)
-        
-        
-        
-        
-        MainGet.getRestaurantList { rest in
-            self.restaurantInfomation = rest[0]
+        GetService.getMenuList { result in
+            switch result {
+            case .success(let data):
+                self.sections = data
+                self.menuList.reloadData()
+            case .error(let error):
+                print(error.localizedDescription)
+            }
         }
         
         UIApplication.shared.statusBarStyle = .lightContent
@@ -63,7 +64,7 @@ final class MenuViewController: UIViewController {
         let backImage = UIImage(named: "btnBack")?.withRenderingMode(.alwaysTemplate) // Button Image 삽입
         backButton.setImage(backImage, for: .normal) // backImage 추가
         backButton.tintColor = .white // tintColor white 설정
-        navigationTitle.text = restaurantInfomation.name // navigation title ( 음식점 명 삽입 )
+        navigationTitle.text = "맥도날드" // navigation title ( 음식점 명 삽입 )
         
     }
     
@@ -71,23 +72,24 @@ final class MenuViewController: UIViewController {
     func setMenuList() {
         
         menuList.backgroundColor = .white // 테이블뷰의 배경 색
+        menuList.separatorStyle = .none
         
         // 사용할 xib 등록
-        // ImageMenuListCell xib
-        menuList.register(
-            UINib(nibName: "ImageMenuListCell", bundle: nil),
-            forCellReuseIdentifier: "ImageMenuListCell")
-        
         // NonImageMenuList xib
         menuList.register(
-            UINib(nibName: "NonImageMenuListCell", bundle: nil),
-            forCellReuseIdentifier: "NonImageMenuListCell")
+            UINib(nibName: "MenuListCell", bundle: nil),
+            forCellReuseIdentifier: "MenuListCell")
         
         headerView = menuList.tableHeaderView as! MenuHeaderView // 헤더뷰 설정
         menuList.tableHeaderView = nil // 테이블뷰 자체 헤더뷰 nil
         menuList.rowHeight = UITableViewAutomaticDimension // 테이블뷰의 rowHeight값을 custom 하게 설정
         menuList.addSubview(headerView) // 테이블뷰에 헤더뷰 addSubView
         
+        footerView = menuList.tableFooterView
+        footerView = UIView(frame: CGRect(x: 0, y: 0, width: menuList.bounds.width, height: 1))
+        footerView.backgroundColor = UIColor(red: 214, green: 214, blue: 214, alpha: 0.9)
+        menuList.tableFooterView = nil
+        menuList.addSubview(footerView)
         //테이블 뷰의 content In/Off set 적용
         menuList.contentInset = UIEdgeInsetsMake(SetSize.headerViewHeight, 0, 0, 0)
         menuList.contentOffset = CGPoint(x: 0, y: -SetSize.headerViewHeight)
@@ -99,9 +101,8 @@ final class MenuViewController: UIViewController {
     // 테이블 뷰 헤더뷰 생성
     func setHeaderView() {
         
-        headerView.setTitle = restaurantInfomation.name
-        headerView.setDeliveryTime = String(restaurantInfomation.minDeliveryTime) + "분-" +
-                                  String(restaurantInfomation.maxDeliveryTime) + "분"
+        headerView.setTitle = "맥도날드"
+        headerView.setDeliveryTime = "15" + "분-" + "25" + "분"
         
     }
     
@@ -155,34 +156,42 @@ final class MenuViewController: UIViewController {
 // UITableViewDataSource
 extension MenuViewController: UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return sections?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        return sections?[section].name ?? "제목없음"
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let menuCount = restaurantInfomation.menuList?.count else { return 0 }
-        return menuCount
+        
+        return sections?[section].menuList.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let menuImage = restaurantInfomation.menuList?[indexPath.row].foodImage else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NonImageMenuListCell") as! NonImageMenuListCell
-            cell.setName = restaurantInfomation.menuList?[indexPath.row].foodName
-            cell.setDescription = restaurantInfomation.menuList?[indexPath.row].foodDescription
-            cell.setPrice = "₩" + String(restaurantInfomation.menuList![indexPath.row].price)
-
-            return cell
-
+        guard let section = self.sections?[indexPath.section] else {
+            return UITableViewCell()
         }
         
-        if let menuImage = imageService. {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ImageMenuListCell") as! ImageMenuListCell
-            cell.setImage = menuImage
-            cell.setName = restaurantInfomation.menuList?[indexPath.row].foodName
-            cell.setDescription = restaurantInfomation.menuList?[indexPath.row].foodDescription
-            cell.setPrice = "₩" + String(restaurantInfomation.menuList![indexPath.row].price)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuListCell") as! MenuListCell
+        cell.configure(with: section.menuList[indexPath.row])
 
-            return cell
-        }
-        
-        return UITableViewCell()
+        return cell
+
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        guard let header = view as? UITableViewHeaderFooterView else { return }
+        header.textLabel?.textColor = .black
+        header.textLabel?.font = UIFont.systemFont(ofSize: 17)
+        header.textLabel?.frame = header.frame
+        header.textLabel?.textAlignment = .left
+        header.textLabel?.lineBreakMode = .byWordWrapping
+        header.textLabel?.numberOfLines = 1
+        header.frame.origin.x = 100
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -196,10 +205,12 @@ extension MenuViewController: UITableViewDataSource {
 // UITableViewDelegate
 extension MenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let rowInSection = self.sections?[indexPath.section].menuList[indexPath.row] else { return }
         
         let nextViewController = storyboard?.instantiateViewController(withIdentifier: "SelectMenu") as! SelectMenuViewController
-        nextViewController.price = 7000
-        nextViewController.modalPresentationStyle = .overFullScreen
+        nextViewController.menuInfo = rowInSection
+//        nextViewController.modalPresentationStyle = .overFullScreen
+        self.modalPresentationStyle = .overFullScreen
         
         self.present(nextViewController, animated: true, completion: nil)
     }

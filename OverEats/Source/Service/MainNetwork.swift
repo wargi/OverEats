@@ -46,10 +46,6 @@ struct MainGet {
             Category(id: "1", name: "일식", imageURL: "https://picsum.photos/500/500?random")
         ]
 
-        let restaurant1 = Restaurant(id: "1", name: "이치라쿠", isOpen: true, address: "서초구 서초동 101-1", description: "테이스티로드에 소개된 라멘 맛집, 가로수길 피에스타 선정 맛집", score: 4.2, imageURL: tempImageURL, imageData: nil, minDeliveryTime: 10, maxDeliveryTime: 20, menuList: nil, category: category1)
-        
-        restaurants.append(restaurant1)
-
         let menuListTemp:[Menu] = [
             Menu(id: "1", price: 7000, foodName: "비빔밥", foodImage: nil, foodDescription: "여러가지 채소가 들어가는 비빔밥여러가지 채소가 들어가는 비빔밥여러가지 채소가 들어가는 비빔밥여러가지 채소가 들어가는 비빔밥여러가지 채소가 들어가는 비빔밥여러가지 채소가 들어가는 비빔밥여러가지 채소가 들어가는 비빔밥"),
             Menu(id: "2", price: 14000, foodName: "매운탕", foodImage: nil, foodDescription: "얼큰한 매운탕"),
