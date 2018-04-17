@@ -14,10 +14,11 @@ class MainViewController: UIViewController {
     
     var notices: [Notice]?
     var restaurants: [Lestaurant]?
-    var nearRestaurants: [Lestaurant]?
-    var prefRestaurants: [Lestaurant]?
+    var nearRestaurants: [Lestaurant] = []
+    var prefRestaurants: [Lestaurant] = []
     
     var listStatusBits: UInt8 = 0b000
+    var listNumberOfSection = 0
     
     @IBOutlet weak private var mainTableView: UITableView!
     
@@ -30,150 +31,125 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getTempData()
-//        getRestaurantData()
         
-        mainTableView.register(
-            UINib(nibName: "MainListHeaderCell", bundle: nil),
-            forCellReuseIdentifier: "MainListHeaderCell"
-        )
+        getRestaurantData()
+        getNoticeData()
         
-        self.mainTableView.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: Double(FLT_MIN)))
+//        mainTableView.register(UINib(nibName: "NoticeTableViewCell", bundle: nil), forCellReuseIdentifier: "NoticeTableViewCell")
+        
+        self.mainTableView.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: CGFloat.leastNormalMagnitude))
         
         // 섹션 헤더뷰의 기본값 정의
-//        self.mainTableView.sectionHeaderHeight = UITableViewAutomaticDimension;
-//        self.mainTableView.estimatedSectionHeaderHeight = 0;
+        self.mainTableView.rowHeight = UITableViewAutomaticDimension
+        self.mainTableView.sectionHeaderHeight = UITableViewAutomaticDimension
+        self.mainTableView.estimatedSectionHeaderHeight = CGFloat.leastNormalMagnitude
     }
     
-    private func getTempData(){
+    private func getRestaurantData(){
         getService?.getRestaurantList(completion: { (result) in
             switch result {
             case .success(let restaurantData):
-                self.restaurants = restaurantData.lestaurants
-                print(restaurantData)
+                self.restaurants = restaurantData.restaurants
             case .error(let error):
                 print(error)
             }
+            if let restaurants = self.restaurants {
+                self.listStatusBits = self.listStatusBits | 0b001
+                for restaurant in restaurants {
+                    if restaurant.visible == true && restaurant.etaRange.max <= 35 {
+                        self.listStatusBits = self.listStatusBits | 0b010
+                        self.nearRestaurants.append(restaurant)
+                    }
+                }
+            }
+            self.mainTableView.reloadData()
         })
     }
     
-    private func getNoticeCell() -> UITableViewCell{
-        
-        let noticeTableViewCell = NoticeTableViewCell.loadNoticeTableViewCellNib()
-        
-        noticeTableViewCell.translatesAutoresizingMaskIntoConstraints = false
-        
-        MainGet.getNotice(completionHandler: { notices in
-            noticeTableViewCell.setNoticePage(with: notices)
+    private func getNoticeData() {
+        getService?.getNoticeList(completion: { (result) in
+            switch result {
+            case .success(let noticeData):
+                self.notices = noticeData
+            case .error(let error):
+                print(error)
+            }
+            self.mainTableView.reloadData()
         })
-        
-        return noticeTableViewCell
     }
-    
-//    func getRestaurantData(){
-//            MainGet.getRestaurantList { restaurants in
-//            self.restaurants = restaurants
-//        }
-//
-//        if let restaurants = self.restaurants {
-//            listStatusBits = listStatusBits | 0b001
-//            for (index, restaurant) in restaurants.enumerated() {
-//                let url = URL(string: restaurant.imageURL)
-//                self.restaurants![index].imageData = try? Data(contentsOf: url!)
-//                if restaurant.isOpen, restaurant.maxDeliveryTime >= 25 {
-//                    listStatusBits = listStatusBits | 0b010
-//                    nearRestaurants?.append(restaurant)
-//                }else if restaurant.isOpen, restaurant.score! >= Float(4.0) {
-//                    listStatusBits = listStatusBits | 0b100
-//                    prefRestaurants?.append(restaurant)
-//                }
-//            }
-//        }
-//    }
-    
 }
 
 extension MainViewController: UITableViewDataSource {
     
-    func layoutRestaurantCell(with restaurant: Restaurant) -> UITableViewCell{
-        
-        let tempCell = UITableViewCell()
-        
-        let mainRestView = MainRestView.loadMainRestNib()
-        tempCell.addSubview(mainRestView)
-        mainRestView.translatesAutoresizingMaskIntoConstraints = false
-        mainRestView.configure(with: restaurant)
-        
-        mainRestView.topAnchor.constraint(equalTo: tempCell.topAnchor, constant: 0).isActive = true
-        mainRestView.leadingAnchor.constraint(equalTo: tempCell.leadingAnchor, constant: 15).isActive = true
-        mainRestView.trailingAnchor.constraint(equalTo: tempCell.trailingAnchor, constant: -15).isActive = true
-        mainRestView.bottomAnchor.constraint(equalTo: tempCell.bottomAnchor, constant: -15).isActive = true
-        
-        return tempCell
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-//        if listStatusBits == 1 {
-//            return 1
-//        } else if listStatusBits == 7 {
-//            return 3
-//        } else {
-//            return 2
-//        }
-        return 1
+        if listStatusBits == 1 {
+            listNumberOfSection = 1
+            return 2
+        } else {
+            listNumberOfSection = 2
+            return 3
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if listStatusBits == 1 {
-//            return (restaurants?.count)!
-//        } else if listStatusBits == 2{
-//            if section == 0 {
-//                return (restaurants?.count)!
-//            } else if section == 1 {
-//                return (nearRestaurants?.count)!
-//            }
-//        } else if listStatusBits == 5 {
-//            if section == 0 {
-//                return (restaurants?.count)!
-//            } else if section == 1 {
-//                return (prefRestaurants?.count)!
-//            }
-//        } else if listStatusBits == 7 {
-//            if section == 0 {
-//                return (restaurants?.count)!
-//            } else if section == 1 {
-//                return (nearRestaurants?.count)!
-//            } else if section == 2 {
-//                return (prefRestaurants?.count)!
-//            }
-//        }
-//        if section == 1 {
-//            print("tt", section)
-//            return 0
-//        }else {
-//            print("sddas")
-//            return (restaurants?.count)!
-//        }
-        
-        return 1
+        if section == 0 {
+            return 1
+        }else{
+            if listStatusBits == 1 {
+                return restaurants?.count ?? 0
+            } else {
+                if section == 1 {
+                    return 1
+                } else {
+                    return restaurants?.count ?? 0
+                }
+            }
+        }
     }
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let mainHeaderInSection = MainHeaderInSection.loadMainHeaderInSectionNib()
-//        mainHeaderInSection.headerLabel.text = "레스토랑 더 보기"
-//        return mainHeaderInSection
-//    }
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 100
-//    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == listNumberOfSection {
+            let mainHeaderInSection = MainHeaderInSection.loadMainHeaderInSectionNib()
+            mainHeaderInSection.headerLabel.text = "레스토랑 더 보기"
+            return mainHeaderInSection
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == listNumberOfSection {
+            return tableView.sectionHeaderHeight
+        }
+        return CGFloat.leastNormalMagnitude
+    }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 10
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        return layoutRestaurantCell(with: self.restaurants![indexPath.row])
-        return getNoticeCell()
+        
+        if indexPath.section == 0 {
+            let noticeTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "NoticeTableViewCell") as! NoticeTableViewCell
+            noticeTableViewCell.setNoticeScroll(with: self.notices)
+            return noticeTableViewCell
+        }else{
+            if listStatusBits == 1 {
+                let restaurantTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell") as! RestaurantTableViewCell
+                restaurantTableViewCell.configure(with: restaurants?[indexPath.row])
+                return restaurantTableViewCell
+            } else {
+                if indexPath.section == 1 {
+                    let restaurantTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell") as! RestaurantTableViewCell
+                    restaurantTableViewCell.configure(with: restaurants?[indexPath.row])
+                    return restaurantTableViewCell
+                } else {
+                    let restaurantTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell") as! RestaurantTableViewCell
+                    restaurantTableViewCell.configure(with: restaurants?[indexPath.row])
+                    return restaurantTableViewCell
+                }
+            }
+        }
 
 //        let emptyCell = UITableViewCell()
 //        if listStatusBits == 1 {

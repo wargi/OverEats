@@ -12,6 +12,7 @@ import Alamofire
 protocol GetServiceType {
     // get service에 대한 개별 프로토콜 함수
     func getRestaurantList(completion: @escaping (Result<Lestaurants>) -> ())
+    func getNoticeList(completion: @escaping (Result<[Notice]>) -> ())
 }
 
 struct GetService: GetServiceType {
@@ -25,6 +26,24 @@ struct GetService: GetServiceType {
                     do {
                         let restaurantData = try value.decode(Lestaurants.self)
                         completion(.success(restaurantData))
+                    } catch {
+                        completion(.error(error))
+                    }
+                case .failure(let error):
+                    completion(.error(error))
+                }
+            })
+    }
+    func getNoticeList(completion: @escaping (Result<[Notice]>) -> ()) {
+        Alamofire
+            .request(API.getNotice.urlString)
+            .validate()
+            .responseData(completionHandler: { (response) in
+                switch response.result {
+                case .success(let value):
+                    do {
+                        let noticetData = try value.decode([Notice].self)
+                        completion(.success(noticetData))
                     } catch {
                         completion(.error(error))
                     }

@@ -10,32 +10,7 @@ import Foundation
 
 // 더미 데이터 - 향후 삭제할 내용
 struct MainGet {
-    
-    static func getNotice(completionHandler: @escaping ([Notice]) -> Void) {
-        var notices = [Notice]()
-        
-        let tempImageURL = "https://duyt4h9nfnj50.cloudfront.net/resized/9c6493c25086978e677d38ad416cbbb1-w550-bb.jpg"
-        
-        // 1번 데이터
-        let notice1 = Notice(id: "1", title: "함께하면 더욱 맛있다!", subTitle: "친구 초대하고 7,000원 할인받으세요.", imageURL: tempImageURL)
-        notices.append(notice1)
-        
-        // 2번 데이터
-        let notice2 = Notice(id: "2", title: "", subTitle: "드디어! 오버이츠가 마포, 서대문 맛집을 배달합니다!", imageURL: tempImageURL)
-        notices.append(notice2)
-        
-        // 3번 데이터
-        let notice3 = Notice(id: "3", title: "똑똑한 오버이츠 이용 꿀팁", subTitle: "탭하고 프로모션 코드, 상세주소 입력방법을 확인하세요.", imageURL: tempImageURL)
-        notices.append(notice3)
-        
-        // 4번 데이터
-        let notice4 = Notice(id: "4", title: "", subTitle: "오버이츠만의  기간한정 더블 혜택, 지금 주문하세요!", imageURL: tempImageURL)
-        notices.append(notice4)
-        
-        completionHandler(notices)
-    }
-    
-    
+
     static func getRestaurantList(completionHandler: @escaping ([Restaurant]) -> Void) {
         var restaurants = [Restaurant]()
         

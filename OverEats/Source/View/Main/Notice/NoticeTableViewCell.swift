@@ -15,47 +15,60 @@ class NoticeTableViewCell: UITableViewCell, UIScrollViewDelegate{
     
     private var noticeImageViews:[NoticeImageView] = []
     
-    class func loadNoticeTableViewCellNib() -> NoticeTableViewCell {
-        return UINib(nibName: "NoticeTableViewCell", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! NoticeTableViewCell
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         noticeScrollView.delegate = self
     }
     
-    func setNoticePage(with notices: [Notice]){
-        
-        for (index, notice) in notices.enumerated(){
-            
-            let noticeImageView = NoticeImageView.loadNoticeNib()
-            noticeImageView.translatesAutoresizingMaskIntoConstraints = false
-            noticeImageViews.append(noticeImageView)
-            
-            noticeImageView.configure(with: notice)
-            
-            noticeScrollView.addSubview(noticeImageView)
-            
-            noticeImageView.centerYAnchor.constraint(equalTo: noticeScrollView.centerYAnchor).isActive = true
-            noticeImageView.widthAnchor.constraint(equalTo: noticeScrollView.widthAnchor).isActive = true
-            noticeImageView.topAnchor.constraint(equalTo: noticeScrollView.topAnchor).isActive = true
-            noticeImageView.bottomAnchor.constraint(equalTo: noticeScrollView.bottomAnchor).isActive = true
-            
-            if index == 0 {
-                noticeImageView.leadingAnchor.constraint(equalTo: noticeScrollView.leadingAnchor).isActive = true
-            } else if index == notices.count - 1 {
-                noticeImageView.leadingAnchor.constraint(equalTo: noticeImageViews[index - 1].trailingAnchor).isActive = true
-                noticeImageView.trailingAnchor.constraint(equalTo: noticeScrollView.trailingAnchor).isActive = true
-            } else {
-                noticeImageView.leadingAnchor.constraint(equalTo: noticeImageViews[index - 1].trailingAnchor).isActive = true
+    func setNoticeScroll(with notices: [Notice]?){
+        if let notices = notices {
+            for (index, notice) in notices.enumerated(){
+                
+                let noticeImageView = NoticeImageView.loadNoticeNib()
+                noticeImageView.translatesAutoresizingMaskIntoConstraints = false
+                noticeImageViews.append(noticeImageView)
+                
+                noticeImageView.configure(with: notice)
+                
+                noticeScrollView.addSubview(noticeImageView)
+                
+                noticeImageView.centerYAnchor.constraint(equalTo: noticeScrollView.centerYAnchor).isActive = true
+                noticeImageView.widthAnchor.constraint(equalTo: noticeScrollView.widthAnchor).isActive = true
+                noticeImageView.topAnchor.constraint(equalTo: noticeScrollView.topAnchor).isActive = true
+                noticeImageView.bottomAnchor.constraint(equalTo: noticeScrollView.bottomAnchor).isActive = true
+                
+                if index == 0 {
+                    noticeImageView.leadingAnchor.constraint(equalTo: noticeScrollView.leadingAnchor).isActive = true
+                } else if index == notices.count - 1 {
+                    noticeImageView.leadingAnchor.constraint(equalTo: noticeImageViews[index - 1].trailingAnchor).isActive = true
+                    noticeImageView.trailingAnchor.constraint(equalTo: noticeScrollView.trailingAnchor).isActive = true
+                } else {
+                    noticeImageView.leadingAnchor.constraint(equalTo: noticeImageViews[index - 1].trailingAnchor).isActive = true
+                }
+                addGradient(imageView: noticeImageView.imageView)
             }
-            noticeImageView.addGradient()
+            noticePageControl.numberOfPages = notices.count
         }
-        noticePageControl.numberOfPages = notices.count
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         noticePageControl.currentPage = Int(noticeScrollView.contentOffset.x / self.frame.size.width)
+    }
+    
+    func addGradient(imageView: UIImageView) {
+        let topBlack = UIColor(white: 0, alpha: 0)
+        let bottomBlack = UIColor(white: 0, alpha: 0.7)
+        
+        let gradientColors: [CGColor] = [topBlack.cgColor, bottomBlack.cgColor]
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = gradientColors
+        
+        self.setNeedsLayout()
+        
+        gradientLayer.frame = self.bounds
+        
+        imageView.layer.insertSublayer(gradientLayer, at: 0)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

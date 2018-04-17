@@ -17,7 +17,6 @@ class MainHeaderInSection: UIView {
     }
     
     override func awakeFromNib() {
-        print("-----",self.superview)
     }
     
 }

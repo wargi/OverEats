@@ -11,23 +11,22 @@
 		290E0002207F84640004AAD4 /* DataUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290E0001207F84640004AAD4 /* DataUtility.swift */; };
 		290E0005207F890F0004AAD4 /* StoryboardUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290E0004207F890F0004AAD4 /* StoryboardUtility.swift */; };
 		290EFFF6207F37CE0004AAD4 /* NoticeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290EFFF4207F37CE0004AAD4 /* NoticeTableViewCell.swift */; };
-		290EFFF7207F37CE0004AAD4 /* NoticeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 290EFFF5207F37CE0004AAD4 /* NoticeTableViewCell.xib */; };
 		290EFFF9207F5B340004AAD4 /* MainData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290EFFF8207F5B340004AAD4 /* MainData.swift */; };
 		290EFFFC207F7E670004AAD4 /* GetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290EFFFB207F7E670004AAD4 /* GetService.swift */; };
 		290EFFFE207F7FF90004AAD4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290EFFFD207F7FF90004AAD4 /* API.swift */; };
 		290F540F2083A7B20061A878 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290F540E2083A7B20061A878 /* ImageService.swift */; };
 		290F54112084015D0061A878 /* ImageCacheSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290F54102084015D0061A878 /* ImageCacheSetup.swift */; };
+		290F541320847D470061A878 /* MainListSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290F541220847D470061A878 /* MainListSetup.swift */; };
 		291C9F1420728D490085E37E /* MainNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F1320728D490085E37E /* MainNetwork.swift */; };
 		291C9F2120749CBA0085E37E /* NoticeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F2020749CBA0085E37E /* NoticeImageView.swift */; };
 		291C9F2320749CCE0085E37E /* NoticeImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291C9F2220749CCE0085E37E /* NoticeImageView.xib */; };
-		291C9F292075CDBD0085E37E /* MainRestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F282075CDBD0085E37E /* MainRestView.swift */; };
-		291C9F2B2075CDC50085E37E /* MainRestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291C9F2A2075CDC50085E37E /* MainRestView.xib */; };
-		291C9F2E2075FAD80085E37E /* MainRestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F2C2075FAD80085E37E /* MainRestTableViewCell.swift */; };
-		291C9F2F2075FAD80085E37E /* MainRestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291C9F2D2075FAD80085E37E /* MainRestTableViewCell.xib */; };
 		291C9F32207629A10085E37E /* MainInviteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F30207629A10085E37E /* MainInviteTableViewCell.swift */; };
 		291C9F33207629A10085E37E /* MainInviteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291C9F31207629A10085E37E /* MainInviteTableViewCell.xib */; };
 		291C9F53207736720085E37E /* SystemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F52207736720085E37E /* SystemData.swift */; };
 		291C9F55207736BB0085E37E /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F54207736BB0085E37E /* UserData.swift */; };
+		292582C72085C44D00FFE782 /* NoticeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292582C62085C44D00FFE782 /* NoticeData.swift */; };
+		292582CA2085DD9100FFE782 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292582C92085DD9100FFE782 /* RestaurantTableViewCell.swift */; };
+		292582CC2085E26C00FFE782 /* KakaoTalk_Photo_2018-04-02-17-22-07.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 292582CB2085E26C00FFE782 /* KakaoTalk_Photo_2018-04-02-17-22-07.jpeg */; };
 		29DF70E4207E393800E1D023 /* SetTableAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF70E3207E393800E1D023 /* SetTableAutolayout.swift */; };
 		29DF70E6207ED7E400E1D023 /* MainHeaderInSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF70E5207ED7E400E1D023 /* MainHeaderInSection.swift */; };
 		29DF70E8207ED7F300E1D023 /* MainHeaderInSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29DF70E7207ED7F300E1D023 /* MainHeaderInSection.xib */; };
@@ -61,24 +60,23 @@
 		290E0001207F84640004AAD4 /* DataUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtility.swift; sourceTree = "<group>"; };
 		290E0004207F890F0004AAD4 /* StoryboardUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardUtility.swift; sourceTree = "<group>"; };
 		290EFFF4207F37CE0004AAD4 /* NoticeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewCell.swift; sourceTree = "<group>"; };
-		290EFFF5207F37CE0004AAD4 /* NoticeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeTableViewCell.xib; sourceTree = "<group>"; };
 		290EFFF8207F5B340004AAD4 /* MainData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainData.swift; sourceTree = "<group>"; };
 		290EFFFB207F7E670004AAD4 /* GetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetService.swift; sourceTree = "<group>"; };
 		290EFFFD207F7FF90004AAD4 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		290EFFFF207F83D50004AAD4 /* ServiceResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceResult.swift; sourceTree = "<group>"; };
 		290F540E2083A7B20061A878 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		290F54102084015D0061A878 /* ImageCacheSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheSetup.swift; sourceTree = "<group>"; };
+		290F541220847D470061A878 /* MainListSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListSetup.swift; sourceTree = "<group>"; };
 		291C9F1320728D490085E37E /* MainNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNetwork.swift; sourceTree = "<group>"; };
 		291C9F2020749CBA0085E37E /* NoticeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeImageView.swift; sourceTree = "<group>"; };
 		291C9F2220749CCE0085E37E /* NoticeImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeImageView.xib; sourceTree = "<group>"; };
-		291C9F282075CDBD0085E37E /* MainRestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRestView.swift; sourceTree = "<group>"; };
-		291C9F2A2075CDC50085E37E /* MainRestView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainRestView.xib; sourceTree = "<group>"; };
-		291C9F2C2075FAD80085E37E /* MainRestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRestTableViewCell.swift; sourceTree = "<group>"; };
-		291C9F2D2075FAD80085E37E /* MainRestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainRestTableViewCell.xib; sourceTree = "<group>"; };
 		291C9F30207629A10085E37E /* MainInviteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInviteTableViewCell.swift; sourceTree = "<group>"; };
 		291C9F31207629A10085E37E /* MainInviteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainInviteTableViewCell.xib; sourceTree = "<group>"; };
 		291C9F52207736720085E37E /* SystemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemData.swift; sourceTree = "<group>"; };
 		291C9F54207736BB0085E37E /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		292582C62085C44D00FFE782 /* NoticeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeData.swift; sourceTree = "<group>"; };
+		292582C92085DD9100FFE782 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
+		292582CB2085E26C00FFE782 /* KakaoTalk_Photo_2018-04-02-17-22-07.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "KakaoTalk_Photo_2018-04-02-17-22-07.jpeg"; path = "../../../../../Downloads/KakaoTalk_Photo_2018-04-02-17-22-07.jpeg"; sourceTree = "<group>"; };
 		29DF70E3207E393800E1D023 /* SetTableAutolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTableAutolayout.swift; sourceTree = "<group>"; };
 		29DF70E5207ED7E400E1D023 /* MainHeaderInSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHeaderInSection.swift; sourceTree = "<group>"; };
 		29DF70E7207ED7F300E1D023 /* MainHeaderInSection.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainHeaderInSection.xib; sourceTree = "<group>"; };
@@ -138,6 +136,7 @@
 				290E0004207F890F0004AAD4 /* StoryboardUtility.swift */,
 				290F54102084015D0061A878 /* ImageCacheSetup.swift */,
 				290EFFFF207F83D50004AAD4 /* ServiceResult.swift */,
+				290F541220847D470061A878 /* MainListSetup.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -145,11 +144,8 @@
 		291C9EF92072239D0085E37E /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				292582C82085DD5700FFE782 /* Restaurant */,
 				29DF70E2207E350500E1D023 /* Notice */,
-				291C9F282075CDBD0085E37E /* MainRestView.swift */,
-				291C9F2A2075CDC50085E37E /* MainRestView.xib */,
-				291C9F2C2075FAD80085E37E /* MainRestTableViewCell.swift */,
-				291C9F2D2075FAD80085E37E /* MainRestTableViewCell.xib */,
 				291C9F30207629A10085E37E /* MainInviteTableViewCell.swift */,
 				291C9F31207629A10085E37E /* MainInviteTableViewCell.xib */,
 				29DF70E5207ED7E400E1D023 /* MainHeaderInSection.swift */,
@@ -168,11 +164,18 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		292582C82085DD5700FFE782 /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				292582C92085DD9100FFE782 /* RestaurantTableViewCell.swift */,
+			);
+			path = Restaurant;
+			sourceTree = "<group>";
+		};
 		29DF70E2207E350500E1D023 /* Notice */ = {
 			isa = PBXGroup;
 			children = (
 				290EFFF4207F37CE0004AAD4 /* NoticeTableViewCell.swift */,
-				290EFFF5207F37CE0004AAD4 /* NoticeTableViewCell.xib */,
 				291C9F2020749CBA0085E37E /* NoticeImageView.swift */,
 				291C9F2220749CCE0085E37E /* NoticeImageView.xib */,
 			);
@@ -208,6 +211,7 @@
 				291C9F52207736720085E37E /* SystemData.swift */,
 				291C9F54207736BB0085E37E /* UserData.swift */,
 				290EFFF8207F5B340004AAD4 /* MainData.swift */,
+				292582C62085C44D00FFE782 /* NoticeData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -224,6 +228,7 @@
 		8E8A63782071E9DB007D9B7A /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				292582CB2085E26C00FFE782 /* KakaoTalk_Photo_2018-04-02-17-22-07.jpeg */,
 				8EE538BC206E25AD006BAC26 /* Main.storyboard */,
 			);
 			path = Main;
@@ -417,16 +422,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				291C9F2B2075CDC50085E37E /* MainRestView.xib in Resources */,
 				8E8A63692071E481007D9B7A /* Sign.storyboard in Resources */,
 				8EE538C3206E25AE006BAC26 /* LaunchScreen.storyboard in Resources */,
 				291C9F2320749CCE0085E37E /* NoticeImageView.xib in Resources */,
 				8E5B9E712079892000921EF4 /* ImageMenuListCell.xib in Resources */,
-				290EFFF7207F37CE0004AAD4 /* NoticeTableViewCell.xib in Resources */,
 				8EE538C0206E25AE006BAC26 /* Assets.xcassets in Resources */,
 				8E5B9E7520798BA300921EF4 /* NonImageMenuList.xib in Resources */,
 				8E8A637A2071EAD0007D9B7A /* Menu.storyboard in Resources */,
-				291C9F2F2075FAD80085E37E /* MainRestTableViewCell.xib in Resources */,
+				292582CC2085E26C00FFE782 /* KakaoTalk_Photo_2018-04-02-17-22-07.jpeg in Resources */,
 				8EE538BE206E25AD006BAC26 /* Main.storyboard in Resources */,
 				291C9F33207629A10085E37E /* MainInviteTableViewCell.xib in Resources */,
 				29DF70E8207ED7F300E1D023 /* MainHeaderInSection.xib in Resources */,
@@ -497,7 +500,6 @@
 				290F54112084015D0061A878 /* ImageCacheSetup.swift in Sources */,
 				8EE538BB206E25AD006BAC26 /* MainViewController.swift in Sources */,
 				290F540F2083A7B20061A878 /* ImageService.swift in Sources */,
-				291C9F292075CDBD0085E37E /* MainRestView.swift in Sources */,
 				290EFFF6207F37CE0004AAD4 /* NoticeTableViewCell.swift in Sources */,
 				8E5B9E6B2079889B00921EF4 /* MenuListCell.swift in Sources */,
 				8E8A63732071E7C3007D9B7A /* MenuViewController.swift in Sources */,
@@ -510,9 +512,9 @@
 				291C9F2120749CBA0085E37E /* NoticeImageView.swift in Sources */,
 				8E8A637E2071F7BF007D9B7A /* AppColor.swift in Sources */,
 				290EFFF9207F5B340004AAD4 /* MainData.swift in Sources */,
+				292582CA2085DD9100FFE782 /* RestaurantTableViewCell.swift in Sources */,
 				290EFFFE207F7FF90004AAD4 /* API.swift in Sources */,
 				290E0005207F890F0004AAD4 /* StoryboardUtility.swift in Sources */,
-				291C9F2E2075FAD80085E37E /* MainRestTableViewCell.swift in Sources */,
 				291C9F32207629A10085E37E /* MainInviteTableViewCell.swift in Sources */,
 				290EFFFC207F7E670004AAD4 /* GetService.swift in Sources */,
 				290E0002207F84640004AAD4 /* DataUtility.swift in Sources */,
@@ -520,8 +522,10 @@
 				29DF70E6207ED7E400E1D023 /* MainHeaderInSection.swift in Sources */,
 				290E0000207F83D50004AAD4 /* ServiceResult.swift in Sources */,
 				9E46E53D2077D59900FA9721 /* LocationViewController.swift in Sources */,
+				292582C72085C44D00FFE782 /* NoticeData.swift in Sources */,
 				8E8A636E2071E583007D9B7A /* SignViewController.swift in Sources */,
 				9E60DCCE2074BF4700B9528A /* CreateIDViewController.swift in Sources */,
+				290F541320847D470061A878 /* MainListSetup.swift in Sources */,
 				29DF70E4207E393800E1D023 /* SetTableAutolayout.swift in Sources */,
 				9E60DCD22074D1F900B9528A /* ToSViewController.swift in Sources */,
 				8E5B9E7420798BA300921EF4 /* NonImageMenuList.swift in Sources */,

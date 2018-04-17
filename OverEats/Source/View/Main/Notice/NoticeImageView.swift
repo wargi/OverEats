@@ -22,30 +22,9 @@ class NoticeImageView: UIView {
     }
     
     func configure(with notice: Notice) {
-        DispatchQueue.global(qos: .background).async {
-            
-            self.imageView.loadImageUsingCacheWithUrl(urlString: notice.imageURL, completion: { (success) in
-                
-            })
-            self.titleLabel.text = notice.title
-            self.subTitleLabel.text = notice.subTitle
-        }
-    }
-    
-    func addGradient() {
-        let topBlack = UIColor(white: 0, alpha: 0)
-        let bottomBlack = UIColor(white: 0, alpha: 0.7)
-        
-        let gradientColors: [CGColor] = [topBlack.cgColor, bottomBlack.cgColor]
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = gradientColors
-        
-        self.setNeedsLayout()
-        
-        gradientLayer.frame = self.imageView.bounds
-        
-        self.imageView.layer.insertSublayer(gradientLayer, at: 0)
+        self.imageView.loadImageUsingCacheWithUrl(urlString: notice.imageUrl, completion: { (success) in })
+        self.titleLabel.text = notice.title
+        self.subTitleLabel.text = notice.subTitle
     }
 
 }

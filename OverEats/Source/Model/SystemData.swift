@@ -8,13 +8,6 @@
 
 import Foundation
 
-struct Notice {
-    let id: String! // 공지 고유 번호
-    let title: String? // 대제목
-    let subTitle: String? // 소제목
-    let imageURL: String! // 이미지 URL
-}
-
 struct Restaurant {
     let id: String! // 매장 고유 번호
     let name: String // 매장 명
