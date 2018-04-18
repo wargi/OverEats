@@ -10,20 +10,22 @@ import UIKit
 
 class RecommendTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var restaurantScrollView: UIScrollView!
+    
     var restaurants: [Lestaurant]? {
         didSet {
-            self.collectionView.reloadData()
+            checkRestaurantScroll()
+            configureRestaurantData()
         }
     }
     
+    private var restaurantViews:[RestaurantView] = []
+    
+    var priorityPoint: Float = 500
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.contentView.autoresizingMask = UIViewAutoresizing.flexibleHeight
-    }
-    
-    override func layoutSubviews() {
-        self.layoutIfNeeded()
+        restaurantScrollView.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -31,50 +33,70 @@ class RecommendTableViewCell: UITableViewCell {
     }
 }
 
-extension RecommendTableViewCell: UICollectionViewDataSource {
+extension RecommendTableViewCell: UIScrollViewDelegate {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
+//    private func setRestaurantScollView
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return restaurants?.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let restaurantData = restaurants?[indexPath.item] else { return UICollectionViewCell() }
-        let recommendCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecommendCollectionViewCell", for: indexPath) as! RecommendCollectionViewCell
-        recommendCollectionViewCell.configure(with: restaurantData)
-        return recommendCollectionViewCell
-    }
-}
-
-extension RecommendCollectionViewCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    {
-        return CGSize(width: 300, height: 300)
-    }
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        minimumLineSpacingForSectionAt section: Int
-        ) -> CGFloat {
-        return 30
+    private func checkRestaurantScroll(){
+        if let restaurant = self.restaurants {
+            let checkCount = restaurantViews.count - restaurant.count
+            if checkCount > 0 {
+                for _ in 0..<checkCount{
+                    removeRestaurantScroll()
+                }
+            } else if checkCount < 0{
+                let createCount = abs(checkCount)
+                for index in restaurantViews.count..<createCount {
+                    addRestaurantScroll(scrollIndex: index)
+                }
+            }
+        }
     }
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        minimumInteritemSpacingForSectionAt section: Int
-        ) -> CGFloat {
-        return 30
+    private func removeRestaurantScroll(){
+        restaurantViews.last?.removeFromSuperview()
+        restaurantViews.last?.trailingAnchor.constraint(equalTo: restaurantScrollView.trailingAnchor).isActive = true
     }
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        insetForSectionAt section: Int
-        ) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(30, 30, 30, 30)
+    private func configureRestaurantData(){
+        if let restaurants = self.restaurants {
+            for (index, restaurant) in restaurants.enumerated(){
+                restaurantViews[index].configure(with: restaurant)
+            }
+        }
     }
+    
+    private func addRestaurantScroll(scrollIndex: Int){
+        
+        let restaurantView = RestaurantView.loadNib()
+        restaurantView.translatesAutoresizingMaskIntoConstraints = false
+        
+        restaurantViews.append(restaurantView)
+        restaurantScrollView.addSubview(restaurantView)
+        
+        restaurantView.centerYAnchor.constraint(equalTo: restaurantScrollView.centerYAnchor).isActive = true
+        restaurantView.widthAnchor.constraint(equalTo: restaurantScrollView.widthAnchor).isActive = true
+        restaurantView.topAnchor.constraint(equalTo: restaurantScrollView.topAnchor).isActive = true
+        restaurantView.bottomAnchor.constraint(equalTo: restaurantScrollView.bottomAnchor).isActive = true
+        
+        if scrollIndex == 0 {
+            let trailingMargin = restaurantView.trailingAnchor.constraint(equalTo: restaurantScrollView.trailingAnchor)
+            trailingMargin.priority = UILayoutPriority(priorityPoint)
+            trailingMargin.isActive = true
+            restaurantView.leadingAnchor.constraint(equalTo: restaurantScrollView.leadingAnchor).isActive = true
+            priorityPoint += 1
+            
+        }else{
+            let leadingMargin = restaurantView.leadingAnchor.constraint(equalTo: restaurantViews[scrollIndex - 1].trailingAnchor)
+            leadingMargin.priority = UILayoutPriority(1000)
+            leadingMargin.isActive = true
+            
+            let trailingMargin = restaurantView.trailingAnchor.constraint(equalTo: restaurantScrollView.trailingAnchor)
+            trailingMargin.priority = UILayoutPriority(priorityPoint)
+            trailingMargin.isActive = true
+            
+            priorityPoint += 1
+        }
+    }
+    
 }

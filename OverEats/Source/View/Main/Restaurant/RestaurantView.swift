@@ -1,15 +1,14 @@
 //
-//  RecommendCollectionViewCell.swift
+//  RestaurantView.swift
 //  OverEats
 //
-//  Created by SolChan Ahn on 2018. 4. 17..
+//  Created by SolChan Ahn on 2018. 4. 19..
 //  Copyright © 2018년 sangwook park. All rights reserved.
 //
 
 import UIKit
 
-class RecommendCollectionViewCell: UICollectionViewCell {
-    
+class RestaurantView: UIView {
     @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var restaurantNameLabel: UILabel!
     @IBOutlet weak var restaurantCategoryLabel: UILabel!
@@ -17,12 +16,16 @@ class RecommendCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var restaurantDeliveryTimeLabel: UILabel!
     @IBOutlet weak var restaurantDescriptionLabel: UILabel!
     
-    @IBOutlet weak var restaurantBottomStack: UIStackView!
+    @IBOutlet weak var restaurantScoreImageView: UIImageView!
+    
+    @IBOutlet weak var restaurantScoreStack: UIStackView!
+    @IBOutlet weak var restaurantDescriptionStack: UIStackView!
+    
+    class func loadNib() -> RestaurantView {
+        return UINib(nibName: "RestaurantView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! RestaurantView
+    }
     
     func configure(with restaurant: Lestaurant?) {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.widthAnchor.constraint(equalToConstant: 300)
-        self.heightAnchor.constraint(equalToConstant: 300)
         if let restaurant = restaurant {
             self.restaurantImageView.loadImageUsingCacheWithUrl(urlString: restaurant.logo) { (success) in
             }
@@ -43,6 +46,7 @@ class RecommendCollectionViewCell: UICollectionViewCell {
             
             //            self.restaurantBottomStack.removeFromSuperview()
             
+            
             // 차후 Description 이 생기면 실행
             //            if restaurant.description != "" {
             //                self.restaurantDescriptionLabel.text = restaurant.
@@ -50,5 +54,6 @@ class RecommendCollectionViewCell: UICollectionViewCell {
             //                self.restaurantBottomStack.removeFromSuperview()
             //            }
         }
+        
     }
 }

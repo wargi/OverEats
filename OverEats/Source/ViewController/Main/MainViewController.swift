@@ -35,8 +35,6 @@ class MainViewController: UIViewController {
         getRestaurantData()
         getNoticeData()
         
-//        mainTableView.register(UINib(nibName: "NoticeTableViewCell", bundle: nil), forCellReuseIdentifier: "NoticeTableViewCell")
-        
         self.mainTableView.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: CGFloat.leastNormalMagnitude))
         
         // 섹션 헤더뷰의 기본값 정의
@@ -135,20 +133,25 @@ extension MainViewController: UITableViewDataSource {
             return noticeTableViewCell
         }else{
             if listStatusBits == 1 {
-                guard let restaurantData = restaurants?[indexPath.item] else { return UITableViewCell() }
-                let restaurantTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell") as! RestaurantTableViewCell
-                restaurantTableViewCell.configure(with: restaurantData)
-                return restaurantTableViewCell
+//                guard let restaurantData = restaurants?[indexPath.item] else { return UITableViewCell() }
+//                let restaurantTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell") as! RestaurantTableViewCell
+//                restaurantTableViewCell.configure(with: restaurantData)
+//                return restaurantTableViewCell
+                let tempCell = UITableViewCell()
+                return tempCell
             } else {
+//                tableView.delaysContentTouches = false
                 if indexPath.section == 1 {
                     let recommendTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RecommendTableViewCell") as! RecommendTableViewCell
                     recommendTableViewCell.restaurants = nearRestaurants
                     return recommendTableViewCell
                 } else {
-                    guard let restaurantData = restaurants?[indexPath.item] else { return UITableViewCell() }
-                    let restaurantTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell") as! RestaurantTableViewCell
-                    restaurantTableViewCell.configure(with: restaurantData)
-                    return restaurantTableViewCell
+//                    guard let restaurantData = restaurants?[indexPath.item] else { return UITableViewCell() }
+//                    let restaurantTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell") as! RestaurantTableViewCell
+//                    restaurantTableViewCell.configure(with: restaurantData)
+//                    return restaurantTableViewCell
+                    let tempCell = UITableViewCell()
+                    return tempCell
                 }
             }
         }
@@ -183,6 +186,16 @@ extension MainViewController: UITableViewDataSource {
 }
 
 extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 1 {
+            return 400
+        }else {
+            return UITableViewAutomaticDimension
+        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("adsdsaasddasasdasfsfasdf")
+    }
 
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        let storyboard = UIStoryboard(name: "Menu", bundle: nil)

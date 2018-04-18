@@ -21,7 +21,7 @@ class NoticeTableViewCell: UITableViewCell{
             configureNoticeData()
         }
     }
-    var priorityPoint: Float = 100
+    var priorityPoint: Float = 500
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -58,13 +58,11 @@ extension NoticeTableViewCell: UIScrollViewDelegate {
             } else if checkCount < 0{
                 let createCount = abs(checkCount)
                 for index in noticeImageViews.count..<createCount {
-                    print("#############",index)
                     addNoticeScroll(scrollIndex: index)
                 }
             }
             noticePageControl.numberOfPages = notices.count
         }
-        
     }
     
     private func removeNoticeScroll(){
@@ -101,7 +99,6 @@ extension NoticeTableViewCell: UIScrollViewDelegate {
             priorityPoint += 1
             
         }else{
-            print("---------------",scrollIndex)
             let leadingMargin = noticeImageView.leadingAnchor.constraint(equalTo: noticeImageViews[scrollIndex - 1].trailingAnchor)
             leadingMargin.priority = UILayoutPriority(1000)
             leadingMargin.isActive = true
