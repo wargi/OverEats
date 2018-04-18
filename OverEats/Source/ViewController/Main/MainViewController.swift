@@ -131,21 +131,23 @@ extension MainViewController: UITableViewDataSource {
         
         if indexPath.section == 0 {
             let noticeTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "NoticeTableViewCell") as! NoticeTableViewCell
-            noticeTableViewCell.setNoticeScroll(with: self.notices)
+            noticeTableViewCell.notices = notices
             return noticeTableViewCell
         }else{
             if listStatusBits == 1 {
+                guard let restaurantData = restaurants?[indexPath.item] else { return UITableViewCell() }
                 let restaurantTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell") as! RestaurantTableViewCell
-                restaurantTableViewCell.configure(with: restaurants?[indexPath.row])
+                restaurantTableViewCell.configure(with: restaurantData)
                 return restaurantTableViewCell
             } else {
                 if indexPath.section == 1 {
-                    let restaurantTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell") as! RestaurantTableViewCell
-                    restaurantTableViewCell.configure(with: restaurants?[indexPath.row])
-                    return restaurantTableViewCell
+                    let recommendTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RecommendTableViewCell") as! RecommendTableViewCell
+                    recommendTableViewCell.restaurants = nearRestaurants
+                    return recommendTableViewCell
                 } else {
+                    guard let restaurantData = restaurants?[indexPath.item] else { return UITableViewCell() }
                     let restaurantTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell") as! RestaurantTableViewCell
-                    restaurantTableViewCell.configure(with: restaurants?[indexPath.row])
+                    restaurantTableViewCell.configure(with: restaurantData)
                     return restaurantTableViewCell
                 }
             }

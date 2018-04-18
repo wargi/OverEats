@@ -106,25 +106,25 @@
                                             <outlet property="noticeScrollView" destination="hph-h7-Xew" id="bqQ-2p-7Y4"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="300" id="9Uq-xa-cCd">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RecommendTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecommendTableViewCell" rowHeight="300" id="9Uq-xa-cCd" customClass="RecommendTableViewCell" customModule="OverEats" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="265.5" width="375" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Uq-xa-cCd" id="5dF-aI-a99">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="taA-xj-g9n">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="taA-xj-g9n">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Hfd-qW-vQV">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Hfd-qW-vQV">
                                                         <size key="itemSize" width="315" height="292"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="RL7-q8-XTJ">
-                                                            <rect key="frame" x="30" y="0.0" width="315" height="292"/>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="RecommendCollectionViewCell" reuseIdentifier="RecommendCollectionViewCell" id="RL7-q8-XTJ" customClass="RecommendCollectionViewCell" customModule="OverEats" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="4" width="315" height="292"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="315" height="292"/>
@@ -233,8 +233,21 @@
                                                                 <constraint firstAttribute="trailing" secondItem="6Dx-Yr-cMD" secondAttribute="trailing" id="YXi-Kc-44h"/>
                                                                 <constraint firstAttribute="trailing" secondItem="05C-dW-Y46" secondAttribute="trailing" id="e9K-eV-eUG"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <outlet property="restaurantBottomStack" destination="VmB-BU-bLl" id="Gev-mM-q8r"/>
+                                                                <outlet property="restaurantCategoryLabel" destination="CkI-VQ-bLy" id="rsM-WH-hbN"/>
+                                                                <outlet property="restaurantDeliveryTimeLabel" destination="Yfp-WR-wuo" id="Qon-cd-4Pc"/>
+                                                                <outlet property="restaurantDescriptionLabel" destination="rEG-Hn-FbZ" id="9OU-wa-W1M"/>
+                                                                <outlet property="restaurantImageView" destination="05C-dW-Y46" id="5Bl-iN-S9p"/>
+                                                                <outlet property="restaurantNameLabel" destination="vRs-49-TWv" id="cbl-Jh-LUe"/>
+                                                                <outlet property="restaurantScoreLabel" destination="22n-Yr-QDr" id="VRR-pS-Q5T"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="9Uq-xa-cCd" id="1Gr-hH-btP"/>
+                                                        <outlet property="delegate" destination="9Uq-xa-cCd" id="YcH-Mb-27r"/>
+                                                    </connections>
                                                 </collectionView>
                                             </subviews>
                                             <constraints>
@@ -244,6 +257,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="taA-xj-g9n" secondAttribute="trailing" id="cEN-zm-A4M"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="collectionView" destination="taA-xj-g9n" id="gyo-Jn-gln"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RestaurantTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RestaurantTableViewCell" rowHeight="300" id="bFN-Rl-xDi" customClass="RestaurantTableViewCell" customModule="OverEats" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="565.5" width="375" height="300"/>
@@ -260,7 +276,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="I79-p6-Thm">
-                                                    <rect key="frame" x="15" y="193.5" width="345" height="96.5"/>
+                                                    <rect key="frame" x="15" y="193.5" width="345" height="81.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="9sm-eg-cT8">
                                                             <rect key="frame" x="0.0" y="0.0" width="345" height="35.5"/>
@@ -304,13 +320,13 @@
                                                             </constraints>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="guy-I2-iM0">
-                                                            <rect key="frame" x="0.0" y="45.5" width="37" height="17"/>
+                                                            <rect key="frame" x="0.0" y="45.5" width="37" height="15"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                             <color key="textColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7o4-0K-ksh">
-                                                            <rect key="frame" x="0.0" y="72.5" width="345" height="24"/>
+                                                            <rect key="frame" x="0.0" y="70.5" width="345" height="11"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xwu-BI-FdX">
                                                                     <rect key="frame" x="0.0" y="0.0" width="345" height="1"/>
@@ -320,7 +336,7 @@
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GqW-Ya-ZFt">
-                                                                    <rect key="frame" x="0.0" y="11" width="31" height="13"/>
+                                                                    <rect key="frame" x="0.0" y="11" width="31" height="0.0"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                     <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -352,7 +368,7 @@
                                                 <constraint firstItem="bwV-uR-auc" firstAttribute="top" secondItem="Z7e-Js-6wf" secondAttribute="top" id="9sg-OR-4r3"/>
                                                 <constraint firstItem="I79-p6-Thm" firstAttribute="top" secondItem="bwV-uR-auc" secondAttribute="bottom" constant="10" id="QkW-Qa-UqB"/>
                                                 <constraint firstAttribute="trailing" secondItem="bwV-uR-auc" secondAttribute="trailing" constant="15" id="SCe-5W-teM"/>
-                                                <constraint firstAttribute="bottom" secondItem="I79-p6-Thm" secondAttribute="bottom" constant="10" id="dCz-n1-gFn"/>
+                                                <constraint firstAttribute="bottom" secondItem="I79-p6-Thm" secondAttribute="bottom" constant="25" id="dCz-n1-gFn"/>
                                                 <constraint firstAttribute="trailing" secondItem="I79-p6-Thm" secondAttribute="trailing" constant="15" id="vpq-gP-IO7"/>
                                             </constraints>
                                         </tableViewCellContentView>

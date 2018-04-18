@@ -22,7 +22,11 @@ class NoticeImageView: UIView {
     }
     
     func configure(with notice: Notice) {
-        self.imageView.loadImageUsingCacheWithUrl(urlString: notice.imageUrl, completion: { (success) in })
+        if let imageUrl = notice.imageUrl {
+            self.imageView.loadImageUsingCacheWithUrl(urlString: imageUrl, completion: { (success) in })
+        } else if let imageBannerUrl = notice.imageBannerUrl{
+            self.imageView.loadImageUsingCacheWithUrl(urlString: imageBannerUrl, completion: { (success) in })
+        }
         self.titleLabel.text = notice.title
         self.subTitleLabel.text = notice.subTitle
     }

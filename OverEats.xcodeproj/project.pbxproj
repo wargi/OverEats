@@ -24,6 +24,8 @@
 		291C9F33207629A10085E37E /* MainInviteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291C9F31207629A10085E37E /* MainInviteTableViewCell.xib */; };
 		291C9F53207736720085E37E /* SystemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F52207736720085E37E /* SystemData.swift */; };
 		291C9F55207736BB0085E37E /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F54207736BB0085E37E /* UserData.swift */; };
+		29227F24208613080056A67F /* RecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29227F23208613080056A67F /* RecommendTableViewCell.swift */; };
+		29227F28208619DB0056A67F /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29227F27208619DB0056A67F /* RecommendCollectionViewCell.swift */; };
 		292582C72085C44D00FFE782 /* NoticeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292582C62085C44D00FFE782 /* NoticeData.swift */; };
 		292582CA2085DD9100FFE782 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292582C92085DD9100FFE782 /* RestaurantTableViewCell.swift */; };
 		292582CC2085E26C00FFE782 /* KakaoTalk_Photo_2018-04-02-17-22-07.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 292582CB2085E26C00FFE782 /* KakaoTalk_Photo_2018-04-02-17-22-07.jpeg */; };
@@ -74,6 +76,8 @@
 		291C9F31207629A10085E37E /* MainInviteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainInviteTableViewCell.xib; sourceTree = "<group>"; };
 		291C9F52207736720085E37E /* SystemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemData.swift; sourceTree = "<group>"; };
 		291C9F54207736BB0085E37E /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		29227F23208613080056A67F /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = "<group>"; };
+		29227F27208619DB0056A67F /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		292582C62085C44D00FFE782 /* NoticeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeData.swift; sourceTree = "<group>"; };
 		292582C92085DD9100FFE782 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		292582CB2085E26C00FFE782 /* KakaoTalk_Photo_2018-04-02-17-22-07.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "KakaoTalk_Photo_2018-04-02-17-22-07.jpeg"; path = "../../../../../Downloads/KakaoTalk_Photo_2018-04-02-17-22-07.jpeg"; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 			isa = PBXGroup;
 			children = (
 				292582C92085DD9100FFE782 /* RestaurantTableViewCell.swift */,
+				29227F23208613080056A67F /* RecommendTableViewCell.swift */,
+				29227F27208619DB0056A67F /* RecommendCollectionViewCell.swift */,
 			);
 			path = Restaurant;
 			sourceTree = "<group>";
@@ -512,6 +518,7 @@
 				291C9F2120749CBA0085E37E /* NoticeImageView.swift in Sources */,
 				8E8A637E2071F7BF007D9B7A /* AppColor.swift in Sources */,
 				290EFFF9207F5B340004AAD4 /* MainData.swift in Sources */,
+				29227F24208613080056A67F /* RecommendTableViewCell.swift in Sources */,
 				292582CA2085DD9100FFE782 /* RestaurantTableViewCell.swift in Sources */,
 				290EFFFE207F7FF90004AAD4 /* API.swift in Sources */,
 				290E0005207F890F0004AAD4 /* StoryboardUtility.swift in Sources */,
@@ -531,6 +538,7 @@
 				8E5B9E7420798BA300921EF4 /* NonImageMenuList.swift in Sources */,
 				8E5B9E692079856900921EF4 /* MenuHeaderView.swift in Sources */,
 				8E9672C4207349F10061B7C5 /* SelectMenuViewController.swift in Sources */,
+				29227F28208619DB0056A67F /* RecommendCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
