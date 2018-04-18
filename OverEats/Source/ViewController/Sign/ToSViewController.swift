@@ -63,7 +63,6 @@ class ToSViewController: UIViewController {
         
         // 필수 약관 2개 선택 시 다음 view로 이동
         let nextViewController = storyboard?.instantiateViewController(withIdentifier: "CreateIDViewController") as! CreateIDViewController
-        
         present(nextViewController, animated: true, completion: nil)
         
     }

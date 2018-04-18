@@ -79,9 +79,9 @@ class ProfileCreateViewController: UIViewController {
                     multipartform.append(firstNameData!, withName: "first_name")
                     multipartform.append(lastNameData!, withName: "last_name")
                     multipartform.append(phoneNumberData!, withName: "phone_number")
-                    multipartform.append(imageData!, withName: "img_profile", fileName: "profileImage.jpeg", mimeType: "image/jpeg") // fileName: 서버에서 저장 할 imageName을 적용
+                    multipartform.append(imageData!, withName: "img_profile", fileName: "profileImage.jpeg", mimeType: "image/jpeg")
+                    // fileName: 서버에서 저장 할 imageName을 적용
                     // mimType: image 확장자 적용
-                    
             },
                 to: "https://www.overeats.kr/api/member/user/",
                 method: .post,
@@ -92,16 +92,14 @@ class ProfileCreateViewController: UIViewController {
                             
                             self.showAlert(alertTitle: "성공", alertMessage: "회원가입 성공했습니다", actionTitle: "확인")
                             
-                        }
-                        )
+                        })
                     case .failure(let error):
                         
                         self.showAlert(alertTitle: "실패", alertMessage: "회원가입 실패", actionTitle: "확인")
                         print("회원가입 실패: ", error.localizedDescription)
                         
                     }
-            }
-            )
+            })
         }
         
         // 모든 TextField의 정규식이 false일 때
