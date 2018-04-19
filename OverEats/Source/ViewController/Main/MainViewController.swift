@@ -22,16 +22,16 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak private var mainTableView: UITableView!
     
-    static func createWith(getService: GetServiceType = GetService()) -> Self {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let `self` = storyboard.instantiateViewController(ofType: self.self)
-        self.getService = getService
-        return self
-    }
+//    static func createWith(getService: GetServiceType = GetService()) -> Self {
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let `self` = storyboard.instantiateViewController(ofType: self.self)
+//        self.getService = getService
+//        return self
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.getService = GetService()
         getRestaurantData()
         getNoticeData()
         
@@ -106,7 +106,16 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == listNumberOfSection {
+//        if section == listNumberOfSection {
+//            let mainHeaderInSection = MainHeaderInSection.loadMainHeaderInSectionNib()
+//            mainHeaderInSection.headerLabel.text = "레스토랑 더 보기"
+//            return mainHeaderInSection
+//        }
+        if section == 1 {
+            let mainHeaderInSection = MainHeaderInSection.loadMainHeaderInSectionNib()
+            mainHeaderInSection.headerLabel.text = "가까운 레스토랑"
+            return mainHeaderInSection
+        } else if section == 2 {
             let mainHeaderInSection = MainHeaderInSection.loadMainHeaderInSectionNib()
             mainHeaderInSection.headerLabel.text = "레스토랑 더 보기"
             return mainHeaderInSection
@@ -115,7 +124,12 @@ extension MainViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == listNumberOfSection {
+//        if section == listNumberOfSection {
+//            return tableView.sectionHeaderHeight
+//        }
+        if section == 1 {
+            return tableView.sectionHeaderHeight
+        } else if section == 2 {
             return tableView.sectionHeaderHeight
         }
         return CGFloat.leastNormalMagnitude
@@ -133,25 +147,20 @@ extension MainViewController: UITableViewDataSource {
             return noticeTableViewCell
         }else{
             if listStatusBits == 1 {
-//                guard let restaurantData = restaurants?[indexPath.item] else { return UITableViewCell() }
-//                let restaurantTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell") as! RestaurantTableViewCell
-//                restaurantTableViewCell.configure(with: restaurantData)
-//                return restaurantTableViewCell
-                let tempCell = UITableViewCell()
-                return tempCell
+                guard let restaurantData = restaurants?[indexPath.item] else { return UITableViewCell() }
+                let restaurantTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell") as! RestaurantTableViewCell
+                restaurantTableViewCell.restaurant = restaurantData
+                return restaurantTableViewCell
             } else {
-//                tableView.delaysContentTouches = false
                 if indexPath.section == 1 {
                     let recommendTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RecommendTableViewCell") as! RecommendTableViewCell
                     recommendTableViewCell.restaurants = nearRestaurants
                     return recommendTableViewCell
                 } else {
-//                    guard let restaurantData = restaurants?[indexPath.item] else { return UITableViewCell() }
-//                    let restaurantTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell") as! RestaurantTableViewCell
-//                    restaurantTableViewCell.configure(with: restaurantData)
-//                    return restaurantTableViewCell
-                    let tempCell = UITableViewCell()
-                    return tempCell
+                    guard let restaurantData = restaurants?[indexPath.item] else { return UITableViewCell() }
+                    let restaurantTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell") as! RestaurantTableViewCell
+                    restaurantTableViewCell.restaurant = restaurantData
+                    return restaurantTableViewCell
                 }
             }
         }
@@ -186,15 +195,8 @@ extension MainViewController: UITableViewDataSource {
 }
 
 extension MainViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 1 {
-            return 400
-        }else {
-            return UITableViewAutomaticDimension
-        }
-    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("adsdsaasddasasdasfsfasdf")
+        
     }
 
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

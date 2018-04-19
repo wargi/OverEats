@@ -9,20 +9,33 @@
 import UIKit
 
 class RestaurantView: UIView {
-    @IBOutlet weak var restaurantImageView: UIImageView!
-    @IBOutlet weak var restaurantNameLabel: UILabel!
-    @IBOutlet weak var restaurantCategoryLabel: UILabel!
-    @IBOutlet weak var restaurantScoreLabel: UILabel!
-    @IBOutlet weak var restaurantDeliveryTimeLabel: UILabel!
-    @IBOutlet weak var restaurantDescriptionLabel: UILabel!
     
-    @IBOutlet weak var restaurantScoreImageView: UIImageView!
+    @IBOutlet weak var restaurantImageView: UIImageView! // 레스토랑 이미지 레이블
+    @IBOutlet weak var restaurantNameLabel: UILabel! // 레스토랑 명칭 레이블
+    @IBOutlet weak var restaurantCategoryLabel: UILabel! // 레스토랑 카테고리 레이블
+    @IBOutlet weak var restaurantScoreLabel: UILabel! // 레스토랑 평점 레이블
+    @IBOutlet weak var restaurantDeliveryTimeLabel: UILabel! // 배달 시간 레이블
+    @IBOutlet weak var restaurantDescriptionLabel: UILabel! // 레스토랑 소개 레이블
     
-    @IBOutlet weak var restaurantScoreStack: UIStackView!
-    @IBOutlet weak var restaurantDescriptionStack: UIStackView!
+    @IBOutlet weak var restaurantScoreImageView: UIImageView! // 레스토랑 평점 별 이미지
     
+    @IBOutlet weak var restaurantScoreStack: UIStackView! // 평점 스택
+    @IBOutlet weak var restaurantDescriptionStack: UIStackView! // 소개 스택
+    
+    // restaurantView 를 호출받는 함수
     class func loadNib() -> RestaurantView {
         return UINib(nibName: "RestaurantView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! RestaurantView
+    }
+    
+    override func awakeFromNib() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        self.isUserInteractionEnabled = true
+        self.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        print("test")
     }
     
     func configure(with restaurant: Lestaurant?) {

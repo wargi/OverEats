@@ -17,14 +17,14 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="336"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MH2-Xd-2BU">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MH2-Xd-2BU">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="MH2-Xd-2BU" secondAttribute="height" multiplier="15:8" id="XSa-IH-NLg"/>
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3y4-uG-IOU">
-                    <rect key="frame" x="0.0" y="205" width="375" height="17"/>
+                    <rect key="frame" x="0.0" y="220" width="375" height="17"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ZC-fP-Lnw">
                             <rect key="frame" x="0.0" y="0.0" width="310" height="17"/>
@@ -48,13 +48,13 @@
                     </constraints>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jap-s8-Xp0">
-                    <rect key="frame" x="0.0" y="232" width="355" height="14.5"/>
+                    <rect key="frame" x="0.0" y="247" width="355" height="14.5"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                     <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w3m-fO-s14">
-                    <rect key="frame" x="0.0" y="256.5" width="61" height="24"/>
+                    <rect key="frame" x="0.0" y="271.5" width="61" height="24"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="btnClock" translatesAutoresizingMaskIntoConstraints="NO" id="yYM-Zn-vvr">
                             <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -111,7 +111,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="mMA-yC-NII" secondAttribute="bottom" priority="750" constant="20" id="keD-zd-VXf"/>
                 <constraint firstItem="MH2-Xd-2BU" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="lWp-dG-7MQ"/>
                 <constraint firstItem="w3m-fO-s14" firstAttribute="top" secondItem="jap-s8-Xp0" secondAttribute="bottom" constant="10" id="sg7-KD-mF1"/>
-                <constraint firstItem="3y4-uG-IOU" firstAttribute="top" secondItem="MH2-Xd-2BU" secondAttribute="bottom" constant="5" id="uz2-16-ZhQ"/>
+                <constraint firstItem="3y4-uG-IOU" firstAttribute="top" secondItem="MH2-Xd-2BU" secondAttribute="bottom" constant="20" id="uz2-16-ZhQ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="jap-s8-Xp0" secondAttribute="bottom" priority="250" constant="20" id="vD7-9N-ZjJ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
