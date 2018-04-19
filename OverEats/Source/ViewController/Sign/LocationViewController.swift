@@ -21,7 +21,7 @@ class LocationViewController: UIViewController {
     let sectionHeaderTitle = ["필수! 상세 주소를 입력해주세요", "문 앞까지 배달", "밖에서 픽업", "배달 관련 참고사항 입력 (찾아오는 길 혹은 요청사항)"]
     
     @IBAction func okButton(_ sender: UIButton) {
-    
+
     
     }
     @IBOutlet weak var testLabel: UILabel!
@@ -138,7 +138,6 @@ extension LocationViewController: CLLocationManagerDelegate {
 extension LocationViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        //        tableView.backgroundView = nil
         return 5
     }
     
@@ -185,12 +184,12 @@ extension LocationViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
-        // header 색 설정하기
         let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
         header.contentView.backgroundColor = UIColor.white
         header.textLabel?.textColor = UIColor.black
-        
-        if section == 1 {
+        if section == 0 {
+            header.contentView.backgroundColor = UIColor.clear
+        }else if section == 1 {
             header.textLabel?.font = UIFont.systemFont(ofSize: 17)
             header.textLabel?.text = sectionHeaderTitle[section - 1]
         } else if section > 0 {
@@ -219,7 +218,7 @@ extension LocationViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 10 // 검은 줄 높이
+            return 10
         }else {
             return 44
         }
@@ -228,9 +227,9 @@ extension LocationViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat{
         if section == 0 {
-            return 10 // 신사동 밑에 검은줄
+            return 10
         }else if section == 3 || section == 4{
-            return 15 // 밖에서 픽업 밑에 검은줄
+            return 15
         } else {
             return 0
         }

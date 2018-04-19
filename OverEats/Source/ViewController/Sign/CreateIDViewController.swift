@@ -44,8 +44,8 @@ class CreateIDViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         
         if segue.identifier == "profileSegue" {
-            let vc = segue.destination as! ProfileCreateViewController // 데스티니를 이용하여 뷰에 접근
-            vc.signUpDic = signUpDic // 해당 뷰에 접근이 가능해졌으니 원하는 값 옮기기
+            let nextViewController = segue.destination as! ProfileCreateViewController // 데스티니를 이용하여 뷰에 접근
+            nextViewController.signUpDic = signUpDic // 해당 뷰에 접근이 가능해졌으니 원하는 값 옮기기
             
         }
     }
