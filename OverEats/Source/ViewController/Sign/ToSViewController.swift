@@ -29,15 +29,16 @@ class ToSViewController: UIViewController {
     @objc func clickedButton(_ sender: UIButton) {
         if sender.isSelected {
             sender.isSelected = false
-//            sender.setImage(UIImage(named: "nil"), for: .normal)
+            //            sender.setImage(UIImage(named: "nil"), for: .normal)
         } else {
             sender.isSelected = true
-//            sender.setImage(UIImage(named: "Check"), for: .selected)
+            //            sender.setImage(UIImage(named: "Check"), for: .selected)
         }
     }
     
     // 전체 선택 이벤트
     @IBAction func allTrue(_ sender: UIButton) {
+        
         TosButton.isSelected = true
         PIPButton.isSelected = true
         OptionButton.isSelected = true
@@ -50,20 +51,36 @@ class ToSViewController: UIViewController {
     // 다음 버튼 이벤트
     @IBAction func nextButton(_ sender: UIButton) {
         
+        // 필수 약관 2개 선택이 아닐경우
         guard TosButton.isSelected && PIPButton.isSelected else {
-            let alertController = UIAlertController(title: "필수 약관 체크",
-                                                    message: "필수 약관 체크",
-                                                    preferredStyle: UIAlertControllerStyle.alert)
-            let okAction = UIAlertAction(title: "확인", style: .default)
-            alertController.addAction(okAction)
-            self.present(alertController,animated: true,completion: nil)
+            
+            // 경고 창 띄우기
+            showAlert(alertTitle: "필수 약관 체크", alertMessage: "필수 약관 체크", actionTitle: "확인")
+            
             return
             
         }
         
+        // 필수 약관 2개 선택 시 다음 view로 이동
         let nextViewController = storyboard?.instantiateViewController(withIdentifier: "CreateIDViewController") as! CreateIDViewController
         present(nextViewController, animated: true, completion: nil)
         
     }
     
 }
+
+extension UIViewController {
+    
+    func showAlert (alertTitle: String, alertMessage: String, actionTitle: String) {
+        
+        // 경고 창 띄우기
+        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let okAction = UIAlertAction(title: actionTitle, style: UIAlertActionStyle.default)
+        alertController.addAction(okAction) // 확인
+        
+        self.present(alertController,animated: true,completion: nil)
+        
+    }
+    
+}
+
