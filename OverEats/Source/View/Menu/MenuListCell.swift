@@ -24,6 +24,7 @@ class MenuListCell: UITableViewCell {
         self.menuDescription.text = nil
         self.price.text = nil
         self.menuImageView?.image = nil
+        
     }
     
     

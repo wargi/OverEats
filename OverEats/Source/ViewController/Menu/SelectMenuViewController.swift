@@ -10,7 +10,6 @@ import UIKit
 
 final class SelectMenuViewController: UIViewController {
 
-    private let customTransition = CustomTransition()
     var menuInfo: Section.Menu!
     @IBOutlet private weak var scrollView : UIScrollView! // 스크롤 뷰
     @IBOutlet private weak var selectMenuView : UIView! // 콘텐츠 뷰
@@ -56,8 +55,6 @@ final class SelectMenuViewController: UIViewController {
             closeButton.tintColor = .black
         }
         
-        self.definesPresentationContext = true
-        
         configure()
         setStatusAndBtnColor()
         gestureCreate()
@@ -92,10 +89,6 @@ final class SelectMenuViewController: UIViewController {
         closeButton.addTarget(self, action: #selector(self.clickedCloseButton(_:)), for: .touchUpInside)
     }
 
-    @objc func clickedCloseButton(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     @objc func clickedCloseButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -144,12 +137,8 @@ final class SelectMenuViewController: UIViewController {
     @objc func tapAction(_ sender: UITapGestureRecognizer) {
         let nextViewController = storyboard?.instantiateViewController(withIdentifier: "Request") as! RequestViewController
         
-//        self.presentingViewController?.modalPresentationStyle = .overFullScreen
-//        self.definesPresentationContext = true
-//        self.modalPresentationStyle = .overFullScreen
-        
         nextViewController.requestText = requestLabel.text != defaultString ? requestLabel.text! : ""
-        nextViewController.transitioningDelegate = self
+        nextViewController.modalPresentationStyle = .overCurrentContext
         
         present(nextViewController, animated: true)
     }
@@ -187,10 +176,6 @@ final class SelectMenuViewController: UIViewController {
         totalPrice.text = "₩" + String(price * count)
     }
     
-    deinit {
-        print("Deinit")
-    }
-    
     func requestReflecting() {
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "noti"), object: nil, queue: nil) { [weak self] (noti) in
             
@@ -214,24 +199,5 @@ extension SelectMenuViewController: UIGestureRecognizerDelegate {
         -> Bool {
             
         return true
-    }
-}
-
-extension SelectMenuViewController: UIViewControllerTransitioningDelegate {
-    
-    func animationController(
-        forPresented presented: UIViewController,
-        presenting: UIViewController,
-        source: UIViewController
-        ) -> UIViewControllerAnimatedTransitioning? {
-        customTransition.isPresenting = true
-        return customTransition
-    }
-    
-    func animationController(
-        forDismissed dismissed: UIViewController
-        ) -> UIViewControllerAnimatedTransitioning? {
-        customTransition.isPresenting = false
-        return customTransition
     }
 }

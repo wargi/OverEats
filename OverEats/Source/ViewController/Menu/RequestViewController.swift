@@ -10,7 +10,6 @@ import UIKit
 
 class RequestViewController: UIViewController {
 
-    
     @IBOutlet private weak var requestView : UIView!
     @IBOutlet weak var requestTextView : UITextView!
     var requestText: String?
@@ -50,7 +49,7 @@ class RequestViewController: UIViewController {
                                             object: requsetText)
         } else {
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "noti"),
-                                            object: "음식 조리 시 요청할 사항을 적어주세요(소스 추가, 양파 빼기 등)")
+                                            object: "요청할 사항을 적어주세요(소스 추가, 양파 빼기 등)")
         }
         
         self.dismiss(animated: true, completion: nil)

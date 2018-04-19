@@ -150,6 +150,7 @@ final class MenuViewController: UIViewController {
         
         headerView.gradientView.layer.insertSublayer(gradient, at: 0)
     }
+}
     
     
 
@@ -210,9 +211,7 @@ extension MenuViewController: UITableViewDelegate {
         
         let nextViewController = storyboard?.instantiateViewController(withIdentifier: "SelectMenu") as! SelectMenuViewController
         nextViewController.menuInfo = rowInSection
-//        nextViewController.modalPresentationStyle = .overFullScreen
-        self.modalPresentationStyle = .overFullScreen
-        
+        nextViewController.modalPresentationStyle = .overCurrentContext
         self.present(nextViewController, animated: true, completion: nil)
     }
     
