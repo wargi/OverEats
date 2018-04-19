@@ -31,7 +31,6 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.getService = GetService()
         getRestaurantData()
         getNoticeData()
         
@@ -44,7 +43,7 @@ class MainViewController: UIViewController {
     }
     
     private func getRestaurantData(){
-        getService?.getRestaurantList(completion: { (result) in
+        GetService.getRestaurantList(completion: { (result) in
             switch result {
             case .success(let restaurantData):
                 self.restaurants = restaurantData.restaurants
@@ -65,7 +64,7 @@ class MainViewController: UIViewController {
     }
     
     private func getNoticeData() {
-        getService?.getNoticeList(completion: { (result) in
+        GetService.getNoticeList(completion: { (result) in
             switch result {
             case .success(let noticeData):
                 self.notices = noticeData

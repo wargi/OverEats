@@ -8,12 +8,14 @@
 
 import UIKit
 
-class NonImageMenuList: UITableViewCell {
+class NonImageMenuListCell: UITableViewCell {
     
-    @IBOutlet private weak var name : UILabel!
-    @IBOutlet private weak var menuDescription : UILabel!
-    @IBOutlet private weak var price : UILabel!
+    // MenuList TavleView Cell의 NonImageMenuListCell 변수
+    @IBOutlet private weak var name : UILabel! // 메뉴 명
+    @IBOutlet private weak var menuDescription : UILabel! // 메뉴 설명
+    @IBOutlet private weak var price : UILabel! // 메뉴 가격
     
+    // 메뉴 명 삽입
     var setName: String? {
         didSet {
             if let setName = setName {
@@ -22,9 +24,10 @@ class NonImageMenuList: UITableViewCell {
         }
     }
     
-    var foodDescription: String? {
+    // 메뉴 설명 삽입
+    var setDescription: String? {
         didSet {
-            if let foodDescription = foodDescription {
+            if let foodDescription = setDescription {
                 menuDescription.text = foodDescription
             } else {
                 menuDescription.text = nil
@@ -32,22 +35,13 @@ class NonImageMenuList: UITableViewCell {
         }
     }
     
+    // 메뉴 가격 삽입
     var setPrice: String? {
         didSet {
             if let setPrice = setPrice {
                 price.text = setPrice
             }
         }
-    }
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

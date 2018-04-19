@@ -20,17 +20,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 ////        setupRootViewController()
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]? = nil) -> Bool {
         
 //        let token = UserDefaults.standard.string(forKey: "userToken!") // 토큰 값 가져오기
-        
+
         return true
     }
     
 //    func setupRootViewController() {
 //        let vc: UIViewController
+
 //        vc = MainViewController.createWith()
+
 //        window?.rootViewController = vc
 //    }
 
