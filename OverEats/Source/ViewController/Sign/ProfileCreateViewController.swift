@@ -38,6 +38,8 @@ class ProfileCreateViewController: UIViewController {
         // 이부분을 true로 바꿔줘야 선택한 image를 적용할지 확인 단계가 생긴다
         profileImage.isUserInteractionEnabled = true
         
+        profileImage.layer.cornerRadius = profileImage.frame.height / 2
+        
         //imageView에 gesture 적용
         let gesture = UITapGestureRecognizer(target: self, action: #selector(viewtap(_:)))
         profileImage.addGestureRecognizer(gesture)
@@ -46,15 +48,20 @@ class ProfileCreateViewController: UIViewController {
         firstNameTf.addTarget(self, action: #selector(firstNameCheck(_:)), for: .editingChanged) // 실시간 적용
     }
     
-    // 다음 버튼
+    // 이전 화면으로 dismiss 하는 버튼
+    @IBAction func dismissButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    // 다음 화면 호출 버튼
     @IBAction func nextButton(_ sender: UIButton) {
         
         // 모든 TextField의 정규식이 true일 때
         if firstNameCheck == true && lastNameCheck == true {
             
             // textField의 text를 회원정보 Dic에 저장하기
-            signUpDic.updateValue(lastNameTf.text!, forKey: "lastname")
-            signUpDic.updateValue(firstNameTf.text!, forKey: "firstname")
+            signUpDic.updateValue(lastNameTf.text!, forKey: "last_name")
+            signUpDic.updateValue(firstNameTf.text!, forKey: "first_name")
             
             // multipartFormData를 사용하기 위해서 utf8로 변환시키기
             // image를 보내기 위해서는 multipartFormData가 필요하다
@@ -62,11 +69,11 @@ class ProfileCreateViewController: UIViewController {
             let emailData = email.data(using: .utf8)
             let password = signUpDic["password"] as! String
             let passwordData = password.data(using: .utf8)
-            let firstName = signUpDic["firstname"] as! String
+            let firstName = signUpDic["first_name"] as! String
             let firstNameData = firstName.data(using: .utf8)
-            let lastName = signUpDic["lastname"] as! String
+            let lastName = signUpDic["last_name"] as! String
             let lastNameData = lastName.data(using: .utf8)
-            let phoneNumber = signUpDic["phonenumber"] as! String
+            let phoneNumber = signUpDic["phone_number"] as! String
             let phoneNumberData = phoneNumber.data(using: .utf8)
             let imageData = UIImageJPEGRepresentation(self.profileImage.image!, 0.1)
             

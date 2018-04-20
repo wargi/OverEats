@@ -20,14 +20,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y54-jG-sCO">
-                        <rect key="frame" x="10" y="25" width="25" height="25"/>
+                        <rect key="frame" x="15" y="25" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="25" id="hdl-IO-oLv"/>
                             <constraint firstAttribute="height" constant="25" id="yqe-iy-PA1"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fU5-CO-Ql4">
-                        <rect key="frame" x="45" y="29" width="35.5" height="17"/>
+                        <rect key="frame" x="55" y="29" width="35.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -35,8 +35,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Y54-jG-sCO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8we-2l-Ssw"/>
-                    <constraint firstItem="Y54-jG-sCO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="MbH-kQ-gVv"/>
-                    <constraint firstItem="fU5-CO-Ql4" firstAttribute="leading" secondItem="Y54-jG-sCO" secondAttribute="trailing" constant="10" id="PUT-XN-u3P"/>
+                    <constraint firstItem="Y54-jG-sCO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="MbH-kQ-gVv"/>
+                    <constraint firstItem="fU5-CO-Ql4" firstAttribute="leading" secondItem="Y54-jG-sCO" secondAttribute="trailing" constant="15" id="PUT-XN-u3P"/>
                     <constraint firstItem="fU5-CO-Ql4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="x9z-OC-6Cy"/>
                 </constraints>
             </tableViewCellContentView>

@@ -29,10 +29,8 @@ class ToSViewController: UIViewController {
     @objc func clickedButton(_ sender: UIButton) {
         if sender.isSelected {
             sender.isSelected = false
-            //            sender.setImage(UIImage(named: "nil"), for: .normal)
         } else {
             sender.isSelected = true
-            //            sender.setImage(UIImage(named: "Check"), for: .selected)
         }
     }
     
@@ -43,9 +41,8 @@ class ToSViewController: UIViewController {
         PIPButton.isSelected = true
         OptionButton.isSelected = true
         
-        //        TosButton.setImage(UIImage(named: "Check"), for: .selected)
-        //        PIPButton.setImage(UIImage(named: "Check"), for: .selected)
-        //        OptionButton.setImage(UIImage(named: "Check"), for: .selected)
+        presentNextView()
+        
     }
     
     // 다음 버튼 이벤트
@@ -55,21 +52,27 @@ class ToSViewController: UIViewController {
         guard TosButton.isSelected && PIPButton.isSelected else {
             
             // 경고 창 띄우기
-            showAlert(alertTitle: "필수 약관 체크", alertMessage: "필수 약관 체크", actionTitle: "확인")
+            showAlert(alertTitle: "필수 약관 체크", alertMessage: "필수 약관에 모두 동의하셔야 회원 가입이 가능합니다.", actionTitle: "확인")
             
             return
-            
         }
-        
-        // 필수 약관 2개 선택 시 다음 view로 이동
-        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "CreateIDViewController") as! CreateIDViewController
-        present(nextViewController, animated: true, completion: nil)
-        
+        presentNextView()
+    }
+    
+    // 이전 화면으로 dismiss 하는 버튼
+    @IBAction func dismissButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
 
 extension UIViewController {
+    
+    // 필수 약관 2개 선택 시 다음 view로 이동
+    func presentNextView() {
+        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "CreateIDViewController") as! CreateIDViewController
+        present(nextViewController, animated: true, completion: nil)
+    }
     
     func showAlert (alertTitle: String, alertMessage: String, actionTitle: String) {
         

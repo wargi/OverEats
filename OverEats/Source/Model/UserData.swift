@@ -8,18 +8,34 @@
 
 import Foundation
 
-struct User {
+struct UserData: Decodable {
+    let token: String // 토큰 값
     let user: [User] // 유저 데이터
-    let token: String! // 토큰 값
+    
+    private enum CodingKeys: String, CodingKey {
+        case user
+        case token
+    }
 }
 
-struct UserDetail {
-    let id: String!
-    let userName: String! // 유저 아이디
-    let firstName: String! // 이름
-    let lastName: String! // 성
-    let phoneNumber: String! // 폰 번호
-    let imageURL: String? // 이미지 URL
+struct User: Decodable {
+    let pk: String
+    let username: String // 유저 아이디
+    let email: String // 이름
+    let firstName: String // 이름
+    let lastName: String // 성
+    let phoneNumber: String // 폰 번호
+    let imgProfile: String // 이미지 URL
+    
+    private enum CodingKeys: String, CodingKey {
+        case pk
+        case username
+        case email
+        case firstName = "first_name"
+        case lastName = "last_name"
+        case phoneNumber = "phone_number"
+        case imgProfile = "img_profile"
+    }
 }
 
 struct CreditCard {

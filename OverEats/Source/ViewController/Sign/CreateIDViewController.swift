@@ -18,6 +18,7 @@ class CreateIDViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var mobile: UITextField! // PhoneNumber
     @IBOutlet weak var passWord: UITextField! // PassWord
     
+    
     // 정규식의 Bool 값
     var emailCheck:Bool = false // E-mail의 정규식 Check값
     var mobileCheck:Bool = false // PhoneNumber의 정규식 Check값
@@ -69,7 +70,7 @@ class CreateIDViewController: UIViewController, UITextFieldDelegate {
         if emailCheck == true && mobileCheck == true && passWordCheck == true {
             
             signUpDic.updateValue(emailTF.text!, forKey: "username") // E-mail 입력 값을 Dic 형태로 저장
-            signUpDic.updateValue(mobile.text!, forKey: "phonenumber") // PhoneNumber 입력 값을 Dic 형태로 저장
+            signUpDic.updateValue(mobile.text!, forKey: "phone_number") // PhoneNumber 입력 값을 Dic 형태로 저장
             signUpDic.updateValue(passWord.text!, forKey: "password") // PassWord 입력 갑을 Dic 형태로 저장
             
             performSegue(withIdentifier: "profileSegue", sender: sender) // 다음 view로 이동하기
@@ -110,6 +111,11 @@ class CreateIDViewController: UIViewController, UITextFieldDelegate {
                 
             }
         }
+    }
+    
+    // 이전 화면으로 dismiss 하는 버튼
+    @IBAction func dismissButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     // textField에 입력된 값 정보를 알 수 있다

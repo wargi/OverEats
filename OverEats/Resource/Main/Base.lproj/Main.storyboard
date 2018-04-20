@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0dF-x5-7ML">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,19 +11,23 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
-        <scene sceneID="gVx-m6-mHy">
+        <!--View Controller-->
+        <scene sceneID="wfE-7S-2MP">
             <objects>
-                <tabBarController id="fQy-YV-R9W" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aMb-hT-SkK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nsh-sJ-hYu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="01S-5q-L9n" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cWq-8B-sqj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="YhR-6L-vnl"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="icTabHistoryOff" selectedImage="icTabHistoryOn" id="n5v-ew-eFf">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-10"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rJx-1q-SEh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-726" y="133"/>
+            <point key="canvasLocation" x="1076" y="-654"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -83,7 +87,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Ws6-lx-kPL">
-                                <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                                <rect key="frame" x="0.0" y="60" width="375" height="558"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="NoticeTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NoticeTableViewCell" rowHeight="210" id="cVx-HK-rGj" customClass="NoticeTableViewCell" customModule="OverEats" customModuleProvider="target">
@@ -178,18 +182,104 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="icTabHomeOff" selectedImage="icTabHomeOn" id="g9t-Zq-ntq">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-10"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="mainTableView" destination="Ws6-lx-kPL" id="mxA-C2-IWF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="132.68365817091455"/>
+            <point key="canvasLocation" x="1076" y="132.68365817091455"/>
+        </scene>
+        <!--SettingViewController-->
+        <scene sceneID="GT5-2y-cSR">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Setting" storyboardName="Setting" referencedIdentifier="SettingViewController" id="FCf-Nr-lJP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="uEu-ih-y5w"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HH8-Rh-QnE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="21" y="594"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="OtI-Ja-KaG">
+            <objects>
+                <viewController id="7ij-Cm-2NG" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sj7-Gp-n0p">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="S0S-SF-V1K"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="icTabSearchOff" selectedImage="icTabSearchOn" id="GNl-4X-ba3">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-10"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pqK-hD-ScB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1076" y="933"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="lmp-Oi-uV3">
+            <objects>
+                <viewController id="Gt8-YC-Vm9" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wvl-X5-io8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KakaoTalk_Photo_2018-04-02-17-22-07.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="el2-V8-2U2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="el2-V8-2U2" firstAttribute="top" secondItem="Wvl-X5-io8" secondAttribute="top" id="Ika-Tb-7ul"/>
+                            <constraint firstItem="hk8-kM-hbO" firstAttribute="bottom" secondItem="el2-V8-2U2" secondAttribute="bottom" id="Ugj-wf-UbB"/>
+                            <constraint firstItem="hk8-kM-hbO" firstAttribute="trailing" secondItem="el2-V8-2U2" secondAttribute="trailing" id="XC2-az-LlQ"/>
+                            <constraint firstItem="el2-V8-2U2" firstAttribute="leading" secondItem="hk8-kM-hbO" secondAttribute="leading" id="Z2X-Lm-94b"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hk8-kM-hbO"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sAN-5x-tG9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1714" y="133"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="C55-K1-GG2">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="0dF-x5-7ML" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UFy-Vr-Lly">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="JYu-Cz-gSA"/>
+                        <segue destination="7ij-Cm-2NG" kind="relationship" relationship="viewControllers" id="f2Q-YU-Fdx"/>
+                        <segue destination="01S-5q-L9n" kind="relationship" relationship="viewControllers" id="wcO-N8-BDI"/>
+                        <segue destination="FCf-Nr-lJP" kind="relationship" relationship="viewControllers" id="Mfw-Nm-Add"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F7K-8Y-dgB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="247" y="133"/>
         </scene>
     </scenes>
     <resources>
+        <image name="KakaoTalk_Photo_2018-04-02-17-22-07.jpeg" width="539" height="960"/>
         <image name="btnFilter" width="32" height="32"/>
         <image name="btnMore" width="24" height="24"/>
         <image name="btnOrder" width="13" height="13"/>
+        <image name="icTabHistoryOff" width="30" height="30"/>
+        <image name="icTabHistoryOn" width="30" height="30"/>
+        <image name="icTabHomeOff" width="30" height="30"/>
+        <image name="icTabHomeOn" width="30" height="30"/>
+        <image name="icTabSearchOff" width="30" height="30"/>
+        <image name="icTabSearchOn" width="30" height="30"/>
     </resources>
 </document>

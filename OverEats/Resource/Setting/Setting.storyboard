@@ -13,13 +13,13 @@
         <!--Setting View Controller-->
         <scene sceneID="RtO-jq-mER">
             <objects>
-                <viewController id="BPR-LJ-IcQ" customClass="SettingViewController" customModule="OverEats" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BPR-LJ-IcQ" customClass="SettingViewController" customModule="OverEats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t8M-f6-Pbg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cNd-nk-RiR">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="WcF-k3-04e" userLabel="HeaderView" customClass="SettingHeaderView" customModule="OverEats" customModuleProvider="target">
@@ -88,6 +88,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KHN-1A-cDj"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="icTabSettingOff" selectedImage="icTabSettingOn" id="SAg-Oo-e2u">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-10"/>
+                    </tabBarItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="headerView" destination="WcF-k3-04e" id="ttk-Y2-NaO"/>
                         <outlet property="settingTableView" destination="cNd-nk-RiR" id="m69-JV-dCn"/>
@@ -100,5 +104,7 @@
     </scenes>
     <resources>
         <image name="btnBurger" width="45" height="54"/>
+        <image name="icTabSettingOff" width="30" height="30"/>
+        <image name="icTabSettingOn" width="30" height="30"/>
     </resources>
 </document>

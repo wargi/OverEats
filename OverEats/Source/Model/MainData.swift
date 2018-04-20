@@ -9,8 +9,8 @@
 import Foundation
 
 struct Lestaurants: Decodable {
-    let count: Int!
-    let restaurants: [Lestaurant]!
+    let count: Int
+    let restaurants: [Lestaurant]
     private enum CodingKeys: String, CodingKey {
         case count
         case restaurants = "restaurants"
