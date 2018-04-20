@@ -53,6 +53,9 @@ class LoginViewController: UIViewController {
                         
                         // 데이터 저장
                         UserDefaults.standard.set("\(self.token)", forKey: "userToken")
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let nextViewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+                        self.present(nextViewController, animated: true, completion: nil)
                         
                     } catch {
                         

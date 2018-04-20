@@ -74,6 +74,13 @@ class MainViewController: UIViewController {
             self.mainTableView.reloadData()
         })
     }
+    
+    func tempSender() {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextViewController = storyboard.instantiateViewController(withIdentifier: "Menu") as! MenuViewController
+        self.present(nextViewController, animated: true, completion: nil)
+    }
 }
 
 extension MainViewController: UITableViewDataSource {

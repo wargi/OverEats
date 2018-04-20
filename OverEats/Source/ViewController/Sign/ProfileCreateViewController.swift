@@ -97,7 +97,11 @@ class ProfileCreateViewController: UIViewController {
                     case .success(let request, _,_ ):
                         request.responseJSON(completionHandler: { (response) in
                             
-                            self.showAlert(alertTitle: "성공", alertMessage: "회원가입 성공했습니다", actionTitle: "확인")
+//                            self.showAlert(alertTitle: "성공", alertMessage: "회원가입 성공했습니다", actionTitle: "확인")
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let nextViewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+                            self.present(nextViewController, animated: true, completion: nil)
+
                             
                         })
                     case .failure(let error):

@@ -237,7 +237,6 @@
         <!--Select Menu View Controller-->
         <scene sceneID="1vD-E5-f1O">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vtz-27-34C" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="SelectMenu" id="tzf-Jx-xiJ" customClass="SelectMenuViewController" customModule="OverEats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AXN-kR-7Wj" userLabel="mainView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -524,6 +523,7 @@
                         <outlet property="totalPrice" destination="Uwy-Ka-xXq" id="EHJ-hb-UFX"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vtz-27-34C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="794" y="71"/>
         </scene>

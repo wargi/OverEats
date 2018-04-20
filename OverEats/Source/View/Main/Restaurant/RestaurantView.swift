@@ -35,7 +35,9 @@ class RestaurantView: UIView {
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        print("test")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+        mainViewController.tempSender()
     }
     
     func configure(with restaurant: Lestaurant?) {
