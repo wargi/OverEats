@@ -8,16 +8,15 @@
 
 import UIKit
 
-class CreateIDViewController: UIViewController, UITextFieldDelegate {
+class CreateIDViewController: UIViewController{
     
     // regular 인스턴스 만들기
-    let regular = Regularexpression()
+    let regular = RegularExpression()
     
     // 회원정보 TextField
-    @IBOutlet weak var emailTF: UITextField! // E-mail
-    @IBOutlet weak var mobile: UITextField! // PhoneNumber
-    @IBOutlet weak var passWord: UITextField! // PassWord
-    
+    @IBOutlet weak var emailTextField: UITextField! // E-mail
+    @IBOutlet weak var mobileTextField: UITextField! // PhoneNumber
+    @IBOutlet weak var passWordTextField: UITextField! // PassWord
     
     // 정규식의 Bool 값
     var emailCheck:Bool = false // E-mail의 정규식 Check값
@@ -31,13 +30,14 @@ class CreateIDViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         // tag로 사용 해보기
-        emailTF.delegate = self
-        emailTF.tag = 1
+        emailTextField.delegate = self
+        emailTextField.tag = 1
+        
         
         // textField 에서 tag로 적용하는 방법을 사용했기에 주석으로 빼놓기
-        // emailTF.addTarget(self, action: #selector(textField(_:)), for: .editingChanged)
-        mobile.addTarget(self, action: #selector(mobiletextField(_:)), for: .editingChanged) // 실시간 적용
-        passWord.addTarget(self, action: #selector(passWordTextField(_:)), for: .editingChanged) // 실시간 적용
+        // emailTextField.addTarget(self, action: #selector(textField(_:)), for: .editingChanged)
+        mobileTextField.addTarget(self, action: #selector(mobiletextField(_:)), for: .editingChanged) // 실시간 적용
+        passWordTextField.addTarget(self, action: #selector(passWordTextField(_:)), for: .editingChanged) // 실시간 적용
         
     }
     
@@ -46,8 +46,8 @@ class CreateIDViewController: UIViewController, UITextFieldDelegate {
         
         if segue.identifier == "profileSegue" {
             let nextViewController = segue.destination as! ProfileCreateViewController // 데스티니를 이용하여 뷰에 접근
-            nextViewController.signUpDic = signUpDic // 해당 뷰에 접근이 가능해졌으니 원하는 값 옮기기
             
+            nextViewController.signUpDic = signUpDic // 해당 뷰에 접근이 가능해졌으니 원하는 값 옮기기
         }
     }
     
@@ -56,25 +56,17 @@ class CreateIDViewController: UIViewController, UITextFieldDelegate {
         
         // PhoneNumber 정규식 적용
         // 버튼 누르는 순간에 검사
-        if regular.vaildNumber(mobileNumber: mobile.text!) == false {
-            
-            mobileCheck = false // 정규식이 틀렸을 경우 false
-            
-        } else {
-            
-            mobileCheck = true // 정규식이 맞을 경우 true
-            
-        }
+        mobileCheck = regular.vaildNumber(mobileNumber: mobileTextField.text!)
         
         // 모든 TextField의 정규식이 true일 때
         if emailCheck == true && mobileCheck == true && passWordCheck == true {
             
-            signUpDic.updateValue(emailTF.text!, forKey: "username") // E-mail 입력 값을 Dic 형태로 저장
-            signUpDic.updateValue(mobile.text!, forKey: "phone_number") // PhoneNumber 입력 값을 Dic 형태로 저장
-            signUpDic.updateValue(passWord.text!, forKey: "password") // PassWord 입력 갑을 Dic 형태로 저장
+            signUpDic.updateValue(emailTextField.text!, forKey: "username") // E-mail 입력 값을 Dic 형태로 저장
+            signUpDic.updateValue(mobileTextField.text!, forKey: "phone_number") // PhoneNumber 입력 값을 Dic 형태로 저장
+            signUpDic.updateValue(passWordTextField.text!, forKey: "password") // PassWord 입력 갑을 Dic 형태로 저장
             
             performSegue(withIdentifier: "profileSegue", sender: sender) // 다음 view로 이동하기
-            
+
         }
         
         // 모든 TextField의 정규식이 false일 때
@@ -117,7 +109,9 @@ class CreateIDViewController: UIViewController, UITextFieldDelegate {
     @IBAction func dismissButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
-    
+}
+
+extension CreateIDViewController: UITextFieldDelegate {
     // textField에 입력된 값 정보를 알 수 있다
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -131,16 +125,7 @@ class CreateIDViewController: UIViewController, UITextFieldDelegate {
         // E-mail textField가 사용중인지 확인
         if textField.tag == 1 {
             
-            // E-mail 정규식 적용
-            if regular.vaildEmail(emailID: finalText) == false {
-                
-                emailCheck = false // 정규식에서 false값일 경우 Check도 false
-                
-            } else {
-                
-                emailCheck = true // 정규식에서 true값일 경우 Check도 true
-                
-            }
+            emailCheck = regular.vaildEmail(emailID: finalText)
             
         }
         
@@ -159,7 +144,7 @@ class CreateIDViewController: UIViewController, UITextFieldDelegate {
         guard let text = sender.text else { return }
         
         let formatNumber = regular.format(phoneNumber: text, shouldRemoveLastDigit: true)
-        mobile.text = formatNumber // 적용 된 부분을 text로 띄우기
+        mobileTextField.text = formatNumber // 적용 된 부분을 text로 띄우기
         
     }
     

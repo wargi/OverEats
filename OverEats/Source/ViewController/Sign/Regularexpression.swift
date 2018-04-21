@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Regularexpression {
+class RegularExpression {
     
     // 자동으로 - 잡아주기
     func format(phoneNumber: String, shouldRemoveLastDigit: Bool = false) -> String {
@@ -58,7 +58,7 @@ class Regularexpression {
         }
             
         // 10개 이상 입력시 적용
-        else if number.count <= 9 {
+        else if number.count <= 10 {
             print(number.count)
             let end = number.index(number.startIndex, offsetBy: number.count)
             let range = number.startIndex..<end

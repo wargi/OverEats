@@ -11,45 +11,70 @@ import Foundation
 import Alamofire
 
 protocol PostServiceType {
-    static func singUp(userInfo: [String: Any], imageData: Data? ,completion: @escaping (Result<UserData>) -> ())
+    static func singUp(singUpData: [String : Any], imageData: Data? ,completion: @escaping (Result<UserData>) -> ())
+    static func signIn(email: String, password: String, completion: @escaping (Result<UserData>) -> ())
 }
 
 struct PostService: PostServiceType {
-    static func singUp(userInfo: [String: Any], imageData: Data?, completion: @escaping (Result<UserData>) -> ()) {
+    static func singUp(singUpData: [String : Any], imageData: Data?, completion: @escaping (Result<UserData>) -> ()) {
+        
+        guard let url = URL(string: API.postSignUp.urlString),
+            let urlRequest = try? URLRequest(url: url, method: .post)
+            else { return completion(.error(ServiceError.invalidURL))
+        }
         
         Alamofire.upload(multipartFormData: { (multipartFormData) in
-            for (key, value) in userInfo {
+            for (key, value) in singUpData {
                 multipartFormData.append("\(value)".data(using: .utf8)!, withName: key as String)
             }
-            if let imageData = imageData {
-                multipartFormData.append(imageData, withName: "img_profile", fileName: "profileImage.jpeg", mimeType: "image/jpeg")
+            if let data = imageData {
+                multipartFormData.append(data, withName: "img_profile", fileName: "profileImage.jpeg", mimeType: "image/jpeg")
             }
-        },
-            to: API.postSignUp.urlString,
-            method: .post,
-            encodingCompletion: { (encodingResult) in
-                switch encodingResult {
-                case .success(request: let upload, _, _):
-                    upload.responseData { (response) in
-                        switch response.result {
-                        case .success(let value):
-                            do {
-                                print("------------ssss----------", value)
-                                let userData = try value.decode(UserData.self)
-                                completion(.success(userData))
-                            } catch {
-                                print("------------ffff----------")
-                                completion(.error(error))
-                            }
-                        case .failure(let error):
+        }, with: urlRequest) { (encodingResult) in
+            switch encodingResult {
+            case .success(request: let upload, _, _):
+                upload.responseData { (response) in
+                    switch response.result {
+                    case .success(let value):
+                        do {
+                            let userData = try value.decode(UserData.self)
+                            completion(.success(userData))
+                        } catch {
                             completion(.error(error))
                         }
+                    case .failure(let error):
+                        completion(.error(error))
+                    }
+                }
+            case .failure(let error):
+                completion(.error(error))
+            }
+        }
+    }
+    
+    static func signIn(email: String, password: String, completion: @escaping (Result<UserData>) -> ()) {
+        guard !email.isEmpty else { return completion(.error(AuthError.invalidUsername)) }
+        guard !password.isEmpty else { return completion(.error(AuthError.invalidPassword)) }
+        
+        let params: Parameters = [
+            "username": email,
+            "password": password
+        ]
+        
+        Alamofire.request(API.postLogin.urlString, method: .post, parameters: params)
+            .validate()
+            .responseData { (response) in
+                switch response.result {
+                case .success(let value):
+                    do {
+                        let userData = try value.decode(UserData.self)
+                        completion(.success(userData))
+                    } catch {
+                        completion(.error(error))
                     }
                 case .failure(let error):
                     completion(.error(error))
                 }
-        })
+        }
     }
-    
-
 }

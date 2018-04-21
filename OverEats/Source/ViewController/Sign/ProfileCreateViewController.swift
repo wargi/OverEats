@@ -12,11 +12,11 @@ import Alamofire
 class ProfileCreateViewController: UIViewController {
     
     // regular 인스턴스 만들기
-    let regular = Regularexpression()
+    let regular = RegularExpression()
     
     // 회원정보 textField와 profileImage
-    @IBOutlet weak var lastNameTf: UITextField!
-    @IBOutlet weak var firstNameTf: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var profileImage: UIImageView!
     
     // picker 인스턴스 만들기
@@ -44,8 +44,8 @@ class ProfileCreateViewController: UIViewController {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(viewtap(_:)))
         profileImage.addGestureRecognizer(gesture)
         
-        lastNameTf.addTarget(self, action: #selector(lastNameCheck(_:)), for: .editingChanged) // 실시간 적용
-        firstNameTf.addTarget(self, action: #selector(firstNameCheck(_:)), for: .editingChanged) // 실시간 적용
+        lastNameTextField.addTarget(self, action: #selector(lastNameCheck(_:)), for: .editingChanged) // 실시간 적용
+        firstNameTextField.addTarget(self, action: #selector(firstNameCheck(_:)), for: .editingChanged) // 실시간 적용
     }
     
     // 이전 화면으로 dismiss 하는 버튼
@@ -60,57 +60,27 @@ class ProfileCreateViewController: UIViewController {
         if firstNameCheck == true && lastNameCheck == true {
             
             // textField의 text를 회원정보 Dic에 저장하기
-            signUpDic.updateValue(lastNameTf.text!, forKey: "last_name")
-            signUpDic.updateValue(firstNameTf.text!, forKey: "first_name")
+            signUpDic.updateValue(lastNameTextField.text!, forKey: "last_name")
+            signUpDic.updateValue(firstNameTextField.text!, forKey: "first_name")
             
-            // multipartFormData를 사용하기 위해서 utf8로 변환시키기
-            // image를 보내기 위해서는 multipartFormData가 필요하다
-            let email = signUpDic["username"] as! String
-            let emailData = email.data(using: .utf8)
-            let password = signUpDic["password"] as! String
-            let passwordData = password.data(using: .utf8)
-            let firstName = signUpDic["first_name"] as! String
-            let firstNameData = firstName.data(using: .utf8)
-            let lastName = signUpDic["last_name"] as! String
-            let lastNameData = lastName.data(using: .utf8)
-            let phoneNumber = signUpDic["phone_number"] as! String
-            let phoneNumberData = phoneNumber.data(using: .utf8)
             let imageData = UIImageJPEGRepresentation(self.profileImage.image!, 0.1)
             
-            Alamofire.upload(
-                
-                // 서버에서 받을때 필요한 Key로 보내주기
-                multipartFormData: { multipartform in
-                    multipartform.append(emailData!, withName: "username")
-                    multipartform.append(passwordData!, withName: "password")
-                    multipartform.append(firstNameData!, withName: "first_name")
-                    multipartform.append(lastNameData!, withName: "last_name")
-                    multipartform.append(phoneNumberData!, withName: "phone_number")
-                    multipartform.append(imageData!, withName: "img_profile", fileName: "profileImage.jpeg", mimeType: "image/jpeg")
-                    // fileName: 서버에서 저장 할 imageName을 적용
-                    // mimType: image 확장자 적용
-            },
-                to: "https://www.overeats.kr/api/member/user/",
-                method: .post,
-                encodingCompletion: { result in
-                    switch result {
-                    case .success(let request, _,_ ):
-                        request.responseJSON(completionHandler: { (response) in
-                            
-//                            self.showAlert(alertTitle: "성공", alertMessage: "회원가입 성공했습니다", actionTitle: "확인")
-                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                            let nextViewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
-                            self.present(nextViewController, animated: true, completion: nil)
-
-                            
-                        })
-                    case .failure(let error):
-                        
-                        self.showAlert(alertTitle: "실패", alertMessage: "회원가입 실패", actionTitle: "확인")
-                        print("회원가입 실패: ", error.localizedDescription)
-                        
-                    }
+            PostService.singUp(singUpData: signUpDic, imageData: imageData, completion: {(result) in
+                switch result {
+                case .success(let userData):
+                    
+                    UserManager.setUser = userData
+                    UserDefaults.standard.set("\(userData.token)", forKey: "userToken")
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let nextViewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+                    self.present(nextViewController, animated: true, completion: nil)
+                    
+                case .error(let error):
+                    print(error)
+                }
             })
+            
         }
         
         // 모든 TextField의 정규식이 false일 때
@@ -191,7 +161,7 @@ extension ProfileCreateViewController : UIImagePickerControllerDelegate, UINavig
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
-            profileImage.image = image // 이미지 넣기
+            self.profileImage.image = image.resized(toWidth: 100) // 이미지 사이즈 조절 후 넣기
             
         }
         
@@ -211,4 +181,16 @@ extension ProfileCreateViewController : UIImagePickerControllerDelegate, UINavig
         firstNameCheck = regular.vaildText(textVaild: text)
     }
     
+}
+
+
+extension UIImage {
+    // image size 줄이는 함수 width 크기를 기준으로 비율에 맞게
+    func resized(toWidth width: CGFloat) -> UIImage? {
+        let canvasSize = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
+        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(origin: .zero, size: canvasSize))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
 }

@@ -41,8 +41,8 @@ enum API: APIProtocol
     // POST API URL 리스트를 열거형으로 정의
     enum POST_LIST: String
     {
-        case login = "/login"
-        case singUp = "/member/user"
+        case login = "/login/"
+        case singUp = "/member/user/"
     }
     
     // GET API

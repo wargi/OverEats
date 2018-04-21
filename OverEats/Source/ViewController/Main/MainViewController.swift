@@ -34,6 +34,8 @@ class MainViewController: UIViewController {
         getRestaurantData()
         getNoticeData()
         
+        print(UserManager.token)
+        
         self.mainTableView.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: CGFloat.leastNormalMagnitude))
         
         // 섹션 헤더뷰의 기본값 정의

@@ -10,16 +10,16 @@ import Foundation
 
 struct UserData: Decodable {
     let token: String // 토큰 값
-    let user: [User] // 유저 데이터
+    let user: User // 유저 데이터
     
     private enum CodingKeys: String, CodingKey {
-        case user
         case token
+        case user
     }
 }
 
 struct User: Decodable {
-    let pk: String
+    let pk: Int
     let username: String // 유저 아이디
     let email: String // 이름
     let firstName: String // 이름

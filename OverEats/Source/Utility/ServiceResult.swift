@@ -12,3 +12,19 @@ enum Result<T> {
     case success(T)
     case error(Error)
 }
+
+enum PostError: Error {
+    case missingParameter(param: String)
+    case encodingError
+}
+
+enum ServiceError: Error {
+    case invalidToken
+    case invalidURL
+    case parsingError
+}
+
+enum AuthError: Error {
+    case invalidUsername
+    case invalidPassword
+}
