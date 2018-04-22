@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol RestaurantViewDelegate {
+    func tappedView(_ restaurantView: RestaurantView)
+}
+
 class RestaurantView: UIView {
     
     @IBOutlet weak var restaurantImageView: UIImageView! // 레스토랑 이미지 레이블
@@ -22,22 +26,20 @@ class RestaurantView: UIView {
     @IBOutlet weak var restaurantScoreStack: UIStackView! // 평점 스택
     @IBOutlet weak var restaurantDescriptionStack: UIStackView! // 소개 스택
     
+    var delegate: RestaurantViewDelegate?
+    
     // restaurantView 를 호출받는 함수
     class func loadNib() -> RestaurantView {
         return UINib(nibName: "RestaurantView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! RestaurantView
     }
     
     override func awakeFromNib() {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        self.isUserInteractionEnabled = true
-        self.addGestureRecognizer(tapGestureRecognizer)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tappedView))
+        self.addGestureRecognizer(tapGesture)
     }
     
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-        mainViewController.tempSender()
+    @objc func tappedView(_ sender: UITapGestureRecognizer){
+        delegate?.tappedView(self)
     }
     
     func configure(with restaurant: Lestaurant?) {
