@@ -9,7 +9,7 @@
 import UIKit
 //import Alamofire
 
-struct SetSize {
+struct MenuSize {
     static let headerViewHeight: CGFloat = 332.5 // HeaderView의 height 설정 값
     static let navigationViewHeight: CGFloat = 80 // NavigationView의 height 설정 값
 }
@@ -29,11 +29,29 @@ final class MenuViewController: UIViewController {
     var gradient: CAGradientLayer! // menuList의 headerView의 그라데이션
     
     var sections: [Section]?
-    var restaurantId: String!
+    var restaurantInfo: Lestaurant!
+    
+    var setRestaurant: Lestaurant? {
+        didSet {
+            if let rest = setRestaurant {
+                restaurantInfo = rest
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        setSection()
+        setNavigation()
+        setMenuList()
+        setGradient()
+        
+    }
+    
+    func setSection() {
         GetService.getMenuList { result in
             switch result {
             case .success(let data):
@@ -43,28 +61,20 @@ final class MenuViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-        
-        UIApplication.shared.statusBarStyle = .lightContent
-        
-        setNavigation()
-        setMenuList()
-        setHeaderView()
-        setGradient()
-        
     }
     
     // Navigation 관련 설정
     func setNavigation() {
         
         // navigationView의 위치 설정
-        self.navigationView.frame.origin.y = -SetSize.navigationViewHeight
+        self.navigationView.frame.origin.y = -MenuSize.navigationViewHeight
         
         // backbutton 설정
         // tintColor 적용을 위한 설정 withRenderingMode(.alwaysTemplate)
         let backImage = UIImage(named: "btnBack")?.withRenderingMode(.alwaysTemplate) // Button Image 삽입
         backButton.setImage(backImage, for: .normal) // backImage 추가
         backButton.tintColor = .white // tintColor white 설정
-        navigationTitle.text = "맥도날드" // navigation title ( 음식점 명 삽입 )
+        navigationTitle.text = restaurantInfo.name // navigation title ( 음식점 명 삽입 )
         
     }
     
@@ -92,28 +102,22 @@ final class MenuViewController: UIViewController {
         menuList.addSubview(footerView)
         
         //테이블 뷰의 content In/Off set 적용
-        menuList.contentInset = UIEdgeInsetsMake(SetSize.headerViewHeight, 0, 0, 0)
-        menuList.contentOffset = CGPoint(x: 0, y: -SetSize.headerViewHeight)
+        menuList.contentInset = UIEdgeInsetsMake(MenuSize.headerViewHeight, 0, 0, 0)
+        menuList.contentOffset = CGPoint(x: 0, y: -MenuSize.headerViewHeight)
+        
+        headerView.configure(with: restaurantInfo)
         
         setHeaderFrame()
-        
-    }
-    
-    // 테이블 뷰 헤더뷰 생성
-    func setHeaderView() {
-        
-        headerView.setTitle = "맥도날드"
-        headerView.setDeliveryTime = "15" + "분-" + "25" + "분"
         
     }
     
     //테이블뷰의 contentOffset의 값에 따라 headerViewFrame설정
     func setHeaderFrame() {
         // 초기 getHeaderViewFrame 값
-        var getHeaderViewFrame = CGRect(x: 0, y: -SetSize.headerViewHeight, width: menuList.bounds.width,
-                                        height: SetSize.headerViewHeight)
+        var getHeaderViewFrame = CGRect(x: 0, y: -MenuSize.headerViewHeight, width: menuList.bounds.width,
+                                        height: MenuSize.headerViewHeight)
         // 테이블뷰의 contentOffset.y가 headerViewHeight의 값보다 작을 때
-        if menuList.contentOffset.y < -SetSize.headerViewHeight {
+        if menuList.contentOffset.y < -MenuSize.headerViewHeight {
             // 테이블 뷰의 위치가 점점 아래로 내려간다.
             getHeaderViewFrame.origin.y = menuList.contentOffset.y
             // getHeaderView의 크기가 점점 커진다. (menuList.contentOffset.y은 원래 minus값이므로 -를 주면 양수로 바뀐다)
