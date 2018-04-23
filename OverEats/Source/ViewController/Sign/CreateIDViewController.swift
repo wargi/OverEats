@@ -92,7 +92,7 @@ class CreateIDViewController: UIViewController{
             else if mobileCheck == false {
                 
                 // 경고 창 띄우기
-                showAlert(alertTitle: "번호 입력이 틀렸습니다.", alertMessage: "숫자만 입력해 주세요", actionTitle: "확인")
+                showAlert(alertTitle: "모바일 번호 입력이 틀렸습니다.", alertMessage: "숫자만 입력해 주세요", actionTitle: "확인")
                 
             }
                 // passWord TextField가 false일 때
