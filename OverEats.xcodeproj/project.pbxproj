@@ -28,7 +28,6 @@
 		29227F24208613080056A67F /* RecommendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29227F23208613080056A67F /* RecommendTableViewCell.swift */; };
 		292582C72085C44D00FFE782 /* NoticeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292582C62085C44D00FFE782 /* NoticeData.swift */; };
 		292582CA2085DD9100FFE782 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292582C92085DD9100FFE782 /* RestaurantTableViewCell.swift */; };
-		292582CC2085E26C00FFE782 /* KakaoTalk_Photo_2018-04-02-17-22-07.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 292582CB2085E26C00FFE782 /* KakaoTalk_Photo_2018-04-02-17-22-07.jpeg */; };
 		2933C2BE20899DE3002DAAA4 /* SelectMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2933C2BD20899DE3002DAAA4 /* SelectMenuViewController.swift */; };
 		29DF70E4207E393800E1D023 /* SetTableAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF70E3207E393800E1D023 /* SetTableAutolayout.swift */; };
 		29DF70E6207ED7E400E1D023 /* MainHeaderInSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF70E5207ED7E400E1D023 /* MainHeaderInSection.swift */; };
@@ -71,6 +70,8 @@
 		9E60DCD02074C08F00B9528A /* ProfileCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60DCCF2074C08F00B9528A /* ProfileCreateViewController.swift */; };
 		9E60DCD22074D1F900B9528A /* ToSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60DCD12074D1F900B9528A /* ToSViewController.swift */; };
 		9E7922DC2085E83500C3FB99 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7922DB2085E83500C3FB99 /* LocationViewController.swift */; };
+		D27A863B208E1C0500CF814F /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A863A208E1C0500CF814F /* TextFieldTableViewCell.swift */; };
+		D2BAF094208DC4D800E3C8E6 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BAF093208DC4D800E3C8E6 /* MainTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,7 +97,6 @@
 		29227F23208613080056A67F /* RecommendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendTableViewCell.swift; sourceTree = "<group>"; };
 		292582C62085C44D00FFE782 /* NoticeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeData.swift; sourceTree = "<group>"; };
 		292582C92085DD9100FFE782 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
-		292582CB2085E26C00FFE782 /* KakaoTalk_Photo_2018-04-02-17-22-07.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "KakaoTalk_Photo_2018-04-02-17-22-07.jpeg"; path = "../../../../../Downloads/KakaoTalk_Photo_2018-04-02-17-22-07.jpeg"; sourceTree = "<group>"; };
 		2933C2BD20899DE3002DAAA4 /* SelectMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMenuViewController.swift; sourceTree = "<group>"; };
 		29DF70E3207E393800E1D023 /* SetTableAutolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTableAutolayout.swift; sourceTree = "<group>"; };
 		29DF70E5207ED7E400E1D023 /* MainHeaderInSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHeaderInSection.swift; sourceTree = "<group>"; };
@@ -141,6 +141,8 @@
 		9E60DCCF2074C08F00B9528A /* ProfileCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreateViewController.swift; sourceTree = "<group>"; };
 		9E60DCD12074D1F900B9528A /* ToSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToSViewController.swift; sourceTree = "<group>"; };
 		9E7922DB2085E83500C3FB99 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		D27A863A208E1C0500CF814F /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		D2BAF093208DC4D800E3C8E6 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		E373B345549AF331F65951E3 /* Pods-OverEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OverEats.release.xcconfig"; path = "Pods/Target Support Files/Pods-OverEats/Pods-OverEats.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -308,7 +310,6 @@
 		8E8A63782071E9DB007D9B7A /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				292582CB2085E26C00FFE782 /* KakaoTalk_Photo_2018-04-02-17-22-07.jpeg */,
 				8EE538BC206E25AD006BAC26 /* Main.storyboard */,
 			);
 			path = Main;
@@ -458,6 +459,8 @@
 				9E60DCCF2074C08F00B9528A /* ProfileCreateViewController.swift */,
 				9E3343442080491000E3D250 /* LoginViewController.swift */,
 				9E7922DB2085E83500C3FB99 /* LocationViewController.swift */,
+				D2BAF093208DC4D800E3C8E6 /* MainTableViewCell.swift */,
+				D27A863A208E1C0500CF814F /* TextFieldTableViewCell.swift */,
 			);
 			path = Sign;
 			sourceTree = "<group>";
@@ -548,7 +551,6 @@
 				8E5B9E7520798BA300921EF4 /* MenuListCell.xib in Resources */,
 				8E8A637A2071EAD0007D9B7A /* Menu.storyboard in Resources */,
 				8EE538BE206E25AD006BAC26 /* Main.storyboard in Resources */,
-				292582CC2085E26C00FFE782 /* KakaoTalk_Photo_2018-04-02-17-22-07.jpeg in Resources */,
 				291C9F33207629A10085E37E /* MainInviteTableViewCell.xib in Resources */,
 				8E3A6008207DBA9A00EB5747 /* SettingCell.xib in Resources */,
 				8E3A5FFC207DB14900EB5747 /* Setting.storyboard in Resources */,
@@ -646,7 +648,9 @@
 				9E60DCD22074D1F900B9528A /* ToSViewController.swift in Sources */,
 				8E3A6007207DBA9A00EB5747 /* SettingCell.swift in Sources */,
 				8EE073B02085E49C0000E22B /* CustomTransition.swift in Sources */,
+				D2BAF094208DC4D800E3C8E6 /* MainTableViewCell.swift in Sources */,
 				8EECDB262086258C00151F43 /* CartHeaderView.swift in Sources */,
+				D27A863B208E1C0500CF814F /* TextFieldTableViewCell.swift in Sources */,
 				8E5B9E7420798BA300921EF4 /* MenuListCell.swift in Sources */,
 				8E5B9E692079856900921EF4 /* MenuHeaderView.swift in Sources */,
 				8E3A6004207DB89900EB5747 /* SettingHeaderView.swift in Sources */,

@@ -1,0 +1,31 @@
+//
+//  mainTableViewCell.swift
+//  OverEats
+//
+//  Created by 배태웅 on 2018. 4. 23..
+//  Copyright © 2018년 sangwook park. All rights reserved.
+//
+
+import UIKit
+
+class MainTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var locationLabel: UILabel!
+  
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    
+        
+        locationLabel.text = "가나다라마바사"
+        
+        
+        
+    }
+
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+
+}
