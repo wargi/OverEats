@@ -17,6 +17,7 @@ class RecommendTableViewCell: UITableViewCell {
     
     // restaurantView의 배열
     private var restaurantViews:[RestaurantView] = []
+    var targetView: UIViewController!
     
     // 레스토랑 데이터가 들어올 때 셀을 체크
     var restaurants: [Lestaurant]? {
@@ -78,6 +79,8 @@ extension RecommendTableViewCell: UIScrollViewDelegate {
         
         restaurantViews.append(restaurantView)
         restaurantScrollView.addSubview(restaurantView)
+        
+        restaurantView.delegate = targetView as? RestaurantViewDelegate
         
         restaurantView.centerYAnchor.constraint(equalTo: restaurantScrollView.centerYAnchor).isActive = true
         restaurantView.widthAnchor.constraint(equalTo: restaurantScrollView.widthAnchor, multiplier: 0.85).isActive = true

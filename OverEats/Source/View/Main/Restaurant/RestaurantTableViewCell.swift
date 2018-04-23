@@ -14,6 +14,8 @@ class RestaurantTableViewCell: UITableViewCell {
     // 레스토랑 뷰를 정의
     var restaurantView: RestaurantView?
     
+    var targetView: UIViewController!
+    
     // 뷰 여백 포인트
     var leadingMargin: CGFloat = 15
     var trailingMargin: CGFloat = -15
@@ -39,6 +41,8 @@ class RestaurantTableViewCell: UITableViewCell {
         self.restaurantView = RestaurantView.loadNib()
         if let restaurantView = self.restaurantView {
             restaurantView.translatesAutoresizingMaskIntoConstraints = false
+            
+            restaurantView.delegate = targetView as? RestaurantViewDelegate
             
             self.addSubview(restaurantView)
             

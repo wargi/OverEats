@@ -34,14 +34,13 @@ class MainViewController: UIViewController {
         getRestaurantData()
         getNoticeData()
         
-        print(UserManager.token)
-        
         self.mainTableView.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: CGFloat.leastNormalMagnitude))
         
         // 섹션 헤더뷰의 기본값 정의
         self.mainTableView.rowHeight = UITableViewAutomaticDimension
         self.mainTableView.sectionHeaderHeight = UITableViewAutomaticDimension
         self.mainTableView.estimatedSectionHeaderHeight = CGFloat.leastNormalMagnitude
+        
     }
     
     private func getRestaurantData(){
@@ -157,16 +156,19 @@ extension MainViewController: UITableViewDataSource {
             if listStatusBits == 1 {
                 guard let restaurantData = restaurants?[indexPath.item] else { return UITableViewCell() }
                 let restaurantTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell") as! RestaurantTableViewCell
+                restaurantTableViewCell.targetView = self
                 restaurantTableViewCell.restaurant = restaurantData
                 return restaurantTableViewCell
             } else {
                 if indexPath.section == 1 {
                     let recommendTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RecommendTableViewCell") as! RecommendTableViewCell
+                    recommendTableViewCell.targetView = self
                     recommendTableViewCell.restaurants = nearRestaurants
                     return recommendTableViewCell
                 } else {
                     guard let restaurantData = restaurants?[indexPath.item] else { return UITableViewCell() }
                     let restaurantTableViewCell = mainTableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell") as! RestaurantTableViewCell
+                    restaurantTableViewCell.targetView = self
                     restaurantTableViewCell.restaurant = restaurantData
                     return restaurantTableViewCell
                 }
@@ -213,4 +215,14 @@ extension MainViewController: UITableViewDelegate {
 //        nextViewController.restaurantInfomation =
 //        self.present(nextViewController, animated: true, completion: nil)
 //    }
+}
+
+extension MainViewController: RestaurantViewDelegate {
+    func tappedView(_ restaurantView: RestaurantView) {
+        let storyboard = UIStoryboard(name: "Menu", bundle: nil)
+        let nextViewController = storyboard.instantiateViewController(withIdentifier: "Menu") as! MenuViewController
+            self.present(nextViewController, animated: true, completion: nil)
+        nextViewController.setRestaurant = 
+
+    }
 }
