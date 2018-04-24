@@ -82,6 +82,7 @@ struct PostService: PostServiceType {
         
         let params: Parameters = [
             "search_text": text,
+            "language": "ko"
         ]
         
         Alamofire.request(API.location.urlString, method: .post, parameters: params)
