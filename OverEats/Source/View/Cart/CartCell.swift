@@ -29,10 +29,10 @@ class CartCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(with menu: Section.Menu) {
+    func configure(with menu: CartMenu) {
         self.name.text = menu.name
-        self.count.text = menu.description
-        self.price.text = "₩" + String(menu.price)
+        self.count.text = String(menu.count)
+        self.price.text = "₩" + String(menu.totalPrice)
     }
     
 }

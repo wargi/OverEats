@@ -31,41 +31,49 @@ final class MenuViewController: UIViewController {
     var sections: [Section]?
     var restaurantInfo: Lestaurant!
     
-    var setRestaurant: Lestaurant? {
-        didSet {
-            if let rest = setRestaurant {
-                restaurantInfo = rest
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         UIApplication.shared.statusBarStyle = .lightContent
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        setSection()
         setNavigation()
         setMenuList()
         setGradient()
         
     }
     
-    func setSection() {
-        GetService.getMenuList { result in
-            switch result {
-            case .success(let data):
-                self.sections = data
-                self.menuList.reloadData()
-            case .error(let error):
-                print(error.localizedDescription)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
+    func setData(restaurant: Lestaurant?) {
+        print("Hi")
+        if let rest = restaurant {
+            restaurantInfo = rest
+        }
+        DispatchQueue.global().async {
+            GetService.getMenuList(id: self.restaurantInfo.id) { result in
+                switch result {
+                case .success(let data):
+                    self.sections = data
+                    self.menuList.reloadData()
+                case .error(let error):
+                    print(error.localizedDescription)
+                }
             }
         }
+        
     }
     
     // Navigation 관련 설정
     func setNavigation() {
-        
+        print("Hello")
+        print(restaurantInfo)
         // navigationView의 위치 설정
         self.navigationView.frame.origin.y = -MenuSize.navigationViewHeight
         
@@ -74,6 +82,7 @@ final class MenuViewController: UIViewController {
         let backImage = UIImage(named: "btnBack")?.withRenderingMode(.alwaysTemplate) // Button Image 삽입
         backButton.setImage(backImage, for: .normal) // backImage 추가
         backButton.tintColor = .white // tintColor white 설정
+        backButton.addTarget(self, action: #selector(self.clickedEvent(_:)), for: .touchUpInside)
         navigationTitle.text = restaurantInfo.name // navigation title ( 음식점 명 삽입 )
         
     }
@@ -154,6 +163,11 @@ final class MenuViewController: UIViewController {
         
         headerView.gradientView.layer.insertSublayer(gradient, at: 0)
     }
+    
+    @objc func clickedEvent(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
 }
     
     
@@ -216,6 +230,12 @@ extension MenuViewController: UITableViewDelegate {
         let nextViewController = storyboard?.instantiateViewController(withIdentifier: "SelectMenu") as! SelectMenuViewController
         nextViewController.menuInfo = rowInSection
         nextViewController.modalPresentationStyle = .overCurrentContext
+        
+        nextViewController.restaurantId = restaurantInfo.id
+        nextViewController.restaurantURL = restaurantInfo.logo
+        nextViewController.restaurantName = restaurantInfo.name
+        nextViewController.deliveryTime = restaurantInfo.etaRange
+        
         self.present(nextViewController, animated: true, completion: nil)
     }
     

@@ -12,6 +12,7 @@ import UIKit
 struct CartSize {
     static let headerViewHeight: CGFloat = 562 // HeaderView의 height 설정 값
     static let navigationViewHeight: CGFloat = 80 // NavigationView의 height 설정 값
+    static let footerViewHeight: CGFloat = 143
 }
 
 final class CartViewController: UIViewController {
@@ -24,7 +25,10 @@ final class CartViewController: UIViewController {
     
     // TableView 관련
     @IBOutlet private weak var orderList: UITableView! // menuList tableView
+    @IBOutlet private weak var orderView : UIView!
+    @IBOutlet private weak var totalPrice : UILabel!
     var headerView: CartHeaderView! // menuList의 headerView
+    var footerView: CartFooterView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,14 +41,14 @@ final class CartViewController: UIViewController {
         
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        setHeaderFrame()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print("Hi")
+        orderList.reloadData()
     }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        setHeaderFrame()
-    }
+    
+    
     
     // Navigation 관련 설정
     func setNavigation() {
@@ -56,6 +60,7 @@ final class CartViewController: UIViewController {
         let backImage = UIImage(named: "btnClose")?.withRenderingMode(.alwaysTemplate) // Button Image 삽입
         backButton.setImage(backImage, for: .normal) // backImage 추가
         backButton.tintColor = .white // tintColor white 설정
+        backButton.addTarget(self, action: #selector(self.backButtonEvent(_:)), for: .touchUpInside)
         navigationTitle.text = "장바구니" // navigation
         
     }
@@ -74,14 +79,13 @@ final class CartViewController: UIViewController {
         orderList.rowHeight = UITableViewAutomaticDimension // 테이블뷰의 rowHeight값을 custom 하게 설정
         orderList.addSubview(headerView) // 테이블뷰에 헤더뷰 addSubView
         
-        let footerView = CartFooterView.cartFooterViewLoad()
-//        footerView = orderList.tableFooterView as! CartFooterView
-        orderList.tableFooterView = footerView
+        self.footerView = orderList.tableFooterView as! CartFooterView
+        orderList.tableFooterView = nil
         orderList.addSubview(footerView)
         
         
         //테이블 뷰의 content In/Off set 적용
-        orderList.contentInset = UIEdgeInsets(top: CartSize.headerViewHeight, left: 0, bottom: 0, right: 0)
+        orderList.contentInset = UIEdgeInsets(top: CartSize.headerViewHeight, left: 0, bottom: CartSize.footerViewHeight, right: 0)
         orderList.contentOffset = CGPoint(x: 0, y: -CartSize.headerViewHeight)
         
         setHeaderFrame()
@@ -91,8 +95,7 @@ final class CartViewController: UIViewController {
     // 테이블 뷰 헤더뷰 생성
     func setHeaderView() {
         
-        headerView.restaurantName.text = "맥도날드"
-        headerView.deliveryTime.text = "15" + "분-" + "25" + "분"
+        headerView.configure()
         
     }
     
@@ -125,6 +128,10 @@ final class CartViewController: UIViewController {
         headerView.frame = getHeaderViewFrame
     }
 
+    @objc func backButtonEvent(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 
@@ -135,12 +142,13 @@ extension CartViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 10
+        return CartManager.cartList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CartCell") as! CartCell
+        cell.configure(with: CartManager.cartList[indexPath.row])
         
         return cell
         
@@ -177,6 +185,10 @@ extension CartViewController: UITableViewDataSource {
 extension CartViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "SelectCartMenuViewController") as! SelectCartMenuViewController
+        nextViewController.cartMenuNumber = indexPath.row
+        
+        self.present(nextViewController, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

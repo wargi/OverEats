@@ -218,11 +218,12 @@ extension MainViewController: UITableViewDelegate {
 }
 
 extension MainViewController: RestaurantViewDelegate {
-    func tappedView(_ restaurantView: RestaurantView) {
+    func tappedView(_ restaurantView: RestaurantView, restaurant: Lestaurant) {
         let storyboard = UIStoryboard(name: "Menu", bundle: nil)
-        let nextViewController = storyboard.instantiateViewController(withIdentifier: "Menu") as! MenuViewController
-            self.present(nextViewController, animated: true, completion: nil)
-        nextViewController.setRestaurant = 
-
+        let nextViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        self.present(nextViewController, animated: true, completion: nil)
+        nextViewController.setData(restaurant: restaurant)
     }
+    
+    
 }

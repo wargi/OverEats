@@ -12,11 +12,16 @@ class CartFooterView: UIView {
 
     @IBOutlet private weak var request : UILabel!
     @IBOutlet private weak var requestView : UIView!
-    @IBOutlet private weak var totalPrice : UILabel!
+    @IBOutlet private weak var totalPrice : UILabel?
     @IBOutlet private weak var cardNumber : UITextField!
     
-    
-    class func cartFooterViewLoad() -> UIView {
-        return UINib(nibName: "CartFooterView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
+    func sumPrice(with priceList: [CartMenu]) {
+        var sum: Int = 0
+        for price in priceList {
+            print(sum, price.totalPrice)
+            sum = sum + price.totalPrice
+        }
+        
+        print(self.totalPrice?.text)
     }
 }

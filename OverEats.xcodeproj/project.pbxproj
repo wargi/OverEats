@@ -62,10 +62,12 @@
 		8EECDB262086258C00151F43 /* CartHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EECDB252086258C00151F43 /* CartHeaderView.swift */; };
 		8EECDB2C20862E3100151F43 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EECDB2B20862E3100151F43 /* CartViewController.swift */; };
 		8EECDB2E2086EB3F00151F43 /* CartFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EECDB2D2086EB3F00151F43 /* CartFooterView.swift */; };
-		8EECDB302086EB4F00151F43 /* CartFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EECDB2F2086EB4F00151F43 /* CartFooterView.xib */; };
 		8EECDB332086F2AC00151F43 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EECDB312086F2AC00151F43 /* CartCell.swift */; };
 		8EECDB342086F2AC00151F43 /* CartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EECDB322086F2AC00151F43 /* CartCell.xib */; };
 		8EECDB36208C59B500151F43 /* OrderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EECDB35208C59B500151F43 /* OrderData.swift */; };
+		8EECDB38208E17BF00151F43 /* CartMenuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EECDB37208E17BF00151F43 /* CartMenuData.swift */; };
+		8EECDB3A208ECEB100151F43 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EECDB39208ECEB100151F43 /* CartManager.swift */; };
+		8EECDB3E208F479700151F43 /* SelectCartMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EECDB3D208F479700151F43 /* SelectCartMenuViewController.swift */; };
 		9E3343452080491000E3D250 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3343442080491000E3D250 /* LoginViewController.swift */; };
 		9E33434B208470AE00E3D250 /* Regularexpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E33434A208470AE00E3D250 /* Regularexpression.swift */; };
 		9E60DCCE2074BF4700B9528A /* CreateIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60DCCD2074BF4700B9528A /* CreateIDViewController.swift */; };
@@ -133,10 +135,12 @@
 		8EECDB252086258C00151F43 /* CartHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartHeaderView.swift; sourceTree = "<group>"; };
 		8EECDB2B20862E3100151F43 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		8EECDB2D2086EB3F00151F43 /* CartFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartFooterView.swift; sourceTree = "<group>"; };
-		8EECDB2F2086EB4F00151F43 /* CartFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartFooterView.xib; sourceTree = "<group>"; };
 		8EECDB312086F2AC00151F43 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
 		8EECDB322086F2AC00151F43 /* CartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartCell.xib; sourceTree = "<group>"; };
 		8EECDB35208C59B500151F43 /* OrderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderData.swift; sourceTree = "<group>"; };
+		8EECDB37208E17BF00151F43 /* CartMenuData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartMenuData.swift; sourceTree = "<group>"; };
+		8EECDB39208ECEB100151F43 /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
+		8EECDB3D208F479700151F43 /* SelectCartMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCartMenuViewController.swift; sourceTree = "<group>"; };
 		9E3343442080491000E3D250 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9E33434A208470AE00E3D250 /* Regularexpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regularexpression.swift; sourceTree = "<group>"; };
 		9E60DCCD2074BF4700B9528A /* CreateIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateIDViewController.swift; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				291A567A208B2E3100E04130 /* UserManager.swift */,
+				8EECDB39208ECEB100151F43 /* CartManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -218,8 +223,8 @@
 			children = (
 				292582C92085DD9100FFE782 /* RestaurantTableViewCell.swift */,
 				29227F23208613080056A67F /* RecommendTableViewCell.swift */,
-				29F32FC92087DF6F009D4B6C /* RestaurantView.xib */,
 				29F32FCB2087DF87009D4B6C /* RestaurantView.swift */,
+				29F32FC92087DF6F009D4B6C /* RestaurantView.xib */,
 			);
 			path = Restaurant;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 				291C9F54207736BB0085E37E /* UserData.swift */,
 				8EECDB35208C59B500151F43 /* OrderData.swift */,
 				8EE0738B208468ED0000E22B /* MenuData.swift */,
+				8EECDB37208E17BF00151F43 /* CartMenuData.swift */,
 				290EFFF8207F5B340004AAD4 /* MainData.swift */,
 				292582C62085C44D00FFE782 /* NoticeData.swift */,
 			);
@@ -321,8 +327,8 @@
 			isa = PBXGroup;
 			children = (
 				8E8A63722071E7C3007D9B7A /* MenuViewController.swift */,
-				8E9672C72074AEA60061B7C5 /* RequestViewController.swift */,
 				2933C2BD20899DE3002DAAA4 /* SelectMenuViewController.swift */,
+				8E9672C72074AEA60061B7C5 /* RequestViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -435,6 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				8EECDB2B20862E3100151F43 /* CartViewController.swift */,
+				8EECDB3D208F479700151F43 /* SelectCartMenuViewController.swift */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -446,7 +453,6 @@
 				8EECDB322086F2AC00151F43 /* CartCell.xib */,
 				8EECDB252086258C00151F43 /* CartHeaderView.swift */,
 				8EECDB2D2086EB3F00151F43 /* CartFooterView.swift */,
-				8EECDB2F2086EB4F00151F43 /* CartFooterView.xib */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -557,7 +563,6 @@
 				8E3A5FFC207DB14900EB5747 /* Setting.storyboard in Resources */,
 				29DF70E8207ED7F300E1D023 /* MainHeaderInSection.xib in Resources */,
 				29F32FCA2087DF6F009D4B6C /* RestaurantView.xib in Resources */,
-				8EECDB302086EB4F00151F43 /* CartFooterView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,6 +643,7 @@
 				8EECDB332086F2AC00151F43 /* CartCell.swift in Sources */,
 				291C9F2120749CBA0085E37E /* NoticeImageView.swift in Sources */,
 				8E3A6000207DB5FB00EB5747 /* SettingViewController.swift in Sources */,
+				8EECDB38208E17BF00151F43 /* CartMenuData.swift in Sources */,
 				8EECDB36208C59B500151F43 /* OrderData.swift in Sources */,
 				8E8A637E2071F7BF007D9B7A /* AppColor.swift in Sources */,
 				290EFFF9207F5B340004AAD4 /* MainData.swift in Sources */,
@@ -655,6 +661,7 @@
 				9E60DCD02074C08F00B9528A /* ProfileCreateViewController.swift in Sources */,
 				29DF70E6207ED7E400E1D023 /* MainHeaderInSection.swift in Sources */,
 				290E0000207F83D50004AAD4 /* ServiceResult.swift in Sources */,
+				8EECDB3A208ECEB100151F43 /* CartManager.swift in Sources */,
 				29F32FD620895A25009D4B6C /* PostService.swift in Sources */,
 				292582C72085C44D00FFE782 /* NoticeData.swift in Sources */,
 				8E8A636E2071E583007D9B7A /* SignViewController.swift in Sources */,
@@ -667,6 +674,7 @@
 				8EE073B02085E49C0000E22B /* CustomTransition.swift in Sources */,
 				291A567D208CC79300E04130 /* SearchViewController.swift in Sources */,
 				8EECDB262086258C00151F43 /* CartHeaderView.swift in Sources */,
+				8EECDB3E208F479700151F43 /* SelectCartMenuViewController.swift in Sources */,
 				8E5B9E7420798BA300921EF4 /* MenuListCell.swift in Sources */,
 				8E5B9E692079856900921EF4 /* MenuHeaderView.swift in Sources */,
 				8E3A6004207DB89900EB5747 /* SettingHeaderView.swift in Sources */,
@@ -818,7 +826,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3ZS2532XM8;
+				DEVELOPMENT_TEAM = G4MM77V7NH;
 				INFOPLIST_FILE = "OverEats/Supporting File/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -837,7 +845,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3ZS2532XM8;
+				DEVELOPMENT_TEAM = G4MM77V7NH;
 				INFOPLIST_FILE = "OverEats/Supporting File/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

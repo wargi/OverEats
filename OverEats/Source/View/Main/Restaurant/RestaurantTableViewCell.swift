@@ -30,7 +30,7 @@ class RestaurantTableViewCell: UITableViewCell {
     // 뷰가 있는지 확인한 후 있으면, 데이터만 변경하고, 없으면 뷰를 생성
     private func checkSubview() {
         if let restaurantView = self.restaurantView {
-            restaurantView.configure(with: restaurant)
+            restaurantView.restaurant = restaurant
         } else {
             setRestaurantViewLayout()
         }
@@ -50,7 +50,7 @@ class RestaurantTableViewCell: UITableViewCell {
             restaurantView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: leadingMargin).isActive = true
             restaurantView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: trailingMargin).isActive = true
             restaurantView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-            restaurantView.configure(with: restaurant)
+            restaurantView.restaurant = restaurant
         }
     }
     

@@ -111,7 +111,7 @@ extension RecommendTableViewCell: UIScrollViewDelegate {
     private func configureRestaurantData(){
         if let restaurants = self.restaurants {
             for (index, restaurant) in restaurants.enumerated(){
-                restaurantViews[index].configure(with: restaurant)
+                restaurantViews[index].restaurant = restaurant
             }
         }
     }
