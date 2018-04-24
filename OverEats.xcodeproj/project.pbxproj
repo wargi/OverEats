@@ -71,6 +71,7 @@
 		9E60DCD22074D1F900B9528A /* ToSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60DCD12074D1F900B9528A /* ToSViewController.swift */; };
 		9E7922DC2085E83500C3FB99 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7922DB2085E83500C3FB99 /* LocationViewController.swift */; };
 		D27A863B208E1C0500CF814F /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A863A208E1C0500CF814F /* TextFieldTableViewCell.swift */; };
+		D2AF6FCC208E29D300D0D314 /* locationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF6FCB208E29D300D0D314 /* locationData.swift */; };
 		D2BAF094208DC4D800E3C8E6 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BAF093208DC4D800E3C8E6 /* MainTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +143,7 @@
 		9E60DCD12074D1F900B9528A /* ToSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToSViewController.swift; sourceTree = "<group>"; };
 		9E7922DB2085E83500C3FB99 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		D27A863A208E1C0500CF814F /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		D2AF6FCB208E29D300D0D314 /* locationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locationData.swift; sourceTree = "<group>"; };
 		D2BAF093208DC4D800E3C8E6 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		E373B345549AF331F65951E3 /* Pods-OverEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OverEats.release.xcconfig"; path = "Pods/Target Support Files/Pods-OverEats/Pods-OverEats.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -294,6 +296,7 @@
 				8EE0738B208468ED0000E22B /* MenuData.swift */,
 				290EFFF8207F5B340004AAD4 /* MainData.swift */,
 				292582C62085C44D00FFE782 /* NoticeData.swift */,
+				D2AF6FCB208E29D300D0D314 /* locationData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -630,6 +633,7 @@
 				8EE0738C208468ED0000E22B /* MenuData.swift in Sources */,
 				290EFFFE207F7FF90004AAD4 /* API.swift in Sources */,
 				290E0005207F890F0004AAD4 /* StoryboardUtility.swift in Sources */,
+				D2AF6FCC208E29D300D0D314 /* locationData.swift in Sources */,
 				9E33434B208470AE00E3D250 /* Regularexpression.swift in Sources */,
 				9E3343452080491000E3D250 /* LoginViewController.swift in Sources */,
 				291C9F32207629A10085E37E /* MainInviteTableViewCell.swift in Sources */,

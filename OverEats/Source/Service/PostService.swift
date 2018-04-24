@@ -77,4 +77,28 @@ struct PostService: PostServiceType {
                 }
         }
     }
+    
+    static func locationIn(text: String, completion: @escaping (Result<locationData>) -> ()) {
+        
+        let params: Parameters = [
+            "search_text": text,
+        ]
+        
+        Alamofire.request(API.location.urlString, method: .post, parameters: params)
+            .validate()
+            .responseData { (response) in
+                switch response.result {
+                case .success(let value):
+                    do {
+                        let userData = try value.decode(locationData.self)
+                        completion(.success(userData))
+                    } catch {
+                        completion(.error(error))
+                    }
+                case .failure(let error):
+                    completion(.error(error))
+                }
+        }
+    }
+    
 }

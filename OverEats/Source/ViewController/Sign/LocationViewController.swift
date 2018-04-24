@@ -16,7 +16,7 @@ class LocationViewController: UIViewController {
     var expandedSectionHeaderNumber = -1
     var accordion:Bool!
     let locationManager = CLLocationManager()
-    var pageTag = 3
+    var pageTag = 1
     
     let sectionHeaderImage = [UIImage(named: "icTabHomeOff"), UIImage(named: "icSettingListInvite"), UIImage(named: "btnSearch")]
     let sectionHeaderTitle = ["필수! 상세 주소를 입력해주세요", "문 앞까지 배달", "밖에서 픽업", "배달 관련 참고사항 입력 (찾아오는 길 혹은 요청사항)"]

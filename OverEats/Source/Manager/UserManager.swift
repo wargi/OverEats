@@ -22,6 +22,17 @@ struct UserManager {
             imgProfile = newValue?.user.imgProfile
         }
     }
+    
+    static var setlocation: locationData? {
+        get {return nil}
+        set {
+            
+//            name = newValue?.result.name
+//            formattedAddress = newValue?.formattedAddress
+            
+        }
+    }
+    
     private static var _token: String?
     
     static var token: String? {
@@ -34,4 +45,7 @@ struct UserManager {
     static var lastName: String? // 성
     static var phoneNumber: String? // 폰 번호
     static var imgProfile: String? // 이미지 URL
+    
+    static var name: String?
+    static var formattedAddress: String?
 }

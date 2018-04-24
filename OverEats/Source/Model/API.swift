@@ -43,6 +43,7 @@ enum API: APIProtocol
     {
         case login = "/login/"
         case singUp = "/member/user/"
+        case location = "/address/"
     }
     
     // GET API
@@ -53,6 +54,7 @@ enum API: APIProtocol
     // POST API
     case postLogin
     case postSignUp
+    case location
     
     // endPoint에 파라미터 값을 반환하는 변수
     private var endpointString: String {
@@ -68,6 +70,8 @@ enum API: APIProtocol
                 return String(format: GET_LIST.menuList.rawValue, restaurantId)
             case .postSignUp:
                 return String(format: POST_LIST.singUp.rawValue)
+            case .location:
+                return String(format: POST_LIST.location.rawValue)
             }
         }
     }
