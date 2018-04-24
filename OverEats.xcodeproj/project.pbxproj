@@ -21,6 +21,8 @@
 		291A567D208CC79300E04130 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291A567C208CC79300E04130 /* SearchViewController.swift */; };
 		291A5680208DA5CD00E04130 /* KakaoTalk_Photo_2018-04-23-14-24-58.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 291A567E208DA5CB00E04130 /* KakaoTalk_Photo_2018-04-23-14-24-58.jpeg */; };
 		291A5681208DA5CD00E04130 /* KakaoTalk_Photo_2018-04-23-14-25-08_36.png in Resources */ = {isa = PBXBuildFile; fileRef = 291A567F208DA5CC00E04130 /* KakaoTalk_Photo_2018-04-23-14-25-08_36.png */; };
+		291A5686208EAA2F00E04130 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291A5685208EAA2F00E04130 /* SearchCollectionViewCell.swift */; };
+		291A5688208EC04A00E04130 /* SearchCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291A5687208EC04A00E04130 /* SearchCollectionHeaderView.swift */; };
 		291C9F1420728D490085E37E /* MainNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F1320728D490085E37E /* MainNetwork.swift */; };
 		291C9F2120749CBA0085E37E /* NoticeImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291C9F2020749CBA0085E37E /* NoticeImageView.swift */; };
 		291C9F2320749CCE0085E37E /* NoticeImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 291C9F2220749CCE0085E37E /* NoticeImageView.xib */; };
@@ -92,6 +94,8 @@
 		291A567C208CC79300E04130 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		291A567E208DA5CB00E04130 /* KakaoTalk_Photo_2018-04-23-14-24-58.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "KakaoTalk_Photo_2018-04-23-14-24-58.jpeg"; path = "../../../../../Downloads/KakaoTalk_Photo_2018-04-23-14-24-58.jpeg"; sourceTree = "<group>"; };
 		291A567F208DA5CC00E04130 /* KakaoTalk_Photo_2018-04-23-14-25-08_36.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "KakaoTalk_Photo_2018-04-23-14-25-08_36.png"; path = "../../../../../Downloads/KakaoTalk_Photo_2018-04-23-14-25-08_36.png"; sourceTree = "<group>"; };
+		291A5685208EAA2F00E04130 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchCollectionViewCell.swift; path = OverEats/Source/View/Main/Search/SearchCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+		291A5687208EC04A00E04130 /* SearchCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchCollectionHeaderView.swift; path = OverEats/Source/View/Main/Search/SearchCollectionHeaderView.swift; sourceTree = SOURCE_ROOT; };
 		291C9F1320728D490085E37E /* MainNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNetwork.swift; sourceTree = "<group>"; };
 		291C9F2020749CBA0085E37E /* NoticeImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeImageView.swift; sourceTree = "<group>"; };
 		291C9F2220749CCE0085E37E /* NoticeImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoticeImageView.xib; sourceTree = "<group>"; };
@@ -193,9 +197,19 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		291A568A208ED9B700E04130 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				291A5685208EAA2F00E04130 /* SearchCollectionViewCell.swift */,
+				291A5687208EC04A00E04130 /* SearchCollectionHeaderView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		291C9EF92072239D0085E37E /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				291A568A208ED9B700E04130 /* Search */,
 				292582C82085DD5700FFE782 /* Restaurant */,
 				29DF70E2207E350500E1D023 /* Notice */,
 				291C9F30207629A10085E37E /* MainInviteTableViewCell.swift */,
@@ -661,9 +675,11 @@
 				290EFFFC207F7E670004AAD4 /* GetService.swift in Sources */,
 				290E0002207F84640004AAD4 /* DataUtility.swift in Sources */,
 				9E60DCD02074C08F00B9528A /* ProfileCreateViewController.swift in Sources */,
+				291A5688208EC04A00E04130 /* SearchCollectionHeaderView.swift in Sources */,
 				29DF70E6207ED7E400E1D023 /* MainHeaderInSection.swift in Sources */,
 				290E0000207F83D50004AAD4 /* ServiceResult.swift in Sources */,
 				29F32FD620895A25009D4B6C /* PostService.swift in Sources */,
+				291A5686208EAA2F00E04130 /* SearchCollectionViewCell.swift in Sources */,
 				292582C72085C44D00FFE782 /* NoticeData.swift in Sources */,
 				8E8A636E2071E583007D9B7A /* SignViewController.swift in Sources */,
 				9E60DCCE2074BF4700B9528A /* CreateIDViewController.swift in Sources */,

@@ -94,6 +94,18 @@ struct EtaRange: Decodable {
     }
 }
 
+struct Tags: Decodable {
+    let count: Int
+    let next: String
+    let categories: [Tag]
+    
+    private enum CodingKeys: String, CodingKey {
+        case count
+        case next
+        case categories
+    }
+}
+
 struct Tag: Decodable {
     let id: String
     let name: String

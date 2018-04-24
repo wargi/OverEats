@@ -74,4 +74,23 @@ struct GetService: GetServiceType {
                 }
             }
     }
+    
+    static func tagList(completion: @escaping (Result<Tags>) -> ()) {
+        Alamofire
+            .request(API.tagList(pageSize: 20).urlString)
+            .validate()
+            .responseData(completionHandler: { (response) in
+                switch response.result {
+                case .success(let value):
+                    do {
+                        let tagData = try value.decode(Tags.self)
+                        completion(.success(tagData))
+                    } catch {
+                        completion(.error(error))
+                    }
+                case .failure(let error):
+                    completion(.error(error))
+                }
+            })
+    }
 }
