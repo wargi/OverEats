@@ -47,7 +47,7 @@ enum API: APIProtocol
     }
     
     // GET API
-    case getRestaurantList(latitude: Float, longitude: Float, pageSize: Int)
+    case getRestaurantList(latitude: Float, longitude: Float, pageSize: Int, searchText: String?)
     case getNotice
     case getMenuList(restaurantId: String)
     case tagList(pageSize: Int)
@@ -60,8 +60,12 @@ enum API: APIProtocol
     private var endpointString: String {
         get {
             switch self {
-            case .getRestaurantList(let latitude, let longitude, let pageSize):
-                return String(format: GET_LIST.restaurantList.rawValue, latitude, longitude, pageSize)
+            case .getRestaurantList(let latitude, let longitude, let pageSize, let searchText):
+                var tempString: String = String(format: GET_LIST.restaurantList.rawValue, latitude, longitude, pageSize)
+                if let text = searchText {
+                    tempString.append("&search_text=\(text)")
+                }
+                return tempString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
             case .postLogin:
                 return String(format: POST_LIST.login.rawValue)
             case .getNotice:
@@ -83,9 +87,9 @@ enum API: APIProtocol
         }
     }
     
-//    var URL: NSURL? {
-//        get {
-//            return NSURL(string: self.urlString)
-//        }
-//    }
+    var URL: NSURL? {
+        get {
+            return NSURL(string: self.urlString)
+        }
+    }
 }

@@ -11,16 +11,16 @@ import Alamofire
 /// GET 네트워크 프로토콜
 protocol GetServiceType {
     // get service에 대한 개별 프로토콜 함수
-    static func getRestaurantList(completion: @escaping (Result<Lestaurants>) -> ())
+    static func getRestaurantList(latitude: Float, longitude: Float, pageSize: Int, searchText: String?, completion: @escaping (Result<Lestaurants>) -> ())
     static func getNoticeList(completion: @escaping (Result<[Notice]>) -> ())
     static func getMenuList(completion: @escaping (Result<[Section]>) -> ())
 }
 
 struct GetService: GetServiceType {
     
-    static func getRestaurantList(completion: @escaping (Result<Lestaurants>) -> ()) {
+    static func getRestaurantList(latitude: Float, longitude: Float, pageSize: Int, searchText: String?, completion: @escaping (Result<Lestaurants>) -> ()) {
         Alamofire
-            .request(API.getRestaurantList(latitude: 37.494760, longitude: 127.051284, pageSize: 20).urlString)
+            .request(API.getRestaurantList(latitude: latitude, longitude: longitude, pageSize: pageSize, searchText: searchText).urlString)
             .validate()
             .responseData(completionHandler: { (response) in
                 switch response.result {
@@ -77,7 +77,7 @@ struct GetService: GetServiceType {
     
     static func tagList(completion: @escaping (Result<Tags>) -> ()) {
         Alamofire
-            .request(API.tagList(pageSize: 20).urlString)
+            .request(API.tagList(pageSize: 40).urlString)
             .validate()
             .responseData(completionHandler: { (response) in
                 switch response.result {

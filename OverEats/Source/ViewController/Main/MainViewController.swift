@@ -44,7 +44,7 @@ class MainViewController: UIViewController {
     }
     
     private func getRestaurantData(){
-        GetService.getRestaurantList(completion: { (result) in
+        GetService.getRestaurantList(latitude: 37.524124, longitude: 127.022881, pageSize: 20, searchText: nil, completion: { (result) in
             switch result {
             case .success(let restaurantData):
                 self.restaurants = restaurantData.restaurants
