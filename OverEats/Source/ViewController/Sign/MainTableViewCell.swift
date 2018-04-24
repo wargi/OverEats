@@ -10,22 +10,26 @@ import UIKit
 
 class MainTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var stopLocationLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
   
+    let tagNumberThree = 3
     override func awakeFromNib() {
         super.awakeFromNib()
-    
-        
-        locationLabel.text = "가나다라마바사"
-        
-        
+
         
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
 
+    func configure(stopLocation: String, location address: String) {
+        stopLocationLabel.text = stopLocation
+        locationLabel.text = address
+        
+    }
+    
 }

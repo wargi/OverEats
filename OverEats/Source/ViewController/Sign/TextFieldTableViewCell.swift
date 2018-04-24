@@ -12,16 +12,21 @@ class TextFieldTableViewCell: UITableViewCell {
 
     @IBOutlet weak var locationTextField: UITextField!
     
+    var source: LocationData!
+    var totalArray: [String] = []
+    var returnTrue = true
+    let tagNumberTwo = 2
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         locationTextField.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        
     }
 
 }
@@ -36,32 +41,22 @@ extension TextFieldTableViewCell: UITextFieldDelegate {
             switch result {
                 
             case .success(let success):
-                print("11111111111111111111",success)
-//                UserManager.setlocation = success
-//                print("2222222222222222222",success)
                 
+                self.source = success
+                
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notiTagTwo"), object: self.tagNumberTwo)
+                
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notiKey"), object: self.source)
+                
+         
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notiBool"), object: self.returnTrue)
+            
             case .error(let error):
                 print(error)
                 
                 
             }
         }
-//        let imageData = UIImageJPEGRepresentation(self.profileImage.image!, 0.1)
-//
-//        PostService.singUp(singUpData: signUpDic, imageData: imageData, completion: {(result) in
-//            switch result {
-//            case .success(let userData):
-//
-//                UserManager.setUser = userData
-//                UserDefaults.standard.set("\(userData.token)", forKey: "userToken")
-//
-//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                let nextViewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
-//                self.present(nextViewController, animated: true, completion: nil)
-//
-//            case .error(let error):
-//                print(error)
-        
         return true
     }
     

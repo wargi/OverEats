@@ -11,6 +11,14 @@ import CoreLocation
 
 class LocationViewController: UIViewController {
     
+    // 여기에 cell선택 정보 들어갑니다!
+    var tosLocationData: DetailData!
+    
+    var detailLocation:[DetailData] = []
+    var location:LocationData!
+    
+    var address:[String] = []
+    var stopLocation:[String] = []
     
     var theImageView: UIImageView!
     var expandedSectionHeaderNumber = -1
@@ -18,10 +26,18 @@ class LocationViewController: UIViewController {
     let locationManager = CLLocationManager()
     var pageTag = 1
     
+    var otherText: String!
+    
     let sectionHeaderImage = [UIImage(named: "icTabHomeOff"), UIImage(named: "icSettingListInvite"), UIImage(named: "btnSearch")]
     let sectionHeaderTitle = ["필수! 상세 주소를 입력해주세요", "문 앞까지 배달", "밖에서 픽업", "배달 관련 참고사항 입력 (찾아오는 길 혹은 요청사항)"]
     
+    @IBAction func backButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBOutlet weak var okButtonOutlet: UIButton!
     @IBAction func okButton(_ sender: UIButton) {
+        
         
         
     }
@@ -34,7 +50,63 @@ class LocationViewController: UIViewController {
         
         locationManager.delegate = self
         theImageView = UIImageView() // 회전하는 돋보기
-        theImageView.image = UIImage(named: "btnSearch")
+        theImageView.image = UIImage(named: "btnMore")
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        //view reload 알아보기
+        switch pageTag {
+        case 1:
+            //            print("===========들어왔다1111111111111")
+            okButtonOutlet.isHidden = false //true로 고치기
+        case 2:
+            //            print("===========들어왔다2222222222222")
+            okButtonOutlet.isHidden = true
+        default:
+            //            print("===========들어왔다333333333333")
+            okButtonOutlet.isHidden = false
+        }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue:"notiTagTwo"), object: nil, queue: nil) { (noti) in
+            self.pageTag = noti.object as! Int
+            
+        }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue:"notiKey"), object: nil, queue: nil) { (noti) in  //notiKey 라는 키값을 지정해줌
+            
+            let locationData = noti.object as! LocationData
+            
+            for data in locationData.result {
+                self.detailLocation.append(data)
+                
+                self.address.append(data.address)
+                self.stopLocation.append(data.name)
+                
+            }
+            
+            print("===========================================",self.address)
+            
+        }
+        
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue:"notiBool"), object: nil, queue: nil) { (noti) in
+            let boolData = noti.object as! Bool
+            
+            if boolData == true {
+                self.tableView.reloadData()
+                
+            }
+            
+        }
+        
+        NotificationCenter.default.addObserver(forName: Notification.Name(rawValue:"otherText"), object: nil, queue: nil) { (noti) in
+
+            //작업 이어서 하기
+//            self.otherText = noti.object as! String
+
+        }
         
     }
     
@@ -47,6 +119,9 @@ class LocationViewController: UIViewController {
         
         
     }
+    
+    
+    
     
     @objc func sectionHeaderWasTouched(_ sender: UITapGestureRecognizer) {
         
@@ -150,8 +225,20 @@ extension LocationViewController: UITableViewDataSource {
     // cell 정의하기
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
-        if pageTag == 1 || pageTag == 2 {
+        if pageTag == 1{
+            if indexPath.section == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldTableViewCell", for: indexPath) as! TextFieldTableViewCell
+                cell.imageView?.image = UIImage(named: "btnSearch")
+                
+                return cell
+            }else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! MainTableViewCell
+                cell.imageView?.image = UIImage(named: "btnSearch")
+                
+                return cell
+            }
+            
+        }else if pageTag == 2 {
             
             if indexPath.section == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldTableViewCell", for: indexPath) as! TextFieldTableViewCell
@@ -161,18 +248,32 @@ extension LocationViewController: UITableViewDataSource {
             }else {
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! MainTableViewCell
-                cell.imageView?.image = UIImage(named: "icSettingListInvite")
+                cell.imageView?.image = UIImage(named: "btnSearch")
+                
+                let addressData = self.address[indexPath.row]
+                let stopLocation = self.stopLocation[indexPath.row]
+                cell.configure(stopLocation: stopLocation, location: addressData)
                 
                 return cell
             }
             
         }else {
-            
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldTableViewCell", for: indexPath) as! TextFieldTableViewCell
-            cell.imageView?.image = UIImage(named: "btnSearch")
-            
-            return cell
-            
+            if indexPath.section == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldTableViewCell", for: indexPath) as! TextFieldTableViewCell
+                cell.imageView?.image = UIImage(named: "btnSearch")
+                
+                return cell
+            }else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "OtherTextFieldTableViewCell", for: indexPath) as! OtherTextFieldTableViewCell
+                
+                if indexPath.row == 0 {
+                    cell.tagInt(tag: 1)
+                } else {
+                    cell.tagInt(tag: 2)
+                }
+                
+                return cell
+            }
         }
         
         
@@ -193,12 +294,13 @@ extension LocationViewController: UITableViewDataSource {
         case 2:
             
             if section == 0 {
-                
+                print("11111")
                 return 1
                 
             }else {
-                
-                return 5
+                print("22222")
+                print("\(self.address.count)")
+                return self.address.count
             }
             
         default:
@@ -257,7 +359,18 @@ extension LocationViewController: UITableViewDelegate {
             }else if section == 1 {
                 header.textLabel?.font = UIFont.systemFont(ofSize: 17)
                 header.textLabel?.text = sectionHeaderTitle[section - 1]
-            } else if section > 0 {
+            }else if section == 4 {
+                
+                let theImageView = UIImageView(frame: CGRect(x: 15, y: 10, width: 25, height: 25))
+                theImageView.image = sectionHeaderImage[section - 2]
+                header.addSubview(theImageView)
+                let sectionHeaderLabel = UILabel(frame: CGRect(x: 60, y: 10, width: 300, height: 25))
+                sectionHeaderLabel.font = UIFont.systemFont(ofSize: 14)
+                sectionHeaderLabel.textColor = AppColor.lightGray
+                sectionHeaderLabel.text = sectionHeaderTitle[section - 1]
+                header.addSubview(sectionHeaderLabel)
+                
+            }else if section > 0 {
                 let theImageView = UIImageView(frame: CGRect(x: 15, y: 10, width: 25, height: 25))
                 theImageView.image = sectionHeaderImage[section - 2]
                 header.addSubview(theImageView)
@@ -274,7 +387,7 @@ extension LocationViewController: UITableViewDelegate {
                 header.addGestureRecognizer(headerTapGesture)
                 if section == 2 {
                     let headerFrame = self.view.frame.size
-                    theImageView.frame = CGRect(x: headerFrame.width - 32, y: 13, width: 18, height: 18)
+                    theImageView.frame = CGRect(x: headerFrame.width - 35, y: 5, width: 35, height: 35)
                     header.addSubview(theImageView)
                 }
             }
@@ -328,8 +441,19 @@ extension LocationViewController: UITableViewDelegate {
                 return 0
             }
         }
-
+        
         return 0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            let indexInt = indexPath.row
+            tosLocationData = detailLocation[indexInt]
+            print(tosLocationData)
+            pageTag = 3
+            
+            self.tableView.reloadData()
+        }
     }
     
 }

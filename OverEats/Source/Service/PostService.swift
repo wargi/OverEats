@@ -78,7 +78,7 @@ struct PostService: PostServiceType {
         }
     }
     
-    static func locationIn(text: String, completion: @escaping (Result<locationData>) -> ()) {
+    static func locationIn(text: String, completion: @escaping (Result<LocationData>) -> ()) {
         
         let params: Parameters = [
             "search_text": text,
@@ -90,7 +90,7 @@ struct PostService: PostServiceType {
                 switch response.result {
                 case .success(let value):
                     do {
-                        let userData = try value.decode(locationData.self)
+                        let userData = try value.decode(LocationData.self)
                         completion(.success(userData))
                     } catch {
                         completion(.error(error))

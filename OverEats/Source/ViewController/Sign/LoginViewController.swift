@@ -40,8 +40,6 @@ class LoginViewController: UIViewController {
             let password = passwordTextField.text
             else { return }
         
-        print(email, password)
-        
         PostService.signIn(email: email, password: password) { (result) in
             switch result {
             case .success(let userData):

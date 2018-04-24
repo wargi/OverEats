@@ -23,16 +23,6 @@ struct UserManager {
         }
     }
     
-    static var setlocation: locationData? {
-        get {return nil}
-        set {
-            
-//            name = newValue?.result.name
-//            formattedAddress = newValue?.formattedAddress
-            
-        }
-    }
-    
     private static var _token: String?
     
     static var token: String? {
