@@ -24,9 +24,8 @@ final class MenuViewController: UIViewController {
     
     // TableView 관련
     @IBOutlet private weak var menuList : UITableView! // menuList tableView
-    var headerView: MenuHeaderView! // menuList의 headerView
+    @IBOutlet private weak var headerView : MenuHeaderView!
     var footerView: UIView!
-    var gradient: CAGradientLayer! // menuList의 headerView의 그라데이션
     
     var sections: [Section]?
     var restaurantInfo: Lestaurant!
@@ -98,11 +97,9 @@ final class MenuViewController: UIViewController {
         menuList.register(
             UINib(nibName: "MenuListCell", bundle: nil),
             forCellReuseIdentifier: "MenuListCell")
-        
-        headerView = menuList.tableHeaderView as! MenuHeaderView // 헤더뷰 설정
         menuList.tableHeaderView = nil // 테이블뷰 자체 헤더뷰 nil
         menuList.rowHeight = UITableViewAutomaticDimension // 테이블뷰의 rowHeight값을 custom 하게 설정
-        menuList.addSubview(headerView) // 테이블뷰에 헤더뷰 addSubView
+        menuList.addSubview(headerView)
         
         footerView = menuList.tableFooterView
         footerView = UIView(frame: CGRect(x: 0, y: 0, width: menuList.bounds.width, height: 1))
@@ -156,12 +153,12 @@ final class MenuViewController: UIViewController {
         headerView.titleView.layer.shadowOffset = CGSize.zero
         headerView.titleView.layer.shadowRadius = 7
         
-        gradient = CAGradientLayer()
-        gradient.frame = CGRect(x: 0, y: headerView.frame.origin.y, width: self.view.bounds.width, height: headerView.mainImage.bounds.height / 2)
+        let gradient = CAGradientLayer()
         gradient.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
+        gradient.frame = CGRect(x: 0, y: 0, width: headerView.gradientView.bounds.width, height: headerView.gradientView.bounds.height / 2)
         gradient.locations = [0.01]
         
-        headerView.gradientView.layer.insertSublayer(gradient, at: 0)
+        headerView.gradientView.layer.addSublayer(gradient)
     }
     
     @objc func clickedEvent(_ sender: Any) {
@@ -229,7 +226,8 @@ extension MenuViewController: UITableViewDelegate {
         
         let nextViewController = storyboard?.instantiateViewController(withIdentifier: "SelectMenu") as! SelectMenuViewController
         nextViewController.menuInfo = rowInSection
-        nextViewController.modalPresentationStyle = .overCurrentContext
+        self.definesPresentationContext = false
+        nextViewController.modalPresentationStyle = .overFullScreen
         
         nextViewController.restaurantId = restaurantInfo.id
         nextViewController.restaurantURL = restaurantInfo.logo

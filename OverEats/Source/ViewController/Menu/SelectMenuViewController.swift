@@ -34,14 +34,14 @@ final class SelectMenuViewController: UIViewController {
     
     // 요청 사항 관련
     @IBOutlet weak var requestLabel: UILabel!
-    let defaultString: String = "요청할 사항을 적어주세요(소스 추가, 양파 빼기 등)"
+    let defaultString: String = "추가로 요청할 사항이 있을시 적어주세요(소스 추가, 양파 빼기 등)"
     
     var restaurantId: String!
     var restaurantName: String!
     var restaurantURL: String!
     var deliveryTime: EtaRange!
     
-    @IBOutlet weak var nonimageConst: NSLayoutConstraint!
+    @IBOutlet weak var gradientView: UIView!
     
     // 제스쳐
     var pan: UIPanGestureRecognizer! // Pan Gesture 스크롤 DissMiss
@@ -69,7 +69,7 @@ final class SelectMenuViewController: UIViewController {
         gestureCreate()
         requestReflecting()
         setStepper()
-        
+        setGradient()
     }
     
     func configure() {
@@ -98,6 +98,16 @@ final class SelectMenuViewController: UIViewController {
                              for: .normal)
         closeButton.tintColor = .white
         closeButton.addTarget(self, action: #selector(self.clickedCloseButton(_:)), for: .touchUpInside)
+    }
+    
+    func setGradient() {
+        
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
+        gradient.frame = CGRect(x: 0, y: 0, width: gradientView.bounds.width, height: gradientView.bounds.height / 2)
+        gradient.locations = [0.01]
+        
+        gradientView.layer.addSublayer(gradient)
     }
 
     @objc func clickedCloseButton(_ sender: UIButton) {
@@ -128,29 +138,39 @@ final class SelectMenuViewController: UIViewController {
         let translation = sender.translation(in: scrollView)
         
         guard abs(velocity.y) > abs(velocity.x) else { return }
-        
-        if translation.y > 0 {
-            scrollView.frame.origin.y = translation.y
-            
-            self.backView.alpha = 0.7 - (translation.y / (self.view.bounds.height / 2))
-        }
-    
-        if sender.state == .ended {
-            self.backView.alpha = 0
+        switch sender.state {
+        case .began:
+            self.scrollView.frame.origin = CGPoint.zero
+        case .changed:
+            if translation.y > 0 {
+                scrollView.frame.origin.y = translation.y
+            }
+        case .ended:
             if scrollView.frame.origin.y > 150 {
                 self.dismiss(animated: true, completion: nil)
             } else {
-                UIView.animate(withDuration: 0.5) {
-                    self.scrollView.frame.origin = CGPoint(x: 0, y: 0)
+                UIView.animate(withDuration: 0.3) {
+                    self.scrollView.frame.origin = CGPoint.zero
                 }
             }
+        case .failed, .cancelled:
+            UIView.animate(withDuration: 0.3) {
+                self.scrollView.frame.origin = CGPoint.zero
+            }
+        case .possible:
+            UIView.animate(withDuration: 0.3) {
+                self.scrollView.frame.origin = CGPoint.zero
+            }
+            break
         }
+
     }
     
     // Tap 제스쳐 액션
     @objc func requestTapAction(_ sender: UITapGestureRecognizer) {
         let nextViewController = storyboard?.instantiateViewController(withIdentifier: "Request") as! RequestViewController
         
+        nextViewController.notiKey = "menu"
         nextViewController.requestText = requestLabel.text != defaultString ? requestLabel.text! : ""
         nextViewController.modalPresentationStyle = .overCurrentContext
         
@@ -171,6 +191,10 @@ final class SelectMenuViewController: UIViewController {
                                              comment: requestLabel.text!))
     }
     
+    func cartReset() {
+        CartManager.cartList = []
+    }
+    
     @objc func cartAddTapAction(_ sender: UITapGestureRecognizer) {
         if CartManager.restaurantId == nil {
             cartAdd()
@@ -181,6 +205,7 @@ final class SelectMenuViewController: UIViewController {
                                                         preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "취소", style: .default, handler: nil)
             let okAction = UIAlertAction(title: "새 장바구니", style: .default) { _ in
+                self.cartReset()
                 self.cartAdd()
                 self.dismiss(animated: true, completion: nil)
             }
@@ -230,7 +255,7 @@ final class SelectMenuViewController: UIViewController {
     }
     
     func requestReflecting() {
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "noti"), object: nil, queue: nil) { [weak self] (noti) in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "menu"), object: nil, queue: nil) { [weak self] (noti) in
             
             if self?.defaultString != noti.object as? String {
                 self?.requestLabel.text = noti.object as? String

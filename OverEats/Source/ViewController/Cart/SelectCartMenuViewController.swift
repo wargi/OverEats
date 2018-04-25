@@ -31,13 +31,15 @@ class SelectCartMenuViewController: UIViewController {
     
     // 요청 사항 관련
     @IBOutlet weak var requestLabel: UILabel!
-    let defaultString: String = "요청할 사항을 적어주세요(소스 추가, 양파 빼기 등)"
+    let defaultString: String = "추가로 요청할 사항이 있을시 적어주세요(소스 추가, 양파 빼기 등)"
     
     var cartMenuNumber: Int!
     var restaurantId: String!
     var restaurantName: String!
     var restaurantURL: String!
     var deliveryTime: EtaRange!
+    
+    @IBOutlet private weak var gradientView : UIView!
     
     // 제스쳐
     var requestTap: UITapGestureRecognizer! // Request Tap Gesture 요청사항 작성 이벤트
@@ -61,6 +63,7 @@ class SelectCartMenuViewController: UIViewController {
         gestureCreate()
         requestReflecting()
         setStepper()
+        setGradient()
         
     }
     
@@ -68,6 +71,8 @@ class SelectCartMenuViewController: UIViewController {
         
         menuName.text = CartManager.cartList[cartMenuNumber].name
         menuDescription.text = CartManager.cartList[cartMenuNumber].description
+        requestLabel.text = CartManager.cartList[cartMenuNumber].comment
+        
         if CartManager.cartList[cartMenuNumber].imageURL != "" {
             menuImageView?.loadImageUsingCacheWithUrl(urlString: CartManager.cartList[cartMenuNumber].imageURL,
                                                       completion: { _ in })
@@ -114,6 +119,7 @@ class SelectCartMenuViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Menu", bundle: nil)
         let nextViewController = storyboard.instantiateViewController(withIdentifier: "Request") as! RequestViewController
         
+        nextViewController.notiKey = "menu"
         nextViewController.requestText = requestLabel.text != defaultString ? requestLabel.text! : ""
         nextViewController.modalPresentationStyle = .overCurrentContext
         
@@ -168,7 +174,7 @@ class SelectCartMenuViewController: UIViewController {
     }
     
     func requestReflecting() {
-        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "noti"), object: nil, queue: nil) { [weak self] (noti) in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "menu"), object: nil, queue: nil) { [weak self] (noti) in
             
             if self?.defaultString != noti.object as? String {
                 self?.requestLabel.text = noti.object as? String
@@ -180,6 +186,16 @@ class SelectCartMenuViewController: UIViewController {
                 self?.requestLabel.textColor = .lightGray
             }
         }
+    }
+    
+    func setGradient() {
+        
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
+        gradient.frame = CGRect(x: 0, y: 0, width: gradientView.bounds.width, height: gradientView.bounds.height / 2)
+        gradient.locations = [0.01]
+        
+        gradientView.layer.addSublayer(gradient)
     }
 }
 

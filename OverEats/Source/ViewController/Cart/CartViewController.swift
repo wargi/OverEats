@@ -27,28 +27,36 @@ final class CartViewController: UIViewController {
     @IBOutlet private weak var orderList: UITableView! // menuList tableView
     @IBOutlet private weak var orderView : UIView!
     @IBOutlet private weak var totalPrice : UILabel!
+    @IBOutlet private weak var footerView : CartFooterView!
+    //
+    
+    @IBOutlet private weak var cardNumberTextField : UITextField!
+    
+    var requestTap: UITapGestureRecognizer! // Request Tap Gesture 요청사항 작성 이벤트
     var headerView: CartHeaderView! // menuList의 headerView
-    var footerView: CartFooterView!
+    
+    let defaultString: String = "추가로 요청할 사항이 있을시 적어주세요(소스 추가, 양파 빼기 등)"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         UIApplication.shared.statusBarStyle = .lightContent
+        cardNumberTextField.addDoneCancelToolbar()
         
+        requestReflecting()
         setNavigation()
         setOrderList()
         setHeaderView()
+        setGradient()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        print("Hi")
         orderList.reloadData()
+        totalPrice.text = "₩" + String(footerView.configure(with: CartManager.cartList))
     }
-    
-    
     
     // Navigation 관련 설정
     func setNavigation() {
@@ -79,13 +87,8 @@ final class CartViewController: UIViewController {
         orderList.rowHeight = UITableViewAutomaticDimension // 테이블뷰의 rowHeight값을 custom 하게 설정
         orderList.addSubview(headerView) // 테이블뷰에 헤더뷰 addSubView
         
-        self.footerView = orderList.tableFooterView as! CartFooterView
-        orderList.tableFooterView = nil
-        orderList.addSubview(footerView)
-        
-        
         //테이블 뷰의 content In/Off set 적용
-        orderList.contentInset = UIEdgeInsets(top: CartSize.headerViewHeight, left: 0, bottom: CartSize.footerViewHeight, right: 0)
+        orderList.contentInset = UIEdgeInsets(top: CartSize.headerViewHeight, left: 0, bottom: 0, right: 0)
         orderList.contentOffset = CGPoint(x: 0, y: -CartSize.headerViewHeight)
         
         setHeaderFrame()
@@ -95,7 +98,10 @@ final class CartViewController: UIViewController {
     // 테이블 뷰 헤더뷰 생성
     func setHeaderView() {
         
+        requestTap = UITapGestureRecognizer(target: self, action: #selector(self.requestTapAction(_:)))
         headerView.configure()
+        totalPrice.text = "₩" + String(footerView.configure(with: CartManager.cartList))
+        footerView.requestView.addGestureRecognizer(requestTap)
         
     }
     
@@ -104,6 +110,7 @@ final class CartViewController: UIViewController {
         // 초기 getHeaderViewFrame 값
         var getHeaderViewFrame = CGRect(x: 0, y: -CartSize.headerViewHeight, width: orderList.bounds.width,
                                         height: CartSize.headerViewHeight)
+        
         // 테이블뷰의 contentOffset.y가 headerViewHeight의 값보다 작을 때
         if orderList.contentOffset.y < -CartSize.headerViewHeight {
             // 테이블 뷰의 위치가 점점 아래로 내려간다.
@@ -128,8 +135,44 @@ final class CartViewController: UIViewController {
         headerView.frame = getHeaderViewFrame
     }
 
+    func setGradient() {
+        
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
+        gradient.frame = CGRect(x: 0, y: 0, width: headerView.gradientView.bounds.width, height: headerView.gradientView.bounds.height / 2)
+        gradient.locations = [0.01]
+        
+        headerView.gradientView.layer.addSublayer(gradient)
+    }
+    
     @objc func backButtonEvent(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func requestTapAction(_ sender: UITapGestureRecognizer) {
+        let storyboard = UIStoryboard(name: "Menu", bundle: nil)
+        let nextViewController = storyboard.instantiateViewController(withIdentifier: "Request") as! RequestViewController
+        
+        nextViewController.notiKey = "order"
+        nextViewController.requestText = self.footerView.requestLabel.text != defaultString ? self.footerView.requestLabel.text! : ""
+        nextViewController.modalPresentationStyle = .overCurrentContext
+        
+        present(nextViewController, animated: true)
+    }
+    
+    func requestReflecting() {
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "order"), object: nil, queue: nil) { [weak self] (noti) in
+            
+            if self?.defaultString != noti.object as? String {
+                self?.footerView.requestLabel.text = noti.object as? String
+                self?.footerView.requestLabel.font = .systemFont(ofSize: 13)
+                self?.footerView.requestLabel.textColor = .black
+            } else {
+                self?.footerView.requestLabel.text = noti.object as? String
+                self?.footerView.requestLabel.font = .systemFont(ofSize: 12)
+                self?.footerView.requestLabel.textColor = .lightGray
+            }
+        }
     }
     
 }
@@ -167,15 +210,20 @@ extension CartViewController: UITableViewDataSource {
         header.textLabel?.textAlignment = .left
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            CartManager.cartList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            tableView.reloadData()
+            totalPrice.text = "₩" + String(footerView.configure(with: CartManager.cartList))
+        }
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // 뷰가 스크롤 될 때 마다 HeaderView의 프레임을 변경
         
         setHeaderFrame()
-        if scrollView.contentOffset.y < 0 {
-            
-        } else {
-            
-        }
     }
     
     
@@ -183,6 +231,7 @@ extension CartViewController: UITableViewDataSource {
 
 // UITableViewDelegate
 extension CartViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let nextViewController = storyboard?.instantiateViewController(withIdentifier: "SelectCartMenuViewController") as! SelectCartMenuViewController
@@ -196,3 +245,28 @@ extension CartViewController: UITableViewDelegate {
     }
 }
 
+extension CartViewController: UITextFieldDelegate {
+    
+}
+
+extension UITextField {
+    func addDoneCancelToolbar(onDone: (target: Any, action: Selector)? = nil, onCancel: (target: Any, action: Selector)? = nil) {
+        let onCancel = onCancel ?? (target: self, action: #selector(cancelButtonTapped))
+        let onDone = onDone ?? (target: self, action: #selector(doneButtonTapped))
+        
+        let toolbar: UIToolbar = UIToolbar()
+        toolbar.barStyle = .default
+        toolbar.items = [
+            UIBarButtonItem(title: "Cancel", style: .plain, target: onCancel.target, action: onCancel.action),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
+            UIBarButtonItem(title: "Done", style: .done, target: onDone.target, action: onDone.action)
+        ]
+        toolbar.sizeToFit()
+        
+        self.inputAccessoryView = toolbar
+    }
+    
+    // Default actions:
+    @objc func doneButtonTapped() { self.resignFirstResponder() }
+    @objc func cancelButtonTapped() { self.resignFirstResponder() }
+}
