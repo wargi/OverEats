@@ -61,28 +61,31 @@ class LocationViewController: UIViewController {
     
     
     @IBAction func completeButton(_ sender: UIButton) {
-        guard let userLocationInfo = userLocationData else { return }
-        if let locationInfo = locationData {
-            deliverybuildingText = locationDeliveryCell.buildingNameTextField.text
-            deliveryCompanyText = locationDeliveryCell.companyNameTextField.text
-            
-            if let buildingText = deliverybuildingText, let companyText = deliveryCompanyText {
-                firstTableUtility.append(LocationTableUtility(cellType: 1, title: locationInfo.name, firstValue: locationInfo.formattedAddress, secondValue: buildingText + ", " + companyText, iconName: "btnClock", buttonname: ""))
-            } else {
-                firstTableUtility.append(LocationTableUtility(cellType: 1, title: locationInfo.name, firstValue: locationInfo.formattedAddress, secondValue: nil, iconName: "btnClock", buttonname: ""))
-            }
-            
-            self.reloadTableUtility = firstTableUtility
-            locationTableView.reloadData()
-        } else if locationData == nil {
-            let storyboard = UIStoryboard(name: "main", bundle: nil)
-            let nextViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-            self.present(nextViewController, animated: true, completion: nil)
-        } else {
-            let storyboard = UIStoryboard(name: "main", bundle: nil)
-            let nextViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
-            self.present(nextViewController, animated: true, completion: nil)
-        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextViewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+        self.present(nextViewController, animated: true, completion: nil)
+//        guard let userLocationInfo = userLocationData else { return }
+//        if let locationInfo = locationData {
+//            deliverybuildingText = locationDeliveryCell.buildingNameTextField.text
+//            deliveryCompanyText = locationDeliveryCell.companyNameTextField.text
+//
+//            if let buildingText = deliverybuildingText, let companyText = deliveryCompanyText {
+//                firstTableUtility.append(LocationTableUtility(cellType: 1, title: locationInfo.name, firstValue: locationInfo.formattedAddress, secondValue: buildingText + ", " + companyText, iconName: "btnClock", buttonname: ""))
+//            } else {
+//                firstTableUtility.append(LocationTableUtility(cellType: 1, title: locationInfo.name, firstValue: locationInfo.formattedAddress, secondValue: nil, iconName: "btnClock", buttonname: ""))
+//            }
+//
+//            self.reloadTableUtility = firstTableUtility
+//            locationTableView.reloadData()
+//        } else if locationData == nil {
+//            let storyboard = UIStoryboard(name: "main", bundle: nil)
+//            let nextViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+//            self.present(nextViewController, animated: true, completion: nil)
+//        } else {
+//            let storyboard = UIStoryboard(name: "main", bundle: nil)
+//            let nextViewController = storyboard.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+//            self.present(nextViewController, animated: true, completion: nil)
+//        }
         
         
     }
@@ -208,7 +211,6 @@ extension LocationViewController: UITableViewDataSource {
 extension LocationViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         tableView.beginUpdates()
         tableView.endUpdates()
         if let locationUtil = reloadTableUtility {

@@ -29,6 +29,7 @@ class MainViewController: UIViewController {
 //        return self
 //    }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getRestaurantData()
@@ -42,6 +43,7 @@ class MainViewController: UIViewController {
         self.mainTableView.estimatedSectionHeaderHeight = CGFloat.leastNormalMagnitude
         
     }
+
     
     private func getRestaurantData(){
         GetService.getRestaurantList(latitude: 37.524124, longitude: 127.022881, pageSize: 20, searchText: nil, completion: { (result) in
@@ -214,16 +216,17 @@ extension MainViewController: UITableViewDelegate {
 extension MainViewController: RestaurantViewDelegate {
     func tappedView(_ restaurantView: RestaurantView) {
         
-//        let storyboard = UIStoryboard(name: "Menu", bundle: nil)
-//        let nextViewController = storyboard.instantiateViewController(withIdentifier: "Menu") as! MenuViewController
-//
-//        self.definesPresentationContext = true
-//        self.modalPresentationStyle = .currentContext
-//        //        nextViewController.modalPresentationStyle = .CurrentContext
-//        self.present(nextViewController, animated: true, completion: nil)
-////        nextViewController.setData(restaurant: restaurant)
+        let storyboard = UIStoryboard(name: "Menu", bundle: nil)
+        let nextViewController = storyboard.instantiateViewController(withIdentifier: "Menu") as! MenuViewController
+
+        self.definesPresentationContext = true
+        self.modalPresentationStyle = .currentContext
+        //        nextViewController.modalPresentationStyle = .CurrentContext
         
-        self.hidesBottomBarWhenPushed = true
+        self.present(nextViewController, animated: true, completion: nil)
+//        nextViewController.setData(restaurant: restaurant)
+        
+        
 
     }
 }

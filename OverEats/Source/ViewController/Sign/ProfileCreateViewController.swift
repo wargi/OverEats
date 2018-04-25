@@ -72,8 +72,8 @@ class ProfileCreateViewController: UIViewController {
                     UserManager.setUser = userData
                     UserDefaults.standard.set("\(userData.token)", forKey: "userToken")
                     
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let nextViewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
+                    let storyboard = UIStoryboard(name: "Sign", bundle: nil)
+                    let nextViewController = storyboard.instantiateViewController(withIdentifier: "LocationViewController") as! LocationViewController
                     self.present(nextViewController, animated: true, completion: nil)
                     
                 case .error(let error):

@@ -13,11 +13,6 @@ class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let viewOverTabBar = UIView(frame: CGRect(x: 0, y: -self.tabBar.bounds.height, width: self.tabBar.bounds.width, height: self.tabBar.bounds.height))
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tapAction(_:)))
-        viewOverTabBar.addGestureRecognizer(tap)
-        viewOverTabBar.backgroundColor = UIColor.red
-        self.tabBar.addSubview(viewOverTabBar)
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,12 +20,6 @@ class MainTabBarController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-    @objc func tapAction(_ sender: UITapGestureRecognizer) {
-        let storyboard = UIStoryboard(name: "Cart", bundle: nil)
-        let nextViewController = storyboard.instantiateViewController(withIdentifier: "CartViewController")
-        
-        self.present(nextViewController, animated: true, completion: nil)
-    }
 
     /*
     // MARK: - Navigation

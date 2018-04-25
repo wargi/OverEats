@@ -27,7 +27,7 @@
         <!--Menu View Controller-->
         <scene sceneID="Faf-v4-St3">
             <objects>
-                <viewController storyboardIdentifier="Menu" id="7bo-7t-DVv" customClass="MenuViewController" customModule="OverEats" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Menu" modalPresentationStyle="currentContext" id="7bo-7t-DVv" customClass="MenuViewController" customModule="OverEats" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jcJ-WT-ZOS" userLabel="menuView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
