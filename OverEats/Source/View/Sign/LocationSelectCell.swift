@@ -14,6 +14,8 @@ class LocationSelectCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailAddress: UILabel!
     
+    @IBOutlet weak var checkImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,7 +24,11 @@ class LocationSelectCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        if selected {
+            checkImage.isHidden = false
+        } else {
+            checkImage.isHidden = true
+        }
     }
     
     func configure(locationData: LocationTableUtility) {

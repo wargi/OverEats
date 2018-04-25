@@ -26,7 +26,7 @@ struct UserManager {
     private static var _token: String?
     
     static var token: String? {
-        get { return _token! }
+        get { return _token == nil ? nil : "token \(_token!)" }
         set { _token = newValue }
     }
     

@@ -12,7 +12,8 @@ class LocationPickUpTableViewCell: UITableViewCell {
 
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var checkButton: UIImageView!
+    
+    @IBOutlet weak var checkImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,7 +23,11 @@ class LocationPickUpTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        // Configure the view for the selected state
+        if selected {
+            checkImage.isHidden = false
+        } else {
+            checkImage.isHidden = true
+        }
     }
     
     func configure(locationData: LocationTableUtility) {

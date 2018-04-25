@@ -12,31 +12,28 @@ class LocationDeliveryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    
     @IBOutlet weak var buildingNameTextField: UITextField!
-    @IBOutlet weak var buildingNameButton: UIButton!
-    @IBOutlet weak var buildView: UIView!
     @IBOutlet weak var companyNameTextField: UITextField!
-    @IBOutlet weak var companyNameButton: UIButton!
-    @IBOutlet weak var companyView: UIView!
+    
+    @IBOutlet weak var checkImage: UIImageView!
+    
+    
+    @IBOutlet weak var detailStackView: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        super.setSelected(selected, animated: false)
         
         if selected {
-            UIView.animate(withDuration: 0) {
-                self.frame.origin = CGPoint(x: 0, y: 100)
-                self.bounds.size.height = 150
-            }
+            checkImage.isHidden = false
+            detailStackView.isHidden = false
         } else {
-            UIView.animate(withDuration: 0) {
-                self.frame.origin = CGPoint(x: 0, y: 100)
-                self.frame.size.height = 50
-            }
+            checkImage.isHidden = true
+            detailStackView.isHidden = true
         }
         // Configure the view for the selected state
     }

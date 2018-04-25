@@ -32,12 +32,33 @@ class LocationViewController: UIViewController {
     var userLocationData: AddressData?
     
     @IBOutlet weak var locationTableView: UITableView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var dismissButton: UIButton!
+    
+    
     
     var firstTableUtility: [LocationTableUtility] = []
     var secondTableUtility: [LocationTableUtility] = []
     var thirdTableUtility: [LocationTableUtility] = []
     var reloadTableUtility: [LocationTableUtility]?
-    var status = 1
+    var status = 1 {
+        didSet{
+            if status == 1 {
+                backButton.isHidden = true
+                dismissButton.isHidden = false
+            } else if status == 2 {
+                backButton.isHidden = false
+                dismissButton.isHidden = true
+            }
+        }
+    }
+    @IBAction func backButton(_ sender: Any) {
+        startUpdateLocationData()
+    }
+    
+    @IBAction func dismissButton(_ sender: Any) {
+    }
+    
     
     @IBAction func completeButton(_ sender: UIButton) {
         guard let userLocationInfo = userLocationData else { return }
@@ -69,12 +90,53 @@ class LocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationManager.requestWhenInUseAuthorization() //권한 요청
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest // 배터리 효율 좋은 방법
-        locationManager.startUpdatingLocation()
+        self.locationTableView.rowHeight = UITableViewAutomaticDimension;
+        
+        self.view.layoutIfNeeded()
+        self.view.setNeedsLayout()
+        
+        UIView.setAnimationsEnabled(false)
         
         locationManager.delegate = self
         
+        startUpdateLocationData()
+    }
+    
+    private func startUpdateLocationData(){
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .denied, .restricted:
+            print("앱을 사용하기 위해서는 위치 정보 사용 권한이 필요합니다.")
+        case .authorizedAlways, .authorizedWhenInUse:
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.distanceFilter = kCLDistanceFilterNone
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    private func stopUpdateLocationData(){
+        locationManager.stopUpdatingLocation()
+    }
+    
+    private func getNowLocationData() {
+        PostService.userLocation(latitude: latitude, longitude: longitude) { (result) in
+            switch result {
+                
+            case .success(let success):
+                self.userLocationData = success.result[0]
+                self.formattedAddress = success.result[0].formattedAddress
+                if self.firstTableUtility.count < 1 {
+                    self.firstTableUtility.append(LocationTableUtility(cellType: 1, title: "현재 위치", firstValue: self.formattedAddress, secondValue: nil, iconName: "btnLocation", buttonname: ""))
+                    
+                    self.reloadTableUtility = self.firstTableUtility
+                    self.locationTableView.reloadData()
+                }
+                
+            case .error(let error):
+                print(error)
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -95,24 +157,9 @@ extension LocationViewController: CLLocationManagerDelegate {
         latitude = coordinate.latitude
         longitude = coordinate.longitude
         
-        PostService.userLocation(latitude: 57.524124, longitude: 147.022881) { (result) in
-            switch result {
-                
-            case .success(let success):
-                print(success)
-                self.userLocationData = success.result[0]
-                self.formattedAddress = success.result[0].formattedAddress
-                if self.firstTableUtility.count < 1 {
-                    self.firstTableUtility.append(LocationTableUtility(cellType: 1, title: "현재 위치", firstValue: self.formattedAddress, secondValue: nil, iconName: "btnLocation", buttonname: ""))
-                    
-                    self.reloadTableUtility = self.firstTableUtility
-                    self.locationTableView.reloadData()
-                }
-                
-            case .error(let error):
-                print(error)
-            }
-        }
+        stopUpdateLocationData()
+        getNowLocationData()
+        
     }
 }
 
@@ -161,15 +208,20 @@ extension LocationViewController: UITableViewDataSource {
 extension LocationViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.beginUpdates()
+        tableView.endUpdates()
         if let locationUtil = reloadTableUtility {
             if locationUtil[indexPath.row].cellType == 2 {
                 self.locationData = self.locationDataList[indexPath.row]
-                self.thirdTableUtility.append(LocationTableUtility(cellType: 3, title: "밖에서 픽업", firstValue: "", secondValue: "", iconName: "btnOutsidePickup", buttonname: ""))
+                
                 self.thirdTableUtility.append(LocationTableUtility(cellType: 4, title: "문 앞까지 배달", firstValue: "", secondValue: "", iconName: "btnDoor", buttonname: ""))
+                
+                self.thirdTableUtility.append(LocationTableUtility(cellType: 3, title: "밖에서 픽업", firstValue: "", secondValue: "", iconName: "btnOutsidePickup", buttonname: ""))
+                
                 
                 self.reloadTableUtility = self.thirdTableUtility
                 tableView.reloadData()
-                
             }
         }
     }
@@ -178,6 +230,7 @@ extension LocationViewController: UITableViewDelegate {
 extension LocationViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         guard let text = locationTextField.text else { return false }
         secondTableUtility = []
         reloadTableUtility = []
@@ -189,6 +242,8 @@ extension LocationViewController: UITextFieldDelegate {
                     for detailData in self.locationDataList {
                         let locationTableUtility = LocationTableUtility(cellType: 2, title: detailData.name, firstValue: detailData.formattedAddress, secondValue: "", iconName: "btnAddress", buttonname: "")
                         self.secondTableUtility.append(locationTableUtility)
+                        
+                        self.status = 2
                         
                         self.reloadTableUtility = self.secondTableUtility
                         self.locationTableView.reloadData()

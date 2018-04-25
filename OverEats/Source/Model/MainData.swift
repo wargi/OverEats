@@ -24,6 +24,7 @@ struct Lestaurant: Decodable {
     let visible: Bool // 리스트 공개 여부
     let scheduleOrder: Bool // 예약 주문 가능 여부
     let rating: Float // 매장 오픈 여부
+    let ratingCount: Int
     let address: Address // 매장 주소
     let position: Position // 매장 설명
     let etaRange: EtaRange // 매장 점수
@@ -32,6 +33,8 @@ struct Lestaurant: Decodable {
     let logos: [Logo] // 매장 이미지
     let openTime: [OpenTime] // 매장 오픈 시간
     let contact: [String]?
+    let endorsement: Endorsement?
+    let isLike: Bool
     
     private enum CodingKeys: String, CodingKey {
         case id = "uuid"
@@ -40,6 +43,7 @@ struct Lestaurant: Decodable {
         case visible = "r_visible"
         case scheduleOrder = "schedule_order"
         case rating
+        case ratingCount = "rating_count"
         case address
         case position
         case etaRange = "eta_range"
@@ -48,6 +52,8 @@ struct Lestaurant: Decodable {
         case logos
         case openTime = "open_time"
         case contact
+        case endorsement
+        case isLike = "is_like"
     }
 }
 
@@ -149,3 +155,14 @@ struct OpenTime: Decodable {
         case endTime = "end_time"
     }
 }
+
+
+struct Endorsement: Decodable {
+    let text: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case text
+    }
+}
+
+
