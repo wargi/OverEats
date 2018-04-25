@@ -69,11 +69,15 @@
 		9E60DCCE2074BF4700B9528A /* CreateIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60DCCD2074BF4700B9528A /* CreateIDViewController.swift */; };
 		9E60DCD02074C08F00B9528A /* ProfileCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60DCCF2074C08F00B9528A /* ProfileCreateViewController.swift */; };
 		9E60DCD22074D1F900B9528A /* ToSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60DCD12074D1F900B9528A /* ToSViewController.swift */; };
-		9E7922DC2085E83500C3FB99 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7922DB2085E83500C3FB99 /* LocationViewController.swift */; };
-		D27A863B208E1C0500CF814F /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27A863A208E1C0500CF814F /* TextFieldTableViewCell.swift */; };
 		D2AF6FCE208F066B00D0D314 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF6FCD208F066B00D0D314 /* LocationData.swift */; };
-		D2AF6FD0208F681C00D0D314 /* OtherTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AF6FCF208F681C00D0D314 /* OtherTextFieldTableViewCell.swift */; };
-		D2BAF094208DC4D800E3C8E6 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BAF093208DC4D800E3C8E6 /* MainTableViewCell.swift */; };
+		D2BB4018209054BF0045E09C /* KakaoTalk_Photo_2018-04-25-15-16-07.png in Resources */ = {isa = PBXBuildFile; fileRef = D2BB4017209054BE0045E09C /* KakaoTalk_Photo_2018-04-25-15-16-07.png */; };
+		D2BB401A20905B360045E09C /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB401920905B360045E09C /* LocationViewController.swift */; };
+		D2BB401F20905C810045E09C /* LocationSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB401E20905C810045E09C /* LocationSelectCell.swift */; };
+		D2BB4021209064080045E09C /* LocationResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB4020209064080045E09C /* LocationResultTableViewCell.swift */; };
+		D2BB4023209066750045E09C /* LocationPickUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB4022209066750045E09C /* LocationPickUpTableViewCell.swift */; };
+		D2BB40252090670A0045E09C /* LocationDeliveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB40242090670A0045E09C /* LocationDeliveryTableViewCell.swift */; };
+		D2BB4027209074D20045E09C /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB4026209074D20045E09C /* UserLocation.swift */; };
+		D2BB402920907B5F0045E09C /* LocationTableUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2BB402820907B5F0045E09C /* LocationTableUtility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,11 +146,15 @@
 		9E60DCCD2074BF4700B9528A /* CreateIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateIDViewController.swift; sourceTree = "<group>"; };
 		9E60DCCF2074C08F00B9528A /* ProfileCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCreateViewController.swift; sourceTree = "<group>"; };
 		9E60DCD12074D1F900B9528A /* ToSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToSViewController.swift; sourceTree = "<group>"; };
-		9E7922DB2085E83500C3FB99 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
-		D27A863A208E1C0500CF814F /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		D2AF6FCD208F066B00D0D314 /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
-		D2AF6FCF208F681C00D0D314 /* OtherTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherTextFieldTableViewCell.swift; sourceTree = "<group>"; };
-		D2BAF093208DC4D800E3C8E6 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		D2BB4017209054BE0045E09C /* KakaoTalk_Photo_2018-04-25-15-16-07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "KakaoTalk_Photo_2018-04-25-15-16-07.png"; path = "../../../../../../Downloads/KakaoTalk_Photo_2018-04-25-15-16-07.png"; sourceTree = "<group>"; };
+		D2BB401920905B360045E09C /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		D2BB401E20905C810045E09C /* LocationSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectCell.swift; sourceTree = "<group>"; };
+		D2BB4020209064080045E09C /* LocationResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationResultTableViewCell.swift; sourceTree = "<group>"; };
+		D2BB4022209066750045E09C /* LocationPickUpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickUpTableViewCell.swift; sourceTree = "<group>"; };
+		D2BB40242090670A0045E09C /* LocationDeliveryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDeliveryTableViewCell.swift; sourceTree = "<group>"; };
+		D2BB4026209074D20045E09C /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
+		D2BB402820907B5F0045E09C /* LocationTableUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableUtility.swift; sourceTree = "<group>"; };
 		E373B345549AF331F65951E3 /* Pods-OverEats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OverEats.release.xcconfig"; path = "Pods/Target Support Files/Pods-OverEats/Pods-OverEats.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,6 +188,7 @@
 				290F54102084015D0061A878 /* ImageCacheSetup.swift */,
 				290EFFFF207F83D50004AAD4 /* ServiceResult.swift */,
 				290F541220847D470061A878 /* MainListSetup.swift */,
+				D2BB402820907B5F0045E09C /* LocationTableUtility.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -283,6 +292,7 @@
 		8E8A636A2071E53F007D9B7A /* Sign */ = {
 			isa = PBXGroup;
 			children = (
+				D2BB4017209054BE0045E09C /* KakaoTalk_Photo_2018-04-25-15-16-07.png */,
 				8E8A63682071E481007D9B7A /* Sign.storyboard */,
 			);
 			path = Sign;
@@ -299,6 +309,7 @@
 				290EFFF8207F5B340004AAD4 /* MainData.swift */,
 				292582C62085C44D00FFE782 /* NoticeData.swift */,
 				D2AF6FCD208F066B00D0D314 /* LocationData.swift */,
+				D2BB4026209074D20045E09C /* UserLocation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -418,6 +429,7 @@
 		8EE538D1206E36AD006BAC26 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D2BB401B20905C560045E09C /* Sign */,
 				8EECDB1E2086241E00151F43 /* Cart */,
 				291C9EF92072239D0085E37E /* Main */,
 				8E3A5FFD207DB5BD00EB5747 /* Setting */,
@@ -463,10 +475,7 @@
 				9E60DCCD2074BF4700B9528A /* CreateIDViewController.swift */,
 				9E60DCCF2074C08F00B9528A /* ProfileCreateViewController.swift */,
 				9E3343442080491000E3D250 /* LoginViewController.swift */,
-				9E7922DB2085E83500C3FB99 /* LocationViewController.swift */,
-				D2BAF093208DC4D800E3C8E6 /* MainTableViewCell.swift */,
-				D27A863A208E1C0500CF814F /* TextFieldTableViewCell.swift */,
-				D2AF6FCF208F681C00D0D314 /* OtherTextFieldTableViewCell.swift */,
+				D2BB401920905B360045E09C /* LocationViewController.swift */,
 			);
 			path = Sign;
 			sourceTree = "<group>";
@@ -477,6 +486,17 @@
 				5C9A569FD85EAB1F2AB0E133 /* Pods_OverEats.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D2BB401B20905C560045E09C /* Sign */ = {
+			isa = PBXGroup;
+			children = (
+				D2BB401E20905C810045E09C /* LocationSelectCell.swift */,
+				D2BB4020209064080045E09C /* LocationResultTableViewCell.swift */,
+				D2BB4022209066750045E09C /* LocationPickUpTableViewCell.swift */,
+				D2BB40242090670A0045E09C /* LocationDeliveryTableViewCell.swift */,
+			);
+			path = Sign;
 			sourceTree = "<group>";
 		};
 		E015E62BDC90E205A33E5028 /* Pods */ = {
@@ -548,6 +568,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2BB4018209054BF0045E09C /* KakaoTalk_Photo_2018-04-25-15-16-07.png in Resources */,
 				8EECDB1C208615B200151F43 /* Cart.storyboard in Resources */,
 				8E8A63692071E481007D9B7A /* Sign.storyboard in Resources */,
 				8EECDB342086F2AC00151F43 /* CartCell.xib in Resources */,
@@ -624,10 +645,13 @@
 				8EECDB2E2086EB3F00151F43 /* CartFooterView.swift in Sources */,
 				8EE538B9206E25AD006BAC26 /* AppDelegate.swift in Sources */,
 				291C9F1420728D490085E37E /* MainNetwork.swift in Sources */,
-				9E7922DC2085E83500C3FB99 /* LocationViewController.swift in Sources */,
+				D2BB4027209074D20045E09C /* UserLocation.swift in Sources */,
 				8EECDB332086F2AC00151F43 /* CartCell.swift in Sources */,
+				D2BB402920907B5F0045E09C /* LocationTableUtility.swift in Sources */,
 				291C9F2120749CBA0085E37E /* NoticeImageView.swift in Sources */,
+				D2BB40252090670A0045E09C /* LocationDeliveryTableViewCell.swift in Sources */,
 				8E3A6000207DB5FB00EB5747 /* SettingViewController.swift in Sources */,
+				D2BB401A20905B360045E09C /* LocationViewController.swift in Sources */,
 				8E8A637E2071F7BF007D9B7A /* AppColor.swift in Sources */,
 				290EFFF9207F5B340004AAD4 /* MainData.swift in Sources */,
 				29227F24208613080056A67F /* RecommendTableViewCell.swift in Sources */,
@@ -638,10 +662,10 @@
 				290E0005207F890F0004AAD4 /* StoryboardUtility.swift in Sources */,
 				D2AF6FCE208F066B00D0D314 /* LocationData.swift in Sources */,
 				9E33434B208470AE00E3D250 /* Regularexpression.swift in Sources */,
+				D2BB4023209066750045E09C /* LocationPickUpTableViewCell.swift in Sources */,
 				9E3343452080491000E3D250 /* LoginViewController.swift in Sources */,
 				291C9F32207629A10085E37E /* MainInviteTableViewCell.swift in Sources */,
 				290EFFFC207F7E670004AAD4 /* GetService.swift in Sources */,
-				D2AF6FD0208F681C00D0D314 /* OtherTextFieldTableViewCell.swift in Sources */,
 				290E0002207F84640004AAD4 /* DataUtility.swift in Sources */,
 				9E60DCD02074C08F00B9528A /* ProfileCreateViewController.swift in Sources */,
 				29DF70E6207ED7E400E1D023 /* MainHeaderInSection.swift in Sources */,
@@ -650,15 +674,15 @@
 				292582C72085C44D00FFE782 /* NoticeData.swift in Sources */,
 				8E8A636E2071E583007D9B7A /* SignViewController.swift in Sources */,
 				9E60DCCE2074BF4700B9528A /* CreateIDViewController.swift in Sources */,
+				D2BB401F20905C810045E09C /* LocationSelectCell.swift in Sources */,
 				290F541320847D470061A878 /* MainListSetup.swift in Sources */,
 				8EECDB2C20862E3100151F43 /* CartViewController.swift in Sources */,
 				29DF70E4207E393800E1D023 /* SetTableAutolayout.swift in Sources */,
 				9E60DCD22074D1F900B9528A /* ToSViewController.swift in Sources */,
 				8E3A6007207DBA9A00EB5747 /* SettingCell.swift in Sources */,
+				D2BB4021209064080045E09C /* LocationResultTableViewCell.swift in Sources */,
 				8EE073B02085E49C0000E22B /* CustomTransition.swift in Sources */,
-				D2BAF094208DC4D800E3C8E6 /* MainTableViewCell.swift in Sources */,
 				8EECDB262086258C00151F43 /* CartHeaderView.swift in Sources */,
-				D27A863B208E1C0500CF814F /* TextFieldTableViewCell.swift in Sources */,
 				8E5B9E7420798BA300921EF4 /* MenuListCell.swift in Sources */,
 				8E5B9E692079856900921EF4 /* MenuHeaderView.swift in Sources */,
 				8E3A6004207DB89900EB5747 /* SettingHeaderView.swift in Sources */,
@@ -812,7 +836,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z339Z9FD2H;
 				INFOPLIST_FILE = "OverEats/Supporting File/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.OverEats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -828,7 +855,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z339Z9FD2H;
 				INFOPLIST_FILE = "OverEats/Supporting File/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.OverEats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

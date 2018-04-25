@@ -102,4 +102,28 @@ struct PostService: PostServiceType {
         }
     }
     
+    static func userLocation(latitude: Double, longitude: Double, completion: @escaping (Result<UserLocation>) -> ()) {
+        
+        let params: Parameters = [
+            "latitude": latitude,
+            "longitude": longitude
+        ]
+        
+        Alamofire.request(API.userLocation.urlString, method: .post, parameters: params)
+            .validate()
+            .responseData { (response) in
+                switch response.result {
+                case .success(let value):
+                    do {
+                        let userData = try value.decode(UserLocation.self)
+                        completion(.success(userData))
+                    } catch {
+                        completion(.error(error))
+                    }
+                case .failure(let error):
+                    completion(.error(error))
+                }
+        }
+    }
+    
 }

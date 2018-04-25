@@ -1,3 +1,4 @@
+
 //
 //  LocationData.swift
 //  OverEats
@@ -8,9 +9,9 @@
 
 import Foundation
 
-struct LocationData: Decodable {
+struct UserLocation: Decodable {
     
-    let result: [DetailData]
+    let result: [AddressData]
     
     private enum CodingKeys: String, CodingKey {
         case result
@@ -18,43 +19,26 @@ struct LocationData: Decodable {
     
 }
 
-struct DetailData: Decodable {
+struct AddressData: Decodable {
     
-    let name : String
-    let vicinity : String
     let addressComponents: [LongName]
     let formattedAddress: String
-    let geometry: Geometry
+    let geometry: MapData
     
     private enum CodingKeys: String, CodingKey {
         
-        case name
-        case vicinity
         case addressComponents = "address_components"
         case formattedAddress = "formatted_address"
         case geometry
     }
-    
 }
 
-struct LongName: Decodable {
-    
-    let longName : String
-    let shortName : String
+struct MapData: Decodable {
+    let location: Geometry
     
     private enum CodingKeys: String, CodingKey {
-        
-        case longName = "long_name"
-        case shortName = "short_name"
+        case location
     }
 }
 
-struct Geometry: Decodable {
-    let lat: Double
-    let lng: Double
-    
-    private enum CodingKeys: String, CodingKey {
-        case lat
-        case lng
-    }
-}
+
