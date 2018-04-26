@@ -68,6 +68,8 @@
 		8EECDB38208E17BF00151F43 /* CartMenuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EECDB37208E17BF00151F43 /* CartMenuData.swift */; };
 		8EECDB3A208ECEB100151F43 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EECDB39208ECEB100151F43 /* CartManager.swift */; };
 		8EECDB3E208F479700151F43 /* SelectCartMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EECDB3D208F479700151F43 /* SelectCartMenuViewController.swift */; };
+		8EECDB4020911E7700151F43 /* CardEnrollmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EECDB3F20911E7700151F43 /* CardEnrollmentViewController.swift */; };
+		8EECDB422091267600151F43 /* DumpOrderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EECDB412091267600151F43 /* DumpOrderData.swift */; };
 		9E3343452080491000E3D250 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3343442080491000E3D250 /* LoginViewController.swift */; };
 		9E33434B208470AE00E3D250 /* Regularexpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E33434A208470AE00E3D250 /* Regularexpression.swift */; };
 		9E60DCCE2074BF4700B9528A /* CreateIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60DCCD2074BF4700B9528A /* CreateIDViewController.swift */; };
@@ -141,6 +143,8 @@
 		8EECDB37208E17BF00151F43 /* CartMenuData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartMenuData.swift; sourceTree = "<group>"; };
 		8EECDB39208ECEB100151F43 /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
 		8EECDB3D208F479700151F43 /* SelectCartMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCartMenuViewController.swift; sourceTree = "<group>"; };
+		8EECDB3F20911E7700151F43 /* CardEnrollmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEnrollmentViewController.swift; sourceTree = "<group>"; };
+		8EECDB412091267600151F43 /* DumpOrderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DumpOrderData.swift; sourceTree = "<group>"; };
 		9E3343442080491000E3D250 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9E33434A208470AE00E3D250 /* Regularexpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regularexpression.swift; sourceTree = "<group>"; };
 		9E60DCCD2074BF4700B9528A /* CreateIDViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateIDViewController.swift; sourceTree = "<group>"; };
@@ -298,6 +302,7 @@
 				291C9F52207736720085E37E /* SystemData.swift */,
 				291C9F54207736BB0085E37E /* UserData.swift */,
 				8EECDB35208C59B500151F43 /* OrderData.swift */,
+				8EECDB412091267600151F43 /* DumpOrderData.swift */,
 				8EE0738B208468ED0000E22B /* MenuData.swift */,
 				8EECDB37208E17BF00151F43 /* CartMenuData.swift */,
 				290EFFF8207F5B340004AAD4 /* MainData.swift */,
@@ -442,6 +447,7 @@
 			children = (
 				8EECDB2B20862E3100151F43 /* CartViewController.swift */,
 				8EECDB3D208F479700151F43 /* SelectCartMenuViewController.swift */,
+				8EECDB3F20911E7700151F43 /* CardEnrollmentViewController.swift */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -633,6 +639,7 @@
 				29F32FCC2087DF87009D4B6C /* RestaurantView.swift in Sources */,
 				8E8A63732071E7C3007D9B7A /* MenuViewController.swift in Sources */,
 				8E9672C82074AEA60061B7C5 /* RequestViewController.swift in Sources */,
+				8EECDB422091267600151F43 /* DumpOrderData.swift in Sources */,
 				2933C2BE20899DE3002DAAA4 /* SelectMenuViewController.swift in Sources */,
 				291C9F53207736720085E37E /* SystemData.swift in Sources */,
 				291C9F55207736BB0085E37E /* UserData.swift in Sources */,
@@ -674,6 +681,7 @@
 				8EE073B02085E49C0000E22B /* CustomTransition.swift in Sources */,
 				291A567D208CC79300E04130 /* SearchViewController.swift in Sources */,
 				8EECDB262086258C00151F43 /* CartHeaderView.swift in Sources */,
+				8EECDB4020911E7700151F43 /* CardEnrollmentViewController.swift in Sources */,
 				8EECDB3E208F479700151F43 /* SelectCartMenuViewController.swift in Sources */,
 				8E5B9E7420798BA300921EF4 /* MenuListCell.swift in Sources */,
 				8E5B9E692079856900921EF4 /* MenuHeaderView.swift in Sources */,

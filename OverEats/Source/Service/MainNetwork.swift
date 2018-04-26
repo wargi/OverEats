@@ -14,6 +14,8 @@ struct MainGet {
     static func getRestaurantList(completionHandler: @escaping ([Restaurant]) -> Void) {
         var restaurants = [Restaurant]()
         
+        
+        
         let tempImageURL = "https://duyt4h9nfnj50.cloudfront.net/resized/9c6493c25086978e677d38ad416cbbb1-w550-bb.jpg"
         
         

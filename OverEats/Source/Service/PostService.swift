@@ -13,7 +13,7 @@ import Alamofire
 protocol PostServiceType {
     static func singUp(singUpData: [String : Any], imageData: Data? ,completion: @escaping (Result<UserData>) -> ())
     static func signIn(email: String, password: String, completion: @escaping (Result<UserData>) -> ())
-    static func setOrder(orderData: [String : Any], completion: @escaping (Result<OrderData>) -> ())
+    static func setOrder(orderData: [String:Any], completion: @escaping (Result<OrderData>) -> ())
 }
 
 struct PostService: PostServiceType {
@@ -79,13 +79,15 @@ struct PostService: PostServiceType {
         }
     }
     
-    static func setOrder(orderData: [String : Any], completion: @escaping (Result<OrderData>) -> ()) {
-        guard let url = URL(string: API.postSignUp.urlString),
-            let urlRequest = try? URLRequest(url: url, method: .post)
+    static func setOrder(orderData: [String:Any], completion: @escaping (Result<OrderData>) -> ()) {
+        guard let url = URL(string: API.postCart.urlString),
+            let urlRequest = try? URLRequest(url: url, method: .post, headers: ["Authorization": "token a0224ede337f2245a0b80d0157872de58284b4e9"])
+
             else { return completion(.error(ServiceError.invalidURL))
         }
         
-        Alamofire.upload(multipartFormData: { (multipartFormData) in
+        
+        Alamofire.upload(multipartFormData: { multipartFormData in
             for (key, value) in orderData {
                 multipartFormData.append("\(value)".data(using: .utf8)!, withName: key as String)
             }

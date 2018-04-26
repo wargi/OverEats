@@ -78,6 +78,7 @@ class SelectCartMenuViewController: UIViewController {
                                                       completion: { _ in })
         } else {
             menuName.text = "\n" + menuName.text!
+            gradientView.alpha = 0
         }
         self.price = CartManager.cartList[cartMenuNumber].price
         self.count.text = String(CartManager.cartList[cartMenuNumber].count)
@@ -192,7 +193,7 @@ class SelectCartMenuViewController: UIViewController {
         
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
-        gradient.frame = CGRect(x: 0, y: 0, width: gradientView.bounds.width, height: gradientView.bounds.height / 2)
+        gradient.frame = CGRect(x: 0, y: 0, width: gradientView.bounds.width, height: gradientView.bounds.height / 3)
         gradient.locations = [0.01]
         
         gradientView.layer.addSublayer(gradient)

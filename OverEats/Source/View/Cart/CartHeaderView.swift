@@ -15,16 +15,18 @@ class CartHeaderView: UIView {
     @IBOutlet weak var restaurantName : UILabel!
     @IBOutlet weak var deliveryTime : UILabel!
     @IBOutlet private weak var mapImage : UIImageView!
-//    @IBOutlet private weak var address : UILabel!
-//    @IBOutlet private weak var detailAddress : UILabel!
-//    @IBOutlet private weak var addressView : UIView!
+    @IBOutlet private weak var address : UILabel!
+    @IBOutlet private weak var detailAddress : UILabel!
+    @IBOutlet private weak var addressView : UIView!
     
     func configure() {
         restaurantName.text = CartManager.restaurantName
         deliveryTime.text = String(CartManager.deliveryTime!.min) + "분 - " +
                             String(CartManager.deliveryTime!.max) + "분 소요"
         restaurantImageView.loadImageUsingCacheWithUrl(urlString: CartManager.restaurantURL!) { _ in }
-        mapImage.loadImageUsingCacheWithUrl(urlString: API.getMapImage(latitude: 37.6026957,
-                                            longitude: 126.9291119).urlString) { _ in }
+        mapImage.loadImageUsingCacheWithUrl(urlString: API.getMapImage(latitude: Float(CartManager.dumpDelivery.lat),
+                                                                       longitude: Float(CartManager.dumpDelivery.lng)).urlString) { _ in }
+        address.text = CartManager.dumpDelivery.address
+        detailAddress.text = CartManager.dumpDelivery.detailAddress
     }
 }

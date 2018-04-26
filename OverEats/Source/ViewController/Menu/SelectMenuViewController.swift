@@ -81,6 +81,8 @@ final class SelectMenuViewController: UIViewController {
                                                       completion: { _ in })
         } else {
             menuName.text = "\n" + menuName.text!
+            gradientView.alpha = 0
+            
         }
         self.price = menuInfo.price
         
@@ -104,7 +106,7 @@ final class SelectMenuViewController: UIViewController {
         
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
-        gradient.frame = CGRect(x: 0, y: 0, width: gradientView.bounds.width, height: gradientView.bounds.height / 2)
+        gradient.frame = CGRect(x: 0, y: 0, width: gradientView.bounds.width, height: gradientView.bounds.height / 3)
         gradient.locations = [0.01]
         
         gradientView.layer.addSublayer(gradient)
@@ -269,11 +271,6 @@ final class SelectMenuViewController: UIViewController {
         }
     }
     
-    @IBAction func cartGo(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Cart", bundle: nil)
-        let nextViewController = storyboard.instantiateViewController(withIdentifier: "CartViewController") as! CartViewController
-        self.present(nextViewController, animated: true, completion: nil)
-    }
 }
 
 // UIGestureRecognizerDelegate

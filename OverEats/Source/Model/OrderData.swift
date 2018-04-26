@@ -71,12 +71,3 @@ struct OrderMenu: Decodable {
         case comment
     }
 }
-
-//extension OrderMenu: Encodable {
-//    func encode(to encoder: Encoder) throws {
-//        var container = encoder.container(keyedBy: CodingKeys.self)
-//        try container.encode(name, forKey: .name)
-//        try container.encode(id, forKey: .id)
-//        try container.encode(favoriteToy.name, forKey: .gift)
-//    }
-//}

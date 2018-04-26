@@ -17,6 +17,7 @@ struct CartSize {
 
 final class CartViewController: UIViewController {
     
+    @IBOutlet weak var BottomConstraint: NSLayoutConstraint!
     // CartViewController 변수
     // Navigation 관련
     @IBOutlet private weak var navigationView: UIView! // Navigation View
@@ -28,26 +29,27 @@ final class CartViewController: UIViewController {
     @IBOutlet private weak var orderView : UIView!
     @IBOutlet private weak var totalPrice : UILabel!
     @IBOutlet private weak var footerView : CartFooterView!
-    //
-    
-    @IBOutlet private weak var cardNumberTextField : UITextField!
     
     var requestTap: UITapGestureRecognizer! // Request Tap Gesture 요청사항 작성 이벤트
+    var orderTap: UITapGestureRecognizer!
+    var cardTap: UITapGestureRecognizer!
     var headerView: CartHeaderView! // menuList의 headerView
     
+    var tempY: CGFloat!
     let defaultString: String = "추가로 요청할 사항이 있을시 적어주세요(소스 추가, 양파 빼기 등)"
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         UIApplication.shared.statusBarStyle = .lightContent
-        cardNumberTextField.addDoneCancelToolbar()
         
         requestReflecting()
         setNavigation()
         setOrderList()
         setHeaderView()
         setGradient()
+        cardReflecting()
         
     }
     
@@ -56,6 +58,7 @@ final class CartViewController: UIViewController {
         
         orderList.reloadData()
         totalPrice.text = "₩" + String(footerView.configure(with: CartManager.cartList))
+        
     }
     
     // Navigation 관련 설정
@@ -99,9 +102,13 @@ final class CartViewController: UIViewController {
     func setHeaderView() {
         
         requestTap = UITapGestureRecognizer(target: self, action: #selector(self.requestTapAction(_:)))
+        cardTap = UITapGestureRecognizer(target: self, action: #selector(self.cardTapAction(_:)))
         headerView.configure()
         totalPrice.text = "₩" + String(footerView.configure(with: CartManager.cartList))
         footerView.requestView.addGestureRecognizer(requestTap)
+        footerView.cardView.addGestureRecognizer(cardTap)
+        orderTap = UITapGestureRecognizer(target: self, action: #selector(self.orderTapAction(_:)))
+        orderView.addGestureRecognizer(orderTap)
         
     }
     
@@ -139,11 +146,12 @@ final class CartViewController: UIViewController {
         
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
-        gradient.frame = CGRect(x: 0, y: 0, width: headerView.gradientView.bounds.width, height: headerView.gradientView.bounds.height / 2)
+        gradient.frame = CGRect(x: 0, y: 0, width: headerView.gradientView.bounds.width, height: headerView.gradientView.bounds.height / 3)
         gradient.locations = [0.01]
         
         headerView.gradientView.layer.addSublayer(gradient)
     }
+    
     
     @objc func backButtonEvent(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -160,6 +168,59 @@ final class CartViewController: UIViewController {
         present(nextViewController, animated: true)
     }
     
+    @objc func cardTapAction(_ sender: UITapGestureRecognizer) {
+        let nextViewController = storyboard?.instantiateViewController(withIdentifier: "CardEnrollmentViewController") as! CardEnrollmentViewController
+        self.present(nextViewController, animated: true, completion: nil)
+    }
+    
+    @objc func orderTapAction(_ sender: UITapGestureRecognizer) {
+//        var dump: [DumpOrderMenu] = []
+//        for cart in CartManager.cartList {
+//            dump.append(DumpOrderMenu(id: cart.id, count: cart.count, comment: cart.comment))
+//        }
+//        let dumpData = DumpOrderData(delivery: CartManager.dumpDelivery,
+//                      payment: DumpPayment(method: "card", cardNumber: footerView.cardLabel.text!),
+//                      order: DumpInfomation(restaurantID: CartManager.restaurantId!, orderMenu: dump),
+//                      comment: footerView.requestLabel.text)
+//
+//        let deliveryDic: [String: Any] = ["lat": dumpData.delivery.lat,
+//                                       "lng": dumpData.delivery.lng,
+//                                       "address": dumpData.delivery.address,
+//                                       "address_detail": dumpData.delivery.detailAddress,
+//                                       "comment": dumpData.delivery.comment,
+//                                       "date_time": dumpData.delivery.orderTime]
+//        let paymentDic: [String: String] = [
+//            "method": "card",
+//            "num": footerView.cardLabel.text!
+//        ]
+//
+//        var itemsDic: [[String: Any]] = []
+//        for cart in CartManager.cartList {
+//            itemsDic.append(["id" : cart.id, "cnt": cart.count, "comment": cart.comment])
+//        }
+//
+//        let orderDic: [String: Any] = [
+//            "restaurant": CartManager.restaurantId,
+//            "items": itemsDic,
+//            "comment": ""
+//        ]
+//
+//        let dic:[String:Any] = ["delivery": deliveryDic, "payment": paymentDic, "order": orderDic]
+//
+//        PostService.setOrder(orderData: dic) { (result) in
+//            switch result {
+//            case .success(let data):
+//                print("??")
+//                print(data)
+//            case .error(let error):
+//                print("!!!")
+//                print(error.localizedDescription)
+//            }
+//        }
+        CartManager.cartList = []
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func requestReflecting() {
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "order"), object: nil, queue: nil) { [weak self] (noti) in
             
@@ -173,6 +234,23 @@ final class CartViewController: UIViewController {
                 self?.footerView.requestLabel.textColor = .lightGray
             }
         }
+    }
+    
+    func cardReflecting() {
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "cardNumber"), object: nil, queue: nil) { [weak self] (noti) in
+            
+            if let cardNumber = noti.object as? String {
+                self?.footerView.cardView.backgroundColor = .white
+                self?.footerView.cardLabel.text = cardNumber
+                self?.footerView.cardLabel.textColor = .black
+            }
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
     }
     
 }
@@ -215,8 +293,12 @@ extension CartViewController: UITableViewDataSource {
             CartManager.cartList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             
-            tableView.reloadData()
-            totalPrice.text = "₩" + String(footerView.configure(with: CartManager.cartList))
+            if CartManager.cartList.count < 1 {
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                tableView.reloadData()
+                totalPrice.text = "₩" + String(footerView.configure(with: CartManager.cartList))
+            }
         }
     }
     
@@ -225,7 +307,6 @@ extension CartViewController: UITableViewDataSource {
         
         setHeaderFrame()
     }
-    
     
 }
 
@@ -246,7 +327,6 @@ extension CartViewController: UITableViewDelegate {
 }
 
 extension CartViewController: UITextFieldDelegate {
-    
 }
 
 extension UITextField {

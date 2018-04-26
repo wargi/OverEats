@@ -44,6 +44,7 @@ enum API: APIProtocol
     {
         case login = "/login/"
         case singUp = "/member/user/"
+        case cart =  "/order/payment/"
     }
     
     // GET API
@@ -55,6 +56,7 @@ enum API: APIProtocol
     // POST API
     case postLogin
     case postSignUp
+    case postCart
     
     // endPoint에 파라미터 값을 반환하는 변수
     private var endpointString: String {
@@ -72,7 +74,10 @@ enum API: APIProtocol
                 return String(format: GET_LIST.mapImage.rawValue, latitude, longitude)
             case .postSignUp:
                 return String(format: POST_LIST.singUp.rawValue)
+            case .postCart:
+                return String(format: POST_LIST.cart.rawValue)
             }
+            
         }
     }
     

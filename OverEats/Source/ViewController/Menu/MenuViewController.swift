@@ -30,28 +30,59 @@ final class MenuViewController: UIViewController {
     var sections: [Section]?
     var restaurantInfo: Lestaurant!
     
+    @IBOutlet private weak var cartView : UIView!
+    @IBOutlet private weak var totalSumPrice : UILabel!
+    @IBOutlet private weak var totalCount : UILabel!
+    @IBOutlet private weak var totalCountView : UIView!
+    var tap: UITapGestureRecognizer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         UIApplication.shared.statusBarStyle = .lightContent
-
+        totalCount.layer.borderWidth = 1
+        totalCount.layer.cornerRadius = 3
+        totalCount.layer.borderColor = UIColor.white.cgColor
+        tap = UITapGestureRecognizer(target: self, action: #selector(self.cartGo(_:)))
+        cartView.addGestureRecognizer(tap)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        configure()
         setNavigation()
         setMenuList()
         setGradient()
+        setCartList()
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    func configure() {
+        guard CartManager.cartList.count > 0 else {
+            cartView.isHidden = true
+            return
+            
+        }
+        cartView.isHidden = false
         
+        print("=++++++++++++++++++++++++++++")
+        var sumCount: Int = 0
+        var sumPrice: Int = 0
+        for cart in CartManager.cartList {
+            sumCount = sumCount + cart.count
+            sumPrice = sumPrice + cart.price
+        }
+        totalCount.text = String(sumCount)
+        totalSumPrice.text = "₩" + String(sumPrice)
+    }
+    
+    @objc func cartGo(_ sender: UITapGestureRecognizer) {
+        let storyboard = UIStoryboard(name: "Cart", bundle: nil)
+        let nextViewController = storyboard.instantiateViewController(withIdentifier: "CartViewController") as! CartViewController
+        self.present(nextViewController, animated: true, completion: nil)
     }
     
     func setData(restaurant: Lestaurant?) {
-        print("Hi")
         if let rest = restaurant {
             restaurantInfo = rest
         }
@@ -71,8 +102,6 @@ final class MenuViewController: UIViewController {
     
     // Navigation 관련 설정
     func setNavigation() {
-        print("Hello")
-        print(restaurantInfo)
         // navigationView의 위치 설정
         self.navigationView.frame.origin.y = -MenuSize.navigationViewHeight
         
@@ -155,10 +184,17 @@ final class MenuViewController: UIViewController {
         
         let gradient = CAGradientLayer()
         gradient.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
-        gradient.frame = CGRect(x: 0, y: 0, width: headerView.gradientView.bounds.width, height: headerView.gradientView.bounds.height / 2)
+        gradient.frame = CGRect(x: 0, y: 0, width: headerView.gradientView.bounds.width, height: headerView.gradientView.bounds.height / 3)
         gradient.locations = [0.01]
         
         headerView.gradientView.layer.addSublayer(gradient)
+    }
+    
+    func setCartList() {
+        if CartManager.cartList.count > 1 {
+            
+            
+        }
     }
     
     @objc func clickedEvent(_ sender: Any) {
@@ -227,7 +263,7 @@ extension MenuViewController: UITableViewDelegate {
         let nextViewController = storyboard?.instantiateViewController(withIdentifier: "SelectMenu") as! SelectMenuViewController
         nextViewController.menuInfo = rowInSection
         self.definesPresentationContext = false
-        nextViewController.modalPresentationStyle = .overFullScreen
+        nextViewController.modalPresentationStyle = .currentContext
         
         nextViewController.restaurantId = restaurantInfo.id
         nextViewController.restaurantURL = restaurantInfo.logo
