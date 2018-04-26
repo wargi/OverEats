@@ -47,7 +47,7 @@
                             <constraint firstItem="cjD-qo-t3w" firstAttribute="leading" secondItem="C6D-Vp-RUH" secondAttribute="leading" id="vmU-cZ-q7z"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="부챗살 스테이크 덮밥 Bowl of Ric" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFo-gU-j2F" userLabel="FoodName">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="부챗살 스테이크 덮밥 Bowl of Ric" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFo-gU-j2F" userLabel="FoodName">
                         <rect key="frame" x="55" y="18.5" width="155.5" height="13.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <nil key="textColor"/>

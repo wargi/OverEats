@@ -27,29 +27,19 @@ class MenuHeaderView: UIView
         }
     }
     
-    // 음식점 명 삽입
-    var setTitle: String? {
-        didSet {
-            if let title = setTitle {
-                titleLabel.text = title
-            }
-        }
-    }
     
-    // 음식점의 카테고리 삽입
-    var setCategori: String? {
-        didSet {
-            if let categori = setCategori {
-                categoriLabel.text = categori
-            }
+    func configure(with restaurant: Lestaurant) {
+        self.deliveryTimeLabel.text = String(restaurant.etaRange.min) + "분-" +
+                                      String(restaurant.etaRange.max) + "분"
+        self.titleLabel.text = restaurant.name
+        self.mainImage.loadImageUsingCacheWithUrl(urlString: restaurant.logo) { _ in
+        
         }
-    }
-    
-    // 배달 시간 삽입
-    var setDeliveryTime: String? {
-        didSet {
-            if let deliveryTime = setDeliveryTime {
-                deliveryTimeLabel.text = deliveryTime
+        for tag in restaurant.tags {
+            if self.categoriLabel.text == nil {
+                self.categoriLabel.text = tag.name
+            } else {
+                self.categoriLabel.text = self.categoriLabel.text! + " " + tag.name
             }
         }
     }

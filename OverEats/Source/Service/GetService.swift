@@ -13,7 +13,7 @@ protocol GetServiceType {
     // get service에 대한 개별 프로토콜 함수
     static func getRestaurantList(latitude: Float, longitude: Float, pageSize: Int, searchText: String?, completion: @escaping (Result<Lestaurants>) -> ())
     static func getNoticeList(completion: @escaping (Result<[Notice]>) -> ())
-    static func getMenuList(completion: @escaping (Result<[Section]>) -> ())
+    static func getMenuList(id: String, completion: @escaping (Result<[Section]>) -> ())
 }
 
 struct GetService: GetServiceType {
@@ -56,9 +56,9 @@ struct GetService: GetServiceType {
             })
     }
 
-    static func getMenuList(completion: @escaping (Result<[Section]>) -> ()) {
+    static func getMenuList(id: String, completion: @escaping (Result<[Section]>) -> ()) {
         Alamofire
-            .request(API.getMenuList(restaurantId: "8c8acbe5-6eee-4aee-8588-4096704a1abc").urlString)
+            .request(API.getMenuList(restaurantId: id).urlString)
             .validate()
             .responseData { response in
                 switch response.result {
