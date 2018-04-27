@@ -43,7 +43,6 @@
 		29F32FCA2087DF6F009D4B6C /* RestaurantView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29F32FC92087DF6F009D4B6C /* RestaurantView.xib */; };
 		29F32FCC2087DF87009D4B6C /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F32FCB2087DF87009D4B6C /* RestaurantView.swift */; };
 		29F32FD620895A25009D4B6C /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F32FD520895A25009D4B6C /* PostService.swift */; };
-		29FBEE49209163BA008DF83E /* 9c6493c25086978e677d38ad416cbbb1-w550-bb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 29FBEE48209163B9008DF83E /* 9c6493c25086978e677d38ad416cbbb1-w550-bb.jpg */; };
 		809B12B4F4AEE34759F6AA35 /* Pods_OverEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9A569FD85EAB1F2AB0E133 /* Pods_OverEats.framework */; };
 		8E3A5FFC207DB14900EB5747 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E3A5FFB207DB14900EB5747 /* Setting.storyboard */; };
 		8E3A6000207DB5FB00EB5747 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3A5FFF207DB5FB00EB5747 /* SettingViewController.swift */; };
@@ -107,8 +106,6 @@
 		290F541220847D470061A878 /* MainListSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListSetup.swift; sourceTree = "<group>"; };
 		291A567A208B2E3100E04130 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		291A567C208CC79300E04130 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		291A567E208DA5CB00E04130 /* KakaoTalk_Photo_2018-04-23-14-24-58.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "KakaoTalk_Photo_2018-04-23-14-24-58.jpeg"; path = "../../../../../Downloads/KakaoTalk_Photo_2018-04-23-14-24-58.jpeg"; sourceTree = "<group>"; };
-		291A567F208DA5CC00E04130 /* KakaoTalk_Photo_2018-04-23-14-25-08_36.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "KakaoTalk_Photo_2018-04-23-14-25-08_36.png"; path = "../../../../../Downloads/KakaoTalk_Photo_2018-04-23-14-25-08_36.png"; sourceTree = "<group>"; };
 		291A5685208EAA2F00E04130 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchCollectionViewCell.swift; path = OverEats/Source/View/Main/Search/SearchCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		291A5687208EC04A00E04130 /* SearchCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchCollectionHeaderView.swift; path = OverEats/Source/View/Main/Search/SearchCollectionHeaderView.swift; sourceTree = SOURCE_ROOT; };
 		291A568B208F489A00E04130 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
@@ -133,7 +130,6 @@
 		29F32FC92087DF6F009D4B6C /* RestaurantView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantView.xib; sourceTree = "<group>"; };
 		29F32FCB2087DF87009D4B6C /* RestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
 		29F32FD520895A25009D4B6C /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
-		29FBEE48209163B9008DF83E /* 9c6493c25086978e677d38ad416cbbb1-w550-bb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "9c6493c25086978e677d38ad416cbbb1-w550-bb.jpg"; path = "../../../../../Downloads/9c6493c25086978e677d38ad416cbbb1-w550-bb.jpg"; sourceTree = "<group>"; };
 		5C9A569FD85EAB1F2AB0E133 /* Pods_OverEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OverEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E3A5FFB207DB14900EB5747 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		8E3A5FFF207DB5FB00EB5747 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -372,9 +368,6 @@
 		8E8A63782071E9DB007D9B7A /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				291A567E208DA5CB00E04130 /* KakaoTalk_Photo_2018-04-23-14-24-58.jpeg */,
-				29FBEE48209163B9008DF83E /* 9c6493c25086978e677d38ad416cbbb1-w550-bb.jpg */,
-				291A567F208DA5CC00E04130 /* KakaoTalk_Photo_2018-04-23-14-25-08_36.png */,
 				8EE538BC206E25AD006BAC26 /* Main.storyboard */,
 			);
 			path = Main;
@@ -625,7 +618,6 @@
 				8EECDB342086F2AC00151F43 /* CartCell.xib in Resources */,
 				8EE538C3206E25AE006BAC26 /* LaunchScreen.storyboard in Resources */,
 				291C9F2320749CCE0085E37E /* NoticeImageView.xib in Resources */,
-				29FBEE49209163BA008DF83E /* 9c6493c25086978e677d38ad416cbbb1-w550-bb.jpg in Resources */,
 				8EE538C0206E25AE006BAC26 /* Assets.xcassets in Resources */,
 				8E5B9E7520798BA300921EF4 /* MenuListCell.xib in Resources */,
 				8E8A637A2071EAD0007D9B7A /* Menu.storyboard in Resources */,

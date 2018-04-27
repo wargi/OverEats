@@ -1094,7 +1094,7 @@ CiA
                                                             </constraints>
                                                         </view>
                                                         <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IqW-72-2ke">
-                                                            <rect key="frame" x="0.0" y="-55" width="375" height="100"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VIg-g4-rZu">
                                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -1193,32 +1193,6 @@ CiA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7eQ-il-ZxN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2616.8000000000002" y="-215.44227886056973"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="ai4-iV-3il">
-            <objects>
-                <viewController id="aqQ-ke-7UW" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="APT-FA-AGJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KakaoTalk_Photo_2018-04-25-15-16-07.png" translatesAutoresizingMaskIntoConstraints="NO" id="Mja-A9-vCa">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="ejO-0W-XCe" firstAttribute="trailing" secondItem="Mja-A9-vCa" secondAttribute="trailing" id="FKb-ND-IKc"/>
-                            <constraint firstItem="Mja-A9-vCa" firstAttribute="leading" secondItem="ejO-0W-XCe" secondAttribute="leading" id="Yrk-vb-ptq"/>
-                            <constraint firstItem="Mja-A9-vCa" firstAttribute="top" secondItem="APT-FA-AGJ" secondAttribute="top" id="kiu-jh-sor"/>
-                            <constraint firstItem="ejO-0W-XCe" firstAttribute="bottom" secondItem="Mja-A9-vCa" secondAttribute="bottom" id="mHa-pS-4W6"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="ejO-0W-XCe"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PQF-sG-CoY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3354" y="-219"/>
         </scene>
         <!--ToS View Controller-->
         <scene sceneID="KVt-DX-QTi">
@@ -2079,7 +2053,6 @@ CiA
         </scene>
     </scenes>
     <resources>
-        <image name="KakaoTalk_Photo_2018-04-25-15-16-07.png" width="750" height="1334"/>
         <image name="LoginBackground" width="375" height="812"/>
         <image name="btnAddress" width="24" height="24"/>
         <image name="btnBack" width="24" height="24"/>
