@@ -28,7 +28,7 @@ final class MenuViewController: UIViewController {
     var footerView: UIView!
     
     var sections: [Section]?
-    var restaurantInfo: Lestaurant!
+    var restaurantInfo: Restaurant!
     
     @IBOutlet private weak var cartView : UIView!
     @IBOutlet private weak var totalSumPrice : UILabel!
@@ -82,7 +82,7 @@ final class MenuViewController: UIViewController {
         self.present(nextViewController, animated: true, completion: nil)
     }
     
-    func setData(restaurant: Lestaurant?) {
+    func setData(restaurant: Restaurant?) {
         if let rest = restaurant {
             restaurantInfo = rest
         }

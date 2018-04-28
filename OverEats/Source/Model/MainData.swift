@@ -8,16 +8,16 @@
 
 import Foundation
 
-struct Lestaurants: Decodable {
+struct Restaurants: Decodable {
     let count: Int
-    let restaurants: [Lestaurant]
+    let restaurants: [Restaurant]
     private enum CodingKeys: String, CodingKey {
         case count
         case restaurants = "restaurants"
     }
 }
 
-struct Lestaurant: Decodable {
+struct Restaurant: Decodable {
     let id: String // 매장 고유 번호
     let name: String // 매장 명
     let status: String // 오픈 상태

@@ -20,7 +20,7 @@ class RecommendTableViewCell: UITableViewCell {
     var targetView: UIViewController!
     
     // 레스토랑 데이터가 들어올 때 셀을 체크
-    var restaurants: [Lestaurant]? {
+    var restaurants: [Restaurant]? {
         didSet {
             checkRestaurantScroll()
             configureRestaurantData()

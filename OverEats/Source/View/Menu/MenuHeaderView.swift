@@ -28,7 +28,7 @@ class MenuHeaderView: UIView
     }
     
     
-    func configure(with restaurant: Lestaurant) {
+    func configure(with restaurant: Restaurant) {
         self.deliveryTimeLabel.text = String(restaurant.etaRange.min) + "분-" +
                                       String(restaurant.etaRange.max) + "분"
         self.titleLabel.text = restaurant.name

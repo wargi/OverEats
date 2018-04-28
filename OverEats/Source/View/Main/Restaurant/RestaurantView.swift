@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RestaurantViewDelegate {
-    func tappedView(_ restaurantView: RestaurantView, restaurant: Lestaurant)
+    func tappedView(_ restaurantView: RestaurantView, restaurant: Restaurant)
 }
 
 class RestaurantView: UIView {
@@ -28,7 +28,7 @@ class RestaurantView: UIView {
     
     var delegate: RestaurantViewDelegate?
     
-    var restaurant: Lestaurant? {
+    var restaurant: Restaurant? {
         didSet{
             setLayoutWithData()
         }
