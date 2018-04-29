@@ -827,19 +827,6 @@ CiA
                                     <constraint firstItem="1PY-gL-Koi" firstAttribute="leading" secondItem="JPU-PC-ba3" secondAttribute="leading" id="zuJ-E4-O9b"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzR-hi-U20">
-                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                                <color key="backgroundColor" red="0.2784313725" green="0.63137254899999995" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="ZL8-0H-3Zd"/>
-                                </constraints>
-                                <state key="normal" title="완료">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="completeButton:" destination="cCT-AX-4yN" eventType="touchUpInside" id="h2m-ke-4kW"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vgm-Rk-2IO">
                                 <rect key="frame" x="0.0" y="65" width="375" height="50"/>
                                 <subviews>
@@ -868,9 +855,8 @@ CiA
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Ge-hm-wkg">
-                                <rect key="frame" x="0.0" y="120" width="375" height="497"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="sectionIndexBackgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LocationSelectCell" rowHeight="50" id="j9E-TX-iW0" customClass="LocationSelectCell" customModule="OverEats" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
@@ -1094,7 +1080,7 @@ CiA
                                                             </constraints>
                                                         </view>
                                                         <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IqW-72-2ke">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                                            <rect key="frame" x="0.0" y="-5" width="375" height="100"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VIg-g4-rZu">
                                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
@@ -1161,21 +1147,34 @@ CiA
                                     <outlet property="delegate" destination="cCT-AX-4yN" id="6PC-gh-sjm"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzR-hi-U20">
+                                <rect key="frame" x="5" y="612" width="365" height="50"/>
+                                <color key="backgroundColor" red="0.2784313725" green="0.63137254899999995" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ZL8-0H-3Zd"/>
+                                </constraints>
+                                <state key="normal" title="완료">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="completeButton:" destination="cCT-AX-4yN" eventType="touchUpInside" id="h2m-ke-4kW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="qzR-hi-U20" firstAttribute="leading" secondItem="iTv-ar-uHE" secondAttribute="leading" id="5BM-ZI-5xk"/>
+                            <constraint firstItem="qzR-hi-U20" firstAttribute="leading" secondItem="iTv-ar-uHE" secondAttribute="leading" constant="5" id="5BM-ZI-5xk"/>
                             <constraint firstItem="Bed-ON-UNY" firstAttribute="leading" secondItem="iTv-ar-uHE" secondAttribute="leading" id="6kL-th-R1d"/>
                             <constraint firstItem="JPU-PC-ba3" firstAttribute="top" secondItem="Bed-ON-UNY" secondAttribute="bottom" id="7tP-DB-f4S"/>
                             <constraint firstItem="8Ge-hm-wkg" firstAttribute="top" secondItem="Vgm-Rk-2IO" secondAttribute="bottom" constant="5" id="EZd-9j-gpK"/>
                             <constraint firstItem="iTv-ar-uHE" firstAttribute="trailing" secondItem="JPU-PC-ba3" secondAttribute="trailing" id="Npn-b2-UEK"/>
-                            <constraint firstItem="iTv-ar-uHE" firstAttribute="trailing" secondItem="qzR-hi-U20" secondAttribute="trailing" id="PjE-XE-hvw"/>
+                            <constraint firstItem="iTv-ar-uHE" firstAttribute="trailing" secondItem="qzR-hi-U20" secondAttribute="trailing" constant="5" id="PjE-XE-hvw"/>
                             <constraint firstItem="Bed-ON-UNY" firstAttribute="top" secondItem="2h0-rR-wd8" secondAttribute="top" id="Qc6-Wp-JbE"/>
-                            <constraint firstItem="qzR-hi-U20" firstAttribute="top" secondItem="8Ge-hm-wkg" secondAttribute="bottom" id="XEk-q3-P95"/>
+                            <constraint firstItem="iTv-ar-uHE" firstAttribute="bottom" secondItem="8Ge-hm-wkg" secondAttribute="bottom" id="XEk-q3-P95"/>
                             <constraint firstItem="8Ge-hm-wkg" firstAttribute="leading" secondItem="iTv-ar-uHE" secondAttribute="leading" id="YdV-hH-h6s"/>
                             <constraint firstItem="iTv-ar-uHE" firstAttribute="trailing" secondItem="Vgm-Rk-2IO" secondAttribute="trailing" id="aeK-fP-z0R"/>
                             <constraint firstItem="Vgm-Rk-2IO" firstAttribute="top" secondItem="JPU-PC-ba3" secondAttribute="bottom" constant="5" id="hri-gm-uJx"/>
-                            <constraint firstItem="iTv-ar-uHE" firstAttribute="bottom" secondItem="qzR-hi-U20" secondAttribute="bottom" id="oPH-Ks-jTw"/>
+                            <constraint firstItem="iTv-ar-uHE" firstAttribute="bottom" secondItem="qzR-hi-U20" secondAttribute="bottom" constant="5" id="oPH-Ks-jTw"/>
                             <constraint firstItem="JPU-PC-ba3" firstAttribute="leading" secondItem="iTv-ar-uHE" secondAttribute="leading" id="rcI-Ae-1mC"/>
                             <constraint firstItem="iTv-ar-uHE" firstAttribute="trailing" secondItem="8Ge-hm-wkg" secondAttribute="trailing" id="tJK-gM-3xW"/>
                             <constraint firstItem="iTv-ar-uHE" firstAttribute="trailing" secondItem="Bed-ON-UNY" secondAttribute="trailing" id="vgC-Ow-ykA"/>
