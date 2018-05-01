@@ -27,8 +27,8 @@ class LocationViewController: UIViewController {
     
     var textFieldformattedAddress: [String] = []
     var textFieldName: [String] = []
-    var locationDataList: [DetailData] = []
-    var locationData: DetailData?
+    var locationDataList: [LocationData] = []
+    var locationData: LocationData?
     var userLocationData: AddressData?
     
     @IBOutlet weak var locationTableView: UITableView!

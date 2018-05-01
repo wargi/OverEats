@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct LocationData: Decodable {
+struct LocationDatas: Decodable {
     
-    let result: [DetailData]
+    let result: [LocationData]
     
     private enum CodingKeys: String, CodingKey {
         case result
@@ -18,7 +18,7 @@ struct LocationData: Decodable {
     
 }
 
-struct DetailData: Decodable {
+struct LocationData: Decodable {
     
     let name : String
     let vicinity : String

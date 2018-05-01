@@ -34,6 +34,7 @@ class RestaurantView: UIView {
         }
     }
     
+    
     // restaurantView 를 호출받는 함수
     class func loadNib() -> RestaurantView {
         return UINib(nibName: "RestaurantView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! RestaurantView

@@ -1011,18 +1011,7 @@
                     <view key="view" contentMode="scaleToFill" id="Wvl-X5-io8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KakaoTalk_Photo_2018-04-23-14-25-08_36.png" translatesAutoresizingMaskIntoConstraints="NO" id="el2-V8-2U2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="el2-V8-2U2" firstAttribute="top" secondItem="Wvl-X5-io8" secondAttribute="top" id="Ika-Tb-7ul"/>
-                            <constraint firstItem="hk8-kM-hbO" firstAttribute="bottom" secondItem="el2-V8-2U2" secondAttribute="bottom" id="Ugj-wf-UbB"/>
-                            <constraint firstItem="hk8-kM-hbO" firstAttribute="trailing" secondItem="el2-V8-2U2" secondAttribute="trailing" id="XC2-az-LlQ"/>
-                            <constraint firstItem="el2-V8-2U2" firstAttribute="leading" secondItem="hk8-kM-hbO" secondAttribute="leading" id="Z2X-Lm-94b"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="hk8-kM-hbO"/>
                     </view>
                 </viewController>
@@ -1056,7 +1045,6 @@
     </scenes>
     <resources>
         <image name="9c6493c25086978e677d38ad416cbbb1-w550-bb.jpg" width="550" height="440"/>
-        <image name="KakaoTalk_Photo_2018-04-23-14-25-08_36.png" width="750" height="1334"/>
         <image name="btnBack" width="24" height="24"/>
         <image name="btnCloseSmall" width="16" height="16"/>
         <image name="btnFilter" width="32" height="32"/>

@@ -219,6 +219,8 @@ extension MainViewController: RestaurantViewDelegate {
         let storyboard = UIStoryboard(name: "Menu", bundle: nil)
         let nextViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         
+
+        
 //        self.definesPresentationContext = true
 //        self.modalPresentationStyle = .currentContext
 //        nextViewController.modalPresentationStyle = .CurrentContext

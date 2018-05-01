@@ -14,6 +14,8 @@ protocol PostServiceType {
     static func singUp(singUpData: [String : Any], imageData: Data? ,completion: @escaping (Result<UserData>) -> ())
     static func signIn(email: String, password: String, completion: @escaping (Result<UserData>) -> ())
     static func setOrder(orderData: [String:Any], completion: @escaping (Result<OrderData>) -> ())
+    static func locationIn(text: String, completion: @escaping (Result<LocationDatas>) -> ())
+    static func userLocation(latitude: Double, longitude: Double, completion: @escaping (Result<UserLocation>) -> ())
 }
 
 struct PostService: PostServiceType {
@@ -80,7 +82,7 @@ struct PostService: PostServiceType {
     }
     
 
-    static func locationIn(text: String, completion: @escaping (Result<LocationData>) -> ()) {
+    static func locationIn(text: String, completion: @escaping (Result<LocationDatas>) -> ()) {
         
         let params: Parameters = [
             "search_text": text,
@@ -93,8 +95,8 @@ struct PostService: PostServiceType {
                 switch response.result {
                 case .success(let value):
                     do {
-                        let userData = try value.decode(LocationData.self)
-                        completion(.success(userData))
+                        let locationData = try value.decode(LocationDatas.self)
+                        completion(.success(locationData))
                     } catch {
                         completion(.error(error))
                     }

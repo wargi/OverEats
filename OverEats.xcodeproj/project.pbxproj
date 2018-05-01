@@ -41,6 +41,7 @@
 		29F32FCA2087DF6F009D4B6C /* RestaurantView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29F32FC92087DF6F009D4B6C /* RestaurantView.xib */; };
 		29F32FCC2087DF87009D4B6C /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F32FCB2087DF87009D4B6C /* RestaurantView.swift */; };
 		29F32FD620895A25009D4B6C /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F32FD520895A25009D4B6C /* PostService.swift */; };
+		29FBEE4B20980198008DF83E /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FBEE4A20980198008DF83E /* LocationManager.swift */; };
 		809B12B4F4AEE34759F6AA35 /* Pods_OverEats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9A569FD85EAB1F2AB0E133 /* Pods_OverEats.framework */; };
 		8E3A5FFC207DB14900EB5747 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E3A5FFB207DB14900EB5747 /* Setting.storyboard */; };
 		8E3A6000207DB5FB00EB5747 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3A5FFF207DB5FB00EB5747 /* SettingViewController.swift */; };
@@ -126,6 +127,7 @@
 		29F32FC92087DF6F009D4B6C /* RestaurantView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantView.xib; sourceTree = "<group>"; };
 		29F32FCB2087DF87009D4B6C /* RestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
 		29F32FD520895A25009D4B6C /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		29FBEE4A20980198008DF83E /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		5C9A569FD85EAB1F2AB0E133 /* Pods_OverEats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OverEats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E3A5FFB207DB14900EB5747 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		8E3A5FFF207DB5FB00EB5747 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			children = (
 				291A567A208B2E3100E04130 /* UserManager.swift */,
 				8EECDB39208ECEB100151F43 /* CartManager.swift */,
+				29FBEE4A20980198008DF83E /* LocationManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -730,6 +733,7 @@
 				29F32FD620895A25009D4B6C /* PostService.swift in Sources */,
 				291A5686208EAA2F00E04130 /* SearchCollectionViewCell.swift in Sources */,
 				292582C72085C44D00FFE782 /* NoticeData.swift in Sources */,
+				29FBEE4B20980198008DF83E /* LocationManager.swift in Sources */,
 				8E8A636E2071E583007D9B7A /* SignViewController.swift in Sources */,
 				9E60DCCE2074BF4700B9528A /* CreateIDViewController.swift in Sources */,
 				D2BB401F20905C810045E09C /* LocationSelectCell.swift in Sources */,
