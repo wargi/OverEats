@@ -13,13 +13,21 @@ class LocationViewController: UIViewController {
    
     @IBOutlet weak var locationTextField: UITextField!
     
+    var currentLocationData: LocationData?
+    
+    var coordinate: CLLocationCoordinate2D? {
+        didSet {
+            
+        }
+    }
+    
     var locationDeliveryCell: LocationDeliveryTableViewCell!
     var deliveryCompanyText: String?
     var deliverybuildingText: String?
     
     let locationManager = CLLocationManager()
-    var latitude: Double!
-    var longitude: Double!
+    
+    
     
     var formattedAddress: String?// 현 주소 String으로 받은 곳
     
@@ -37,9 +45,9 @@ class LocationViewController: UIViewController {
     
     
     
-    var firstTableUtility: [LocationTableUtility] = []
-    var secondTableUtility: [LocationTableUtility] = []
-    var thirdTableUtility: [LocationTableUtility] = []
+    var selectTableUtility: [LocationTableUtility] = []
+    var searchTableUtility: [LocationTableUtility] = []
+    var detailtTableUtility: [LocationTableUtility] = []
     var reloadTableUtility: [LocationTableUtility]?
     var status = 1 {
         didSet{
@@ -53,7 +61,7 @@ class LocationViewController: UIViewController {
         }
     }
     @IBAction func backButton(_ sender: Any) {
-        startUpdateLocationData()
+        setSelectTable()()
     }
     
     @IBAction func dismissButton(_ sender: Any) {
@@ -102,10 +110,15 @@ class LocationViewController: UIViewController {
         
         locationManager.delegate = self
         
-        startUpdateLocationData()
+        setSelectTable()
     }
     
-    private func startUpdateLocationData(){
+    private func setSelectTable(){
+        startUpdateLocation()
+        
+    }
+    
+    private func startUpdateLocation(){
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
@@ -122,7 +135,7 @@ class LocationViewController: UIViewController {
         locationManager.stopUpdatingLocation()
     }
     
-    private func getNowLocationData() {
+    private func getCurrentLocationData() {
         PostService.userLocation(latitude: latitude, longitude: longitude) { (result) in
             switch result {
                 
@@ -155,13 +168,9 @@ extension LocationViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         guard let location = locations.last else { return }
-        let coordinate = location.coordinate
-        
-        latitude = coordinate.latitude
-        longitude = coordinate.longitude
+        self.coordinate = location.coordinate
         
         stopUpdateLocationData()
-        getNowLocationData()
         
     }
 }
