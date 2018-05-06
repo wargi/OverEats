@@ -8,19 +8,19 @@
 
 import Foundation
 
-enum CellType: String{
-    case select = "select"
-    case search = "search"
-    case detail = "detail"
+enum CellType{
+    case select
+    case search
+    case detail
 }
 
 struct LocationTableUtility {
-    init(cellType: String, title: String) {
+    init(cellType: CellType, title: String) {
         self.cellType = cellType
         self.title = title
     }
     
-    let cellType: String! // 셀 타입
+    let cellType: CellType! // 셀 타입
     let title: String! // 주소 이름
     var cellData: LocationData? // 셀 데이터
     var iconName: String?

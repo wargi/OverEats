@@ -13,20 +13,18 @@ class LocationViewController: UIViewController {
    
     @IBOutlet weak var locationTextField: UITextField!
     
-    var currentLocationData: LocationData?
+    private let locationManager = CLLocationManager()
     
-    var coordinate: CLLocationCoordinate2D? {
-        didSet {
-            
-        }
-    }
+    // 현재 위치에 대한 좌표
+    private var currentCoordinate: CLLocationCoordinate2D?
+    private var currentLocationData: AddressData?
+    
+    // 현재 위치를 정의하는 셀
+    private var currentLocationCell = LocationTableUtility(cellType: .select, title: "현재 위치")
     
     var locationDeliveryCell: LocationDeliveryTableViewCell!
     var deliveryCompanyText: String?
     var deliverybuildingText: String?
-    
-    let locationManager = CLLocationManager()
-    
     
     
     var formattedAddress: String?// 현 주소 String으로 받은 곳
@@ -49,7 +47,8 @@ class LocationViewController: UIViewController {
     var searchTableUtility: [LocationTableUtility] = []
     var detailtTableUtility: [LocationTableUtility] = []
     var reloadTableUtility: [LocationTableUtility]?
-    var status = 1 {
+    
+    private var status = 1 {
         didSet{
             if status == 1 {
                 backButton.isHidden = true
@@ -61,7 +60,7 @@ class LocationViewController: UIViewController {
         }
     }
     @IBAction func backButton(_ sender: Any) {
-        setSelectTable()()
+        setSelectTable()
     }
     
     @IBAction func dismissButton(_ sender: Any) {
@@ -106,6 +105,7 @@ class LocationViewController: UIViewController {
         self.view.layoutIfNeeded()
         self.view.setNeedsLayout()
         
+        // 에니메아션 미적용
         UIView.setAnimationsEnabled(false)
         
         locationManager.delegate = self
@@ -114,11 +114,11 @@ class LocationViewController: UIViewController {
     }
     
     private func setSelectTable(){
-        startUpdateLocation()
-        
+        startUpdateCurrentLocation()
+        getCurrentLocationData()
     }
     
-    private func startUpdateLocation(){
+    private func startUpdateCurrentLocation(){
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
@@ -136,21 +136,14 @@ class LocationViewController: UIViewController {
     }
     
     private func getCurrentLocationData() {
-        PostService.userLocation(latitude: latitude, longitude: longitude) { (result) in
-            switch result {
-                
-            case .success(let success):
-                self.userLocationData = success.result[0]
-                self.formattedAddress = success.result[0].formattedAddress
-                if self.firstTableUtility.count < 1 {
-                    self.firstTableUtility.append(LocationTableUtility(cellType: 1, title: "현재 위치", firstValue: self.formattedAddress, secondValue: nil, iconName: "btnLocation", buttonname: ""))
-                    
-                    self.reloadTableUtility = self.firstTableUtility
-                    self.locationTableView.reloadData()
+        if let coordinate = self.currentCoordinate {
+            PostService.userLocation(latitude: coordinate.latitude, longitude: coordinate.longitude) { (result) in
+                switch result {
+                case .success(let locationDatas):
+                    self.currentLocationData = locationDatas.result[0]
+                case .error(let error):
+                    print(error)
                 }
-                
-            case .error(let error):
-                print(error)
             }
         }
     }
@@ -168,7 +161,7 @@ extension LocationViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         guard let location = locations.last else { return }
-        self.coordinate = location.coordinate
+        self.currentCoordinate = location.coordinate
         
         stopUpdateLocationData()
         
