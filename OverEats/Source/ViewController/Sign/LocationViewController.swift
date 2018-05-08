@@ -17,7 +17,7 @@ class LocationViewController: UIViewController {
     
     // 현재 위치에 대한 좌표
     private var currentCoordinate: CLLocationCoordinate2D?
-    private var currentLocationData: AddressData?
+    private var currentLocationData: LocationData?
     
     // 현재 위치를 정의하는 셀
     private var currentLocationCell = LocationTableUtility(cellType: .select, title: "현재 위치")
@@ -140,7 +140,10 @@ class LocationViewController: UIViewController {
             PostService.userLocation(latitude: coordinate.latitude, longitude: coordinate.longitude) { (result) in
                 switch result {
                 case .success(let locationDatas):
-                    self.currentLocationData = locationDatas.result[0]
+                    self.currentLocationData?.addressComponents = locationDatas.result[0].addressComponents
+                    self.currentLocationData?.formattedAddress = locationDatas.result[0].formattedAddress
+                    self.currentLocationData?.geometry.lat = locationDatas.result[0].geometry.location.lat
+                    self.currentLocationData?.geometry.lng = locationDatas.result[0].geometry.location.lng
                 case .error(let error):
                     print(error)
                 }

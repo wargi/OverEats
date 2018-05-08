@@ -18,45 +18,13 @@ struct LocationDatas: Decodable {
     
 }
 
-//struct UserLocation: Decodable {
-//
-//    let result: [AddressData]
-//
-//    private enum CodingKeys: String, CodingKey {
-//        case result
-//    }
-//
-//}
-//
-//struct AddressData: Decodable {
-//
-//    let addressComponents: [LongName]
-//    let formattedAddress: String
-//    let geometry: MapData
-//
-//    private enum CodingKeys: String, CodingKey {
-//
-//        case addressComponents = "address_components"
-//        case formattedAddress = "formatted_address"
-//        case geometry
-//    }
-//}
-//
-//struct MapData: Decodable {
-//    let location: Geometry
-//
-//    private enum CodingKeys: String, CodingKey {
-//        case location
-//    }
-//}
-
 struct LocationData: Decodable {
     
-    let name : String
-    let vicinity : String
-    let addressComponents: [LongName]
-    let formattedAddress: String
-    let geometry: Geometry
+    var name : String
+    var vicinity : String
+    var addressComponents: [LongName]
+    var formattedAddress: String
+    var geometry: Geometry
     
     private enum CodingKeys: String, CodingKey {
         
@@ -71,8 +39,8 @@ struct LocationData: Decodable {
 
 struct LongName: Decodable {
     
-    let longName : String
-    let shortName : String
+    var longName : String
+    var shortName : String
     
     private enum CodingKeys: String, CodingKey {
         
@@ -82,8 +50,8 @@ struct LongName: Decodable {
 }
 
 struct Geometry: Decodable {
-    let lat: Double
-    let lng: Double
+    var lat: Double
+    var lng: Double
     
     private enum CodingKeys: String, CodingKey {
         case lat
