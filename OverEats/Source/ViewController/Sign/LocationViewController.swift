@@ -17,10 +17,32 @@ class LocationViewController: UIViewController {
     
     // 현재 위치에 대한 좌표
     private var currentCoordinate: CLLocationCoordinate2D?
-    private var currentLocationData: LocationData?
     
     // 현재 위치를 정의하는 셀
     private var currentLocationCell = LocationTableUtility(cellType: .select, title: "현재 위치")
+    
+    // 현재 위치의 정보를 담은 데이터
+    private var currentLocationData: LocationData?{
+        didSet{
+            currentLocationCell.cellType = .select
+            currentLocationCell.cellData = currentLocationData
+            currentLocationCell.buttonname = "btnLocation"
+        }
+    }
+    
+    // 검색한 주소 값 혹은 이전에 지정 된 주소 값을 정의하는 셀
+    private var searchLocationCell: LocationTableUtility?
+    
+    // 검색한 주소의 정보를 담은 데이터
+    private var searchLocationData: LocationData? {
+        didSet{
+            searchLocationCell?.cellType = .select
+            searchLocationCell?.title = searchLocationData?.addressComponents[0].shortName
+            searchLocationCell?.cellData = searchLocationData
+            searchLocationCell?.buttonname = "btnClock"
+        }
+    }
+    
     
     var locationDeliveryCell: LocationDeliveryTableViewCell!
     var deliveryCompanyText: String?
@@ -48,17 +70,24 @@ class LocationViewController: UIViewController {
     var detailtTableUtility: [LocationTableUtility] = []
     var reloadTableUtility: [LocationTableUtility]?
     
-    private var status = 1 {
+    enum TableStatus{
+        case select
+        case search
+        case detail
+    }
+    
+    private var tableStatus: TableStatus {
         didSet{
-            if status == 1 {
+            if tableStatus == .select {
                 backButton.isHidden = true
                 dismissButton.isHidden = false
-            } else if status == 2 {
+            } else if tableStatus == .search {
                 backButton.isHidden = false
                 dismissButton.isHidden = true
             }
         }
     }
+    
     @IBAction func backButton(_ sender: Any) {
         setSelectTable()
     }
@@ -111,13 +140,24 @@ class LocationViewController: UIViewController {
         locationManager.delegate = self
         
         setSelectTable()
+        
+        
     }
     
     private func setSelectTable(){
+        // 현재 위치 셀에 대한 데이터 갱신
         startUpdateCurrentLocation()
         getCurrentLocationData()
+        
+        if let selectLocationData = LocationManager.setLocation {
+            self.searchLocationData = selectLocationData
+        }
+        
+        self.tableStatus = .select
     }
     
+    
+    /// 현재 위치의 좌표값 갱신을 활성화하는 함수
     private func startUpdateCurrentLocation(){
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
@@ -131,15 +171,19 @@ class LocationViewController: UIViewController {
         }
     }
     
+    
+    /// 현재 위치의 좌표값 갱신을 중지하는 함수
     private func stopUpdateLocationData(){
         locationManager.stopUpdatingLocation()
     }
     
+    /// 현재 위치의 좌표값에 해당하는 주소 데이터를 요청하는 함수
     private func getCurrentLocationData() {
         if let coordinate = self.currentCoordinate {
             PostService.userLocation(latitude: coordinate.latitude, longitude: coordinate.longitude) { (result) in
                 switch result {
                 case .success(let locationDatas):
+                    //UserLocationData를 LocationData로
                     self.currentLocationData?.addressComponents = locationDatas.result[0].addressComponents
                     self.currentLocationData?.formattedAddress = locationDatas.result[0].formattedAddress
                     self.currentLocationData?.geometry.lat = locationDatas.result[0].geometry.location.lat
@@ -183,28 +227,28 @@ extension LocationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let locationUtil = reloadTableUtility {
             
-            if locationUtil[indexPath.row].cellType == 1 {
+            if locationUtil[indexPath.row].cellType == CellType.select {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "LocationSelectCell") as! LocationSelectCell
-                cell.configure(locationData: firstTableUtility[indexPath.row])
+                cell.configure(locationData: selectTableUtility[indexPath.row])
                 return cell
-                
-            } else if locationUtil[indexPath.row].cellType == 2 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "LocationResultTableViewCell") as! LocationResultTableViewCell
-                cell.configure(locationData: secondTableUtility[indexPath.row])
-                
-                return cell
-            } else if locationUtil[indexPath.row].cellType == 3 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "LocationPickUpTableViewCell") as! LocationPickUpTableViewCell
-                cell.configure(locationData: thirdTableUtility[indexPath.row])
-                
-                return cell
-            } else if locationUtil[indexPath.row].cellType == 4 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "LocationDeliveryTableViewCell") as! LocationDeliveryTableViewCell
-                cell.configure(locationData: thirdTableUtility[indexPath.row])
-                locationDeliveryCell = cell
-                
-                return locationDeliveryCell
             }
+//            } else if locationUtil[indexPath.row].cellType == 2 {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "LocationResultTableViewCell") as! LocationResultTableViewCell
+//                cell.configure(locationData: secondTableUtility[indexPath.row])
+//
+//                return cell
+//            } else if locationUtil[indexPath.row].cellType == 3 {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "LocationPickUpTableViewCell") as! LocationPickUpTableViewCell
+//                cell.configure(locationData: thirdTableUtility[indexPath.row])
+//
+//                return cell
+//            } else if locationUtil[indexPath.row].cellType == 4 {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "LocationDeliveryTableViewCell") as! LocationDeliveryTableViewCell
+//                cell.configure(locationData: thirdTableUtility[indexPath.row])
+//                locationDeliveryCell = cell
+//
+//                return locationDeliveryCell
+//            }
         }
         
         //이건 임시로 넣은거라고 하셨다

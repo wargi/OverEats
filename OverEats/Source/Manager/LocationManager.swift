@@ -12,7 +12,7 @@ struct LocationManager {
     private init() {}
     
     static var setLocation: LocationData? {
-        get { return nil }
+        get { return self.setLocation }
         set {
             name = newValue?.name
             vicinity = newValue?.vicinity

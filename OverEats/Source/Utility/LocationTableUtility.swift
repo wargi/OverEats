@@ -20,9 +20,9 @@ struct LocationTableUtility {
         self.title = title
     }
     
-    let cellType: CellType! // 셀 타입
-    let title: String! // 주소 이름
+    var cellType: CellType! // 셀 타입
+    var title: String! // 셀 타이틀
     var cellData: LocationData? // 셀 데이터
-    var iconName: String?
-    var buttonname: String?
+    var iconName: String? // 셀 아이콘 네임
+    var cellContent: String? // 셀 내용
 }
