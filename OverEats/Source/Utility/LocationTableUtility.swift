@@ -11,7 +11,8 @@ import Foundation
 enum CellType{
     case select
     case search
-    case detail
+    case delivery
+    case pickUp
 }
 
 struct LocationTableUtility {

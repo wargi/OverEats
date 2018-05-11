@@ -534,8 +534,8 @@
 			children = (
 				D2BB401E20905C810045E09C /* LocationSelectCell.swift */,
 				D2BB4020209064080045E09C /* LocationResultTableViewCell.swift */,
-				D2BB4022209066750045E09C /* LocationPickUpTableViewCell.swift */,
 				D2BB40242090670A0045E09C /* LocationDeliveryTableViewCell.swift */,
+				D2BB4022209066750045E09C /* LocationPickUpTableViewCell.swift */,
 			);
 			path = Sign;
 			sourceTree = "<group>";

@@ -16,7 +16,7 @@ class LocationSelectCell: UITableViewCell {
     
     @IBOutlet weak var checkImage: UIImageView!
     
-    var locationData: LocationData
+    var locationData: LocationData?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,6 +36,7 @@ class LocationSelectCell: UITableViewCell {
     func configure(locationData: LocationTableUtility) {
         logoImageView.image = UIImage(named: locationData.iconName!)
         titleLabel.text = locationData.title
+        print(locationData.cellContent)
         detailAddress.text = locationData.cellContent
         
         self.locationData = locationData.cellData

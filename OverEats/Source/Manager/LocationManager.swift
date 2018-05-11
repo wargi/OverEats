@@ -11,9 +11,13 @@ import Foundation
 struct LocationManager {
     private init() {}
     
+    static var location: LocationData?
+    
     static var setLocation: LocationData? {
-        get { return self.setLocation }
+        get { return nil }
         set {
+            location = newValue
+            
             name = newValue?.name
             vicinity = newValue?.vicinity
             addressComponents = newValue?.addressComponents

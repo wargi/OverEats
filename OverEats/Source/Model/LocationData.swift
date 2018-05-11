@@ -20,9 +20,9 @@ struct LocationDatas: Decodable {
 
 struct LocationData: Decodable {
     
-    var name : String
-    var vicinity : String
-    var addressComponents: [LongName]
+    let name : String?
+    let vicinity : String?
+    let addressComponents: [LongName]
     var formattedAddress: String
     var geometry: Geometry
     
@@ -39,8 +39,8 @@ struct LocationData: Decodable {
 
 struct LongName: Decodable {
     
-    var longName : String
-    var shortName : String
+    let longName : String
+    let shortName : String
     
     private enum CodingKeys: String, CodingKey {
         
@@ -50,8 +50,20 @@ struct LongName: Decodable {
 }
 
 struct Geometry: Decodable {
-    var lat: Double
-    var lng: Double
+    var lat: Double?
+    var lng: Double?
+    var location: Location?
+    
+    private enum CodingKeys: String, CodingKey {
+        case lat
+        case lng
+        case location
+    }
+}
+
+struct Location: Decodable {
+    let lat: Double
+    let lng: Double
     
     private enum CodingKeys: String, CodingKey {
         case lat

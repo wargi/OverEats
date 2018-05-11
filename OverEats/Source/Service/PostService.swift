@@ -15,7 +15,7 @@ protocol PostServiceType {
     static func signIn(email: String, password: String, completion: @escaping (Result<UserData>) -> ())
     static func setOrder(orderData: [String:Any], completion: @escaping (Result<OrderData>) -> ())
     static func locationIn(text: String, completion: @escaping (Result<LocationDatas>) -> ())
-    static func userLocation(latitude: Double, longitude: Double, completion: @escaping (Result<UserLocation>) -> ())
+    static func userLocation(latitude: Double, longitude: Double, completion: @escaping (Result<LocationDatas>) -> ())
 }
 
 struct PostService: PostServiceType {
@@ -106,7 +106,7 @@ struct PostService: PostServiceType {
         }
     }
     
-    static func userLocation(latitude: Double, longitude: Double, completion: @escaping (Result<UserLocation>) -> ()) {
+    static func userLocation(latitude: Double, longitude: Double, completion: @escaping (Result<LocationDatas>) -> ()) {
         
         let params: Parameters = [
             "latitude": latitude,
@@ -119,8 +119,8 @@ struct PostService: PostServiceType {
                 switch response.result {
                 case .success(let value):
                     do {
-                        let userData = try value.decode(UserLocation.self)
-                        completion(.success(userData))
+                        let locationDatas = try value.decode(LocationDatas.self)
+                        completion(.success(locationDatas))
                     } catch {
                         completion(.error(error))
                     }
