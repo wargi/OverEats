@@ -17,6 +17,11 @@ class MainViewController: UIViewController {
     var nearRestaurants: [Restaurant] = []
     var prefRestaurants: [Restaurant] = []
     
+    @IBOutlet weak var locationStack: UIStackView!
+    
+    @IBOutlet weak var currentLocationLabel: UILabel!
+    
+    
     var listStatusBits: UInt8 = 0b000
     var listNumberOfSection = 0
     
@@ -28,7 +33,15 @@ class MainViewController: UIViewController {
 //        self.getService = getService
 //        return self
 //    }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if LocationManager.location == nil {
+            let storyboard = UIStoryboard(name: "Sign", bundle: nil)
+            let nextViewController = storyboard.instantiateViewController(withIdentifier: "LocationViewController") as! LocationViewController
+            self.present(nextViewController, animated: true, completion: nil)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

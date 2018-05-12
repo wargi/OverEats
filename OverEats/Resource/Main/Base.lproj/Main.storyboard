@@ -531,6 +531,8 @@
                         <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-10"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="currentLocationLabel" destination="WPy-cd-BcB" id="IoE-uI-k23"/>
+                        <outlet property="locationStack" destination="fLj-qs-Qrb" id="4jD-0d-5yI"/>
                         <outlet property="mainTableView" destination="Ws6-lx-kPL" id="mxA-C2-IWF"/>
                     </connections>
                 </viewController>

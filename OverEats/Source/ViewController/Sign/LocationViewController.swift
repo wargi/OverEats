@@ -87,6 +87,7 @@ class LocationViewController: UIViewController {
     }
     
     @IBAction func dismissButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -118,9 +119,7 @@ class LocationViewController: UIViewController {
         let selectCell = locationTableView.cellForRow(at: locationTableView.indexPathForSelectedRow!) as! LocationSelectCell
         LocationManager.setLocation = selectCell.locationData
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let nextViewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as! UITabBarController
-        self.present(nextViewController, animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     
