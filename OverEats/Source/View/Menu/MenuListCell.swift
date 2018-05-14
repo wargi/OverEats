@@ -29,7 +29,7 @@ class MenuListCell: UITableViewCell {
     
     
     // 메뉴 명, 설명, 가격, 이미지 삽입
-    func configure(with menu: Section.Menu) {
+    func configure(with menu: Menu) {
         self.name.text = menu.name
         self.menuDescription.text = menu.description
         self.price.text = "₩" + String(menu.price)

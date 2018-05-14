@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var cartList: [Section.Menu] = []
+    var cartList: [Menu] = []
 
 //    static var instance: AppDelegate {
 //        return UIApplication.shared.delegate as! AppDelegate

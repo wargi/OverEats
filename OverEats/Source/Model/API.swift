@@ -39,6 +39,8 @@ enum API: APIProtocol
         case menuList = "/restaurant/%@/menu"
         case tagList = "/restaurant/category/?page_size=%d"
         case mapImage = "/address/map/?lat=%.6f&lng=%.6f&"
+        case prepareReceipt = "/order/list/prepare/"
+        case pastReceipt = "/order/list/past/"
     }
     // POST API URL 리스트를 열거형으로 정의
     enum POST_LIST: String
@@ -56,6 +58,8 @@ enum API: APIProtocol
     case getMenuList(restaurantId: String)
     case tagList(pageSize: Int)
     case getMapImage(latitude: Float, longitude: Float)
+    case getPrepareReceipt
+    case getPastReceipt
     
     // POST API
     case postLogin
@@ -92,6 +96,10 @@ enum API: APIProtocol
                 return String(format: POST_LIST.userLocation.rawValue)
             case .postCart:
                 return String(format: POST_LIST.cart.rawValue)
+            case .getPrepareReceipt:
+                return String(format: GET_LIST.prepareReceipt.rawValue)
+            case .getPastReceipt:
+                return String(format: GET_LIST.pastReceipt.rawValue)
             }
             
         }

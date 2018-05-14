@@ -165,4 +165,63 @@ struct Endorsement: Decodable {
     }
 }
 
+struct Receipts: Decodable {
+    let receipt: Receipt
+    
+    private enum CodingKeys: String, CodingKey {
+        case receipt = "orders"
+    }
+}
 
+struct Receipt: Decodable {
+    let id: Int
+    let deliveryLat: Float
+    let deliveryLng: Float
+    let deliveryAddress: String
+    let deliveryAddressDetail: String
+    let deliveryComment: String
+    let deliveryDateTime: String?
+    let paymentMethod: String
+    let paymentNum: String
+    let orderRestaurant: Restaurant
+    let orderComment: String
+    let orderMember: Int
+    let orderStatus: String
+    let orderCreateAt: String?
+    let priceTotal: Int
+    let orderItems: [OrderItem]
+    
+    private enum CodingKeys: String, CodingKey {
+        case id = ""
+        case deliveryLat = "delivery_lat"
+        case deliveryLng = "delivery_lng"
+        case deliveryAddress = "delivery_address"
+        case deliveryAddressDetail = "delivery_address_detail"
+        case deliveryComment = "delivery_comment"
+        case deliveryDateTime = "delivery_date_time"
+        case paymentMethod = "payment_method"
+        case paymentNum = "payment_num"
+        case orderRestaurant = "order_restaurant"
+        case orderComment = "order_comment"
+        case orderMember = "order_member"
+        case orderStatus = "order_status"
+        case orderCreateAt = "order_create_at"
+        case priceTotal = "price_total"
+        case orderItems = "order_items"
+    }
+}
+
+struct OrderItem: Decodable {
+    let menu: Menu
+    let price: Int
+    let cnt: Int
+    let subTotal: Int
+    let comment: String
+    private enum CodingKeys: String, CodingKey {
+        case menu = "item"
+        case price = "price"
+        case cnt = "cnt"
+        case subTotal = "sub_total"
+        case comment = "comment"
+    }
+}
