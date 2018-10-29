@@ -27,8 +27,7 @@
 <br>
 
 ## Preview
-<iframe src="https://player.vimeo.com/video/297625075" width="640" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-<p><a href="https://vimeo.com/297625075">Over Eats</a> from <a href="https://vimeo.com/user44108624">solchan</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+Sample Movie : "https://player.vimeo.com/video/297625075"
 
 
 ## What we learned on this project
