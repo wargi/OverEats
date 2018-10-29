@@ -30,15 +30,15 @@
 <p align="left">
 <a href="https://vimeo.com/297625075"> 어플 실행 영상 </a> <br><br>
 
-<img src="IntroduceImage/image_1.png" width="210" />
-<img src="IntroduceImage/image_2.png" width="210" />
-<img src="IntroduceImage/image_3.png" width="210" />
-<img src="IntroduceImage/image_4.png" width="210" />
+<img src="PreviewImages/image_1.png" width="210" />
+<img src="PreviewImages/image_2.png" width="210" />
+<img src="PreviewImages/image_3.png" width="210" />
+<img src="PreviewImages/image_4.png" width="210" />
 <br>
-<img src="IntroduceImage/image_5.png" width="210" />
-<img src="IntroduceImage/image_6.png" width="210" />
-<img src="IntroduceImage/image_7.png" width="210" />
-<img src="IntroduceImage/image_8.png" width="210" />
+<img src="PreviewImages/image_5.png" width="210" />
+<img src="PreviewImages/image_6.png" width="210" />
+<img src="PreviewImages/image_7.png" width="210" />
+<img src="PreviewImages/image_8.png" width="210" />
 </p>
 
 ## What we learned on this project
