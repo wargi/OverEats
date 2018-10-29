@@ -5,7 +5,6 @@
 <img src="https://img.shields.io/badge/ios-11.0-yellow.svg" />
 </p>
 <br>
-
 ## Team
   - **:lion:** 배태웅
   - **:tiger:** 박상욱
@@ -27,15 +26,31 @@
 <br>
 
 ## Preview
-Sample Movie : "https://player.vimeo.com/video/297625075"
 
+<p align="left">
+<a href="https://vimeo.com/297625075"> 어플 실행 영상 </a> <br><br>
+
+<img src="IntroduceImage/image_1.png" width="210" />
+<img src="IntroduceImage/image_2.png" width="210" />
+<img src="IntroduceImage/image_3.png" width="210" />
+<img src="IntroduceImage/image_4.png" width="210" />
+<br>
+<img src="IntroduceImage/image_5.png" width="210" />
+<img src="IntroduceImage/image_6.png" width="210" />
+<img src="IntroduceImage/image_7.png" width="210" />
+<img src="IntroduceImage/image_8.png" width="210" />
+</p>
 
 ## What we learned on this project
 
-- RealmSwift
+- Core Location
 - App Delegate Life Cycle & When use App Delegate Function
+- Collaboration using Git(VCS)
+- Json Data Parsing(Codable)
 - Passing data between ViewControllers using segue
 - Reuse TableviewCell
+- Application state as network state changes
+- Depending on your location rights, the application state
 - Autolayout by device
 
 <br>
