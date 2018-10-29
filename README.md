@@ -1,12 +1,4 @@
 # Over Eats
-
-## 1. 팀 구성
-  - **:lion:** 배태웅
-  - **:tiger:** 박상욱
-  - **:shark:** 안솔찬
-
-
-# Over Eats
 <p align="left">
 <img src="https://img.shields.io/badge/swift-4.0-blue.svg" />
 <img src="https://img.shields.io/badge/xcode-10.0-green.svg" />
