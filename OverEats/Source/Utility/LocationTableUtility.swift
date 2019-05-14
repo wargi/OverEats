@@ -8,11 +8,22 @@
 
 import Foundation
 
+enum CellType{
+    case select
+    case search
+    case delivery
+    case pickUp
+}
+
 struct LocationTableUtility {
-    let cellType: Int //
-    let title: String // 주소 이름
-    let firstValue: String? //
-    let secondValue: String? //
-    let iconName: String?
-    let buttonname: String?
+    init(cellType: CellType, title: String) {
+        self.cellType = cellType
+        self.title = title
+    }
+    
+    var cellType: CellType! // 셀 타입
+    var title: String! // 셀 타이틀
+    var cellData: LocationData? // 셀 데이터
+    var iconName: String? // 셀 아이콘 네임
+    var cellContent: String? // 셀 내용
 }

@@ -10,7 +10,7 @@ import UIKit
 
 final class SelectMenuViewController: UIViewController {
 
-    var menuInfo: Section.Menu!
+    var menuInfo: Menu!
     @IBOutlet private weak var scrollView : UIScrollView! // 스크롤 뷰
     @IBOutlet private weak var selectMenuView : UIView! // 콘텐츠 뷰
     @IBOutlet private weak var backView: UIView!

@@ -11,14 +11,16 @@ import Alamofire
 /// GET 네트워크 프로토콜
 protocol GetServiceType {
     // get service에 대한 개별 프로토콜 함수
-    static func getRestaurantList(latitude: Float, longitude: Float, pageSize: Int, searchText: String?, completion: @escaping (Result<Lestaurants>) -> ())
+    static func getRestaurantList(latitude: Float, longitude: Float, pageSize: Int, searchText: String?, completion: @escaping (Result<Restaurants>) -> ())
     static func getNoticeList(completion: @escaping (Result<[Notice]>) -> ())
     static func getMenuList(id: String, completion: @escaping (Result<[Section]>) -> ())
+    static func prepareReceipt(completion: @escaping (Result<Receipts>) -> ())
+    static func pastReceipt(completion: @escaping (Result<Receipts>) -> ())
 }
 
 struct GetService: GetServiceType {
     
-    static func getRestaurantList(latitude: Float, longitude: Float, pageSize: Int, searchText: String?, completion: @escaping (Result<Lestaurants>) -> ()) {
+    static func getRestaurantList(latitude: Float, longitude: Float, pageSize: Int, searchText: String?, completion: @escaping (Result<Restaurants>) -> ()) {
         Alamofire
             .request(API.getRestaurantList(latitude: latitude, longitude: longitude, pageSize: pageSize, searchText: searchText).urlString)
             .validate()
@@ -26,7 +28,7 @@ struct GetService: GetServiceType {
                 switch response.result {
                 case .success(let value):
                     do {
-                        let restaurantData = try value.decode(Lestaurants.self)
+                        let restaurantData = try value.decode(Restaurants.self)
                         completion(.success(restaurantData))
                     } catch {
                         completion(.error(error))
@@ -93,4 +95,43 @@ struct GetService: GetServiceType {
                 }
             })
     }
+    
+    static func prepareReceipt(completion: @escaping (Result<Receipts>) -> ()) {
+        Alamofire
+            .request(API.tagList(pageSize: 40).urlString)
+            .validate()
+            .responseData(completionHandler: { (response) in
+                switch response.result {
+                case .success(let value):
+                    do {
+                        let receipts = try value.decode(Receipts.self)
+                        completion(.success(receipts))
+                    } catch {
+                        completion(.error(error))
+                    }
+                case .failure(let error):
+                    completion(.error(error))
+                }
+            })
+    }
+    
+    static func pastReceipt(completion: @escaping (Result<Receipts>) -> ()) {
+        Alamofire
+            .request(API.tagList(pageSize: 40).urlString)
+            .validate()
+            .responseData(completionHandler: { (response) in
+                switch response.result {
+                case .success(let value):
+                    do {
+                        let receipts = try value.decode(Receipts.self)
+                        completion(.success(receipts))
+                    } catch {
+                        completion(.error(error))
+                    }
+                case .failure(let error):
+                    completion(.error(error))
+                }
+            })
+    }
+    
 }

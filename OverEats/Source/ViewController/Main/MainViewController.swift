@@ -13,9 +13,14 @@ class MainViewController: UIViewController {
     var getService: GetServiceType?
     
     var notices: [Notice]?
-    var restaurants: [Lestaurant]?
-    var nearRestaurants: [Lestaurant] = []
-    var prefRestaurants: [Lestaurant] = []
+    var restaurants: [Restaurant]?
+    var nearRestaurants: [Restaurant] = []
+    var prefRestaurants: [Restaurant] = []
+    
+    @IBOutlet weak var locationStack: UIStackView!
+    
+    @IBOutlet weak var currentLocationLabel: UILabel!
+    
     
     var listStatusBits: UInt8 = 0b000
     var listNumberOfSection = 0
@@ -28,7 +33,15 @@ class MainViewController: UIViewController {
 //        self.getService = getService
 //        return self
 //    }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if LocationManager.location == nil {
+            let storyboard = UIStoryboard(name: "Sign", bundle: nil)
+            let nextViewController = storyboard.instantiateViewController(withIdentifier: "LocationViewController") as! LocationViewController
+            self.present(nextViewController, animated: true, completion: nil)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -215,9 +228,11 @@ extension MainViewController: UITableViewDelegate {
 
 extension MainViewController: RestaurantViewDelegate {
 
-    func tappedView(_ restaurantView: RestaurantView, restaurant: Lestaurant) {
+    func tappedView(_ restaurantView: RestaurantView, restaurant: Restaurant) {
         let storyboard = UIStoryboard(name: "Menu", bundle: nil)
         let nextViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        
+
         
 //        self.definesPresentationContext = true
 //        self.modalPresentationStyle = .currentContext

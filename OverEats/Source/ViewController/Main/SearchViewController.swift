@@ -34,7 +34,7 @@ class SearchViewController: UIViewController {
     private let minimumTopBarPoint: CGFloat = 40
     
     // 레스토랑 데이터
-    var restaurants: [Lestaurant]?
+    var restaurants: [Restaurant]?
     
     // 카테고리 테그 관련 데이터
     var tagData: Tags? {

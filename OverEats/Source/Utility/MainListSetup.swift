@@ -10,5 +10,5 @@ import Foundation
 
 struct MainList {
     let mainListType: String
-    let mainListItems: [Lestaurant]
+    let mainListItems: [Restaurant]
 }

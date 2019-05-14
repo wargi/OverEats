@@ -14,6 +14,8 @@ class LocationResultTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailAddress: UILabel!
     
+    var locationData: LocationData?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,7 +30,9 @@ class LocationResultTableViewCell: UITableViewCell {
     func configure(locationData: LocationTableUtility) {
         logoImageView.image = UIImage(named: locationData.iconName!)
         titleLabel.text = locationData.title
-        detailAddress.text = locationData.firstValue
+        detailAddress.text = locationData.cellData?.formattedAddress
+        
+        self.locationData = locationData.cellData
     }
 
 

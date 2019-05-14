@@ -16,6 +16,8 @@ class LocationSelectCell: UITableViewCell {
     
     @IBOutlet weak var checkImage: UIImageView!
     
+    var locationData: LocationData?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -34,11 +36,10 @@ class LocationSelectCell: UITableViewCell {
     func configure(locationData: LocationTableUtility) {
         logoImageView.image = UIImage(named: locationData.iconName!)
         titleLabel.text = locationData.title
-        if let secondText = locationData.secondValue {
-            detailAddress.text = locationData.firstValue! + "\n" + secondText
-        } else {
-            detailAddress.text = locationData.firstValue
-        }
+        print(locationData.cellContent)
+        detailAddress.text = locationData.cellContent
+        
+        self.locationData = locationData.cellData
     }
 
 }

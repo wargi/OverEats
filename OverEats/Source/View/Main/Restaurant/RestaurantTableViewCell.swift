@@ -21,7 +21,7 @@ class RestaurantTableViewCell: UITableViewCell {
     var trailingMargin: CGFloat = -15
     
     // 레스토랑 데이터가 들어올 때 뷰가 있는지 체크
-    var restaurant: Lestaurant? {
+    var restaurant: Restaurant? {
         didSet {
             checkSubview()
         }

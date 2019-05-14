@@ -16,6 +16,7 @@ final class SettingViewController: UIViewController {
 
     @IBOutlet private weak var settingTableView : UITableView!
     @IBOutlet private weak var headerView : SettingHeaderView!
+    
     let firstName = "상욱"
     let lastName = "박"
     
